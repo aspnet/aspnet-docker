@@ -1,7 +1,7 @@
 ASP.NET Docker Image
 ====================
 
-This repository contains `Dockerfile` definitions for [ASP.NET vNext][home] Docker images.
+This repository contains `Dockerfile` definitions for [ASP.NET 5][home] Docker images.
 
 ## Supported tags
 
