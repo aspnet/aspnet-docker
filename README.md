@@ -5,7 +5,7 @@ This repository contains `Dockerfile` definitions for [ASP.NET 5][home] Docker i
 
 ## Supported tags
 
-* [`latest` _(Dockerfile)_](1.0.0-alpha4/Dockerfile)
+* [`latest` _(Dockerfile)_](1.0.0-beta1/Dockerfile)
 * [`1.0.0-beta1` _(Dockerfile)_](1.0.0-beta1/Dockerfile)
 * [`1.0.0-alpha4` _(Dockerfile)_](1.0.0-alpha4/Dockerfile)
 
