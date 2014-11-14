@@ -1,4 +1,4 @@
-ASP.NET 5 Docker Image
+ASP.NET 5 Preview Docker Image
 ====================
 
 This repository contains `Dockerfile` definitions for [ASP.NET 5][home] Docker images.
