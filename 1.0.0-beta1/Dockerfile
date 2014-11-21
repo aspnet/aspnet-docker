@@ -5,7 +5,7 @@ ENV KRE_USER_HOME /opt/kre
 
 RUN apt-get -qq update && apt-get -qqy install unzip
 
-RUN curl -s https://raw.githubusercontent.com/aspnet/Home/v$KRE_VERSION/kvminstall.sh | sh
+RUN curl -sSL https://raw.githubusercontent.com/aspnet/Home/v$KRE_VERSION/kvminstall.sh | sh
 RUN bash -c "source $KRE_USER_HOME/kvm/kvm.sh \
 	&& kvm install $KRE_VERSION -a default \
 	&& kvm alias default | xargs -i ln -s $KRE_USER_HOME/packages/{} $KRE_USER_HOME/packages/default"
