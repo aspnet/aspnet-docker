@@ -7,6 +7,7 @@ This repository contains `Dockerfile` definitions for [ASP.NET 5][home] Docker i
 
 * [`latest` _(Dockerfile)_](1.0.0-beta1/Dockerfile)
 * [`1.0.0-beta1` _(Dockerfile)_](1.0.0-beta1/Dockerfile)
+* [`nightly` _(Dockerfile)_](nightly/Dockerfile)
 
 This project is part of ASP.NET 5. You can find samples, documentation, and getting started instructions for ASP.NET 5 at the [Home][home] repo.
 
