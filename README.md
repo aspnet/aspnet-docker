@@ -7,9 +7,9 @@ This project is part of ASP.NET 5. You can find samples, documentation, and gett
 
 ## Supported tags
 
-* [`latest` _(Dockerfile)_](1.0.0-beta1/Dockerfile)
-* [`1.0.0-beta1` _(Dockerfile)_](1.0.0-beta1/Dockerfile)
-* [`nightly` _(Dockerfile)_](nightly/Dockerfile)
+* [`1.0.0-beta2`, `latest`  _(1.0.0-beta2/Dockerfile)_](1.0.0-beta2/Dockerfile)
+* [`1.0.0-beta1` _(1.0.0-beta1/Dockerfile)_](1.0.0-beta1/Dockerfile)
+* [`nightly` _(nightly/Dockerfile)_](nightly/Dockerfile)
 
 ## How to use this image
 
