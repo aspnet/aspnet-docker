@@ -3,7 +3,14 @@ FROM mono:3.10
 ENV KRE_VERSION 1.0.0-beta2
 ENV KRE_USER_HOME /opt/kre
 
-RUN apt-get -qq update && apt-get -qqy install unzip
+RUN apt-get -qq update && apt-get -qqy --no-install-recommends install \
+	git \
+	unzip
+
+# Install Node.js and Grunt
+RUN curl -sL https://deb.nodesource.com/setup | bash - \
+	&& apt-get install -qqy nodejs \
+	&& npm install -g grunt-cli
 
 RUN curl -sSL https://raw.githubusercontent.com/aspnet/Home/v$KRE_VERSION/kvminstall.sh | sh
 RUN bash -c "source $KRE_USER_HOME/kvm/kvm.sh \
