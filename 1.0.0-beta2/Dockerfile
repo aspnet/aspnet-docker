@@ -3,7 +3,7 @@ FROM mono:3.10
 ENV KRE_VERSION 1.0.0-beta2
 ENV KRE_USER_HOME /opt/kre
 
-RUN apt-get -qq update && apt-get -qqy install unzip
+RUN apt-get -qq update && apt-get -qqy install unzip git python
 
 RUN curl -sSL https://raw.githubusercontent.com/aspnet/Home/v$KRE_VERSION/kvminstall.sh | sh
 RUN bash -c "source $KRE_USER_HOME/kvm/kvm.sh \
@@ -22,5 +22,16 @@ RUN LIBUV_VERSION=1.0.0-rc2 \
 	&& sh autogen.sh && ./configure && make && make install \
 	&& rm -rf /usr/local/src/libuv-$LIBUV_VERSION \
 	&& ldconfig
+
+ENV NODE_VERSION 0.10.35
+WORKDIR /tmp
+RUN curl -O http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.gz
+RUN tar xvfz node-v$NODE_VERSION.tar.gz
+WORKDIR /tmp/node-v$NODE_VERSION
+RUN ./configure --prefix=/usr
+RUN make
+RUN make install
+RUN npm install -g grunt-cli
+WORKDIR /
 
 ENV PATH $PATH:$KRE_USER_HOME/packages/default/bin
