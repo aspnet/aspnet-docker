@@ -1,4 +1,4 @@
-FROM microsoft/aspnet
+FROM microsoft/aspnet:1.0.0-beta2
 RUN apt-get -qq update
 RUN apt-get -qqy install git python
 WORKDIR /tmp
