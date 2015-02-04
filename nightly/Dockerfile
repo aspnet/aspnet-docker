@@ -1,4 +1,4 @@
-FROM mono:3.10
+FROM mono:3.12
 
 ENV KRE_FEED https://www.myget.org/F/aspnetvnext/api/v2
 ENV KRE_USER_HOME /opt/kre
