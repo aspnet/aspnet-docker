@@ -24,5 +24,9 @@ This image provides the following environment variables:
 
 In addition to these, `PATH` is set to include the `k`/`kpm` executables.
 
+## Build Status
+
+Status for image tags built from `master`: [![Build Status of Docker Image on Circle CI](https://circleci.com/gh/aspnet/aspnet-docker/tree/master.svg?style=svg)](https://circleci.com/gh/aspnet/aspnet-docker/tree/master)
+
 [home]: https://github.com/aspnet/home
 [webdev-article]: http://blogs.msdn.com/b/webdev/archive/2015/01/14/running-asp-net-5-applications-in-linux-containers-with-docker.aspx
