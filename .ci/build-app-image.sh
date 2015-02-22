@@ -4,13 +4,17 @@ set -e 	# Exit immediately upon failure
 : ${1?"Need to pass BASE_IMAGE as argument"}
 : ${2?"Need to pass TEST_APP as argument"}
 : ${3?"Need to pass TAG as argument"}
+: ${4?"Need to pass BRANCH as argument"}
 
 BASE_IMAGE=$1
 TEST_APP=$2
 TAG=$3
+BRANCH=$4
 
 echo "[CI] Injecting Dockerfile to project $TEST_APP..."
 cd  $SAMPLES_REPO/samples/$TEST_APP
+echo "[CI] Checkout branch $BRANCH"
+git checkout $BRANCH
 tee Dockerfile << EOF
 FROM $BASE_IMAGE
 COPY . /app
@@ -23,3 +27,5 @@ EOF
 echo "[CI] Building Docker image for $TEST_APP, will tag as '$TAG'..."
 docker build -t $TAG .
 echo "[CI] Built Docker image '$TAG'"
+echo "[CI] Revert checkout"
+git checkout master
