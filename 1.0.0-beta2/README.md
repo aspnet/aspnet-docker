@@ -19,10 +19,17 @@ Please [read this article][webdev-article] on .NET Web Development and Tools Blo
 
 This image provides the following environment variables:
 
-* `KRE_USER_HOME`: path to KRE installation (e.g. /opt/kre)
+* `KRE_USER_HOME`: path to KRE installation (e.g. /opt/kre) (except the `nightly` image)
 * `KRE_VERSION`: version of KRE (K Runtime) installed (except the `nightly` image)
 
 In addition to these, `PATH` is set to include the `k`/`kpm` executables.
+
+The `nightly` image provides the following environment variables:
+
+* `DNX_USER_HOME`: path to DNX installation (e.g. /opt/dnx)
+* `DNX_FEED`: url to the DNX nightly feed (e.g. https://www.myget.org/F/aspnetvnext/api/v2)
+
+In addition to these, `PATH` is set to include the `dnx`/`kpm` executables.
 
 ## Build Status
 
