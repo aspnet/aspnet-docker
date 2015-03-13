@@ -9,7 +9,8 @@ This project is part of ASP.NET 5. You can find samples, documentation, and gett
 
 ## Supported tags
 
-* [`1.0.0-beta2`, `latest`  _(1.0.0-beta2/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta2/Dockerfile)
+* [`1.0.0-beta3`, `latest`  _(1.0.0-beta3/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta3/Dockerfile)
+* [`1.0.0-beta2`,  _(1.0.0-beta2/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta2/Dockerfile)
 * [`1.0.0-beta1` _(1.0.0-beta1/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta1/Dockerfile)
 * [`nightly` _(nightly/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/nightly/Dockerfile)
 
@@ -19,8 +20,8 @@ Please [read this article][webdev-article] on .NET Web Development and Tools Blo
 
 This image provides the following environment variables:
 
-* `KRE_USER_HOME`: path to KRE installation (e.g. /opt/kre) (except the `nightly` image)
-* `KRE_VERSION`: version of KRE (K Runtime) installed (except the `nightly` image)
+* `KVM_USER_HOME`: path to KRE installation (e.g. /opt/kre)
+* `KRE_VERSION`: version of KRE (K Runtime) installed
 
 In addition to these, `PATH` is set to include the `k`/`kpm` executables.
 
