@@ -1,14 +1,14 @@
 FROM mono:3.12
 
-ENV KRE_FEED https://www.myget.org/F/aspnetvnext/api/v2
-ENV KVM_USER_HOME /opt/k
+ENV DNX_FEED https://www.myget.org/F/aspnetvnext/api/v2
+ENV DNX_USER_HOME /opt/dnx
 
 RUN apt-get -qq update && apt-get -qqy install unzip
 
-ONBUILD RUN curl -sSL https://raw.githubusercontent.com/aspnet/Home/release/kvminstall.sh | KRE_USER_HOME=$KVM_USER_HOME KVM_BRANCH=dev sh
-ONBUILD RUN bash -c "source $KVM_USER_HOME/kvm/kvm.sh \
-	&& kvm install latest -a default \
-	&& kvm alias default | xargs -i ln -s $KVM_USER_HOME/runtimes/{} $KVM_USER_HOME/runtimes/default"
+ONBUILD RUN curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh
+ONBUILD RUN bash -c "source $DNX_USER_HOME/dnvm/dnvm.sh \
+	&& dnvm install latest -a default \
+	&& dnvm alias default | xargs -i ln -s $DNX_USER_HOME/runtimes/{} $DNX_USER_HOME/runtimes/default"
 
 # Install libuv for Kestrel from source code (binary is not in wheezy and one in jessie is still too old)
 RUN apt-get -qqy install \
@@ -26,4 +26,4 @@ RUN LIBUV_VERSION=1.0.0-rc2 \
 COPY NuGet.Config /tmp/
 RUN mkdir -p $HOME/.config/NuGet/ && mv /tmp/NuGet.Config $HOME/.config/NuGet/
 
-ENV PATH $PATH:$KVM_USER_HOME/runtimes/default/bin
+ENV PATH $PATH:$DNX_USER_HOME/runtimes/default/bin
