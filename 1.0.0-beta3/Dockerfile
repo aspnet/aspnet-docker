@@ -16,8 +16,8 @@ RUN apt-get -qqy install \
 	automake \
 	build-essential \
 	libtool
-RUN LIBUV_VERSION=1.0.0-rc2 \
-	&& curl -sSL https://github.com/joyent/libuv/archive/v${LIBUV_VERSION}.tar.gz | tar zxfv - -C /usr/local/src \
+RUN LIBUV_VERSION=1.4.2 \
+	&& curl -sSL https://github.com/libuv/libuv/archive/v${LIBUV_VERSION}.tar.gz | tar zxfv - -C /usr/local/src \
 	&& cd /usr/local/src/libuv-$LIBUV_VERSION \
 	&& sh autogen.sh && ./configure && make && make install \
 	&& rm -rf /usr/local/src/libuv-$LIBUV_VERSION \
