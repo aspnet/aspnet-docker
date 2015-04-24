@@ -3,7 +3,14 @@ FROM mono:3.12
 ENV DNX_FEED https://www.myget.org/F/aspnetvnext/api/v2
 ENV DNX_USER_HOME /opt/dnx
 
-RUN apt-get -qq update && apt-get -qqy install unzip
+RUN apt-get -qq update && apt-get -qqy --no-install-recommends install \
+	git \
+	unzip
+
+# Install Node.js and Grunt
+RUN curl -sL https://deb.nodesource.com/setup | bash - \
+	&& apt-get install -qqy nodejs \
+	&& npm install -g grunt-cli
 
 ONBUILD RUN curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh
 ONBUILD RUN bash -c "source $DNX_USER_HOME/dnvm/dnvm.sh \
