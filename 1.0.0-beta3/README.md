@@ -12,7 +12,6 @@ This project is part of ASP.NET 5. You can find samples, documentation, and gett
 * [`1.0.0-beta3`, `latest`  _(1.0.0-beta3/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta3/Dockerfile)
 * [`1.0.0-beta2`,  _(1.0.0-beta2/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta2/Dockerfile)
 * [`1.0.0-beta1` _(1.0.0-beta1/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta1/Dockerfile)
-* [`nightly` _(nightly/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/nightly/Dockerfile)
 * [`coreclr-1.0.0-beta5-11624` _(coreclr-1.0.0-beta5-11624/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/coreclr-1.0.0-beta5-11624/Dockerfile)
 
 ## How to use this image
@@ -25,13 +24,6 @@ This image provides the following environment variables:
 * `KRE_VERSION`: version of KRE (K Runtime) installed
 
 In addition to these, `PATH` is set to include the `k`/`kpm` executables.
-
-The `nightly` image provides the following environment variables:
-
-* `DNX_USER_HOME`: path to DNX installation (e.g. /opt/dnx)
-* `DNX_FEED`: url to the DNX nightly feed (e.g. https://www.myget.org/F/aspnetvnext/api/v2)
-
-In addition to these, `PATH` is set to include the `dnx`/`k`/`kpm` executables.
 
 ## Build Status
 
