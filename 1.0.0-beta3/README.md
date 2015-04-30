@@ -31,7 +31,7 @@ The `nightly` image provides the following environment variables:
 * `DNX_USER_HOME`: path to DNX installation (e.g. /opt/dnx)
 * `DNX_FEED`: url to the DNX nightly feed (e.g. https://www.myget.org/F/aspnetvnext/api/v2)
 
-In addition to these, `PATH` is set to include the `dnx`/`k`/`kpm` executables.
+In addition to these, `PATH` is set to include the `dnx`/`dnu` executables.
 
 ## Build Status
 
