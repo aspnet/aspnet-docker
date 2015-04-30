@@ -1,6 +1,5 @@
 FROM ubuntu:14.04
 
-# Install aspnet 1.0.0-beta5
 ENV DNX_FEED https://www.myget.org/F/aspnetvnext/api/v2
 
 RUN apt-get update -qq \
