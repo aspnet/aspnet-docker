@@ -9,7 +9,8 @@ This project is part of ASP.NET 5. You can find samples, documentation, and gett
 
 ## Supported tags
 
-* [`1.0.0-beta3`, `latest`  _(1.0.0-beta3/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta3/Dockerfile)
+* [`1.0.0-beta4`, `latest`  _(1.0.0-beta4/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta4/Dockerfile)
+* [`1.0.0-beta3`,  _(1.0.0-beta3/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta3/Dockerfile)
 * [`1.0.0-beta2`,  _(1.0.0-beta2/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta2/Dockerfile)
 * [`1.0.0-beta1` _(1.0.0-beta1/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta1/Dockerfile)
 * [`coreclr-1.0.0-beta5-11624` _(coreclr-1.0.0-beta5-11624/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/coreclr-1.0.0-beta5-11624/Dockerfile)
@@ -20,10 +21,10 @@ Please [read this article][webdev-article] on .NET Web Development and Tools Blo
 
 This image provides the following environment variables:
 
-* `KVM_USER_HOME`: path to KRE installation (e.g. /opt/kre)
-* `KRE_VERSION`: version of KRE (K Runtime) installed
+* `DNX_USER_HOME`: path to DNX installation (e.g. /opt/dnx)
+* `DNX_VERSION`: version of DNX (.NET Execution Environment) installed
 
-In addition to these, `PATH` is set to include the `k`/`kpm` executables.
+In addition to these, `PATH` is set to include the `dnx`/`dnu` executables.
 
 ## Build Status
 
