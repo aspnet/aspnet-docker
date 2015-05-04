@@ -1,19 +1,9 @@
-FROM mono:4
-
-# Get build dependencies, download/build/install mono 4.1.0
-RUN apt-get update -qq \
-    && apt-get install -qqy git autoconf libtool automake build-essential mono-devel gettext unzip \
-    && git clone https://github.com/mono/mono.git \
-    && cd mono \
-    && git reset --hard 53dc56ee39a8e3b013231957aca4671b202c6410 \
-    && ./autogen.sh --prefix="/usr/local" \
-    && make \
-    && make install \
-    && cd .. \
-    && rm -rf mono
+FROM mono:4.0.1
 
 ENV DNX_VERSION 1.0.0-beta4
 ENV DNX_USER_HOME /opt/dnx
+
+RUN apt-get -qq update && apt-get -qqy install unzip
 
 RUN curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_USER_HOME=$DNX_USER_HOME DNX_BRANCH=v$DNX_VERSION sh
 RUN bash -c "source $DNX_USER_HOME/dnvm/dnvm.sh \
