@@ -7,11 +7,9 @@ set -e 	# Exit immediately upon failure
 
 for tag in `.ci/find-tags.sh $1`; do
 	TAG=${IMAGE}:${tag}
-	BRANCH=master
-	if [[ ${tag} == "nightly" ]]; then BRANCH=dev; else BRANCH=tags/v${tag} ; fi
 	echo "[CI] ----------------------------------"
 	echo "[CI] Verifying '$2' app with '$TAG'"
-	.ci/run-app.sh $TAG $2 $BRANCH
+	.ci/run-app.sh $TAG $2 ${tag}
 done
 
 echo "[CI] '$2' runs fine on all tags."

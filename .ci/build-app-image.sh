@@ -4,28 +4,28 @@ set -e 	# Exit immediately upon failure
 : ${1?"Need to pass BASE_IMAGE as argument"}
 : ${2?"Need to pass TEST_APP as argument"}
 : ${3?"Need to pass TAG as argument"}
-: ${4?"Need to pass BRANCH as argument"}
+: ${4?"Need to pass VERSION as argument"}
 
 BASE_IMAGE=$1
 TEST_APP=$2
 TAG=$3
-BRANCH=$4
+VERSION=$4
 
 echo "[CI] Injecting Dockerfile to project $TEST_APP..."
-cd  $SAMPLES_REPO/samples/$TEST_APP
-echo "[CI] Checkout branch $BRANCH"
-git checkout $BRANCH
+if [[ ! -d $SAMPLES_REPO/samples/$VERSION/$TEST_APP ]]; then
+	echo "[CI] Sample '$TEST_APP' not found for Docker image '$VERSION'"
+    exit 1
+fi
+cd  $SAMPLES_REPO/samples/$VERSION/$TEST_APP
 tee Dockerfile << EOF
 FROM $BASE_IMAGE
 COPY . /app
 WORKDIR /app
-RUN kpm restore
-ENV KRE_TRACE 1
-ENTRYPOINT sleep 10000 | k kestrel
+RUN dnu restore
+ENV DNX_TRACE 1
+ENTRYPOINT sleep 10000 | dnx . kestrel
 EOF
 
 echo "[CI] Building Docker image for $TEST_APP, will tag as '$TAG'..."
 docker build -t $TAG .
 echo "[CI] Built Docker image '$TAG'"
-echo "[CI] Revert checkout"
-git checkout master
