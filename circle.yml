@@ -11,7 +11,7 @@ general:
 
 checkout:
   post:
-    - git clone -q git://github.com/aspnet/Home.git $SAMPLES_REPO
+    - git clone -q git://github.com/aspnet/Home.git -b dev $SAMPLES_REPO
 
 dependencies:
   override:
