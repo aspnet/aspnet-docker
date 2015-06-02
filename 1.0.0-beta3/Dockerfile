@@ -1,4 +1,4 @@
-FROM mono:3.12
+FROM mono:4.0
 
 ENV KRE_VERSION 1.0.0-beta3
 ENV KVM_USER_HOME /opt/kre
