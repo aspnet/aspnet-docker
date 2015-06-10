@@ -7,6 +7,10 @@ This repository contains `Dockerfile` definitions for [ASP.NET 5][home] Docker i
 
 This project is part of ASP.NET 5. You can find samples, documentation, and getting started instructions for ASP.NET 5 at the [Home][home] repo.
 
+[![Build Status of Docker Image on Circle CI](https://img.shields.io/circleci/project/aspnet/aspnet-docker.svg)](https://circleci.com/gh/aspnet/aspnet-docker/tree/master)
+[![Downloads from Docker Hub](https://img.shields.io/docker/pulls/microsoft/aspnet.svg)](https://registry.hub.docker.com/u/microsoft/aspnet)
+[![Stars on Docker Hub](https://img.shields.io/docker/stars/microsoft/aspnet.svg)](https://registry.hub.docker.com/u/microsoft/aspnet)
+
 ## Supported tags
 
 * [`1.0.0-beta4`, `latest`  _(1.0.0-beta4/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta4/Dockerfile)
@@ -25,10 +29,6 @@ This image provides the following environment variables:
 * `DNX_VERSION`: version of DNX (.NET Execution Environment) installed
 
 In addition to these, `PATH` is set to include the `dnx`/`dnu` executables.
-
-## Build Status
-
-Status for image tags built from `master`: [![Build Status of Docker Image on Circle CI](https://circleci.com/gh/aspnet/aspnet-docker/tree/master.svg?style=svg)](https://circleci.com/gh/aspnet/aspnet-docker/tree/master)
 
 [home]: https://github.com/aspnet/home
 [webdev-article]: http://blogs.msdn.com/b/webdev/archive/2015/01/14/running-asp-net-5-applications-in-linux-containers-with-docker.aspx
