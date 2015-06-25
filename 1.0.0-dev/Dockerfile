@@ -1,6 +1,6 @@
 FROM mono:4.0.1
 
-ENV DNX_VERSION dev
+ENV DNX_VERSION latest
 ENV DNX_USER_HOME /opt/dnx
 ENV DNX_FEED https://www.myget.org/F/aspnetvnext/api/v2
 
@@ -26,5 +26,6 @@ RUN LIBUV_VERSION=1.4.2 \
 
 ENV PATH $PATH:$DNX_USER_HOME/runtimes/default/bin
 
+# Needed to be able to install packages that are in dev branch (maybe this should be moved out of this?)
 RUN mkdir -p ~/.config/NuGet/
 RUN curl -o ~/.config/NuGet/NuGet.Config -sSL https://gist.githubusercontent.com/Tazer/1ad0e439846ee26ef9a5/raw/901bd4ef59626ccab63622fa5ff7a711f24a22e9/Nuget.config
