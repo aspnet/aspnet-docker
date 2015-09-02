@@ -20,4 +20,11 @@ docker run -t -d -p $HOST_PORT:$APP_PORT --name $CNT_NAME $APP_IMG
 # Wait to bootstrap the app
 echo "[CI] Sleeping $SLEEP seconds to bootstrap the server..."
 sleep $SLEEP
-docker ps
+
+echo "Docker logs:"
+docker logs "$CNT_NAME"
+
+echo
+echo "Docker ps:"
+docker ps -a
+

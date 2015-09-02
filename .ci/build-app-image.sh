@@ -6,10 +6,13 @@ set -e 	# Exit immediately upon failure
 : ${3?"Need to pass TAG as argument"}
 : ${4?"Need to pass VERSION as argument"}
 
+set +x
+
 BASE_IMAGE=$1
 TEST_APP=$2
 TAG=$3
 VERSION=$4
+
 
 echo "[CI] Injecting Dockerfile to project $TEST_APP..."
 if [[ ! -d $SAMPLES_REPO/samples/$VERSION/$TEST_APP ]]; then
@@ -17,7 +20,15 @@ if [[ ! -d $SAMPLES_REPO/samples/$VERSION/$TEST_APP ]]; then
     exit 1
 fi
 cd  $SAMPLES_REPO/samples/$VERSION/$TEST_APP
-tee Dockerfile << EOF
+
+ls -al
+
+if [[ -f "Dockerfile" ]]; then
+	echo "Using existing Dockerfile in the sample."
+	echo "Dockerfile:"
+	cat Dockerfile
+else
+	tee Dockerfile << EOF
 FROM $BASE_IMAGE
 COPY . /app
 WORKDIR /app
@@ -25,6 +36,8 @@ RUN dnu restore
 ENV DNX_TRACE 1
 ENTRYPOINT sleep 10000 | dnx . kestrel
 EOF
+
+fi
 
 echo "[CI] Building Docker image for $TEST_APP, will tag as '$TAG'..."
 docker build -t $TAG .
