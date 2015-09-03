@@ -1,4 +1,4 @@
-FROM debian:wheezy
+FROM debian:jessie
 
 ENV DNX_VERSION 1.0.0-beta7
 ENV DNX_USER_HOME /opt/dnx
