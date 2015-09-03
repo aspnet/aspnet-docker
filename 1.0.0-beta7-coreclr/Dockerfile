@@ -3,7 +3,7 @@ FROM debian:wheezy
 ENV DNX_VERSION 1.0.0-beta7
 ENV DNX_USER_HOME /opt/dnx
 
-RUN apt-get -qq update && apt-get -qqy install unzip curl
+RUN apt-get -qq update && apt-get -qqy install unzip curl libunwind8 gettext libssl-dev libcurl3-dev zlib1g
 
 RUN curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_USER_HOME=$DNX_USER_HOME DNX_BRANCH=v$DNX_VERSION sh
 RUN bash -c "source $DNX_USER_HOME/dnvm/dnvm.sh \
