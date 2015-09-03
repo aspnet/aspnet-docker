@@ -12,7 +12,7 @@ BASE_IMAGE=$1
 TEST_APP=$2
 TAG=$3
 VERSION=$4
-
+VERSION= echo $VERSION | sed -e "s/-coreclr//"
 
 echo "[CI] Injecting Dockerfile to project $TEST_APP..."
 if [[ ! -d $SAMPLES_REPO/samples/$VERSION/$TEST_APP ]]; then
