@@ -6,28 +6,38 @@ set -e 	# Exit immediately upon failure
 : ${3?"Need to pass TAG as argument"}
 : ${4?"Need to pass VERSION as argument"}
 
-set +x
 
 BASE_IMAGE=$1
 TEST_APP=$2
 TAG=$3
 VERSION=$4
-SAMPLE=$SAMPLES_REPO/samples/${VERSION%-coreclr}/$TEST_APP
+SAMPLE="aspnet-samples/samples/${VERSION}/${TEST_APP}"
+SAMPLE_NO_CLR="aspnet-samples/samples/${VERSION%-coreclr}/${TEST_APP}"
 
-echo "[CI] Injecting Dockerfile to project $TEST_APP..."
-if [[ ! -d $SAMPLE ]]; then
-	echo "[CI] Sample '$TEST_APP' not found for Docker image '$VERSION'"
+if [[ ! -d "$SAMPLE_NO_CLR" ]]; then
+	echo "[CI] Sample '$TEST_APP' not found for Docker image '$VERSION' at ${SAMPLE_NO_CLR}"
     exit 1
 fi
+
+if [[ -d "$SAMPLE_NO_CLR" ]] && [[ ! -d "$SAMPLE" ]]; then
+	set -x
+	echo "Samples dir ${SAMPLE} not found. Will clone from ${SAMPLE_NO_CLR}."
+
+	mkdir -p "${SAMPLE}"
+	cp -rf "${SAMPLE_NO_CLR}" $(dirname "${SAMPLE}")
+	ls -al "${SAMPLE}"
+	# Append -coreclr to FROM.. directive
+	sed -i.bak '/^FROM/ s/$/-coreclr/' "${SAMPLE}/Dockerfile"
+	set +x
+fi
+
 cd  $SAMPLE
-
-ls -al
-
 if [[ -f "Dockerfile" ]]; then
 	echo "Using existing Dockerfile in the sample."
 	echo "Dockerfile:"
 	cat Dockerfile
 else
+	echo "[CI] Injecting Dockerfile to project $TEST_APP..."
 	tee Dockerfile << EOF
 FROM $BASE_IMAGE
 COPY . /app
