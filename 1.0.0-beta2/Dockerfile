@@ -24,3 +24,6 @@ RUN LIBUV_VERSION=1.4.2 \
 	&& ldconfig
 
 ENV PATH $PATH:$KRE_USER_HOME/packages/default/bin
+
+# Prevent `dnu restore` from stalling (gh#63, gh#80)
+ENV MONO_THREADS_PER_CPU 2000
