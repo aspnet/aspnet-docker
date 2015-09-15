@@ -2,20 +2,16 @@ machine:
   services:
     - docker
   environment:
-    IMAGE: aspnet-ci
-    SAMPLES_REPO: $HOME/aspnet-Home
+    IMAGE: microsoft/aspnet
 
 general:
   artifacts:
     - "container-logs"
 
-checkout:
-  post:
-    - git clone -q git://github.com/aspnet/Home.git -b dev $SAMPLES_REPO
-
 dependencies:
   override:
     - .ci/build-all-tags.sh .
+    - .ci/clone-samples.sh
 
 test:
   override:

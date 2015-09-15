@@ -9,7 +9,10 @@ for tag in `.ci/find-tags.sh $1`; do
 	TAG=${IMAGE}:${tag}
 	echo "[CI] ----------------------------------"
 	echo "[CI] Verifying '$2' app with '$TAG'"
-	.ci/run-app.sh $TAG $2 ${tag}
+	(
+	  set -x
+	  .ci/run-app.sh $TAG $2 ${tag}
+	)
 done
 
 echo "[CI] '$2' runs fine on all tags."

@@ -5,9 +5,12 @@ set -e 	# Exit immediately upon failure
 : ${1?"Need to pass search directory argument"}
 
 for tag in `.ci/find-tags.sh $1`; do
-	TAG=${IMAGE}:${tag}
-	echo "[CI] Building image '$TAG'..."
-	docker build -t $TAG $1/$tag
+	(
+	  TAG=${IMAGE}:${tag}
+	  echo "[CI] Building image '$TAG'..."
+	  set -x
+	  docker build -t $TAG $1/$tag
+	)
 done
 
 echo "[CI] All tags build fine."
