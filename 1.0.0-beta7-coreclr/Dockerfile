@@ -7,7 +7,7 @@ RUN apt-get -qq update && apt-get -qqy install unzip curl libunwind8 gettext lib
 
 RUN curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_USER_HOME=$DNX_USER_HOME DNX_BRANCH=v$DNX_VERSION sh
 RUN bash -c "source $DNX_USER_HOME/dnvm/dnvm.sh \
-	&& dnvm install $DNX_VERSION -a default -r coreclr \
+	&& dnvm install $DNX_VERSION -alias default -r coreclr \
 	&& dnvm alias default | xargs -i ln -s $DNX_USER_HOME/runtimes/{} $DNX_USER_HOME/runtimes/default"
 
 
