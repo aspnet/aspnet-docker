@@ -18,7 +18,7 @@ APP_IMG_TAG=$(tr '[:upper:]' '[:lower:]' <<< $TEST_APP)_${TEST_PORT}
 .ci/build-app-image.sh $BASE_IMAGE $TEST_APP $APP_IMG_TAG $VERSION
 
 # Start app
-# .ci/start-container.sh 5004 $TEST_PORT $APP_IMG_TAG $APP_IMG_TAG
+.ci/start-container.sh 5004 $TEST_PORT $APP_IMG_TAG $APP_IMG_TAG
 
 echo "[CI] Verifying connectivity..."
-# .ci/test-connection.sh http://localhost:$TEST_PORT
+.ci/test-connection.sh http://localhost:$TEST_PORT
