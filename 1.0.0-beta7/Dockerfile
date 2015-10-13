@@ -3,7 +3,7 @@ FROM mono:4.0.1
 ENV DNX_VERSION 1.0.0-beta7
 ENV DNX_USER_HOME /opt/dnx
 
-RUN apt-get -qq update && apt-get -qqy install unzip && rm -rf /var/lib/apt/lists/*
+RUN apt-get -qq update && apt-get -qqy install unzip libc6-dev && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_USER_HOME=$DNX_USER_HOME DNX_BRANCH=v$DNX_VERSION sh
 RUN bash -c "source $DNX_USER_HOME/dnvm/dnvm.sh \
