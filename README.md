@@ -1,1 +1,1 @@
-1.0.0-beta7/README.md
+./1.0.0-beta8/README.md
