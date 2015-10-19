@@ -24,10 +24,6 @@ This project is part of ASP.NET 5. You can find samples, documentation, and gett
 * [`1.0.0-beta7`,  _(1.0.0-beta7/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta7/Dockerfile)
 * [`1.0.0-beta6`,  _(1.0.0-beta6/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta6/Dockerfile)
 * [`1.0.0-beta5`,  _(1.0.0-beta5/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta5/Dockerfile)
-* [`1.0.0-beta4`,  _(1.0.0-beta4/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta4/Dockerfile)
-* [`1.0.0-beta3`,  _(1.0.0-beta3/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta3/Dockerfile)
-* [`1.0.0-beta2`,  _(1.0.0-beta2/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta2/Dockerfile)
-* [`1.0.0-beta1`,  _(1.0.0-beta1/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta1/Dockerfile)
 
 ## How to use this image
 
