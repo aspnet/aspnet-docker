@@ -15,12 +15,14 @@ This project is part of ASP.NET 5. You can find samples, documentation, and gett
 
 #### `coreclr`-based images
 
+* [`1.0.0-rc1-coreclr` _(1.0.0-rc1-coreclr/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-rc1-coreclr/Dockerfile)
 * [`1.0.0-beta8-coreclr` _(1.0.0-beta8-coreclr/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta8-coreclr/Dockerfile)
 * [`1.0.0-beta7-coreclr` _(1.0.0-beta7-coreclr/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta7-coreclr/Dockerfile)
 
 #### `mono`-based images
 
-* [`1.0.0-beta8`, `latest` _(1.0.0-beta8/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta8/Dockerfile)
+* [`1.0.0-rc1`, `latest` _(1.0.0-rc1/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-rc1/Dockerfile)
+* [`1.0.0-beta8`,  _(1.0.0-beta8/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta8/Dockerfile)
 * [`1.0.0-beta7`,  _(1.0.0-beta7/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta7/Dockerfile)
 * [`1.0.0-beta6`,  _(1.0.0-beta6/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta6/Dockerfile)
 * [`1.0.0-beta5`,  _(1.0.0-beta5/Dockerfile)_](https://github.com/aspnet/aspnet-docker/blob/master/1.0.0-beta5/Dockerfile)
