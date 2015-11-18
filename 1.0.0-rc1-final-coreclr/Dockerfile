@@ -2,7 +2,6 @@ FROM debian:jessie
 
 ENV DNX_VERSION 1.0.0-rc1-final
 ENV DNX_USER_HOME /opt/DNX_BRANCH
-ENV DNX_FEED https://www.myget.org/F/aspnetrc1/api/v2
 #Currently the CLR packages don't have runtime ids to handle debian:jessie but
 #we are making sure that the dependencies are the right versions and are opting for
 #the smaller base image. So we use this variable to overwrite the default detection.
