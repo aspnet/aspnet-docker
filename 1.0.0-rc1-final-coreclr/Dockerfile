@@ -16,7 +16,7 @@ RUN bash -c "source $DNX_USER_HOME/dnvm/dnvm.sh \
 
 # Install libuv for Kestrel from source code (binary is not in wheezy and one in jessie is still too old)
 # Combining this with the uninstall and purge will save us the space of the build tools in the image
-RUN LIBUV_VERSION=1.4.2 \
+RUN LIBUV_VERSION=1.7.5 \
 	&& apt-get -qq update \
 	&& apt-get -qqy install autoconf automake build-essential libtool \
 	&& curl -sSL https://github.com/libuv/libuv/archive/v${LIBUV_VERSION}.tar.gz | tar zxfv - -C /usr/local/src \
