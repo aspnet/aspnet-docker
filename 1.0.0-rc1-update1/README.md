@@ -5,7 +5,7 @@ ASP.NET 5 Preview Docker Image
 
 This repository contains `Dockerfile` definitions for [ASP.NET 5][home] Docker images.
 
-This project is part of ASP.NET 5. You can find samples, documentation, and getting started instructions for ASP.NET 5 at the [Home][home] repo.
+This project is part of ASP.NET 5. You can find samples, documentation, and getting started instructions for ASP.NET 5 at [docs.asp.net][docs] and the [Home][home] repo.
 
 [![Build Status of Docker Image on Circle CI](https://img.shields.io/circleci/project/aspnet/aspnet-docker.svg)](https://circleci.com/gh/aspnet/aspnet-docker/tree/master)
 [![Downloads from Docker Hub](https://img.shields.io/docker/pulls/microsoft/aspnet.svg)](https://registry.hub.docker.com/u/microsoft/aspnet)
@@ -31,7 +31,7 @@ This project is part of ASP.NET 5. You can find samples, documentation, and gett
 
 ## How to use this image
 
-Please [read this article][webdev-article] on .NET Web Development and Tools Blog to learn more about using this image.
+Please [read this article][using-docker-article] on [docs.asp.net][docs] to learn more about using this image.
 
 This image provides the following environment variables:
 
@@ -41,4 +41,5 @@ This image provides the following environment variables:
 In addition to these, `PATH` is set to include the `dnx`/`dnu` executables.
 
 [home]: https://github.com/aspnet/home
-[webdev-article]: http://blogs.msdn.com/b/webdev/archive/2015/01/14/running-asp-net-5-applications-in-linux-containers-with-docker.aspx
+[using-docker-article]: https://docs.asp.net/en/latest/getting-started/installing-on-linux.html#using-docker
+[docs]: http://docs.asp.net
