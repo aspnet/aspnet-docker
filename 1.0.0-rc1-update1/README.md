@@ -42,5 +42,4 @@ In addition to these, `PATH` is set to include the `dnx`/`dnu` executables.
 
 [home]: https://github.com/aspnet/home
 [using-docker-article]: https://docs.asp.net/en/latest/getting-started/installing-on-linux.html#using-docker
-[webdev-article]: http://blogs.msdn.com/b/webdev/archive/2015/01/14/running-asp-net-5-applications-in-linux-containers-with-docker.aspx
 [docs]: http://docs.asp.net
