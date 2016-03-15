@@ -1,11 +1,11 @@
 ![](https://avatars3.githubusercontent.com/u/6476660?v=3&s=200)
 
-ASP.NET 5 Preview Docker Image
+ASP.NET Core Preview Docker Image
 ====================
 
-This repository contains `Dockerfile` definitions for [ASP.NET 5][home] Docker images.
+This repository contains `Dockerfile` definitions for [ASP.NET Core][home] Docker images.
 
-This project is part of ASP.NET 5. You can find samples, documentation, and getting started instructions for ASP.NET 5 at the [Home][home] repo.
+This project is part of ASP.NET Core. You can find samples, documentation, and getting started instructions for ASP.NET Core at the [Home][home] repo.
 
 [![Build Status of Docker Image on Circle CI](https://img.shields.io/circleci/project/aspnet/aspnet-docker.svg)](https://circleci.com/gh/aspnet/aspnet-docker/tree/master)
 [![Downloads from Docker Hub](https://img.shields.io/docker/pulls/microsoft/aspnet.svg)](https://registry.hub.docker.com/u/microsoft/aspnet)
