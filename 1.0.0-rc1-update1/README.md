@@ -3,6 +3,8 @@
 ASP.NET Core Preview Docker Image
 ====================
 
+**This repository is for version 1.0.0-RC1 and older releases of ASP.NET Core only.** For 1.0.0-RC2 use [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/).
+
 This repository contains `Dockerfile` definitions for [ASP.NET Core][home] Docker images.
 
 This project is part of ASP.NET Core. You can find samples, documentation, and getting started instructions for ASP.NET Core at the [Home][home] repo.
