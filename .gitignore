@@ -1,1 +1,2 @@
-aspnet-samples
+project.lock.json
+*.project.lock.json
