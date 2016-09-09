@@ -19,6 +19,6 @@ RUN curl -o /tmp/packagescache.tar.gz https://dist.asp.net/packagecache/aspnetco
     tar xvf /tmp/packagescache.tar.gz && \
     rm /tmp/packagescache.tar.gz && \
     # restore 1.0.0 ASP.NET packages
-    cd /tmp && dotnet restore packagescache.project.json && \
+    cd /tmp && dotnet restore packagescache.project.json --source https://www.myget.org/F/aspnet101/api/v3/index.json --fallbacksource https://api.nuget.org/v3/index.json && \
     rm /tmp/packagescache.project.json && \
     cd /
