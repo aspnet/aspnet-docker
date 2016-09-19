@@ -99,7 +99,6 @@
     "Microsoft.AspNetCore.Cryptography.Internal": "1.0.0",
     "Microsoft.AspNetCore.Cors": "1.0.0",
     "Microsoft.AspNetCore.CookiePolicy": "1.0.0",
-    "Microsoft.AspNetCore.Buffering": "0.1.0",
     "Microsoft.AspNetCore.Authorization": "1.0.0",
     "Microsoft.AspNetCore.Authentication.Twitter": "1.0.0",
     "Microsoft.AspNetCore.Authentication.OpenIdConnect": "1.0.0",
