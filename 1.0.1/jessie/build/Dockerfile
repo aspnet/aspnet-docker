@@ -21,4 +21,9 @@ RUN curl -o /tmp/packagescache.tar.gz http://dist.asp.net/packagecache/aspnetcor
     # restore 1.0.1 ASP.NET packages
     cd /tmp && dotnet restore packagescache.project.json && \
     rm /tmp/packagescache.project.json && \
+    # set up node
+    apt-get -qq update && \
+    apt-get -qqy install node npm && \
+    npm install -g bower gulp && \
+    apt-get -y autoclean && \
     cd /
