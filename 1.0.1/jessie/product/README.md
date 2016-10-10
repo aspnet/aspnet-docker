@@ -25,7 +25,7 @@ This image contains:
   ```
   FROM microsoft/aspnetcore
   WORKDIR /app
-  ADD /app
+  COPY . /app
   ENTRYPOINT ["dotnet", "myapp.dll"]
   ```
 
@@ -33,8 +33,10 @@ This image contains:
 
   ```
   $ docker build -t myapp .
-  $ docker run -d -P myapp
+  $ docker run -d -p 8000:80 myapp
   ```
+
+3. Browse to localhost:8000 to access your app.
 
 ### A note on ports
 
