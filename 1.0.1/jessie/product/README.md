@@ -17,3 +17,25 @@ This image contains:
 ## Supported tags
 
 - [`1.0.1`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/product/Dockerfile)
+
+## Example Usage
+
+1. Create a Dockerfile for your application, the following example assumes you have already compiled your application (which is the expected use case for this image)
+
+  ```
+  FROM microsoft/aspnetcore
+  WORKDIR /app
+  ADD /app
+  ENTRYPOINT ["dotnet", "myapp.dll"]
+  ```
+
+2. Build and run your app:
+
+  ```
+  $ docker build -t myapp .
+  $ docker run -d -P myapp
+  ```
+
+### A note on ports
+
+  This image sets the `ASPNETCORE_URLS` environment variable to `http://+:80` which means that if you have not explicity set a URL in your application, via `app.UseUrl` in your Program.cs for example, then your application will be listening on port 80. It also has `EXPOSE 80` in the base image so that port 80 will be exposed to linked containers, and to external traffic if it is run with `-P` or `-p`.
