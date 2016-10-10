@@ -25,7 +25,7 @@ This image contains:
   ```
   FROM microsoft/aspnetcore
   WORKDIR /app
-  COPY . /app
+  COPY . .
   ENTRYPOINT ["dotnet", "myapp.dll"]
   ```
 
