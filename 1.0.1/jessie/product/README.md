@@ -40,4 +40,4 @@ This image contains:
 
 ### A note on ports
 
-  This image sets the `ASPNETCORE_URLS` environment variable to `http://+:80` which means that if you have not explicity set a URL in your application, via `app.UseUrl` in your Program.cs for example, then your application will be listening on port 80. It also has `EXPOSE 80` in the base image so that port 80 will be exposed to linked containers, and to external traffic if it is run with `-P` or `-p`.
+  This image sets the `ASPNETCORE_URLS` environment variable to `http://+:80` which means that if you have not explicity set a URL in your application, via `app.UseUrl` in your Program.cs for example, then your application will be listening on port 80 inside the container.
