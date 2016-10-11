@@ -50,28 +50,3 @@ This image contains:
     ```
 
 Now you have built your ASP.NET Core application inside a container and have the published output on the host ready to deploy. From here you could then construct an optimized runtime image with the `microsoft/aspnetcore` image or just deploy/run the binaries as normal without using Docker at runtime.
-
-###TODO: I think everything below this line we could cut, and maybe have them as an example in a samples repo. In fact I think a set of samples that show using this technique end-to-end should be published.
-
-### Interactive
-  
-You can interactively build your application inside this container with a command like the following:
-
-```
-$ docker run -v $(pwd):/app -it microsoft/aspnetcore-build
-root@8f1bba9f4c95:/# cd /app
-root@8f1bba9f4c95:/app# dotnet restore
-root@8f1bba9f4c95:/app# dotnet publish
-root@8f1bba9f4c95:/app# exit
-```
-The above assumes you are in a directory with a `project.json` that you want to publish. After running these you will have a `bin` directory that contains the published output of your application.
-
-
-### Run my build script
-
-If you have a build script that will run restore and publish, perhaps with other custom tasks, then you could run a command like the following:
-
-```
-$ docker run -v $(pwd):/app -it microsoft/aspnetcore-build /app/build.sh
-```
-*note:* The `-w` switch of `docker run` can set the working directory, which might be useful if you are doing this type of work.
