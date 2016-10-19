@@ -75,6 +75,9 @@ RUN curl -o /tmp/packagescache.tar.gz \
     mkdir /packagescache && cd /packagescache && \
     tar xvf /tmp/packagescache.tar.gz && \
     rm /tmp/packagescache.tar.gz && \
+    # restore packages
+    dotnet restore /tmp/packagescache.project.json && \
+    rm /tmp/packagescache.project.json && \
     # set up bower and gulp
     npm install -g bower gulp
 
