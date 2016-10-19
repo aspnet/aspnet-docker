@@ -66,8 +66,6 @@
     "Microsoft.AspNetCore.Mvc.WebApiCompatShim": "1.1.0-preview1-final",
     "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.1.0-preview1-final",
     "Microsoft.AspNetCore.Mvc.TagHelpers": "1.1.0-preview1-final",
-    "Microsoft.AspNetCore.Mvc.Razor.Precompilation.Tools": "1.0.0-preview3-final",
-    "Microsoft.AspNetCore.Mvc.Razor.Precompilation.Design": "1.0.0-preview3-final",
     "Microsoft.AspNetCore.Mvc.Razor.Host": "1.1.0-preview1-final",
     "Microsoft.AspNetCore.Mvc.Razor": "1.1.0-preview1-final",
     "Microsoft.AspNetCore.Mvc.Localization": "1.1.0-preview1-final",
