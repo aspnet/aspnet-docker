@@ -20,7 +20,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # set up .NET Core SDK
-RUN curl -o /tmp/dotnetsdk.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.0-preview2.1-003153/dotnet-dev-debian-x64.1.0.0-preview2.1-003153.tar.gz && \
+RUN curl -o /tmp/dotnetsdk.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.0-preview2.1-003155/dotnet-dev-debian-x64.1.0.0-preview2.1-003155.tar.gz && \
     mkdir /usr/share/dotnet && cd /usr/share/dotnet && \
     tar xvf /tmp/dotnetsdk.tar.gz && \
     rm /tmp/dotnetsdk.tar.gz && \
