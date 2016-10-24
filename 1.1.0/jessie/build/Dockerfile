@@ -33,6 +33,9 @@ ENV ASPNETCORE_URLS http://+:80
 # set env var for packages cache
 ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
 
+# set env var for skipping .NET Core SDK first time experience
+ENV DOTNET_SKIP_FIRST_TIME_EXPERIENCE 1
+
 # set env var for minimizing package restore footprint
 ENV NUGET_XMLDOC_MODE Skip
 
@@ -76,7 +79,9 @@ RUN curl -o /tmp/packagescache.tar.gz \
     tar xvf /tmp/packagescache.tar.gz && \
     rm /tmp/packagescache.tar.gz && \
     # restore packages
-    dotnet restore /tmp/packagescache.project.json && \
+    dotnet restore /tmp/packagescache.project.json \
+        --source https://dotnet.myget.org/F/aspnet-1-1-0-preview1/api/v3/index.json \
+        --source https://api.nuget.org/v3/index.json && \
     rm /tmp/packagescache.project.json && \
     # set up bower and gulp
     npm install -g bower gulp
