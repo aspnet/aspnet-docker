@@ -1,10 +1,8 @@
-
 ASP.NET Core Docker Image
-====================
+=========================
 
-This repository contains `Dockerfile` definitions for ASP.NET Core Docker images. These images use the [Dotnet image](https://hub.docker.com/r/microsoft/dotnet/) as its base.
-
-
+This repository contains `Dockerfile` definitions for ASP.NET Core Docker images.
+These images use the [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) image as its base.
 
 [![Downloads from Docker Hub](https://img.shields.io/docker/pulls/microsoft/aspnetcore.svg)](https://hub.docker.com/r/microsoft/aspnetcore)
 [![Stars on Docker Hub](https://img.shields.io/docker/stars/microsoft/aspnetcore.svg)](https://hub.docker.com/r/microsoft/aspnetcore)
@@ -17,3 +15,4 @@ This image contains:
 ## Supported tags
 
 - [`1.0.1`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/product/Dockerfile)
+- [`1.1.0-preview1`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1.0-preview1/jessie/product/Dockerfile)

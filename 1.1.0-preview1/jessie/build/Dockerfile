@@ -1,43 +1,10 @@
-# base
-FROM debian:jessie
-
-# install .NET Core dependencies
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        libc6 \
-        libcurl3 \
-        libgcc1 \
-        libgssapi-krb5-2 \
-        libicu52 \
-        liblttng-ust0 \
-        libssl1.0.0 \
-        libstdc++6 \
-        libunwind8 \
-        libuuid1 \
-        zlib1g \
-        curl \
-        ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
-
-# set up .NET Core SDK
-RUN curl -o /tmp/dotnetsdk.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.0-preview2.1-003155/dotnet-dev-debian-x64.1.0.0-preview2.1-003155.tar.gz && \
-    mkdir /usr/share/dotnet && cd /usr/share/dotnet && \
-    tar xvf /tmp/dotnetsdk.tar.gz && \
-    rm /tmp/dotnetsdk.tar.gz && \
-    cd && \
-    ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+FROM microsoft/dotnet:1.0.0-preview2.1-sdk
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
 
 # set env var for packages cache
 ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
-
-# set env var for skipping .NET Core SDK first time experience
-ENV DOTNET_SKIP_FIRST_TIME_EXPERIENCE 1
-
-# set env var for minimizing package restore footprint
-ENV NUGET_XMLDOC_MODE Skip
 
 # copy the ASP.NET packages manifest
 COPY packagescache.project.json /tmp/packagescache.project.json
@@ -58,7 +25,7 @@ RUN set -ex \
 
 ENV NODE_VERSION 4.5.0
 
-# set up node 
+# set up node
 RUN buildDeps='xz-utils' \
     && set -x \
     && apt-get update && apt-get install -y $buildDeps --no-install-recommends \
@@ -80,7 +47,6 @@ RUN curl -o /tmp/packagescache.tar.gz \
     rm /tmp/packagescache.tar.gz && \
     # restore packages
     dotnet restore /tmp/packagescache.project.json \
-        --source https://dotnet.myget.org/F/aspnet-1-1-0-preview1/api/v3/index.json \
         --source https://api.nuget.org/v3/index.json && \
     rm /tmp/packagescache.project.json && \
     # set up bower and gulp
