@@ -1,17 +1,5 @@
 # base
-FROM microsoft/dotnet:1.0.0-preview2-sdk
-
-# set up network
-ENV ASPNETCORE_URLS http://+:80
-
-# set env var for packages cache
-ENV DOTNET_HOSTING_OPTIMIZATION_CACHE $cache_dir
-
-# set env var for minimizing package restore footprint
-ENV NUGET_XMLDOC_MODE Skip
-
-# copy the ASP.NET packages manifest
-COPY packagescache.project.json /tmp/packagescache.project.json
+FROM microsoft/dotnet-nightly:rel-1.0.0-sdk
 
 RUN set -ex \
   && for key in \
@@ -29,7 +17,7 @@ RUN set -ex \
 
 ENV NODE_VERSION 4.5.0
 
-# set up node 
+# set up node
 RUN buildDeps='xz-utils' \
     && set -x \
     && apt-get update && apt-get install -y $buildDeps --no-install-recommends \
@@ -43,14 +31,17 @@ RUN buildDeps='xz-utils' \
     && apt-get purge -y --auto-remove $buildDeps \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
+# copy the ASP.NET packages manifest
+COPY packagescache.project.json /tmp/warmup/packagescache.project.json
+
 # set up package cache and other tools
 RUN curl -o /tmp/packagescache.tar.gz http://dist.asp.net/packagecache/aspnetcore.packagecache-1.0.1-debian.8-x64.tar.gz && \
     mkdir /packagescache && cd /packagescache && \
     tar xvf /tmp/packagescache.tar.gz && \
     rm /tmp/packagescache.tar.gz && \
     # restore 1.0.1 ASP.NET packages
-    cd /tmp && dotnet restore packagescache.project.json && \
-    rm /tmp/packagescache.project.json && \
+    dotnet nuget restore /tmp/warmup/packagescache.project.json && \
+    rm -rf /tmp/warmup && \
     # set up bower and gulp
     npm install -g bower gulp
 
