@@ -1,5 +1,5 @@
 # base
-FROM microsoft/dotnet-nightly:rel-1.0.0-sdk
+FROM microsoft/dotnet-nightly@sha256:4249ffc4c2d483f6b097a5d328fa47b6a9ed523ff3dcd1d79fd0a559cc4ca538
 
 RUN set -ex \
   && for key in \
