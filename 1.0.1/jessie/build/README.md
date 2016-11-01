@@ -45,8 +45,8 @@ This image contains:
 3. Create a container from your image and copy your built application out.
 
     ```
-    $ docker create --build-cont build-image
-    $ docker cp build-image:/out ./output
+    $ docker create --name build-cont build-image
+    $ docker cp build-cont:/out ./output
     ```
 
 Now you have built your ASP.NET Core application inside a container and have the published output on the host ready to deploy. From here you could then construct an optimized runtime image with the `microsoft/aspnetcore` image or just deploy/run the binaries as normal without using Docker at runtime.
