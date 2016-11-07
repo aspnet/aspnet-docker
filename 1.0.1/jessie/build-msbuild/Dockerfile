@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:rel-1.0.0-sdk
+FROM microsoft/dotnet-nightly:1.0.1-sdk-msbuild
 
 RUN set -ex \
   && for key in \
