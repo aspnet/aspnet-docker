@@ -42,7 +42,7 @@ RUN buildDeps='xz-utils' \
 
 # set up package cache and other tools
 RUN curl -o /tmp/packagescache.tar.gz \
-    https://distaspnet.blob.core.windows.net/packagecache/1.1.0/aspnetcore.packagecache-1.1.0-debian.8-x64.tar.gz \
+    https://distaspnet.blob.core.windows.net/packagecache/1.1.0/aspnetcore.packagecache-1.1.0-legacy-debian.8-x64.tar.gz \
     && mkdir /packagescache && cd /packagescache \
     && tar xvf /tmp/packagescache.tar.gz \
     && rm /tmp/packagescache.tar.gz \
