@@ -1,15 +1,7 @@
 # TODO pull from microsoft/dotnet when these become available
-FROM microsoft/dotnet-nightly:1.1.0-sdk-projectjson
+FROM microsoft/dotnet-nightly:1.0.1-sdk-msbuild
 
-# set up network
-ENV ASPNETCORE_URLS http://+:80
-
-# set env var for packages cache
-ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
-
-# copy the ASP.NET packages manifest
-COPY packagescache.project.json /tmp/warmup/project.json
-
+# Install keys required for node
 RUN set -ex \
   && for key in \
     9554F04D7259F04124DE6B476D5A82AC7E37093B \
@@ -38,20 +30,27 @@ RUN buildDeps='xz-utils' \
     && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 \
     && rm "node-v$NODE_VERSION-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
     && apt-get purge -y --auto-remove $buildDeps \
-    && ln -s /usr/local/bin/node /usr/local/bin/nodejs
-
-# set up package cache and other tools
-RUN curl -o /tmp/packagescache.tar.gz \
-    https://dist.asp.net/packagecache/1.1.0/aspnetcore.packagecache-1.1.0-legacy-debian.8-x64.tar.gz \
-    && mkdir /packagescache && cd /packagescache \
-    && tar xvf /tmp/packagescache.tar.gz \
-    && rm /tmp/packagescache.tar.gz \
-    # restore packages
-    && dotnet restore /tmp/warmup/ \
-        --source https://dotnet.myget.org/F/aspnet-1-1-0-rtm/api/v3/index.json \
-        --source https://api.nuget.org/v3/index.json \
-    && rm -rf /tmp/warmup/ \
-    # set up bower and gulp
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
     && npm install -g bower gulp
+
+# set up network
+ENV ASPNETCORE_URLS http://+:80
+
+# set env var for packages cache
+ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
+
+# set env var for minimizing package restore footprint
+ENV NUGET_XMLDOC_MODE Skip
+
+# Build optimized package cache
+COPY ./build-cache.sh /packagescache/build-cache.sh
+RUN chmod +x /packagescache/build-cache.sh \
+    && /packagescache/build-cache.sh http://dist.asp.net/packagecache/aspnetcore.packagecache-1.0.1-debian.8-x64.tar.gz \
+    && rm /packagescache/build-cache.sh
+
+# restore 1.0.1 ASP.NET packages
+COPY packagescache.project.json /tmp/warmup/packagescache.project.json
+RUN dotnet nuget restore /tmp/warmup/packagescache.project.json \
+    && rm -r /tmp/warmup/
 
 WORKDIR /

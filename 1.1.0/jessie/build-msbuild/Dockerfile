@@ -1,5 +1,5 @@
 # TODO pull from microsoft/dotnet when these become available
-FROM microsoft/dotnet-nightly:1.1.0-sdk-projectjson
+FROM microsoft/dotnet-nightly:1.1.0-sdk-msbuild
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
@@ -42,12 +42,12 @@ RUN buildDeps='xz-utils' \
 
 # set up package cache and other tools
 RUN curl -o /tmp/packagescache.tar.gz \
-    https://dist.asp.net/packagecache/1.1.0/aspnetcore.packagecache-1.1.0-legacy-debian.8-x64.tar.gz \
+    https://dist.asp.net/packagecache/1.1.0/aspnetcore.packagecache-1.1.0-debian.8-x64.tar.gz \
     && mkdir /packagescache && cd /packagescache \
     && tar xvf /tmp/packagescache.tar.gz \
     && rm /tmp/packagescache.tar.gz \
     # restore packages
-    && dotnet restore /tmp/warmup/ \
+    && dotnet nuget restore /tmp/warmup/ \
         --source https://dotnet.myget.org/F/aspnet-1-1-0-rtm/api/v3/index.json \
         --source https://api.nuget.org/v3/index.json \
     && rm -rf /tmp/warmup/ \
