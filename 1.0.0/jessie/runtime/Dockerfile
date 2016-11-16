@@ -1,8 +1,8 @@
 # base
-FROM microsoft/dotnet:1.0.1-core
+FROM microsoft/dotnet:1.0.0-runtime
 
 # set up package cache
-RUN curl -o /tmp/packagescache.tar.gz http://dist.asp.net/packagecache/aspnetcore.packagecache-1.0.1-debian.8-x64.tar.gz && \
+RUN curl -o /tmp/packagescache.tar.gz https://dist.asp.net/packagecache/aspnetcore.packagecache-1.0.0-debian.8-x64.tar.gz && \
     mkdir /packagescache && cd /packagescache && \
     tar xvf /tmp/packagescache.tar.gz && \
     rm /tmp/packagescache.tar.gz && \
