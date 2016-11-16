@@ -6,6 +6,9 @@ ENV ASPNETCORE_URLS http://+:80
 # set env var for packages cache
 ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
 
+# set env var for minimizing package restore footprint
+ENV NUGET_XMLDOC_MODE Skip
+
 # copy the ASP.NET packages manifest
 COPY packagescache.project.json /tmp/warmup/project.json
 
