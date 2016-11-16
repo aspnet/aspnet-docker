@@ -1,5 +1,4 @@
-# TODO pull from microsoft/dotnet when these become available
-FROM microsoft/dotnet-nightly:1.1.0-sdk-projectjson
+FROM microsoft/dotnet:1.1.0-sdk-projectjson
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80

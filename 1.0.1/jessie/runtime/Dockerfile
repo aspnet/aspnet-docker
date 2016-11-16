@@ -1,5 +1,5 @@
 # base
-FROM microsoft/dotnet:1.0.1-core
+FROM microsoft/dotnet:1.0.1-runtime
 
 # set env var for packages cache
 ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache

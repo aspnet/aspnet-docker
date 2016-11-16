@@ -19,8 +19,8 @@ This image contains:
 
 ## Supported tags
 
-- [`1.0.1`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/product/Dockerfile)
-- [`1.1.0`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1.0/jessie/product/Dockerfile)
+- [`1.1.0`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1.0/jessie/runtime/Dockerfile)
+- [`1.0.1`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/runtime/Dockerfile)
 
 ## Example Usage
 

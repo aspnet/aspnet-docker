@@ -1,5 +1,4 @@
-# TODO pull from microsoft/dotnet when these become available
-FROM microsoft/dotnet-nightly:1.0.1-sdk-msbuild
+FROM microsoft/dotnet:1.0.1-sdk-msbuild
 
 # Install keys required for node
 RUN set -ex \

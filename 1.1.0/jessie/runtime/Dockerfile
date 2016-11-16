@@ -1,5 +1,4 @@
-# TODO pull from microsoft/dotnet when these become available
-FROM microsoft/dotnet-nightly:1.1.0-runtime
+FROM microsoft/dotnet:1.1.0-runtime
 
 # set env var for packages cache
 ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
