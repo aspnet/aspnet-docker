@@ -37,7 +37,9 @@ RUN buildDeps='xz-utils' \
     && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 \
     && rm "node-v$NODE_VERSION-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
     && apt-get purge -y --auto-remove $buildDeps \
-    && ln -s /usr/local/bin/node /usr/local/bin/nodejs
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
+    # set up bower and gulp
+    && npm install -g bower gulp
 
 # set up package cache and other tools
 RUN curl -o /tmp/packagescache.tar.gz \
@@ -46,11 +48,7 @@ RUN curl -o /tmp/packagescache.tar.gz \
     && tar xvf /tmp/packagescache.tar.gz \
     && rm /tmp/packagescache.tar.gz \
     # restore packages
-    && dotnet nuget restore /tmp/warmup/ \
-        --source https://dotnet.myget.org/F/aspnet-1-1-0-rtm/api/v3/index.json \
-        --source https://api.nuget.org/v3/index.json \
-    && rm -rf /tmp/warmup/ \
-    # set up bower and gulp
-    && npm install -g bower gulp
+    && dotnet nuget restore /tmp/warmup/ --source https://api.nuget.org/v3/index.json \
+    && rm -rf /tmp/warmup/
 
 WORKDIR /
