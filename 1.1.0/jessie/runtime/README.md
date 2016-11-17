@@ -8,6 +8,15 @@ This repository contains `Dockerfile` definitions for ASP.NET Core Docker images
 [![Downloads from Docker Hub](https://img.shields.io/docker/pulls/microsoft/aspnetcore.svg)](https://hub.docker.com/r/microsoft/aspnetcore)
 [![Stars on Docker Hub](https://img.shields.io/docker/stars/microsoft/aspnetcore.svg)](https://hub.docker.com/r/microsoft/aspnetcore)
 
+## Supported tags
+
+- [`1.1.0`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1.0/jessie/runtime/Dockerfile)
+- [`1.0.1`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/runtime/Dockerfile)
+
+## What is ASP.NET Core?
+
+ASP.NET Core is a new open-source and cross-platform framework for building modern cloud based internet connected applications, such as web apps, IoT apps and mobile backends. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET Core apps cross-platform on Windows, Mac and Linux. ASP.NET Core is open source at [GitHub](https://github.com/aspnet). 
+
 This image contains:
 
 - [.NET Core](https://www.microsoft.com/net/core) so that you can run your already compiled .NET Core applications.
@@ -17,12 +26,7 @@ This image contains:
   these libraries are not going to change for a given version we include native images so that the runtime can load them
   instead of running the JIT.
 
-## Supported tags
-
-- [`1.1.0`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1.0/jessie/runtime/Dockerfile)
-- [`1.0.1`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/runtime/Dockerfile)
-
-## Example Usage
+## How to use this image
 
 1. Create a Dockerfile for your application, the following example assumes you have already compiled your application (which is the expected use case for this image)
 
