@@ -1,9 +1,8 @@
 
-Build ASP.NET Core Docker Image
+ASP.NET Core Build Docker Image
 ===============================
 
-This repository contains `Dockerfile` definitions for ASP.NET Core Docker images that can be used to build ASP.NET Core
-projects. These Dockerfiles use the [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) image as its base.
+This repository contains images that are used to compile/publish ASP.NET Core applications inside the container. This is different to compiling an ASP.NET Core application and then adding the compiled output to an image, which is what you would do when using the [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/) image. These Dockerfiles use the [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) image as its base.
 
 [![Downloads from Docker Hub](https://img.shields.io/docker/pulls/microsoft/aspnetcore-build.svg)](https://hub.docker.com/r/microsoft/aspnetcore-build)
 [![Stars on Docker Hub](https://img.shields.io/docker/stars/microsoft/aspnetcore-build.svg)](https://hub.docker.com/r/microsoft/aspnetcore-build)
@@ -29,12 +28,12 @@ This image contains:
 
 ## Related images
 
-1. [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/)
-2. [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/)
+1. [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) - the .NET Core image if you don't need the ASP.NET Core specific optimizations.
+2. [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/) - the ASP.NET Core runtime image, for when you don't need to build inside a container.
 
 ## Example Usage
 
-### Build an app on `docker run`
+### Build an app with `docker run`
 
 You can use this container to compile your application when it runs. If you use the [Visual Studio tooling](https://blogs.msdn.microsoft.com/webdev/2016/11/16/new-docker-tools-for-visual-studio/) to setup CI/CD to Azure Container Service then this method of using the build container is used.
 
@@ -46,7 +45,7 @@ docker run --it -v $(PWD):/app --workdir /app microsoft/aspnetcore-build bash -c
 
 After this has run the application in the current directory will be published to the `bin/Release/PublishOutput` directory.
 
-### Build an app on `docker build`
+### Build an app with `docker build`
 
 With this technique your application is compiled when you run `docker build` and you then copy the binaries out of the built image.
 
