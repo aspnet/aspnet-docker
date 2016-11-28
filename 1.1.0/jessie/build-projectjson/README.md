@@ -72,9 +72,11 @@ With this technique your application is compiled when you run `docker build` and
 
     ```
     $ docker create --name build-cont build-image
-    $ docker cp build-cont:/out ./output
+    $ docker cp build-cont:/out ./bin/Release/PublishOutput
     ```
 
-Now you have built your ASP.NET Core application inside a container and have the published output on the host ready to deploy. From here you could then construct an optimized runtime image with the `microsoft/aspnetcore` image or just deploy/run the binaries as normal without using Docker at runtime.
+After this the application in the current directory will be published to the `bin/Release/PublishOutput` directory.
+
+From here you could construct an optimized runtime image with the `microsoft/aspnetcore` image or just deploy/run the binaries as normal without using Docker at runtime.
 
 This approach has the advantage of caching the results of `dotnet restore` so that packages are not downloaded unless your change the project.json.
