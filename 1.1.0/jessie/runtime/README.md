@@ -26,6 +26,11 @@ This image contains:
   these libraries are not going to change for a given version we include native images so that the runtime can load them
   instead of running the JIT.
 
+## Related images
+
+1. [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) - the .NET Core image if you don't need the ASP.NET Core specific optimizations.
+2. [microsoft/aspnetcore-build](https://hub.docker.com/r/microsoft/aspnetcore-build/) - The ASP.NET Core build image for publishing an ASP.NET Core app inside a container.
+
 ## How to use this image
 
 1. Create a Dockerfile for your application, the following example assumes you have already compiled your application (which is the expected use case for this image)

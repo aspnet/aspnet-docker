@@ -22,18 +22,23 @@ ASP.NET Core is a new open-source and cross-platform framework for building mode
 This image contains:
 
 - [.NET Core SDK](https://github.com/dotnet/cli) so that you can create, build and run your .NET Core applications.
-- A Nuget package cache for the ASP.NET Core libraries.  This will significantly improve the initial package restore performance when building ASP.NET Core application.
+- A NuGet package cache for the ASP.NET Core libraries.  This will significantly improve the initial package restore performance when building ASP.NET Core application.
 - [Node.js](https://nodejs.org)
 - [Bower](https://bower.io/)
 - [Gulp](http://gulpjs.com/)
 
+## Related images
+
+1. [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/)
+2. [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/)
+
 ## Example Usage
 
-### Build on run
+### Build an app on `docker run`
 
 You can use this container to compile your application when it runs. If you use the [Visual Studio tooling](https://blogs.msdn.microsoft.com/webdev/2016/11/16/new-docker-tools-for-visual-studio/) to setup CI/CD to Azure Container Service then this method of using the build container is used.
 
-1. Run the build container, mounting your code and output directory, and publish your app:
+Run the build container, mounting your code and output directory, and publish your app:
 
 ```
 docker run --it -v $(PWD):/app --workdir /app microsoft/aspnetcore-build bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
@@ -41,7 +46,7 @@ docker run --it -v $(PWD):/app --workdir /app microsoft/aspnetcore-build bash -c
 
 After this has run the application in the current directory will be published to the `bin/Release/PublishOutput` directory.
 
-### Build on build
+### Build an app on `docker build`
 
 With this technique your application is compiled when you run `docker build` and you then copy the binaries out of the built image.
 
