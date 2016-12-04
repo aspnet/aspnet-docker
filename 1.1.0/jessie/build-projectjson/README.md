@@ -40,7 +40,7 @@ You can use this container to compile your application when it runs. If you use 
 Run the build container, mounting your code and output directory, and publish your app:
 
 ```
-docker run --it -v $(PWD):/app --workdir /app microsoft/aspnetcore-build bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
+docker run -it -v $(PWD):/app --workdir /app microsoft/aspnetcore-build bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
 ```
 
 After this has run the application in the current directory will be published to the `bin/Release/PublishOutput` directory.
