@@ -11,11 +11,11 @@ This repository contains images for running published ASP.NET Core applications.
 ## Supported tags
 
 - [`1.1.0`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1.0/jessie/runtime/Dockerfile)
-- [`1.0.1`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/runtime/Dockerfile)
+- [`1.0.1`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/runtime/Dockerfile)
 
 ## What is ASP.NET Core?
 
-ASP.NET Core is a new open-source and cross-platform framework for building modern cloud based internet connected applications, such as web apps, IoT apps and mobile backends. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET Core apps cross-platform on Windows, Mac and Linux. ASP.NET Core is open source at [GitHub](https://github.com/aspnet). 
+ASP.NET Core is a new open-source and cross-platform framework for building modern cloud based internet connected applications, such as web apps, IoT apps and mobile backends. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET Core apps cross-platform on Windows, Mac and Linux. ASP.NET Core is open source at [GitHub](https://github.com/aspnet).
 
 This image contains:
 
