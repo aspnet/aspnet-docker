@@ -1,8 +1,0 @@
-#!/bin/bash
-
-set -e
-
-echo "Pushing lts tags"
-lts_tag="$DOCKER_REPO:lts"
-docker tag $IMAGE_NAME $lts_tag
-docker push $lts_tag

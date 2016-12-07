@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Pushing latest tags"
-latest_tag="$DOCKER_REPO:latest"
-docker tag $IMAGE_NAME $latest_tag
-docker push $latest_tag
+tagName="$DOCKER_REPO:latest"
+echo "Pushing tag: '$tagName'"
+docker tag $IMAGE_NAME $tagName
+docker push $tagName

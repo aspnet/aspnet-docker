@@ -11,8 +11,8 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 
 - [`1.1.0-projectjson`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1.0/jessie/build-projectjson/Dockerfile)
 - [`1.1.0-msbuild` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1.0/jessie/build-msbuild/Dockerfile)
-- [`1.0.1-msbuild`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/build-msbuild/Dockerfile)
-- [`1.0.1`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/build-projectjson/Dockerfile)
+- [`1.0.3-projectjson`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.3/jessie/build-projectjson/Dockerfile)
+- [`1.0.3-msbuild`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.3/jessie/build-msbuild/Dockerfile)
 
 ## What is ASP.NET Core?
 
