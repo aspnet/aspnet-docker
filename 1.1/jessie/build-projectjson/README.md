@@ -9,10 +9,10 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 
 ## Supported tags
 
-- [`1.1.0-projectjson`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1.0/jessie/build-projectjson/Dockerfile)
-- [`1.1.0-msbuild` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1.0/jessie/build-msbuild/Dockerfile)
-- [`1.0.3-projectjson`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.3/jessie/build-projectjson/Dockerfile)
-- [`1.0.3-msbuild`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.3/jessie/build-msbuild/Dockerfile)
+- [`1.1.0-projectjson`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/build-projectjson/Dockerfile)
+- [`1.1.0-msbuild` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/build-msbuild/Dockerfile)
+- [`1.0.3-projectjson`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/build-projectjson/Dockerfile)
+- [`1.0.3-msbuild`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/build-msbuild/Dockerfile)
 
 ## What is ASP.NET Core?
 
@@ -59,13 +59,13 @@ With this technique your application is compiled when you run `docker build` and
     RUN dotnet restore
 
     COPY . .
-    RUN dotnet publish --output /out/. --configuration Release
+    RUN dotnet publish --output /out/ --configuration Release
     ```
 
 2. Build your image:
 
     ```
-    $ docker build -t build-image -f Dockerfile.build .
+    $ docker build -t build-image -f Dockerfile.build
     ```
 
 3. Create a container from your image and copy your built application out.

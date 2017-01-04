@@ -10,8 +10,8 @@ This repository contains images for running published ASP.NET Core applications.
 
 ## Supported tags
 
-- [`1.1.0`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1.0/jessie/runtime/Dockerfile)
-- [`1.0.3`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0.3/jessie/runtime/Dockerfile)
+- [`1.1.0`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
+- [`1.0.3`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/runtime/Dockerfile)
 
 ## What is ASP.NET Core?
 
