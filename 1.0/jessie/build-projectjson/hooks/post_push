@@ -6,3 +6,8 @@ tagName="$DOCKER_REPO:lts"
 echo "Pushing tag: '$tagName'"
 docker tag $IMAGE_NAME $tagName
 docker push $tagName
+
+tagName="$DOCKER_REPO:1.0.3-projectjson"
+echo "Pushing tag: '$tagName'"
+docker tag $IMAGE_NAME $tagName
+docker push $tagName

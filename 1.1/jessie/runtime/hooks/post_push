@@ -6,3 +6,8 @@ tagName="$DOCKER_REPO:latest"
 echo "Pushing tag: '$tagName'"
 docker tag $IMAGE_NAME $tagName
 docker push $tagName
+
+tagName="$DOCKER_REPO:1.1.0"
+echo "Pushing tag: '$tagName'"
+docker tag $IMAGE_NAME $tagName
+docker push $tagName
