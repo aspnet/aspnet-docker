@@ -23,7 +23,7 @@ RUN set -ex \
     gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
   done
 
-ENV NODE_VERSION 4.5.0
+ENV NODE_VERSION 6.9.4
 
 # set up node
 RUN buildDeps='xz-utils' \
