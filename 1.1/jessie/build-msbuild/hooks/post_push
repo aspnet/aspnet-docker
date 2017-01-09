@@ -2,7 +2,7 @@
 
 set -e
 
-tagName="$DOCKER_REPO:latest"
+tagName="$DOCKER_REPO:1.1.0-msbuild"
 echo "Pushing tag: '$tagName'"
 docker tag $IMAGE_NAME $tagName
 docker push $tagName
