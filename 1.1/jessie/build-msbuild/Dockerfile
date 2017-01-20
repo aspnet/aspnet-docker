@@ -1,13 +1,11 @@
-FROM microsoft/dotnet-nightly:1.1.0-sdk-msbuild-rc3
-
+FROM microsoft/dotnet:1.1.0-sdk-msbuild-rc3
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
+
 # set env var for packages cache
 ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
-
-# copy the ASP.NET packages manifest
-COPY packagecache.csproj /tmp/warmup/packagecache.csproj
+ENV ASPNETCORE_CACHE_VERSION 1.1.0
 
 RUN set -ex \
   && for key in \
@@ -41,20 +39,17 @@ RUN buildDeps='xz-utils' \
     # set up bower and gulp
     && npm install -g bower gulp
 
+# copy the ASP.NET packages manifest
+COPY packagecache.csproj /tmp/warmup/packagecache.csproj
+
 # set up package cache and other tools
 RUN curl -o /tmp/packagescache.tar.gz \
-    https://dist.asp.net/packagecache/1.1.0/aspnetcore.packagecache-1.1.0-debian.8-x64.tar.gz \
+    https://dist.asp.net/packagecache/${ASPNETCORE_CACHE_VERSION}/aspnetcore.packagecache-${ASPNETCORE_CACHE_VERSION}-debian.8-x64.tar.gz \
     && mkdir /packagescache && cd /packagescache \
     && tar xvf /tmp/packagescache.tar.gz \
     && rm /tmp/packagescache.tar.gz \
     # restore packages
-    && dotnet restore /tmp/warmup/ --source https://api.nuget.org/v3/index.json \
+    && dotnet restore /tmp/warmup/packagecache.csproj --source https://api.nuget.org/v3/index.json \
     && rm -rf /tmp/warmup/
-
-# Add Docker SDK for when building a solution that has the Docker tools project.
-RUN curl -o /tmp/Microsoft.Docker.Sdk.tar.gz https://dist.asp.net/sdk/Microsoft.Docker.Sdk.tar.gz \
-    && mkdir -p /usr/share/dotnet/sdk/${DOTNET_SDK_VERSION}/Sdks/Microsoft.Docker.Sdk/Sdk && cd /usr/share/dotnet/sdk/${DOTNET_SDK_VERSION}/Sdks/Microsoft.Docker.Sdk/Sdk \
-    && tar xvf /tmp/Microsoft.Docker.Sdk.tar.gz --strip 1 \
-    && rm /tmp/Microsoft.Docker.Sdk.tar.gz
 
 WORKDIR /
