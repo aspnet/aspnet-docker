@@ -27,6 +27,8 @@ This image contains:
 - [Bower](https://bower.io/)
 - [Gulp](http://gulpjs.com/)
 
+The CI Image (`1.0-1.1`) contains both the 1.0 and 1.1 pre-restored packages. It is intended for when you have a solution containing both 1.1.x and 1.0.x projects and want to build them all in the same container, gaining advantage of the pre-restored packages. Because it has an extra set of packages it is bigger than the other, more focused, images.
+
 ## Related images
 
 1. [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) - the .NET Core image if you don't need the ASP.NET Core specific optimizations.
