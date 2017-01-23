@@ -34,9 +34,8 @@ RUN buildDeps='xz-utils' \
 
 # Add Docker SDK for when building a solution that has the Docker tools project.
 RUN curl -o /tmp/Microsoft.Docker.Sdk.tar.gz https://dist.asp.net/sdk/Microsoft.Docker.Sdk.tar.gz \
-    && mkdir -p /usr/share/dotnet/sdk/${DOTNET_SDK_VERSION}/Sdks/Microsoft.Docker.Sdk/Sdk \
-    && cd /usr/share/dotnet/sdk/${DOTNET_SDK_VERSION}/Sdks/Microsoft.Docker.Sdk/Sdk \
-    && tar xvf /tmp/Microsoft.Docker.Sdk.tar.gz --strip 1 \
+    && cd /usr/share/dotnet/sdk/${DOTNET_SDK_VERSION}/Sdks \
+    && tar xvf /tmp/Microsoft.Docker.Sdk.tar.gz \
     && rm /tmp/Microsoft.Docker.Sdk.tar.gz
 
 # copy the ASP.NET packages manifest
