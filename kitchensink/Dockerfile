@@ -33,7 +33,7 @@ RUN buildDeps='xz-utils' \
     && npm install -g bower gulp
 
 # Add Docker SDK for when building a solution that has the Docker tools project.
-RUN curl -H 'Cache-Control: no-cache' -o /tmp/Microsoft.Docker.Sdk.tar.gz https://dist.asp.net/sdk/Microsoft.Docker.Sdk.tar.gz \
+RUN curl -H 'Cache-Control: no-cache' -o /tmp/Microsoft.Docker.Sdk.tar.gz https://distaspnet.blob.core.windows.net/sdk/Microsoft.Docker.Sdk.tar.gz \
     && cd /usr/share/dotnet/sdk/${DOTNET_SDK_VERSION}/Sdks \
     && tar xvf /tmp/Microsoft.Docker.Sdk.tar.gz \
     && rm /tmp/Microsoft.Docker.Sdk.tar.gz
