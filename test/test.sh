@@ -5,9 +5,6 @@ set -o pipefail  # Carry failures over pipes
 docker_repo="microsoft/aspnetcore"
 repo_root="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 
-if [ -z "${DEBUGTEST}" ]; then
-    optional_docker_run_args="--rm"
-fi
 
 function WaitForSuccess {
     for i in $(seq 60); do
@@ -34,7 +31,7 @@ for sdk_tag in $( find . -path './.*' -prune -o -path '*/jessie/build-msbuild/Do
     runtime_tag="$( echo "${full_sdk_tag}" | sed -e 's/build-msbuild/runtime/' -e 's/build-projectjson/runtime/' )"
 
     echo "---- Testing ${full_sdk_tag} and ${runtime_tag} ----"
-    docker run -t ${optional_docker_run_args} -v "${app_dir}:/${app_name}" -v "${repo_root}/test:/test" --name "build-test-${app_name}" --entrypoint /test/create-run-publish-app.sh "${full_sdk_tag}" "${app_name}" "${sdk_tag}"
+    docker run -t -v "${app_dir}:/${app_name}" -v "${repo_root}/test:/test" --name "build-test-${app_name}" --entrypoint /test/create-run-publish-app.sh "${full_sdk_tag}" "${app_name}" "${sdk_tag}"
 
     echo "----- Testing ${runtime_tag} with ${sdk_tag} app -----"
     docker run -d -t -v "${app_dir}:/${app_name}" --workdir /${app_name} --name "runtime-test-${app_name}" -p 5000:80 --entrypoint dotnet "${runtime_tag}" "/${app_name}/publish/framework-dependent/${app_name}.dll"
