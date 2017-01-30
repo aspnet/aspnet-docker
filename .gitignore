@@ -1,2 +1,3 @@
 project.lock.json
 *.project.lock.json
+.test-assets
