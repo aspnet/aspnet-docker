@@ -13,7 +13,7 @@ else
     dotnet new -t web
 fi
 
-dotnet restore
+dotnet restore /p:RuntimeIdentifiers=debian.8-x64
 dotnet publish -o publish/framework-dependent
 
 echo "Testing self-contained deployment"
@@ -25,8 +25,5 @@ if [[ $2 == *"projectjson"* ]]; then
     dotnet restore
     dotnet publish -o publish/self-contained
 else
-    sed -i '/<PropertyGroup>/a \    <RuntimeIdentifiers>debian.8-x64<\/RuntimeIdentifiers>' ./${PWD##*/}.csproj
-
-    dotnet restore
     dotnet publish -r debian.8-x64 -o publish/self-contained
 fi

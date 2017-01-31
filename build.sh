@@ -3,7 +3,7 @@ set -e 	# Exit immediately upon failure
 set -o pipefail  # Carry failures over pipes
 
 repo_root="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-docker_repo="microsoft/aspnetcore"
+docker_repo="test/aspnetcore"
 
 function build_dockerfiles {
     for dockerfile_dir in ${1}; do
