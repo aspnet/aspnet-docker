@@ -50,6 +50,10 @@ RUN curl -o /tmp/packagescache.tar.gz \
     && mkdir /packagescache && cd /packagescache \
     && tar xvf /tmp/packagescache.tar.gz \
     && rm /tmp/packagescache.tar.gz \
+    && curl -o /tmp/packagescache.tar.gz \
+    https://dist.asp.net/packagecache/1.1.1/aspnetcore.packagecache-1.1.1-legacy-debian.8-x64.tar.gz \
+    && tar xvf /tmp/packagescache.tar.gz \
+    && rm /tmp/packagescache.tar.gz \
     # restore packages
     && dotnet restore /tmp/warmup/ --source https://api.nuget.org/v3/index.json \
     && rm -rf /tmp/warmup/

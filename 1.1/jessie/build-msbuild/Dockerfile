@@ -6,6 +6,7 @@ ENV ASPNETCORE_URLS http://+:80
 # set env var for packages cache
 ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
 ENV ASPNETCORE_CACHE_VERSION 1.1.0
+ENV ASPNETCORE_PATCH_CACHE_VERSION 1.1.1
 
 RUN set -ex \
   && for key in \
@@ -46,6 +47,10 @@ COPY packagecache.csproj /tmp/warmup/packagecache.csproj
 RUN curl -o /tmp/packagescache.tar.gz \
     https://dist.asp.net/packagecache/${ASPNETCORE_CACHE_VERSION}/aspnetcore.packagecache-${ASPNETCORE_CACHE_VERSION}-debian.8-x64.tar.gz \
     && mkdir /packagescache && cd /packagescache \
+    && tar xvf /tmp/packagescache.tar.gz \
+    && rm /tmp/packagescache.tar.gz \
+    && curl -o /tmp/packagescache.tar.gz \
+    https://dist.asp.net/packagecache/${ASPNETCORE_PATCH_CACHE_VERSION}/aspnetcore.packagecache-${ASPNETCORE_PATCH_CACHE_VERSION}-debian.8-x64.tar.gz \
     && tar xvf /tmp/packagescache.tar.gz \
     && rm /tmp/packagescache.tar.gz \
     # restore packages
