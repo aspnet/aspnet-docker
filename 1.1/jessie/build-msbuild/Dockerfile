@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:1.1.0-sdk-msbuild-rc3
+FROM microsoft/dotnet:1.1.0-sdk-msbuild-rc4
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80

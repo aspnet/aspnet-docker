@@ -4,16 +4,18 @@ ASP.NET Core Build Docker Image
 
 This repository contains images that are used to compile/publish ASP.NET Core applications inside the container. This is different to compiling an ASP.NET Core application and then adding the compiled output to an image, which is what you would do when using the [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/) image. These Dockerfiles use the [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) image as its base.
 
-[![Downloads from Docker Hub](https://img.shields.io/docker/pulls/microsoft/aspnetcore-build.svg)](https://hub.docker.com/r/microsoft/aspnetcore-build)
-[![Stars on Docker Hub](https://img.shields.io/docker/stars/microsoft/aspnetcore-build.svg)](https://hub.docker.com/r/microsoft/aspnetcore-build)
+[![Downloads from Docker Hub](https://img.shields.io/docker/pulls/microsoft/aspnetcore-build.svg?style=flat-square)](https://hub.docker.com/r/microsoft/aspnetcore-build)
+[![Stars on Docker Hub](https://img.shields.io/docker/stars/microsoft/aspnetcore-build.svg?style=flat-square)](https://hub.docker.com/r/microsoft/aspnetcore-build)
 
 ## Supported tags
 
-- [`1.1.0-projectjson`, `1.1-projectjson`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/build-projectjson/Dockerfile)
-- [`1.1.0-msbuild-rc3`, `1.1-msbuild` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/build-msbuild/Dockerfile)
-- [`1.0.3-projectjson`, `1.0-projectjson`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/build-projectjson/Dockerfile)
-- [`1.0.3-msbuild-rc3`, `1.0-msbuild`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/build-msbuild/Dockerfile)
-- [`1.0-1.1-2017-01`, `1.0-1.1` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/kitchensink/Dockerfile)
+- [`1.1.0-msbuild-rc4`, `1.1-msbuild`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/build-msbuild/Dockerfile)
+- [`1.0.3-msbuild-rc4`, `1.0-msbuild`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/build-msbuild/Dockerfile)
+- [\*\* `1.1.0-projectjson`, `1.1-projectjson`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/build-projectjson/Dockerfile)
+- [\*\* `1.0.3-projectjson`, `1.0-projectjson`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/build-projectjson/Dockerfile)
+- [`1.0-1.1-2017-02`, `1.0-1.1` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/kitchensink/Dockerfile)
+
+\*\* These images will be deprecated in the near future. We recommend all new applications use the MSBuild SDK.
 
 ## What is ASP.NET Core?
 

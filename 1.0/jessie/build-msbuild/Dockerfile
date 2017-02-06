@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:1.0.3-sdk-msbuild-rc3
+FROM microsoft/dotnet:1.0.3-sdk-msbuild-rc4
 
 # Install keys required for node
 RUN set -ex \

@@ -2,7 +2,7 @@
 
 set -e
 
-tagName="$DOCKER_REPO:1.0-1.1-2017-01"
+tagName="$DOCKER_REPO:1.0-1.1-2017-02"
 echo "Pushing tag: '$tagName'"
 docker tag $IMAGE_NAME $tagName
 docker push $tagName

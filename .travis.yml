@@ -1,5 +1,11 @@
 sudo: required
+branches:
+  only:
+    - master
+    - release
+    - dev
+    - /^(.*\/)?ci-.*$/
 services:
-    - docker
+  - docker
 before_install: ./build.sh
 script: ./test/test.sh
