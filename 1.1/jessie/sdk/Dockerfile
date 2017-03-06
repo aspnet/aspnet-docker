@@ -1,17 +1,6 @@
-FROM microsoft/dotnet:1.1.0-sdk-projectjson
+FROM microsoft/dotnet:1.1.1-sdk
 
-# set up network
-ENV ASPNETCORE_URLS http://+:80
-
-# set env var for packages cache
-ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
-
-# set env var for minimizing package restore footprint
-ENV NUGET_XMLDOC_MODE Skip
-
-# copy the ASP.NET packages manifest
-COPY packagescache.project.json /tmp/warmup/project.json
-
+# Install keys required for node
 RUN set -ex \
   && for key in \
     9554F04D7259F04124DE6B476D5A82AC7E37093B \
@@ -44,14 +33,13 @@ RUN buildDeps='xz-utils' \
     # set up bower and gulp
     && npm install -g bower gulp
 
-# set up package cache and other tools
-RUN curl -o /tmp/packagescache.tar.gz \
-    https://dist.asp.net/packagecache/1.1.0/aspnetcore.packagecache-1.1.0-legacy-debian.8-x64.tar.gz \
-    && mkdir /packagescache && cd /packagescache \
-    && tar xvf /tmp/packagescache.tar.gz \
-    && rm /tmp/packagescache.tar.gz \
-    # restore packages
-    && dotnet restore /tmp/warmup/ --source https://api.nuget.org/v3/index.json \
+# set up network
+ENV ASPNETCORE_URLS http://+:80
+
+# warmup NuGet package cache
+COPY packagecache.csproj /tmp/warmup/packagecache.csproj
+RUN dotnet restore /tmp/warmup/packagecache.csproj \
+      --source https://api.nuget.org/v3/index.json \
     && rm -rf /tmp/warmup/
 
 WORKDIR /

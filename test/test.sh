@@ -32,7 +32,7 @@ function WaitForSuccess {
 pushd "${repo_root}" > /dev/null
 
 # Loop through each sdk Dockerfile in the repo and test the sdk and runtime images.
-for sdk_tag in $( find . -path './.*' -prune -o -path '*/jessie/build-msbuild/Dockerfile' -print0 | xargs -0 -n1 dirname | sed -e 's/aspnet-docker\///' -e 's/.\///' -e 's/jessie\///' -e 's/\//-/g' ); do
+for sdk_tag in $( find . -path './.*' -prune -o -path '*/jessie/sdk/Dockerfile' -print0 | xargs -0 -n1 dirname | sed -e 's/aspnet-docker\///' -e 's/.\///' -e 's/jessie\///' -e 's/\//-/g' ); do
 
     echo "---- Generating application directory ${app_dir} ---- "
     app_name="app$(date +%s)"
@@ -41,8 +41,7 @@ for sdk_tag in $( find . -path './.*' -prune -o -path '*/jessie/build-msbuild/Do
 
     full_sdk_tag="${docker_repo}:${sdk_tag}"
 
-    # microsoft/aspnetcore:1.0-build-msbuild => microsoft/aspnetcore:1.0-runtime
-    runtime_tag="$( echo "${full_sdk_tag}" | sed -e 's/build-msbuild/runtime/' -e 's/build-projectjson/runtime/' )"
+    runtime_tag="$( echo "${full_sdk_tag}" | sed -e 's/sdk/runtime/' )"
 
     echo "---- Testing ${full_sdk_tag} and ${runtime_tag} ----"
     __exec docker run -t -v "${app_dir}:/${app_name}" -v "${repo_root}/test:/test" --name "build-test-${app_name}" --entrypoint /test/create-run-publish-app.sh "${full_sdk_tag}" "${app_name}" "${sdk_tag}"

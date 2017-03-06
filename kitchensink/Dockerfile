@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:1.1.0-sdk-msbuild-rc4
+FROM microsoft/dotnet:1.1.1-sdk
 
 RUN set -ex \
   && for key in \
@@ -42,7 +42,8 @@ RUN curl -H 'Cache-Control: no-cache' -o /tmp/Microsoft.Docker.Sdk.tar.gz https:
 COPY packagecache.csproj /tmp/warmup/packagecache.csproj
 
 # warm up package cache
-RUN dotnet restore /tmp/warmup/packagecache.csproj --source https://api.nuget.org/v3/index.json \
+RUN dotnet restore /tmp/warmup/packagecache.csproj \
+      --source https://api.nuget.org/v3/index.json \
     && rm -rf /tmp/warmup/
 
 WORKDIR /

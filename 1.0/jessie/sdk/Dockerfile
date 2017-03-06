@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:1.0.3-sdk-msbuild-rc4
+FROM microsoft/dotnet:1.0.4-sdk
 
 # Install keys required for node
 RUN set -ex \
@@ -35,20 +35,8 @@ RUN buildDeps='xz-utils' \
 # set up network
 ENV ASPNETCORE_URLS http://+:80
 
-# set env var for packages cache
-ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
-ENV ASPNETCORE_CACHE_VERSION 1.0.3
-
-# Build optimized package cache
-RUN curl -o /tmp/packagescache.tar.gz \
-    https://dist.asp.net/packagecache/${ASPNETCORE_CACHE_VERSION}/debian.8-x64/aspnetcore.cache.tar.gz \
-    && mkdir /packagescache && cd /packagescache \
-    && tar xvf /tmp/packagescache.tar.gz \
-    && rm /tmp/packagescache.tar.gz
-
-# restore 1.0.3 ASP.NET packages
+# warmup up NuGet package cache
 COPY packagescache.csproj /tmp/warmup/packagescache.csproj
-
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
       --source https://api.nuget.org/v3/index.json \
     && rm -r /tmp/warmup/

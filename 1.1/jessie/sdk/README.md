@@ -9,13 +9,9 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 
 ## Supported tags
 
-- [`1.1.0-msbuild-rc4`, `1.1-msbuild`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/build-msbuild/Dockerfile)
-- [`1.0.3-msbuild-rc4`, `1.0-msbuild`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/build-msbuild/Dockerfile)
-- [\*\* `1.1.0-projectjson`, `1.1-projectjson`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/build-projectjson/Dockerfile)
-- [\*\* `1.0.3-projectjson`, `1.0-projectjson`, (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/build-projectjson/Dockerfile)
-- [`1.0-1.1-2017-02`, `1.0-1.1` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/kitchensink/Dockerfile)
-
-\*\* These images will be deprecated in the near future. We recommend all new applications use the MSBuild SDK.
+- [`1.1.1`, `1.1`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
+- [`1.0.4`, `1.0`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/sdk/Dockerfile)
+- [`1.0-1.1-2017-03`, `1.0-1.1` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/kitchensink/Dockerfile)
 
 ## What is ASP.NET Core?
 
@@ -60,7 +56,7 @@ With this technique your application is compiled when you run `docker build` and
     FROM microsoft/aspnetcore-build
     WORKDIR /app
 
-    COPY project.json .
+    COPY *.csproj .
     RUN dotnet restore
 
     COPY . .
@@ -84,4 +80,4 @@ After this the application in the current directory will be published to the `bi
 
 From here you could construct an optimized runtime image with the `microsoft/aspnetcore` image or just deploy/run the binaries as normal without using Docker at runtime.
 
-This approach has the advantage of caching the results of `dotnet restore` so that packages are not downloaded unless your change the project.json.
+This approach has the advantage of caching the results of `dotnet restore` so that packages are not downloaded unless you change your project file.
