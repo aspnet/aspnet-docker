@@ -14,4 +14,4 @@ function build_dockerfiles {
     done
 }
 
-build_dockerfiles "$( find . -path './.*' -prune -o -name 'Dockerfile' -a -path '**/*' -print0 | xargs -0 -n1 dirname )"
+build_dockerfiles "$( find . -path './.*' -prune -o -name 'Dockerfile' -a -path '**/jessie/*' -print0 | xargs -0 -n1 dirname )"
