@@ -30,7 +30,8 @@ RUN buildDeps='xz-utils' \
     && apt-get purge -y --auto-remove $buildDeps \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
     # set up bower and gulp
-    && npm install -g bower gulp
+    && npm install -g bower gulp \
+    && echo '{ "allow_root": true }' > /root/.bowerrc
 
 # Add Docker SDK for when building a solution that has the Docker tools project.
 RUN curl -H 'Cache-Control: no-cache' -o /tmp/Microsoft.Docker.Sdk.tar.gz https://distaspnet.blob.core.windows.net/sdk/Microsoft.Docker.Sdk.tar.gz \

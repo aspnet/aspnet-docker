@@ -31,7 +31,8 @@ RUN buildDeps='xz-utils' \
     && apt-get purge -y --auto-remove $buildDeps \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
     # set up bower and gulp
-    && npm install -g bower gulp
+    && npm install -g bower gulp \
+    && echo '{ "allow_root": true }' > /root/.bowerrc
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
