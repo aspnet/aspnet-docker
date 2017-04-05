@@ -1,3 +1,8 @@
+param(
+    # Set to 'microsoft' on build servers
+    [string]$RootImageName='test'
+)
+
 $ErrorActionPreference = 'Stop'
 
 # Functions
@@ -41,31 +46,19 @@ function WaitForSuccess($endpoint) {
 
 # Main
 $repo_root = normalize-slashes "$PSScriptRoot/.."
-$dockerfiles = gci $PSScriptRoot/../*/nanoserver/*/Dockerfile
-$images = $dockerfiles | % {
-    $type = $_.Directory.Name
-    $version = $_.Directory.Parent.Parent.Name
-    $tag = "test/aspnetcore$(if ($type -eq 'sdk') { '-build' } ):${version}-nanoserver"
-    @{
-        type = $type;
-        tag = $tag;
-        version = $version;
-        file = $_
-    }
-}
 
-$images | % { exec docker build $(split-path -parent $_.file) -t $_.tag }
+gci $PSScriptRoot/../*/nanoserver/sdk/Dockerfile | % {
 
-$images | ? { $_.type -eq 'sdk' } | % {
-    echo "---- Generating application directory ${app_dir} ---- "
     $app_name = "app$(get-random)"
     $app_dir = "${repo_root}/.test-assets/${app_name}"
     mkdir $app_dir -ErrorAction Ignore | Out-Null
 
-    $version = $_.version
+    echo "---- Generating application directory ${app_dir} ---- "
+
+    $version = $_.Directory.Parent.Parent.Name
     $framework = "netcoreapp${version}"
-    $sdk_tag = $_.tag
-    $runtime_tag = $sdk_tag -replace '-build', ''
+    $sdk_tag = "$RootImageName/aspnetcore-build:${version}-nanoserver"
+    $runtime_tag = "$RootImageName/aspnetcore:${version}-nanoserver"
 
     echo "---- Testing ${sdk_tag} and ${runtime_tag} ----"
     exec docker run -t `

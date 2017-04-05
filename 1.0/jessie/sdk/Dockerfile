@@ -1,5 +1,9 @@
 FROM microsoft/dotnet:1.0.4-sdk
 
+# set up environment
+ENV ASPNETCORE_URLS http://+:80
+ENV NODE_VERSION 6.10.2
+
 # Install keys required for node
 RUN set -ex \
   && for key in \
@@ -14,8 +18,6 @@ RUN set -ex \
   ; do \
     gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
   done
-
-ENV NODE_VERSION 6.10.2
 
 # set up node
 RUN buildDeps='xz-utils' \
@@ -32,9 +34,6 @@ RUN buildDeps='xz-utils' \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
     && npm install -g bower gulp \
     && echo '{ "allow_root": true }' > /root/.bowerrc
-
-# set up network
-ENV ASPNETCORE_URLS http://+:80
 
 # warmup up NuGet package cache
 COPY packagescache.csproj /tmp/warmup/packagescache.csproj

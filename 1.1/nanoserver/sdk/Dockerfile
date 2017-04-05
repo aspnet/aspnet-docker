@@ -1,20 +1,22 @@
 # escape=`
 FROM microsoft/dotnet:1.1.1-sdk-nanoserver-10.0.14393.953
 
-# Install node
+# set up environment
+ENV ASPNETCORE_URLS http://+:80
 ENV NODE_VERSION 6.10.2
 
+# Install node, bower, and git
 RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSION}/node-v${env:NODE_VERSION}-win-x64.zip -outfile node.zip; `
     Expand-Archive node.zip -DestinationPath ${env:TEMP}/nodejs-tmp; `
     Move-Item ${env:TEMP}/nodejs-tmp/node-v${env:NODE_VERSION}-win-x64 ${env:ProgramFiles}/nodejs; `
     Remove-Item -Force node.zip; `
     $env:PATH += \";${env:ProgramFiles}/nodejs\"; `
-    & npm install -g gulp bower
+    & npm install -g gulp bower; `
+    Invoke-WebRequest -UseBasicParsing https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.2/MinGit-2.12.2.2-64-bit.zip -outfile git.zip; `
+    Expand-Archive git.zip -DestinationPath $Env:ProgramFiles/git; `
+    Remove-Item -Force git.zip
 
-RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '\nodejs')
-
-# set up network
-ENV ASPNETCORE_URLS http://+:80
+RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '/nodejs' + ';' + $Env:ProgramFiles + '/git/cmd')
 
 # warmup up NuGet package cache
 COPY packagescache.csproj C:/warmup/packagescache.csproj

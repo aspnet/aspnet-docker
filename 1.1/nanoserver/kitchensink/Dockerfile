@@ -1,11 +1,11 @@
 # escape=`
-FROM microsoft/dotnet:1.0.4-sdk-nanoserver-10.0.14393.953
+FROM microsoft/dotnet:1.1.1-sdk-nanoserver-10.0.14393.953
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 ENV NODE_VERSION 6.10.2
 
-# Install node
+# Install node, bower, and git
 RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSION}/node-v${env:NODE_VERSION}-win-x64.zip -outfile node.zip; `
     Expand-Archive node.zip -DestinationPath ${env:TEMP}/nodejs-tmp; `
     Move-Item ${env:TEMP}/nodejs-tmp/node-v${env:NODE_VERSION}-win-x64 ${env:ProgramFiles}/nodejs; `
@@ -17,6 +17,11 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
     Remove-Item -Force git.zip
 
 RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '/nodejs' + ';' + $Env:ProgramFiles + '/git/cmd')
+
+# Add Docker SDK for when building a solution that has the Docker tools project.
+RUN Invoke-WebRequest -UseBasicParsing https://distaspnet.blob.core.windows.net/sdk/Microsoft.Docker.Sdk.zip -OutFile sdk.zip; `
+    Expand-Archive sdk.zip -DestinationPath \"${Env:ProgramFiles}/dotnet/sdk/${env:DOTNET_SDK_VERSION}/Sdks\"; `
+    Remove-Item -Force sdk.zip
 
 # warmup up NuGet package cache
 COPY packagescache.csproj C:/warmup/packagescache.csproj
