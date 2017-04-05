@@ -30,7 +30,8 @@ RUN buildDeps='xz-utils' \
     && rm "node-v$NODE_VERSION-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
     && apt-get purge -y --auto-remove $buildDeps \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
-    && npm install -g bower gulp
+    && npm install -g bower gulp \
+    && echo '{ "allow_root": true }' > /root/.bowerrc
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
