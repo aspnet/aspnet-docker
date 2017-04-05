@@ -2,7 +2,7 @@
 FROM microsoft/dotnet:1.0.4-sdk-nanoserver-10.0.14393.953
 
 # Install node
-ENV NODE_VERSION 6.10.0
+ENV NODE_VERSION 6.10.2
 
 RUN Invoke-WebRequest https://nodejs.org/dist/v${env:NODE_VERSION}/node-v${env:NODE_VERSION}-win-x64.zip -outfile node.zip; `
     Expand-Archive node.zip -DestinationPath ${env:TEMP}/nodejs-tmp; `
