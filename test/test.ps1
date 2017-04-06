@@ -28,7 +28,7 @@ function WaitForSuccess($endpoint) {
     for ($i = 0; $i -lt 15; $i++) {
         write-host -f gray "Waiting for $endpoint"
         try {
-            iwr $endpoint
+            iwr -UseBasicParsing $endpoint
             return 0
         }
         catch {
