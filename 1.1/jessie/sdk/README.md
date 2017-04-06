@@ -6,12 +6,12 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 
 ## Supported tags
 
-- [`1.1.1`, `1.1`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
-- [`1.1.1-nanoserver`, `1.1-nanoserver`, `1.1.1-nanoserver-10.0.14393.953` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/sdk/Dockerfile)
+- [`1.1.1`, `1.1`, `1`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
+- [`1.1.1-nanoserver`, `1.1-nanoserver`, `1-nanoserver`, `nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/sdk/Dockerfile)
 - [`1.0.4`, `1.0`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/sdk/Dockerfile)
-- [`1.0.4-nanoserver`, `1.0-nanoserver`, `1.0.4-nanoserver-10.0.14393.953` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver/sdk/Dockerfile)
-- [`1.0-1.1`, `1.0-1.1-2017-03` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/kitchensink/Dockerfile)
-- [`1.0-1.1-nanoserver`, `1.0-1.1-nanoserver-10.0.14393.953`(designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/kitchensink/Dockerfile)
+- [`1.0.4-nanoserver`, `1.0-nanoserver`, `lts-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver/sdk/Dockerfile)
+- [`1.0-1.1-2017-03`, `1.0-1.1` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/kitchensink/Dockerfile)
+- [`1.0-1.1-2017-03-nanoserver`, `1.0-1.1-nanoserver` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/kitchensink/Dockerfile)
 
 ## What is ASP.NET Core?
 
