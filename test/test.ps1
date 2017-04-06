@@ -77,29 +77,37 @@ $images | ? { $_.type -eq 'sdk' } | % {
         -Command "C:/test/create-run-publish-app.ps1 C:/$app_name $framework"
 
     echo "----- Testing ${runtime_tag} with ${sdk_tag} app -----"
-    exec docker run -d -t `
-        -v "${app_dir}:C:/${app_name}" `
-        --workdir "C:/${app_name}" `
-        --name "runtime-test-${app_name}" `
-        -p 80:80 `
-        --entrypoint dotnet `
-        $runtime_tag `
-        "C:/${app_name}/publish/framework-dependent/${app_name}.dll"
+    try {
+        exec docker run -d -t `
+            -v "${app_dir}:C:/${app_name}" `
+            --workdir "C:/${app_name}" `
+            --name "runtime-test-${app_name}" `
+            -p 80:80 `
+            --entrypoint dotnet `
+            $runtime_tag `
+            "C:/${app_name}/publish/framework-dependent/${app_name}.dll"
 
-    $ip = get-ip "runtime-test-${app_name}"
-    WaitForSuccess "http://${ip}:80"
-    exec docker rm -f "runtime-test-${app_name}"
+        $ip = get-ip "runtime-test-${app_name}"
+        WaitForSuccess "http://${ip}:80"
+    }
+    finally {
+        exec docker rm -f "runtime-test-${app_name}"
+    }
 
     echo "----- Testing ${runtime_tag} with standalone ${sdk_tag} app -----"
-    exec docker run -d -t `
-        -v "${app_dir}:C:/${app_name}" `
-        --workdir "C:/${app_name}" `
-        --name "runtime-standalone-test-${app_name}" `
-        -p 80:80 `
-        --entrypoint "C:/${app_name}/publish/self-contained/${app_name}" `
-        $runtime_tag
+    try {
+        exec docker run -d -t `
+            -v "${app_dir}:C:/${app_name}" `
+            --workdir "C:/${app_name}" `
+            --name "runtime-standalone-test-${app_name}" `
+            -p 80:80 `
+            --entrypoint "C:/${app_name}/publish/self-contained/${app_name}" `
+            $runtime_tag
 
-    $ip = get-ip "runtime-standalone-test-${app_name}"
-    WaitForSuccess "http://${ip}:80"
-    exec docker rm -f "runtime-standalone-test-${app_name}"
+        $ip = get-ip "runtime-standalone-test-${app_name}"
+        WaitForSuccess "http://${ip}:80"
+    }
+    finally {
+        exec docker rm -f "runtime-standalone-test-${app_name}"
+    }
 }
