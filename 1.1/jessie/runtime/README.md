@@ -1,17 +1,18 @@
 
-ASP.NET Core Docker Image
-=========================
+ASP.NET Core Runtime Docker Image
+=================================
 
 This repository contains images for running published ASP.NET Core applications. These images use the
 [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) image as its base.
 
-[![Downloads from Docker Hub](https://img.shields.io/docker/pulls/microsoft/aspnetcore.svg?style=flat-square)](https://hub.docker.com/r/microsoft/aspnetcore)
-[![Stars on Docker Hub](https://img.shields.io/docker/stars/microsoft/aspnetcore.svg?style=flat-square)](https://hub.docker.com/r/microsoft/aspnetcore)
+These images contain the runtime only. Use [`microsoft/aspnetcore-build`](https://hub.docker.com/r/microsoft/aspnetcore-build/) to build ASP.NET Core apps inside the container.
 
 ## Supported tags
 
 - [`1.1.1`, `1.1`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
+- [`1.1.1-nanoserver`, `1.1-nanoserver`, `1.1.1-nanoserver-10.0.14393.953` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/runtime/Dockerfile)
 - [`1.0.4`, `1.0`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/runtime/Dockerfile)
+- [`1.0.4-nanoserver`, `1.0-nanoserver`, `1.0.4-nanoserver-10.0.14393.953` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver/runtime/Dockerfile)
 
 ## What is ASP.NET Core?
 

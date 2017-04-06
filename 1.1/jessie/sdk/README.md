@@ -4,14 +4,14 @@ ASP.NET Core Build Docker Image
 
 This repository contains images that are used to compile/publish ASP.NET Core applications inside the container. This is different to compiling an ASP.NET Core application and then adding the compiled output to an image, which is what you would do when using the [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/) image. These Dockerfiles use the [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) image as its base.
 
-[![Downloads from Docker Hub](https://img.shields.io/docker/pulls/microsoft/aspnetcore-build.svg?style=flat-square)](https://hub.docker.com/r/microsoft/aspnetcore-build)
-[![Stars on Docker Hub](https://img.shields.io/docker/stars/microsoft/aspnetcore-build.svg?style=flat-square)](https://hub.docker.com/r/microsoft/aspnetcore-build)
-
 ## Supported tags
 
 - [`1.1.1`, `1.1`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
+- [`1.1.1-nanoserver`, `1.1-nanoserver`, `1.1.1-nanoserver-10.0.14393.953` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/sdk/Dockerfile)
 - [`1.0.4`, `1.0`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/sdk/Dockerfile)
-- [`1.0-1.1-2017-03`, `1.0-1.1` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/kitchensink/Dockerfile)
+- [`1.0.4-nanoserver`, `1.0-nanoserver`, `1.0.4-nanoserver-10.0.14393.953` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver/sdk/Dockerfile)
+- [`1.0-1.1`, `1.0-1.1-2017-03` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/kitchensink/Dockerfile)
+- [`1.0-1.1-nanoserver`, `1.0-1.1-nanoserver-10.0.14393.953`(designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/kitchensink/Dockerfile)
 
 ## What is ASP.NET Core?
 
