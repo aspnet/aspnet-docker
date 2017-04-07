@@ -10,9 +10,9 @@ These images contain the runtime only. Use [`microsoft/aspnetcore-build`](https:
 ## Supported tags
 
 - [`1.1.1`, `1.1`, `1`, `latest` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
-- [`1.1.1-nanoserver`, `1.1-nanoserver`, `1-nanoserver`, `nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/runtime/Dockerfile)
+- [`1.1.1-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/runtime/Dockerfile)
 - [`1.0.4`, `1.0`, `lts` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/runtime/Dockerfile)
-- [`1.0.4-nanoserver`, `1.0-nanoserver`, `lts-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver/runtime/Dockerfile)
+- [`1.0.4-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver/runtime/Dockerfile)
 
 ## What is ASP.NET Core?
 
