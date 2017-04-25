@@ -10,7 +10,7 @@ function build_dockerfiles {
         echo "----- ${dockerfile_dir} -----"
         tag="${docker_repo}:$( sed -e 's/.\///' -e 's/jessie\///' -e 's/\//-/g' <<< "${dockerfile_dir}" )"
         echo "----- Building ${tag} -----"
-        docker build -t "${tag}" "${dockerfile_dir}"
+        docker build --pull -t "${tag}" "${dockerfile_dir}"
     done
 }
 
