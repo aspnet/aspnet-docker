@@ -1,10 +1,9 @@
-FROM microsoft/dotnet:1.1.2-sdk
+FROM microsoft/dotnet:2.0.0-preview1-sdk
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 ENV NODE_VERSION 6.10.3
 
-# Install keys required for node
 RUN set -ex \
   && for key in \
     9554F04D7259F04124DE6B476D5A82AC7E37093B \
@@ -38,8 +37,28 @@ RUN buildDeps='xz-utils' \
     && npm install -g bower gulp \
     && echo '{ "allow_root": true }' > /root/.bowerrc
 
-# warmup NuGet package cache
-COPY packagescache.csproj /tmp/warmup/packagescache.csproj
+# Install the 1.x runtimes
+RUN for url in \
+      'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/1.1.2/dotnet-debian-x64.1.1.2.tar.gz' \
+      'https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.5/dotnet-debian-x64.1.0.5.tar.gz'; \
+    do \
+      echo "Downloading and installing from $url" \
+      && curl -SL $url --output /tmp/dotnet.tar.gz \
+      && mkdir -p /usr/share/dotnet \
+      && tar -zxf /tmp/dotnet.tar.gz -C /usr/share/dotnet \
+      && rm /tmp/dotnet.tar.gz; \
+    done
+
+# Add Docker SDK for when building a solution that has the Docker tools project.
+RUN curl -H 'Cache-Control: no-cache' -o /tmp/Microsoft.Docker.Sdk.tar.gz https://distaspnet.blob.core.windows.net/sdk/Microsoft.Docker.Sdk.tar.gz \
+    && cd /usr/share/dotnet/sdk/${DOTNET_SDK_VERSION}/Sdks \
+    && tar xvf /tmp/Microsoft.Docker.Sdk.tar.gz \
+    && rm /tmp/Microsoft.Docker.Sdk.tar.gz
+
+# copy the ASP.NET packages manifest
+COPY packagescache.csproj /tmp/warmup/
+
+# warm up package cache
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
       --source https://api.nuget.org/v3/index.json \
     && rm -rf /tmp/warmup/

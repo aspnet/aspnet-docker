@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:1.1.2-sdk
+FROM microsoft/dotnet:2.0.0-preview1-sdk
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -39,7 +39,7 @@ RUN buildDeps='xz-utils' \
     && echo '{ "allow_root": true }' > /root/.bowerrc
 
 # warmup NuGet package cache
-COPY packagescache.csproj /tmp/warmup/packagescache.csproj
+COPY packagescache.csproj /tmp/warmup/
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
       --source https://api.nuget.org/v3/index.json \
     && rm -rf /tmp/warmup/

@@ -47,14 +47,18 @@ for sdk_tag in $( find . -path './.*' -prune -o -path '*/jessie/sdk/Dockerfile' 
     __exec docker run -t -v "${app_dir}:/${app_name}" -v "${repo_root}/test:/test" --name "build-test-${app_name}" --entrypoint /test/create-run-publish-app.sh "${full_sdk_tag}" "${app_name}" "${sdk_tag}"
 
     echo "----- Testing ${runtime_tag} with ${sdk_tag} app -----"
-    __exec docker run -d -t -v "${app_dir}:/${app_name}" --workdir /${app_name} --name "runtime-test-${app_name}" -p 5000:80 --entrypoint dotnet "${runtime_tag}" "/${app_name}/publish/framework-dependent/${app_name}.dll"
+    container_name="runtime-test-${app_name}"
+    __exec docker run -d -t -v "${app_dir}:/${app_name}" --workdir /${app_name} --name $container_name -p 5000:80 --entrypoint dotnet "${runtime_tag}" "/${app_name}/publish/framework-dependent/${app_name}.dll"
+    docker logs -f $container_name &
     WaitForSuccess "http://localhost:5000"
-    __exec docker rm -f "runtime-test-${app_name}"
+    __exec docker rm -f $container_name
 
     echo "----- Testing ${runtime_tag} with standalone ${sdk_tag} app -----"
-    __exec docker run -d -t -v "${app_dir}:/${app_name}" --workdir /${app_name} --name "runtime-standalone-test-${app_name}" -p 5000:80 --entrypoint "/${app_name}/publish/self-contained/${app_name}" "${runtime_tag}"
+    container_name="runtime-standalone-test-${app_name}"
+    __exec docker run -d -t -v "${app_dir}:/${app_name}" --workdir /${app_name} --name $container_name -p 5000:80 --entrypoint "/${app_name}/publish/self-contained/${app_name}" "${runtime_tag}"
+    docker logs -f $container_name &
     WaitForSuccess "http://localhost:5000"
-    __exec docker rm -f "runtime-standalone-test-${app_name}"
+    __exec docker rm -f $container_name
 
 done
 

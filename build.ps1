@@ -26,5 +26,5 @@ gci $PSScriptRoot/*/nanoserver/*/Dockerfile | % {
         'runtime' { "$RootImageName/aspnetcore:${version}-nanoserver" }
         default { throw "Unrecognized image type in $_" }
     }
-    exec docker build $(split-path -parent $_) -t $tag
+    exec docker build --pull $(split-path -parent $_) -t $tag
 }

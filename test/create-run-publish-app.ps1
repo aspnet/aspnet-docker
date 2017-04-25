@@ -11,24 +11,37 @@ $ErrorActionPreference = 'Stop'
 function exec($cmd) {
     Write-Host -foregroundcolor Magenta "$(hostname) > $cmd $args"
     & $cmd @args
-    if ($LastExitCode -ne 0) {
-        fatal 'Command exited with non-zero code'
+    $code = $LastExitCode
+    if ($code -ne 0) {
+        Write-Error "Command exited with non-zero code: $code"
+        exit $code
     }
 }
 
 Push-Location $directory
 try {
     Write-Host "Testing framework-dependent deployment"
-    exec dotnet new web --framework $framework
+    if ($framework -eq 'netcoreapp1.0' -or $framework -eq 'netcoreapp1.1') {
+        exec dotnet new web --framework $framework
+    } else {
+        exec dotnet new web --framework $framework --no-restore
+    }
 
     # restore only from $HOME/.nuget/packages to ensure the cache has already been warmed up
-    exec dotnet msbuild "/t:Restore;Publish" `
-        "/p:RuntimeIdentifiers=win7-x64" `
-        "/p:PublishDir=publish/framework-dependent" `
-        "/p:RestoreSources=${env:USERPROFILE}/.nuget/packages"
+    exec dotnet restore `
+        --source ${env:USERPROFILE}/.nuget/packages `
+        "/p:RuntimeIdentifiers=win7-x64"
 
     Write-Output "Testing self-contained deployment"
-    exec dotnet publish -r win7-x64 -o publish/self-contained
+    exec dotnet publish `
+        --configuration Release `
+        --output publish/framework-dependent
+
+    Write-Output "Testing self-contained deployment"
+    exec dotnet publish `
+        --configuration Release `
+        --runtime win7-x64 `
+        --output publish/self-contained
 }
 finally {
     Pop-Location
