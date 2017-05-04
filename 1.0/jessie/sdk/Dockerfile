@@ -2,7 +2,7 @@ FROM microsoft/dotnet:1.0.4-sdk
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.10.2
+ENV NODE_VERSION 6.10.3
 
 # Install keys required for node
 RUN set -ex \
