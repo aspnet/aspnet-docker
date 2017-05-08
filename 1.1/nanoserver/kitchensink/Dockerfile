@@ -1,5 +1,5 @@
 # escape=`
-FROM microsoft/dotnet:1.1.1-sdk-nanoserver-10.0.14393.1066
+FROM microsoft/dotnet:1.1.2-sdk-nanoserver-10.0.14393.1066
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -26,5 +26,5 @@ RUN Invoke-WebRequest -UseBasicParsing https://distaspnet.blob.core.windows.net/
 # warmup up NuGet package cache
 COPY packagescache.csproj C:/warmup/packagescache.csproj
 RUN dotnet restore C:/warmup/packagescache.csproj `
-      --source https://api.nuget.org/v3/index.json; `
+        --source https://api.nuget.org/v3/index.json; `
     Remove-Item -Recurse -Force C:/warmup
