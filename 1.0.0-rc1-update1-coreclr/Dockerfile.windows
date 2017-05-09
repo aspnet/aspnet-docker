@@ -1,0 +1,12 @@
+FROM windowsservercore
+
+ENV DNX_VERSION 1.0.0-rc1-update1
+ENV DNVM_BRANCH "dev"
+ENV DNVM_DOWNLOAD_URL "https://raw.githubusercontent.com/aspnet/Home/$DNVM_BRANCH/dnvm.ps1"
+
+RUN @powershell -NoProfile \
+	-Command \
+	$ErrorActionPreference = 'Stop'; \
+	(New-Object System.Net.WebClient).DownloadFile('%DNVM_DOWNLOAD_URL%', 'dnvm.ps1') ; \
+	.\dnvm.ps1 install %DNX_VERSION% -global -persistent -alias default -r coreclr ; \
+	Remove-Item dnvm.ps1
