@@ -19,12 +19,11 @@ function __exec {
 cd $1
 
 echo "Testing framework-dependent deployment"
-if [[ $2 == "2.0"* ]]; then
-    __exec dotnet new web --framework netcoreapp2.0 --no-restore
-elif [[ $2 == "1.1"* ]]; then
-    __exec dotnet new web --framework netcoreapp1.1
+framework=$2
+if [[ $framework == 'netcoreapp1.0' || $framework == 'netcoreapp1.1' ]]; then
+    __exec dotnet new web --framework $framework
 else
-    __exec dotnet new web --framework netcoreapp1.0
+    __exec dotnet new web --framework $framework --no-restore
 fi
 
 # restore only from $HOME/.nuget/packages to ensure the cache has already been warmed up
