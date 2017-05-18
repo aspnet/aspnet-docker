@@ -7,18 +7,20 @@ repo_root="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 function build_dockerfiles {
     for dockerfile_dir in ${1}; do
         echo "----- ${dockerfile_dir} -----"
-        tag="$( sed -e 's/.\///' -e 's/jessie\///' -e 's/\//-/g' <<< "${dockerfile_dir}" )"
-        case $tag in
-            *-runtime )
-                docker_repo="test/aspnetcore"
+        version="$(dirname $(dirname $dockerfile_dir) | sed -e 's/.\///')"
+        case ${dockerfile_dir} in
+            *runtime )
+                tag="test/aspnetcore:$version"
                 ;;
-            *-sdk|*-kitchensink )
-                docker_repo="test/aspnetcore-build"
+            *sdk )
+                tag="test/aspnetcore-build:$version"
+                ;;
+            *kitchensink )
+                tag="test/aspnetcore-build:1.0-$version"
                 ;;
         esac
-        image_name="$docker_repo:$tag"
-        echo "----- Building ${image_name} -----"
-        docker build --pull -t "${image_name}" "${dockerfile_dir}"
+        echo "----- Building ${tag} -----"
+        docker build --pull -t "${tag}" "${dockerfile_dir}"
     done
 }
 
