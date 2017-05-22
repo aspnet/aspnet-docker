@@ -1,9 +1,12 @@
 {
-  "Repos": [
+  "tagVariables": {
+    "nanoServerVersion": "10.0.14393.1198"
+  },
+  "repos": [
     {
-      "Name": "msimons/aspnetcore",
-      "ReadmePath": "README.aspnetcore.md",
-      "Images": [
+      "name": "msimons/aspnetcore",
+      "readmePath": "README.aspnetcore.md",
+      "images": [
         {
           "sharedTags": [
             "1.0.5",
@@ -21,7 +24,7 @@
               "dockerfile": "1.0/nanoserver/runtime",
               "tags": [
                 "1.0.5-nanoserver",
-                "1.0.5-nanoserver-10.0.14393.1198"
+                "1.0.5-nanoserver-$(nanoServerVersion)"
               ]
             }
           }
@@ -44,7 +47,7 @@
               "dockerfile": "1.1/nanoserver/runtime",
               "tags": [
                 "1.1.2-nanoserver",
-                "1.1.2-nanoserver-10.0.14393.1198"
+                "1.1.2-nanoserver-$(nanoServerVersion)"
               ]
             }
           }
@@ -66,7 +69,7 @@
               "dockerfile": "2.0/nanoserver/runtime",
               "tags": [
                 "2.0.0-preview1-nanoserver",
-                "2.0.0-preview1-nanoserver-10.0.14393.1198"
+                "2.0.0-preview1-nanoserver-$(nanoServerVersion)"
               ]
             }
           }
@@ -74,9 +77,9 @@
       ]
     },
     {
-      "Name": "msimons/aspnetcore-build",
-      "ReadmePath": "README.aspnetcore-build.md",
-      "Images": [
+      "name": "msimons/aspnetcore-build",
+      "readmePath": "README.aspnetcore-build.md",
+      "images": [
         {
           "sharedTags": [
             "1.0.5",
@@ -94,7 +97,7 @@
               "dockerfile": "1.0/nanoserver/sdk",
               "tags": [
                 "1.0.5-nanoserver",
-                "1.0.5-nanoserver-10.0.14393.1198"
+                "1.0.5-nanoserver-$(nanoServerVersion)"
               ]
             }
           }
@@ -117,7 +120,7 @@
               "dockerfile": "1.1/nanoserver/sdk",
               "tags": [
                 "1.1.2-nanoserver",
-                "1.1.2-nanoserver-10.0.14393.1198"
+                "1.1.2-nanoserver-$(nanoServerVersion)"
               ]
             }
           }
@@ -139,7 +142,7 @@
               "dockerfile": "2.0/nanoserver/sdk",
               "tags": [
                 "2.0.0-preview1-nanoserver",
-                "2.0.0-preview1-nanoserver-10.0.14393.1198"
+                "2.0.0-preview1-nanoserver-$(nanoServerVersion)"
               ]
             }
           }
@@ -160,7 +163,7 @@
               "dockerfile": "1.1/nanoserver/kitchensink",
               "tags": [
                 "1.0-1.1-2017-05-nanoserver",
-                "1.0-1.1-2017-05-nanoserver-10.0.14393.1198"
+                "1.0-1.1-2017-05-nanoserver-$(nanoServerVersion)"
               ]
             }
           }
@@ -181,7 +184,7 @@
               "dockerfile": "2.0/nanoserver/kitchensink",
               "tags": [
                 "1.0-2.0-preview1-2017-05-nanoserver",
-                "1.0-2.0-preview1-2017-05-nanoserver-10.0.14393.1198"
+                "1.0-2.0-preview1-2017-05-nanoserver-$(nanoServerVersion)"
               ]
             }
           }
