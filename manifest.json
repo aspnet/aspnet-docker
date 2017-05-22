@@ -4,7 +4,7 @@
   },
   "repos": [
     {
-      "name": "msimons/aspnetcore",
+      "name": "microsoft/aspnetcore",
       "readmePath": "README.aspnetcore.md",
       "images": [
         {
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "name": "msimons/aspnetcore-build",
+      "name": "microsoft/aspnetcore-build",
       "readmePath": "README.aspnetcore-build.md",
       "images": [
         {
