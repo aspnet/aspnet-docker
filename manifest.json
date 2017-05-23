@@ -171,7 +171,8 @@
         {
           "sharedTags": [
             "1.0-2.0-preview1-2017-05",
-            "1.0-2.0-preview1"
+            "1.0-2.0-preview1",
+            "1.0-2.0"
           ],
           "platforms": {
             "linux": {
