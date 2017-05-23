@@ -7,5 +7,7 @@ branches:
     - /^(.*\/)?ci-.*$/
 services:
   - docker
-before_install: ./build.sh
-script: ./test/test.sh
+before_install:
+  - ./build.sh
+  - docker build --rm -t testrunner -f ./test/Dockerfile.testrunner.linux .
+script: /bin/bash -c "docker run --add-host dockerhost:$(ifconfig eth0 | grep -oP 'inet addr:\K\S+') -v /var/run/docker.sock:/var/run/docker.sock testrunner powershell -File ./test/test.ps1 microsoft dockerhost"

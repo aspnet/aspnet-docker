@@ -1,0 +1,21 @@
+# Use this Dockerfile to create a Linux testrunner image
+#     docker build -t testrunner -f ./test/Dockerfile.testrunner.linux .
+#     docker run --rm -v /var/run/docker.sock:/var/run/docker.sock testrunner powershell -File test/test.ps1 <test.ps1 args>
+
+FROM ubuntu:16.04
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        docker.io \
+    && rm -rf /var/lib/apt/lists/*
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    && curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt/sources.list.d/microsoft.list \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+        powershell \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR repo
+COPY . .
