@@ -57,8 +57,8 @@ gci $PSScriptRoot/../*/nanoserver/sdk/Dockerfile | % {
 
     $version = $_.Directory.Parent.Parent.Name
     $framework = "netcoreapp${version}"
-    $sdk_tag = "$RootImageName/aspnetcore-build:${version}-nanoserver"
-    $runtime_tag = "$RootImageName/aspnetcore:${version}-nanoserver"
+    $sdk_tag = "$RootImageName/aspnetcore-build:${version}"
+    $runtime_tag = "$RootImageName/aspnetcore:${version}"
 
     echo "---- Testing ${sdk_tag} and ${runtime_tag} ----"
     exec docker run -t `

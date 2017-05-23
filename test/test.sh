@@ -15,7 +15,7 @@ function __exec {
     $cmd $@
 }
 
-docker_repo="test/aspnetcore"
+root_image_name=${1:-test}
 repo_root="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 
 function WaitForSuccess {
@@ -32,19 +32,19 @@ function WaitForSuccess {
 pushd "${repo_root}" > /dev/null
 
 # Loop through each sdk Dockerfile in the repo and test the sdk and runtime images.
-for sdk_tag in $( find . -path './.*' -prune -o -path '*/jessie/sdk/Dockerfile' -print0 | xargs -0 -n1 dirname | sed -e 's/aspnet-docker\///' -e 's/.\///' -e 's/jessie\///' -e 's/\//-/g' ); do
+for version in $( find . -path './.*' -prune -o -path '*/jessie/sdk/Dockerfile' -print0 | dirname $(dirname $(xargs -0 -n1 dirname)) | sed -e 's/aspnet-docker\///' -e 's/.\///' ); do
 
     echo "---- Generating application directory ${app_dir} ---- "
     app_name="app$(date +%s)"
     app_dir="${repo_root}/.test-assets/${app_name}"
     mkdir -p "${app_dir}"
 
-    full_sdk_tag="${docker_repo}:${sdk_tag}"
+    sdk_tag="$root_image_name/aspnetcore-build:${version}"
+    runtime_tag="$root_image_name/aspnetcore:${version}"
+    framework="netcoreapp${version}"
 
-    runtime_tag="$( echo "${full_sdk_tag}" | sed -e 's/sdk/runtime/' )"
-
-    echo "---- Testing ${full_sdk_tag} and ${runtime_tag} ----"
-    __exec docker run -t -v "${app_dir}:/${app_name}" -v "${repo_root}/test:/test" --name "build-test-${app_name}" --entrypoint /test/create-run-publish-app.sh "${full_sdk_tag}" "${app_name}" "${sdk_tag}"
+    echo "---- Testing ${sdk_tag} and ${runtime_tag} ----"
+    __exec docker run -t -v "${app_dir}:/${app_name}" -v "${repo_root}/test:/test" --name "build-test-${app_name}" --entrypoint /test/create-run-publish-app.sh "${sdk_tag}" "${app_name}" "${framework}"
 
     echo "----- Testing ${runtime_tag} with ${sdk_tag} app -----"
     container_name="runtime-test-${app_name}"

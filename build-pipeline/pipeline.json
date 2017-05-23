@@ -1,0 +1,48 @@
+{
+  "Repository": "aspnet-docker",
+  "Definitions": {
+    "Path": ".",
+    "Type": "VSTS",
+    "BaseUrl": "https://devdiv.visualstudio.com/DefaultCollection",
+    "SkipBranchAndVersionOverrides": "false"
+  },
+  "Pipelines": [
+    {
+      "Name": "Build Linux Images",
+      "Parameters": {
+        "TreatWarningsAsErrors": "false"
+      },
+      "Definitions": [
+        {
+          "Name": "aspnet-docker-linux-images"
+        }
+      ]
+    },
+    {
+      "Name": "Build Windows Images",
+      "Parameters": {
+        "TreatWarningsAsErrors": "false"
+      },
+      "Definitions": [
+        {
+          "Name": "aspnet-docker-windows-images"
+        }
+      ]
+    },
+    {
+      "Name": "Post Image Build",
+      "Parameters": {
+        "TreatWarningsAsErrors": "false"
+      },
+      "Definitions": [
+        {
+          "Name": "aspnet-docker-post-image-build"
+        }
+      ],
+      "DependsOn": [
+        "Build Windows Images",
+        "Build Linux Images"
+      ]
+    }
+  ]
+}
