@@ -76,14 +76,13 @@ Get-ChildItem (Join-Paths $PSScriptRoot ("..", "*", $image_os, "sdk", "Dockerfil
     $sdk_tag = "$RootImageName/aspnetcore-build:${version}"
     $runtime_tag = "$RootImageName/aspnetcore:${version}"
 
-    Write-Host "---- Testing ${sdk_tag} and ${runtime_tag} ----"
+    Write-Host "----- Building app with ${sdk_tag} -----"
     if ($version -eq '1.0' -or $version -eq '1.1') {
         $optional_new_params = ""
     } else {
         $optional_new_params = "--no-restore"
     }
 
-    Write-Host "----- Building app with ${sdk_tag} -----"
     $app_build_tag = "$app_name-build"
     try {
         $framework ="netcoreapp${version}"
