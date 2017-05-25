@@ -169,6 +169,6 @@ Get-ChildItem (Join-Paths $PSScriptRoot ("..", "*", $image_os, "sdk", "Dockerfil
         }
     }
     finally {
-        exec docker image rm -f $app_build_tag
+        exec docker rmi -f $app_build_tag
     }
 }
