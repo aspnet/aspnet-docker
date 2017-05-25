@@ -1,0 +1,9 @@
+FROM {image}
+
+ARG FRAMEWORK
+ARG OPTIONAL_NEW_PARAMS
+
+WORKDIR test
+RUN dotnet new web --framework $env:FRAMEWORK $env:OPTIONAL_NEW_PARAMS
+RUN dotnet restore --source ${env:USERPROFILE}/.nuget/packages "/p:RuntimeIdentifiers=win7-x64"
+RUN dotnet build
