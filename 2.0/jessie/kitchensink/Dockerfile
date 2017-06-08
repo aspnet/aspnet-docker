@@ -2,7 +2,7 @@ FROM microsoft/dotnet:2.0.0-preview1-sdk
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.10.3
+ENV NODE_VERSION 6.11.0
 
 RUN set -ex \
   && for key in \
