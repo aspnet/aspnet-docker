@@ -1,0 +1,205 @@
+{
+  "tagVariables": {
+    "nanoServerVersion": "10.0.14393.1198"
+  },
+  "testCommands": {
+    "linux": [
+      "docker build --rm -t testrunner -f ./test/Dockerfile.testrunner.linux .",
+      "/bin/bash -c \"docker run --add-host dockerhost:$DOCKER_HOST_IP -v /var/run/docker.sock:/var/run/docker.sock testrunner powershell -File ./test/test.ps1 microsoft dockerhost\""
+    ],
+    "windows": [
+      "powershell -NoProfile -Command .\\test\\test.ps1 microsoft"
+    ]
+  },
+  "repos": [
+    {
+      "name": "microsoft/aspnetcore",
+      "readmePath": "README.aspnetcore.md",
+      "images": [
+        {
+          "sharedTags": [
+            "1.0.5",
+            "1.0",
+            "lts"
+          ],
+          "platforms": {
+            "linux": {
+              "dockerfile": "1.0/jessie/runtime",
+              "tags": [
+                "1.0.5-jessie"
+              ]
+            },
+            "windows": {
+              "dockerfile": "1.0/nanoserver/runtime",
+              "tags": [
+                "1.0.5-nanoserver",
+                "1.0.5-nanoserver-$(nanoServerVersion)"
+              ]
+            }
+          }
+        },
+        {
+          "sharedTags": [
+            "1.1.2",
+            "1.1",
+            "1",
+            "latest"
+          ],
+          "platforms": {
+            "linux": {
+              "dockerfile": "1.1/jessie/runtime",
+              "tags": [
+                "1.1.2-jessie"
+              ]
+            },
+            "windows": {
+              "dockerfile": "1.1/nanoserver/runtime",
+              "tags": [
+                "1.1.2-nanoserver",
+                "1.1.2-nanoserver-$(nanoServerVersion)"
+              ]
+            }
+          }
+        },
+        {
+          "sharedTags": [
+            "2.0.0-preview1",
+            "2.0",
+            "2"
+          ],
+          "platforms": {
+            "linux": {
+              "dockerfile": "2.0/jessie/runtime",
+              "tags": [
+                "2.0.0-preview1-jessie"
+              ]
+            },
+            "windows": {
+              "dockerfile": "2.0/nanoserver/runtime",
+              "tags": [
+                "2.0.0-preview1-nanoserver",
+                "2.0.0-preview1-nanoserver-$(nanoServerVersion)"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "microsoft/aspnetcore-build",
+      "readmePath": "README.aspnetcore-build.md",
+      "images": [
+        {
+          "sharedTags": [
+            "1.0.5",
+            "1.0",
+            "lts"
+          ],
+          "platforms": {
+            "linux": {
+              "dockerfile": "1.0/jessie/sdk",
+              "tags": [
+                "1.0.5-jessie"
+              ]
+            },
+            "windows": {
+              "dockerfile": "1.0/nanoserver/sdk",
+              "tags": [
+                "1.0.5-nanoserver",
+                "1.0.5-nanoserver-$(nanoServerVersion)"
+              ]
+            }
+          }
+        },
+        {
+          "sharedTags": [
+            "1.1.2",
+            "1.1",
+            "1",
+            "latest"
+          ],
+          "platforms": {
+            "linux": {
+              "dockerfile": "1.1/jessie/sdk",
+              "tags": [
+                "1.1.2-jessie"
+              ]
+            },
+            "windows": {
+              "dockerfile": "1.1/nanoserver/sdk",
+              "tags": [
+                "1.1.2-nanoserver",
+                "1.1.2-nanoserver-$(nanoServerVersion)"
+              ]
+            }
+          }
+        },
+        {
+          "sharedTags": [
+            "2.0.0-preview1",
+            "2.0",
+            "2"
+          ],
+          "platforms": {
+            "linux": {
+              "dockerfile": "2.0/jessie/sdk",
+              "tags": [
+                "2.0.0-preview1-jessie"
+              ]
+            },
+            "windows": {
+              "dockerfile": "2.0/nanoserver/sdk",
+              "tags": [
+                "2.0.0-preview1-nanoserver",
+                "2.0.0-preview1-nanoserver-$(nanoServerVersion)"
+              ]
+            }
+          }
+        },
+        {
+          "sharedTags": [
+            "1.0-1.1-2017-05",
+            "1.0-1.1"
+          ],
+          "platforms": {
+            "linux": {
+              "dockerfile": "1.1/jessie/kitchensink",
+              "tags": [
+                "1.0-1.1-2017-05-jessie"
+              ]
+            },
+            "windows": {
+              "dockerfile": "1.1/nanoserver/kitchensink",
+              "tags": [
+                "1.0-1.1-2017-05-nanoserver",
+                "1.0-1.1-2017-05-nanoserver-$(nanoServerVersion)"
+              ]
+            }
+          }
+        },
+        {
+          "sharedTags": [
+            "1.0-2.0-preview1-2017-05",
+            "1.0-2.0-preview1",
+            "1.0-2.0"
+          ],
+          "platforms": {
+            "linux": {
+              "dockerfile": "2.0/jessie/kitchensink",
+              "tags": [
+                "1.0-2.0-preview1-2017-05-jessie"
+              ]
+            },
+            "windows": {
+              "dockerfile": "2.0/nanoserver/kitchensink",
+              "tags": [
+                "1.0-2.0-preview1-2017-05-nanoserver",
+                "1.0-2.0-preview1-2017-05-nanoserver-$(nanoServerVersion)"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+FROM {image}
+
+ARG FRAMEWORK
+ARG OPTIONAL_NEW_PARAMS
+
+WORKDIR test
+RUN dotnet new web --framework $FRAMEWORK $OPTIONAL_NEW_PARAMS
+RUN dotnet restore --source $HOME/.nuget/packages "/p:RuntimeIdentifiers=debian.8-x64"
+RUN dotnet build
