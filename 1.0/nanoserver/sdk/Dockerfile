@@ -1,5 +1,5 @@
 # escape=`
-FROM microsoft/dotnet:1.0.5-sdk-nanoserver-10.0.14393.1358
+FROM microsoft/dotnet-nightly:1.0.5-sdk-nanoserver-10.0.14393.1358
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -12,7 +12,7 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
     Remove-Item -Force node.zip; `
     $env:PATH += \";${env:ProgramFiles}/nodejs\"; `
     & npm install -g gulp bower; `
-    Invoke-WebRequest -UseBasicParsing https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.2/MinGit-2.12.2.2-64-bit.zip -outfile git.zip; `
+    Invoke-WebRequest -UseBasicParsing https://github.com/git-for-windows/git/releases/download/v2.13.1.windows.1/MinGit-2.13.1-64-bit.zip -outfile git.zip; `
     Expand-Archive git.zip -DestinationPath $Env:ProgramFiles/git; `
     Remove-Item -Force git.zip
 

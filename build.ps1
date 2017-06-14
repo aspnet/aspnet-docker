@@ -1,8 +1,10 @@
 param(
     # Set to 'microsoft' on build servers
     [string]$RootImageName='test',
+    # Set to 'jessie' if building the Linux containers
+    [string]$Os='nanoserver',
     # Set on build servers
-    [switch]$Nightly
+    [switch]$Nightly=$true
 )
 
 $ErrorActionPreference = 'Stop'
@@ -21,7 +23,7 @@ function exec($cmd) {
 $suffix = if ($Nightly) { '-nightly' } else { '' }
 
 # Main
-gci $PSScriptRoot/*/nanoserver/*/Dockerfile | % {
+gci $PSScriptRoot/*/$os/*/Dockerfile | % {
     $type = $_.Directory.Name
     $version = $_.Directory.Parent.Parent.Name
     $tag = switch ($type) {

@@ -63,7 +63,7 @@
         },
         {
           "sharedTags": [
-            "2.0.0-preview1",
+            "2.0.0-preview2",
             "2.0",
             "2"
           ],
@@ -71,14 +71,14 @@
             "linux": {
               "dockerfile": "2.0/jessie/runtime",
               "tags": [
-                "2.0.0-preview1-jessie"
+                "2.0.0-preview2-jessie"
               ]
             },
             "windows": {
               "dockerfile": "2.0/nanoserver/runtime",
               "tags": [
-                "2.0.0-preview1-nanoserver",
-                "2.0.0-preview1-nanoserver-$(nanoServerVersion)"
+                "2.0.0-preview2-nanoserver",
+                "2.0.0-preview2-nanoserver-$(nanoServerVersion)"
               ]
             }
           }
@@ -136,7 +136,7 @@
         },
         {
           "sharedTags": [
-            "2.0.0-preview1",
+            "2.0.0-preview2",
             "2.0",
             "2"
           ],
@@ -144,14 +144,14 @@
             "linux": {
               "dockerfile": "2.0/jessie/sdk",
               "tags": [
-                "2.0.0-preview1-jessie"
+                "2.0.0-preview2-jessie"
               ]
             },
             "windows": {
               "dockerfile": "2.0/nanoserver/sdk",
               "tags": [
-                "2.0.0-preview1-nanoserver",
-                "2.0.0-preview1-nanoserver-$(nanoServerVersion)"
+                "2.0.0-preview2-nanoserver",
+                "2.0.0-preview2-nanoserver-$(nanoServerVersion)"
               ]
             }
           }
@@ -179,22 +179,22 @@
         },
         {
           "sharedTags": [
-            "1.0-2.0-preview1-2017-05",
-            "1.0-2.0-preview1",
+            "1.0-2.0-preview2-2017-06",
+            "1.0-2.0-preview2",
             "1.0-2.0"
           ],
           "platforms": {
             "linux": {
               "dockerfile": "2.0/jessie/kitchensink",
               "tags": [
-                "1.0-2.0-preview1-2017-05-jessie"
+                "1.0-2.0-preview2-2017-06-jessie"
               ]
             },
             "windows": {
               "dockerfile": "2.0/nanoserver/kitchensink",
               "tags": [
-                "1.0-2.0-preview1-2017-05-nanoserver",
-                "1.0-2.0-preview1-2017-05-nanoserver-$(nanoServerVersion)"
+                "1.0-2.0-preview2-2017-06-nanoserver",
+                "1.0-2.0-preview2-2017-06-nanoserver-$(nanoServerVersion)"
               ]
             }
           }

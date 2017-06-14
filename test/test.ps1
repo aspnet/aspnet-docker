@@ -4,7 +4,7 @@ param(
     # Set to Docker host IP if running within a container
     [string]$HostIP='localhost',
     # Set if testing nightly images
-    [switch]$Nightly
+    [switch]$Nightly=$true
 )
 
 Set-StrictMode -Version Latest
