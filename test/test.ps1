@@ -2,7 +2,9 @@ param(
     # Set to 'microsoft' on build servers
     [string]$RootImageName='test',
     # Set to Docker host IP if running within a container
-    [string]$HostIP='localhost'
+    [string]$HostIP='localhost',
+    # Set if testing nightly images
+    [switch]$Nightly
 )
 
 Set-StrictMode -Version Latest
@@ -54,6 +56,7 @@ function WaitForSuccess($endpoint) {
 }
 
 # Main
+$suffix = if ($Nightly) { '-nightly' } else { '' }
 $platform = docker version -f "{{ .Server.Os }}"
 if ($platform -eq "windows") {
     $container_root = "C:\"
@@ -73,8 +76,8 @@ Get-ChildItem (Join-Paths $PSScriptRoot ("..", "*", $image_os, "sdk", "Dockerfil
     $app_name = "app$(get-random)"
     $publish_path = "${container_root}publish"
     $version = $_.Directory.Parent.Parent.Name
-    $sdk_tag = "$RootImageName/aspnetcore-build:${version}"
-    $runtime_tag = "$RootImageName/aspnetcore:${version}"
+    $sdk_tag = "$RootImageName/aspnetcore-build${suffix}:${version}"
+    $runtime_tag = "$RootImageName/aspnetcore${suffix}:${version}"
 
     Write-Host "----- Building app with ${sdk_tag} -----"
     if ($version -eq '1.0' -or $version -eq '1.1') {

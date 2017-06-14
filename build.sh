@@ -2,6 +2,19 @@
 set -e  # Exit immediately upon failure
 set -o pipefail  # Carry failures over pipes
 
+suffix=''
+while [[ $# > 0 ]]; do
+    case $1 in
+        --nightly)
+            suffix='-nightly'
+            ;;
+        *)
+            break
+            ;;
+    esac
+    shift
+done
+
 repo_root="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function build_dockerfiles {
@@ -10,13 +23,13 @@ function build_dockerfiles {
         version="$(dirname $(dirname $dockerfile_dir) | sed -e 's/.\///')"
         case ${dockerfile_dir} in
             *runtime )
-                tag="test/aspnetcore:$version"
+                tag="test/aspnetcore${suffix}:${version}"
                 ;;
             *sdk )
-                tag="test/aspnetcore-build:$version"
+                tag="test/aspnetcore-build${suffix}:${version}"
                 ;;
             *kitchensink )
-                tag="test/aspnetcore-build:1.0-$version"
+                tag="test/aspnetcore-build${suffix}:1.0-${version}"
                 ;;
         esac
         echo "----- Building ${tag} -----"
