@@ -3,12 +3,12 @@
   <PropertyGroup>
     <TargetFrameworks>netcoreapp1.0;netcoreapp1.1;netcoreapp2.0</TargetFrameworks>
     <RuntimeIdentifiers>debian.8-x64</RuntimeIdentifiers>
-    <PackageTargetFallback>$(PackageTargetFallback);portable-net451+win8</PackageTargetFallback>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net451+win8</AssetTargetFallback>
     <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp2.0'">
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0-preview2-25704" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0-preview2-25722" />
   </ItemGroup>
 
    <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp1.0'">

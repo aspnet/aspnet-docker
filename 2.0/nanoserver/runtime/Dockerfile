@@ -5,8 +5,7 @@ FROM microsoft/dotnet-nightly:2.0.0-preview2-runtime-nanoserver-10.0.14393.1358
 ENV ASPNETCORE_URLS http://+:80
 
 # set up the runtime store
-ENV ASPNETCORE_RUNTIME_STORE_VERSION 2.0.0-preview2-25704
-RUN $downloadUrl = \" https://aspnetci.blob.core.windows.net/runtimestore/${env:ASPNETCORE_RUNTIME_STORE_VERSION}/win-x64/aspnetcore.runtimestore.zip\"; `
+RUN $downloadUrl = 'https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/2.0.0-preview2-201/Build.RS.winx64-preview2-25722.zip'; `
     Write-Host \"Downloading and extracting $downloadUrl\"; `
     Invoke-WebRequest $downloadUrl -OutFile cache.zip; `
     $env:DOTNET_HOME = $(Split-Path -Parent (Get-Command dotnet.exe).Source); `
