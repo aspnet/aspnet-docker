@@ -3,7 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <RuntimeIdentifiers>debian.8-x64</RuntimeIdentifiers>
-    <AssetTargetFallback>$(AssetTargetFallback);portable-net451+win8</AssetTargetFallback>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-net451+win8</PackageTargetFallback>
+    <!--<AssetTargetFallback>$(AssetTargetFallback);portable-net451+win8</AssetTargetFallback>-->
   </PropertyGroup>
 
   <ItemGroup>

@@ -60,7 +60,7 @@ COPY packagescache.csproj /tmp/warmup/
 
 # warm up package cache
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
-      --source https://dotnet.myget.org/F/aspnetcore-ci-release/api/v3/index.json \
+      --source https://dotnet.myget.org/F/aspnetcore-release/api/v3/index.json \
       --source https://api.nuget.org/v3/index.json \
     && rm -rf /tmp/warmup/
 
