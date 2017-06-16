@@ -4,7 +4,7 @@ param(
     # Set to Docker host IP if running within a container
     [string]$HostIP='localhost',
     # Set if testing nightly images
-    [switch]$Nightly
+    [switch]$Nightly=$true
 )
 
 Set-StrictMode -Version Latest
@@ -124,6 +124,7 @@ Get-ChildItem (Join-Paths $PSScriptRoot ("..", "*", $image_os, "sdk", "Dockerfil
                 WaitForSuccess "http://${ip}:${host_port}"
             }
             finally {
+                exec docker logs $app_container_name
                 exec docker rm -f $app_container_name
             }
         }

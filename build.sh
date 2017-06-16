@@ -2,11 +2,11 @@
 set -e  # Exit immediately upon failure
 set -o pipefail  # Carry failures over pipes
 
-suffix=''
+suffix='-nightly'
 while [[ $# > 0 ]]; do
     case $1 in
-        --nightly)
-            suffix='-nightly'
+        --no-nightly)
+            suffix=''
             ;;
         *)
             break
