@@ -1,7 +1,7 @@
 build_script:
-  - ps: .\build.ps1 -Nightly
+  - ps: .\build.ps1
 test_script:
-  - ps: .\test\test.ps1 -Nightly
+  - ps: .\test\test.ps1
 branches:
   only:
     - master
