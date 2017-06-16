@@ -124,6 +124,7 @@ Get-ChildItem (Join-Paths $PSScriptRoot ("..", "*", $image_os, "sdk", "Dockerfil
                 WaitForSuccess "http://${ip}:${host_port}"
             }
             finally {
+                exec docker logs $app_container_name
                 exec docker rm -f $app_container_name
             }
         }
