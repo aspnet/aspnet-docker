@@ -69,9 +69,9 @@
           ],
           "platforms": {
             "linux": {
-              "dockerfile": "2.0/jessie/runtime",
+              "dockerfile": "2.0/stretch/runtime",
               "tags": [
-                "2.0.0-preview2-jessie"
+                "2.0.0-preview2-stretch"
               ]
             },
             "windows": {
@@ -79,6 +79,18 @@
               "tags": [
                 "2.0.0-preview2-nanoserver",
                 "2.0.0-preview2-nanoserver-$(nanoServerVersion)"
+              ]
+            }
+          }
+        },
+        {
+          "platforms": {
+            "linux": {
+              "dockerfile": "2.0/jessie/runtime",
+              "tags": [
+                "2.0.0-preview2-jessie",
+                "2.0-jessie",
+                "2-jessie"
               ]
             }
           }
@@ -142,9 +154,9 @@
           ],
           "platforms": {
             "linux": {
-              "dockerfile": "2.0/jessie/sdk",
+              "dockerfile": "2.0/stretch/sdk",
               "tags": [
-                "2.0.0-preview2-jessie"
+                "2.0.0-preview2-stretch"
               ]
             },
             "windows": {
@@ -152,6 +164,18 @@
               "tags": [
                 "2.0.0-preview2-nanoserver",
                 "2.0.0-preview2-nanoserver-$(nanoServerVersion)"
+              ]
+            }
+          }
+        },
+        {
+          "platforms": {
+            "linux": {
+              "dockerfile": "2.0/jessie/sdk",
+              "tags": [
+                "2.0.0-preview2-jessie",
+                "2.0-jessie",
+                "2-jessie"
               ]
             }
           }
@@ -185,9 +209,9 @@
           ],
           "platforms": {
             "linux": {
-              "dockerfile": "2.0/jessie/kitchensink",
+              "dockerfile": "2.0/stretch/kitchensink",
               "tags": [
-                "1.0-2.0-preview2-2017-06-jessie"
+                "1.0-2.0-preview2-2017-06-stretch"
               ]
             },
             "windows": {
@@ -195,6 +219,17 @@
               "tags": [
                 "1.0-2.0-preview2-2017-06-nanoserver",
                 "1.0-2.0-preview2-2017-06-nanoserver-$(nanoServerVersion)"
+              ]
+            }
+          }
+        },
+        {
+          "platforms": {
+            "linux": {
+              "dockerfile": "2.0/jessie/kitchensink",
+              "tags": [
+                "1.0-2.0-preview2-2017-06-jessie",
+                "1.0-2.0-preview2-jessie"
               ]
             }
           }

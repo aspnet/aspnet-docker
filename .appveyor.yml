@@ -1,7 +1,14 @@
 build_script:
-  - ps: .\build.ps1
+  - ps: .\build.ps1 -Folder $env:folder_filter
 test_script:
-  - ps: .\test\test.ps1
+  - ps: .\test\test.ps1 -Folder $env:folder_filter
+environment:
+  matrix:
+    - folder_filter: 1.0
+    - folder_filter: 1.1
+    - folder_filter: 2.0
+matrix:
+  fast_finish: true
 branches:
   only:
     - master

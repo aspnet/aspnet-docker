@@ -4,7 +4,8 @@ param(
     # Set to Docker host IP if running within a container
     [string]$HostIP='localhost',
     # Set if testing nightly images
-    [switch]$Nightly=$true
+    [switch]$Nightly=$true,
+    $Folder='*'
 )
 
 Set-StrictMode -Version Latest
@@ -63,21 +64,26 @@ if ($platform -eq "windows") {
     $host_port = "80"
     $image_os = "nanoserver"
     $rid="win7-x64"
+    $files = Get-ChildItem (Join-Paths $PSScriptRoot ('..', $Folder, 'nanoserver', 'sdk', 'Dockerfile'))
 }
 else {
     $container_root = "/"
     $host_port = "5000"
-    $image_os = "jessie"
     $rid="debian.8-x64"
+    $files = Get-ChildItem $(Join-Paths $PSScriptRoot ('..', $Folder, 'stretch', 'sdk', 'Dockerfile')),$(Join-Paths $PSScriptRoot ('..', $Folder, 'jessie', 'sdk', 'Dockerfile')) -ErrorAction Ignore
 }
 
-Get-ChildItem (Join-Paths $PSScriptRoot ("..", "*", $image_os, "sdk", "Dockerfile")) | % {
+$files | % {
+
+    if ($platform -ne 'windows') {
+        $image_os = if ($_ -like '*/stretch/*') { 'stretch' } else { 'jessie' }
+    }
 
     $app_name = "app$(get-random)"
     $publish_path = "${container_root}publish"
     $version = $_.Directory.Parent.Parent.Name
-    $sdk_tag = "$RootImageName/aspnetcore-build${suffix}:${version}"
-    $runtime_tag = "$RootImageName/aspnetcore${suffix}:${version}"
+    $sdk_tag = "$RootImageName/aspnetcore-build${suffix}:${version}-${image_os}"
+    $runtime_tag = "$RootImageName/aspnetcore${suffix}:${version}-${image_os}"
 
     Write-Host "----- Building app with ${sdk_tag} -----"
     if ($version -eq '1.0' -or $version -eq '1.1') {
