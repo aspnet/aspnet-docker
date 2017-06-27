@@ -13,7 +13,7 @@
   },
   "repos": [
     {
-      "name": "microsoft/aspnetcore-nightly",
+      "name": "microsoft/aspnetcore",
       "readmePath": "README.aspnetcore.md",
       "images": [
         {
@@ -98,7 +98,7 @@
       ]
     },
     {
-      "name": "microsoft/aspnetcore-build-nightly",
+      "name": "microsoft/aspnetcore-build",
       "readmePath": "README.aspnetcore-build.md",
       "images": [
         {
