@@ -1,14 +1,15 @@
+#!/usr/bin/env powershell
+#requires -version 4
 param(
     # Set to 'microsoft' on build servers
     [string]$RootImageName = 'test',
-    # Set to 'jessie' if building the Linux containers
-    [string]$Os = 'nanoserver',
     # Set on build servers
     [switch]$Nightly = $true,
     # Can be used to filter the build by the top-level folders in this repo '1.0', '2.0', etc
     [string]$Folder = '*'
 )
 
+Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 # Functions
@@ -22,9 +23,10 @@ function exec($cmd) {
     }
 }
 
+$platform = docker version -f "{{ .Server.Os }}"
 $suffix = if ($Nightly) { '-nightly' } else { '' }
 $dockerfiles = `
-    if ($os -eq 'nanoserver') { gci $PSScriptRoot/$Folder/nanoserver/*/Dockerfile }
+    if ($platform -eq 'windows') { gci $PSScriptRoot/$Folder/nanoserver/*/Dockerfile }
     else { gci $PSScriptRoot/$Folder/stretch/*/Dockerfile,$PSScriptRoot/$Folder/jessie/*/Dockerfile -ErrorAction Ignore }
 
 # Main
