@@ -11,6 +11,6 @@ RUN for version in '1.0.4' '1.0.5'; do \
         curl -o /tmp/aspnetcore.cache.$version.tar.gz \
             https://dist.asp.net/packagecache/$version/debian.8-x64/aspnetcore.cache.tar.gz \
         && mkdir -p /packagescache && cd /packagescache \
-        && tar xvf /tmp/aspnetcore.cache.$version.tar.gz \
+        && tar xf /tmp/aspnetcore.cache.$version.tar.gz \
         && rm /tmp/aspnetcore.cache.$version.tar.gz; \
     done

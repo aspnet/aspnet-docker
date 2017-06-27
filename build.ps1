@@ -1,10 +1,8 @@
 #!/usr/bin/env powershell
-#requires -version 4
+#requires -version 5
 param(
     # Set to 'microsoft' on build servers
     [string]$RootImageName = 'test',
-    # Set on build servers
-    [switch]$Nightly = $true,
     # Can be used to filter the build by the top-level folders in this repo '1.0', '2.0', etc
     [string]$Folder = '*'
 )
@@ -15,7 +13,7 @@ $ErrorActionPreference = 'Stop'
 # Functions
 
 function exec($cmd) {
-    Write-Host -foregroundcolor Cyan "$(hostname) > $cmd $args"
+    Write-Host -foregroundcolor Cyan ">>> $cmd $args"
     & $cmd @args
     if ($LastExitCode -ne 0) {
         write-error 'Command exited with non-zero code'
@@ -24,22 +22,21 @@ function exec($cmd) {
 }
 
 $platform = docker version -f "{{ .Server.Os }}"
-$suffix = if ($Nightly) { '-nightly' } else { '' }
-$dockerfiles = `
-    if ($platform -eq 'windows') { gci $PSScriptRoot/$Folder/nanoserver/*/Dockerfile }
-    else { gci $PSScriptRoot/$Folder/stretch/*/Dockerfile,$PSScriptRoot/$Folder/jessie/*/Dockerfile -ErrorAction Ignore }
-
+$manifest = (Get-Content (Join-Path $PSScriptRoot manifest.json) | ConvertFrom-Json)
 # Main
-$dockerfiles | % {
-    $type = $_.Directory.Name
-    $version = $_.Directory.Parent.Parent.Name
-    $image_os = $_.Directory.Parent.Name
-    $tag = switch ($type) {
-        'sdk' { "$RootImageName/aspnetcore-build${suffix}:${version}-${image_os}" }
-        'kitchensink' { "$RootImageName/aspnetcore-build${suffix}:1.0-${version}-${image_os}" }
-        'runtime' { "$RootImageName/aspnetcore${suffix}:${version}-${image_os}" }
-        default { throw "Unrecognized image type in $_" }
+$manifest.repos | % {
+    $repo = $_
+    $repoName = $repo.name -replace 'microsoft/',"$RootImageName/"
+    Write-Host -foregroundcolor magenta "Building ${repoName}"
+
+    $repo.images | % {
+        $_.platforms |
+            ? { [bool]($_.PSObject.Properties.name -match $platform) } |
+            ? { $Folder -eq '*' -or $_.$platform.dockerfile -like "$Folder*" } |
+            % {
+                $dockerfile = Join-Path $PSScriptRoot $_.$platform.dockerfile
+                $tag = "${repoName}:$($_.$platform.tags | select -first 1)"
+                exec docker build --pull $dockerfile --tag $tag
+            }
     }
-    write-host "Building $_"
-    exec docker build --pull $(split-path -parent $_) -t $tag
 }
