@@ -47,7 +47,7 @@ The CI Image (`1.0-1.1`) contains both the 1.0 and 1.1 pre-restored packages. It
 
 ### Build an app with `docker run`
 
-You can use this container to compile your application when it runs. If you use the [Visual Studio tooling](https://blogs.msdn.microsoft.com/webmaster/2016/11/16/new-docker-tools-for-visual-studio/) to setup CI/CD to Azure Container Service then this method of using the build container is used.
+You can use this container to compile your application when it runs. If you use the [Visual Studio tooling](https://blogs.msdn.microsoft.com/webdev/2016/11/16/new-docker-tools-for-visual-studio/) to setup CI/CD to Azure Container Service then this method of using the build container is used.
 
 Run the build container, mounting your code and output directory, and publish your app:
 
