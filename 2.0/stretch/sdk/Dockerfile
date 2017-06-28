@@ -1,9 +1,14 @@
-FROM microsoft/dotnet:1.1.2-sdk
+FROM microsoft/dotnet:2.0.0-preview2-sdk-stretch
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 ENV NODE_VERSION 6.11.0
 
+RUN set -x \
+    && apt-get update && apt-get install -y gnupg dirmngr --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install keys required for node
 RUN set -ex \
   && for key in \
     9554F04D7259F04124DE6B476D5A82AC7E37093B \
@@ -37,16 +42,8 @@ RUN buildDeps='xz-utils' \
     && npm install -g bower gulp \
     && echo '{ "allow_root": true }' > /root/.bowerrc
 
-# Add Docker SDK for when building a solution that has the Docker tools project.
-RUN curl -H 'Cache-Control: no-cache' -o /tmp/Microsoft.Docker.Sdk.tar.gz https://distaspnet.blob.core.windows.net/sdk/Microsoft.Docker.Sdk.tar.gz \
-    && cd /usr/share/dotnet/sdk/${DOTNET_SDK_VERSION}/Sdks \
-    && tar xf /tmp/Microsoft.Docker.Sdk.tar.gz \
-    && rm /tmp/Microsoft.Docker.Sdk.tar.gz
-
-# copy the ASP.NET packages manifest
-COPY packagescache.csproj /tmp/warmup/packagescache.csproj
-
-# warm up package cache
+# warmup NuGet package cache
+COPY packagescache.csproj /tmp/warmup/
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
       --source https://api.nuget.org/v3/index.json \
     && rm -rf /tmp/warmup/

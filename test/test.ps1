@@ -1,8 +1,11 @@
+#!/usr/bin/env powershell
+#requires -version 5
 param(
     # Set to 'microsoft' on build servers
     [string]$RootImageName='test',
     # Set to Docker host IP if running within a container
-    [string]$HostIP='localhost'
+    [string]$HostIP='localhost',
+    $Folder='*'
 )
 
 Set-StrictMode -Version Latest
@@ -11,7 +14,7 @@ $ErrorActionPreference = 'Stop'
 # Functions
 
 function exec($cmd) {
-    Write-Host -foregroundcolor Cyan "$(hostname) > $cmd $args"
+    Write-Host -foregroundcolor Cyan ">>> $cmd $args"
     & $cmd @args
     if ($LastExitCode -ne 0) {
         fatal 'Command exited with non-zero code'
@@ -42,7 +45,7 @@ function WaitForSuccess($endpoint) {
     for ($i = 0; $i -lt 15; $i++) {
         Write-Host -f gray "Waiting for $endpoint"
         try {
-            Invoke-WebRequest -UseBasicParsing $endpoint
+            Invoke-WebRequest -UseBasicParsing $endpoint | Write-Host
             return 0
         }
         catch {
@@ -53,28 +56,13 @@ function WaitForSuccess($endpoint) {
     fatal "Timed out waiting for response on $endpoint"
 }
 
-# Main
-$platform = docker version -f "{{ .Server.Os }}"
-if ($platform -eq "windows") {
-    $container_root = "C:\"
-    $host_port = "80"
-    $image_os = "nanoserver"
-    $rid="win7-x64"
-}
-else {
-    $container_root = "/"
-    $host_port = "5000"
-    $image_os = "jessie"
-    $rid="debian.8-x64"
-}
+function test_image ($version, $sdk_tag, $runtime_tag) {
+    $framework ="netcoreapp${version}"
 
-Get-ChildItem (Join-Paths $PSScriptRoot ("..", "*", $image_os, "sdk", "Dockerfile")) | % {
+    write-host -foregroundcolor magenta "----- Testing: TFM: $framework, SDK: $sdk_tag, Runtime: $runtime_tag -----"
 
     $app_name = "app$(get-random)"
     $publish_path = "${container_root}publish"
-    $version = $_.Directory.Parent.Parent.Name
-    $sdk_tag = "$RootImageName/aspnetcore-build:${version}"
-    $runtime_tag = "$RootImageName/aspnetcore:${version}"
 
     Write-Host "----- Building app with ${sdk_tag} -----"
     if ($version -eq '1.0' -or $version -eq '1.1') {
@@ -85,16 +73,16 @@ Get-ChildItem (Join-Paths $PSScriptRoot ("..", "*", $image_os, "sdk", "Dockerfil
 
     $app_build_tag = "$app_name-build"
     try {
-        $framework ="netcoreapp${version}"
-        exec {
-            (Get-Content (Join-Path $PSScriptRoot -ChildPath "Dockerfile.test.$image_os")).
+        Write-Host "----- Building $docker_test_file as $app_build_tag from ${sdk_tag} -----"
+
+        (Get-Content (Join-Path $PSScriptRoot -ChildPath $docker_test_file)).
                 Replace("{image}", $sdk_tag) `
-            | docker build `
-                --build-arg FRAMEWORK=$framework `
-                --build-arg OPTIONAL_NEW_PARAMS=$optional_new_params `
-                -t $app_build_tag `
-                -
-        }
+        | docker build `
+            --build-arg IMAGE=$sdk_tag `
+            --build-arg FRAMEWORK=$framework `
+            --build-arg OPTIONAL_NEW_PARAMS=$optional_new_params `
+            -t $app_build_tag `
+            -
 
         Write-Host "----- Publishing framework-dependent app with ${sdk_tag} -----"
         $app_volume_name = "$app_name-framework-dependent"
@@ -121,6 +109,7 @@ Get-ChildItem (Join-Paths $PSScriptRoot ("..", "*", $image_os, "sdk", "Dockerfil
                 WaitForSuccess "http://${ip}:${host_port}"
             }
             finally {
+                exec docker logs $app_container_name
                 exec docker rm -f $app_container_name
             }
         }
@@ -170,4 +159,54 @@ Get-ChildItem (Join-Paths $PSScriptRoot ("..", "*", $image_os, "sdk", "Dockerfil
     finally {
         exec docker rmi -f $app_build_tag
     }
+}
+
+# Main
+
+$platform = docker version -f "{{ .Server.Os }}"
+
+if ($platform -eq "windows") {
+    $container_root = "C:\"
+    $host_port = "80"
+    $rid="win7-x64"
+    $docker_test_file = "Dockerfile.test.nanoserver"
+}
+else {
+    $container_root = "/"
+    $host_port = "5000"
+    $rid="debian.8-x64"
+    $docker_test_file = "Dockerfile.test.linux"
+}
+
+$manifest = Get-Content (Join-Paths $PSScriptRoot ('..', 'manifest.json')) | ConvertFrom-Json
+
+# Main
+
+push-location $PSScriptRoot
+
+try
+{
+    $manifest.repos | % {
+        $repo = $_
+        $repoName = $repo.name -replace 'microsoft/',"$RootImageName/"
+
+        $repo.images | % {
+            $_.platforms |
+                ? { [bool]($_.PSObject.Properties.name -match $platform) } |
+                ? { $Folder -eq '*' -or $_.$platform.dockerfile -like "$Folder*" } |
+                ? { $_.$platform.dockerfile -like '*/sdk' } |
+                % {
+                    $version = $_.$platform.dockerfile.Substring(0, 3)
+                    $sdk_tag = "${repoName}:$($_.$platform.tags | select -first 1)"
+                    $runtime_tag = $sdk_tag -replace '-build',''
+
+                    if (!(test_image $version $sdk_tag $runtime_tag)) {
+                        throw 'Test failed'
+                    }
+                }
+        }
+    }
+}
+finally {
+    Pop-Location
 }

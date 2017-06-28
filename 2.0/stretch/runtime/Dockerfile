@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.0.0-preview2-runtime-jessie
+FROM microsoft/dotnet:2.0.0-preview2-runtime-stretch
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80

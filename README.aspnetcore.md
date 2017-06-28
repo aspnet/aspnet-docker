@@ -15,9 +15,10 @@ These images contain the runtime only. Use [`microsoft/aspnetcore-build`](https:
 - `1.1.2`, `1.1`, `1`
     - [`1.1.2-jessie` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
     - [`1.1.2-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/runtime/Dockerfile)
-- `2.0.0-preview1`, `2.0`, `2`
-    - [`2.0.0-preview1-jessie` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/runtime/Dockerfile)
-    - [`2.0.0-preview1-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/runtime/Dockerfile)
+- `2.0.0-preview2`, `2.0`, `2`
+    - [`2.0.0-preview2-stretch` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/runtime/Dockerfile)
+    - [`2.0.0-preview2-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/runtime/Dockerfile)
+- [`2.0.0-preview2-jessie`, '2.0-jessie', '2-jessie' (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/runtime/Dockerfile)
 
 ## What is ASP.NET Core?
 

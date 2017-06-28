@@ -12,15 +12,17 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 - `1.1.2`, `1.1`, `1`, `latest`
     - [`1.1.2-jessie` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
     - [`1.1.2-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/sdk/Dockerfile)
-- `2.0.0-preview1`, `2.0`, `2`
-    - [`2.0.0-preview1-jessie` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/sdk/Dockerfile)
-    - [`2.0.0-preview1-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/sdk/Dockerfile)
+- `2.0.0-preview2`, `2.0`, `2`
+    - [`2.0.0-preview2-stretch` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/sdk/Dockerfile)
+    - [`2.0.0-preview2-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/sdk/Dockerfile)
+- [`2.0.0-preview2-jessie`, `2.0-jessie`, `2-jessie` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/sdk/Dockerfile)
 - `1.0-1.1-2017-05`, `1.0-1.1` (designed for CI builds)
     - [`1.0-1.1-2017-05-jessie` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/kitchensink/Dockerfile)
     - [`1.0-1.1-2017-05-nanoserver` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/kitchensink/Dockerfile)
-- `1.0-2.0-preview1-2017-05`, `1.0-2.0-preview1` (designed for CI builds)
-    - [`1.0-2.0-preview1-2017-05-jessie` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/kitchensink/Dockerfile)
-    - [`1.0-2.0-preview1-2017-05-nanoserver` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/kitchensink/Dockerfile)
+- `1.0-2.0-preview2-2017-06`, `1.0-2.0-preview2` (designed for CI builds)
+    - [`1.0-2.0-preview2-2017-06-stretch` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/kitchensink/Dockerfile)
+    - [`1.0-2.0-preview2-2017-06-nanoserver` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/kitchensink/Dockerfile)
+- [`1.0-2.0-preview2-2017-06-jessie`, `1.0-2-0-preview2-jessie` (designed for CI builds), (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/kitchensink/Dockerfile)
 
 ## What is ASP.NET Core?
 
