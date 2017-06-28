@@ -36,5 +36,6 @@ RUN Invoke-WebRequest -UseBasicParsing https://distaspnet.blob.core.windows.net/
 COPY packagescache.csproj C:/warmup/packagescache.csproj
 RUN dotnet restore C:/warmup/packagescache.csproj `
         --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json `
+        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
         --source https://api.nuget.org/v3/index.json; `
     Remove-Item -Recurse -Force C:/warmup

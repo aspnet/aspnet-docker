@@ -42,6 +42,7 @@ RUN buildDeps='xz-utils' \
 COPY packagescache.csproj /tmp/warmup/
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
       --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json \
+      --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json \
       --source https://api.nuget.org/v3/index.json \
     && rm -rf /tmp/warmup/
 
