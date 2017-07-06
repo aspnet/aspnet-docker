@@ -92,10 +92,17 @@ Stage 2 copies the compiled app into `/app` and configures the app to launch you
     $ docker build -t myapp .
     ```
 
-1. Start a container from your image. This will expose port 5000 so you can browse it locally from <http://locahost:5000>.
+1. Start a container from your image. This will expose port 5000 so you can browse it locally from <http://locahost:5000>. (This only works with Linux containers. If you are using Windows containers, see the next step.)
 
     ```
     $ docker run -it -p 5000:80 myapp
+    ```
+
+1. (Windows containers only): To browse locally, you have to first start the container, get its assigned IP address, and then open your browser to the IP address displayed.
+
+    ```
+    PS> docker run -d --name myapp_1 myapp
+    PS> docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' myapp_1
     ```
 
 ### Build an app with `docker run`
