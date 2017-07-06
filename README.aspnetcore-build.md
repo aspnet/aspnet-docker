@@ -47,12 +47,12 @@ The CI Image (`1.0-1.1`) contains both the 1.0 and 1.1 pre-restored packages. It
 
 ### Build an app with `docker build`
 
-With this technique your application is compiled in two stages when you run `docker build`.
-The requires Docker 17.05 or newer.
-Stage 1 compiles your application in `/source`.
-Stage 2 copies the compiled app into `/app` and configures the app to launch your website when the container starts. This does not preserve the source code from stage 1.
+With this technique your application is compiled in two stages when you run `docker build`. The requires Docker 17.05 or newer.
 
-1. Create a `.dockerignore` file in your project folder and exclude files that shouldn't be copied into the container.
+Stage 1 compiles and publishes the application by using the `microsoft/aspnetcore-build` image. Stage 2 copies the published application
+from Stage 1 into the final image leaving behind all of the source code and tooling needed to build.
+
+1. Create a `.dockerignore` file in your project folder and exclude files that shouldn't be copied into the container:
 
     ```
     # Sample contents of .dockerignore file
@@ -61,7 +61,7 @@ Stage 2 copies the compiled app into `/app` and configures the app to launch you
     node_modules/
     ```
 
-1. Create a `Dockerfile` in your project
+1. Create a `Dockerfile` in your project:
 
     ```Dockerfile
     # Sample contents of Dockerfile
@@ -84,7 +84,8 @@ Stage 2 copies the compiled app into `/app` and configures the app to launch you
     ENTRYPOINT ["dotnet", "myapp.dll"]
     ```
 
-    This approach has the advantage of caching the results of `dotnet restore` so that packages are not downloaded unless you change your project file.
+    This approach has the advantage of caching the results of `dotnet restore` so that packages are not downloaded unless you change your
+    project file.
 
 1. Build your image:
 
@@ -92,17 +93,19 @@ Stage 2 copies the compiled app into `/app` and configures the app to launch you
     $ docker build -t myapp .
     ```
 
-1. Start a container from your image. This will expose port 5000 so you can browse it locally from <http://locahost:5000>. (This only works with Linux containers. If you are using Windows containers, see the next step.)
+1. (Linux containers) Start a container from your image. This will expose port 5000 so you can browse it locally at <http://locahost:5000>.
 
     ```
     $ docker run -it -p 5000:80 myapp
     ```
 
-1. (Windows containers only): To browse locally, you have to first start the container, get its assigned IP address, and then open your browser to the IP address displayed.
+1. (Windows containers) Start a container from your image, get its assigned IP address, and then open your browser to the IP address
+    of the container on port 80. To see console output, attach to the running container or use `docker logs`.
 
     ```
-    PS> docker run -d --name myapp_1 myapp
-    PS> docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' myapp_1
+    PS> docker run --detach --name myapp_container myapp
+    PS> docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' myapp_container
+    PS> docker attach myapp_container
     ```
 
 ### Build an app with `docker run`
