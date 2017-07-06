@@ -45,6 +45,59 @@ The CI Image (`1.0-1.1`) contains both the 1.0 and 1.1 pre-restored packages. It
 
 ## Example Usage
 
+### Build an app with `docker build`
+
+With this technique your application is compiled in two stages when you run `docker build`.
+The requires Docker 17.05 or newer.
+Stage 1 compiles your application in `/source`.
+Stage 2 copies the compiled app into `/app` and configures the app to launch your website when the container starts. This does not preserve the source code from stage 1.
+
+1. Create a `.dockerignore` file in your project folder and exclude files that shouldn't be copied into the container.
+
+    ```
+    # Sample contents of .dockerignore file
+    bin/
+    obj/
+    node_modules/
+    ```
+
+1. Create a `Dockerfile` in your project
+
+    ```Dockerfile
+    # Sample contents of Dockerfile
+    # Stage 1
+    FROM microsoft/aspnetcore-build AS builder
+    WORKDIR /source
+
+    # caches restore result by copying csproj file separately
+    COPY *.csproj .
+    RUN dotnet restore
+
+    # copies the rest of your code
+    COPY . .
+    RUN dotnet publish --output /app/ --configuration Release
+
+    # Stage 2
+    FROM microsoft/aspnetcore
+    WORKDIR /app
+    COPY --from=builder /app .
+    ENTRYPOINT ["dotnet", "myapp.dll"]
+    ```
+
+    This approach has the advantage of caching the results of `dotnet restore` so that packages are not downloaded unless you change your project file.
+
+1. Build your image:
+
+    ```
+    $ docker build -t myapp .
+    ```
+
+1. Start a container from your image. This will expose port 5000 so you can browse it locally from <http://locahost:5000>.
+
+    ```
+    $ docker run -it -p 5000:80 myapp
+    ```
+
 ### Build an app with `docker run`
 
 You can use this container to compile your application when it runs. If you use the [Visual Studio tooling](https://blogs.msdn.microsoft.com/webdev/2016/11/16/new-docker-tools-for-visual-studio/) to setup CI/CD to Azure Container Service then this method of using the build container is used.
@@ -57,38 +110,3 @@ docker run -it -v $(PWD):/app --workdir /app microsoft/aspnetcore-build bash -c 
 
 After this has run the application in the current directory will be published to the `bin/Release/PublishOutput` directory.
 
-### Build an app with `docker build`
-
-With this technique your application is compiled when you run `docker build` and you then copy the binaries out of the built image.
-
-1. Create a Dockerfile to build your application (`Dockerfile.build` is a common name used).
-
-    ```Dockerfile
-    FROM microsoft/aspnetcore-build
-    WORKDIR /app
-
-    COPY *.csproj .
-    RUN dotnet restore
-
-    COPY . .
-    RUN dotnet publish --output /out/ --configuration Release
-    ```
-
-2. Build your image:
-
-    ```
-    $ docker build -t build-image -f Dockerfile.build
-    ```
-
-3. Create a container from your image and copy your built application out.
-
-    ```
-    $ docker create --name build-cont build-image
-    $ docker cp build-cont:/out ./bin/Release/PublishOutput
-    ```
-
-After this the application in the current directory will be published to the `bin/Release/PublishOutput` directory.
-
-From here you could construct an optimized runtime image with the `microsoft/aspnetcore` image or just deploy/run the binaries as normal without using Docker at runtime.
-
-This approach has the advantage of caching the results of `dotnet restore` so that packages are not downloaded unless you change your project file.
