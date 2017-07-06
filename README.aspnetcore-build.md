@@ -45,6 +45,69 @@ The CI Image (`1.0-1.1`) contains both the 1.0 and 1.1 pre-restored packages. It
 
 ## Example Usage
 
+### Build an app with `docker build`
+
+With this technique your application is compiled in two stages when you run `docker build`. The requires Docker 17.05 or newer.
+
+Stage 1 compiles and publishes the application by using the `microsoft/aspnetcore-build-nightly` image. Stage 2 copies the published application
+from Stage 1 into the final image leaving behind all of the source code and tooling needed to build.
+
+1. Create a `.dockerignore` file in your project folder and exclude files that shouldn't be copied into the container:
+
+    ```
+    # Sample contents of .dockerignore file
+    bin/
+    obj/
+    node_modules/
+    ```
+
+1. Create a `Dockerfile` in your project:
+
+    ```Dockerfile
+    # Sample contents of Dockerfile
+    # Stage 1
+    FROM microsoft/aspnetcore-build-nightly AS builder
+    WORKDIR /source
+
+    # caches restore result by copying csproj file separately
+    COPY *.csproj .
+    RUN dotnet restore
+
+    # copies the rest of your code
+    COPY . .
+    RUN dotnet publish --output /app/ --configuration Release
+
+    # Stage 2
+    FROM microsoft/aspnetcore-nightly
+    WORKDIR /app
+    COPY --from=builder /app .
+    ENTRYPOINT ["dotnet", "myapp.dll"]
+    ```
+
+    This approach has the advantage of caching the results of `dotnet restore` so that packages are not downloaded unless you change your
+    project file.
+
+1. Build your image:
+
+    ```
+    $ docker build -t myapp .
+    ```
+
+1. (Linux containers) Start a container from your image. This will expose port 5000 so you can browse it locally at <http://locahost:5000>.
+
+    ```
+    $ docker run -it -p 5000:80 myapp
+    ```
+
+1. (Windows containers) Start a container from your image, get its assigned IP address, and then open your browser to the IP address
+    of the container on port 80. To see console output, attach to the running container or use `docker logs`.
+
+    ```
+    PS> docker run --detach --name myapp_container myapp
+    PS> docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' myapp_container
+    PS> docker attach myapp_container
+    ```
+
 ### Build an app with `docker run`
 
 You can use this container to compile your application when it runs. If you use the [Visual Studio tooling](https://blogs.msdn.microsoft.com/webdev/2016/11/16/new-docker-tools-for-visual-studio/) to setup CI/CD to Azure Container Service then this method of using the build container is used.
@@ -57,38 +120,3 @@ docker run -it -v $(PWD):/app --workdir /app microsoft/aspnetcore-build-nightly 
 
 After this has run the application in the current directory will be published to the `bin/Release/PublishOutput` directory.
 
-### Build an app with `docker build`
-
-With this technique your application is compiled when you run `docker build` and you then copy the binaries out of the built image.
-
-1. Create a Dockerfile to build your application (`Dockerfile.build` is a common name used).
-
-    ```Dockerfile
-    FROM microsoft/aspnetcore-build-nightly
-    WORKDIR /app
-
-    COPY *.csproj .
-    RUN dotnet restore
-
-    COPY . .
-    RUN dotnet publish --output /out/ --configuration Release
-    ```
-
-2. Build your image:
-
-    ```
-    $ docker build -t build-image -f Dockerfile.build
-    ```
-
-3. Create a container from your image and copy your built application out.
-
-    ```
-    $ docker create --name build-cont build-image
-    $ docker cp build-cont:/out ./bin/Release/PublishOutput
-    ```
-
-After this the application in the current directory will be published to the `bin/Release/PublishOutput` directory.
-
-From here you could construct an optimized runtime image with the `microsoft/aspnetcore-nightly` image or just deploy/run the binaries as normal without using Docker at runtime.
-
-This approach has the advantage of caching the results of `dotnet restore` so that packages are not downloaded unless you change your project file.
