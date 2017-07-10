@@ -46,7 +46,7 @@ function Join-Paths($path, $childPaths) {
 
 function WaitForSuccess($endpoint) {
     # wait 1 minutes max
-    for ($i = 0; $i -lt 1; $i++) {
+    for ($i = 0; $i -lt 15; $i++) {
         Write-Host -f gray "Waiting for $endpoint"
         try {
             Invoke-WebRequest -UseBasicParsing $endpoint | Write-Host
