@@ -15,8 +15,12 @@ $ErrorActionPreference = 'Stop'
 
 function exec($cmd) {
     Write-Host -foregroundcolor Cyan ">>> $cmd $args"
+    $originalErrorPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
     & $cmd @args
-    if ($LastExitCode -ne 0) {
+    $exitCode = $LastExitCode
+    $ErrorActionPreference = $originalErrorPreference
+    if ($exitCode -ne 0) {
         fatal 'Command exited with non-zero code'
     }
 }
@@ -42,7 +46,7 @@ function Join-Paths($path, $childPaths) {
 
 function WaitForSuccess($endpoint) {
     # wait 1 minutes max
-    for ($i = 0; $i -lt 15; $i++) {
+    for ($i = 0; $i -lt 1; $i++) {
         Write-Host -f gray "Waiting for $endpoint"
         try {
             Invoke-WebRequest -UseBasicParsing $endpoint | Write-Host
@@ -103,7 +107,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 WaitForSuccess "http://${ip}:${host_port}"
             }
             finally {
-                exec docker logs $app_container_name
+                exec docker logs $app_container_name | Write-Host
                 exec docker rm -f $app_container_name
             }
         }
@@ -143,7 +147,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 WaitForSuccess "http://${ip}:${host_port}"
             }
             finally {
-                exec docker logs $app_container_name
+                exec docker logs $app_container_name | Write-Host
                 exec docker rm -f $app_container_name
             }
         }

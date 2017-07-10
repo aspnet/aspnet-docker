@@ -5,7 +5,7 @@ ENV ASPNETCORE_URLS http://+:80
 
 # set up the runtime store
 RUN curl -o /tmp/runtimestore.tar.gz \
-    https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/dev-270/Build.RS.linux.tar.gz \
+    https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/dev-270/Build.RS.linux-rtm-26151.tar.gz \
     && export DOTNET_HOME=$(dirname $(readlink $(which dotnet))) \
     && tar -x -C $DOTNET_HOME -f /tmp/runtimestore.tar.gz \
     && rm /tmp/runtimestore.tar.gz
