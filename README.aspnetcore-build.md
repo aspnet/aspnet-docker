@@ -47,7 +47,7 @@ The CI Image (`1.0-1.1`) contains both the 1.0 and 1.1 pre-restored packages. It
 
 ### Build an app with `docker build`
 
-With this technique your application is compiled in two stages when you run `docker build`. The requires Docker 17.05 or newer.
+With this technique your application is compiled in two stages when you run `docker build`. Docker 17.05 or newer is required.
 
 Stage 1 compiles and publishes the application by using the `microsoft/aspnetcore-build` image. Stage 2 copies the published application
 from Stage 1 into the final image leaving behind all of the source code and tooling needed to build.
@@ -118,5 +118,5 @@ Run the build container, mounting your code and output directory, and publish yo
 docker run -it -v $(PWD):/app --workdir /app microsoft/aspnetcore-build bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
 ```
 
-After this has run the application in the current directory will be published to the `bin/Release/PublishOutput` directory.
+After this is completed, the application in the current directory will be published to the `bin/Release/PublishOutput` directory.
 
