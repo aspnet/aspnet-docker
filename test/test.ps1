@@ -14,13 +14,14 @@ $ErrorActionPreference = 'Stop'
 # Functions
 
 function exec($cmd) {
-    Write-Host -foregroundcolor Cyan ">>> $cmd $args"
+    Write-Host -ForegroundColor Cyan ">>> $cmd $args"
     $originalErrorPreference = $ErrorActionPreference
     $ErrorActionPreference = 'Continue'
     & $cmd @args
     $exitCode = $LastExitCode
     $ErrorActionPreference = $originalErrorPreference
     if ($exitCode -ne 0) {
+        Write-Host -ForegroundColor Red "<<< [$exitCode] $cmd $args"
         fatal 'Command exited with non-zero code'
     }
 }
@@ -77,7 +78,6 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
         (Get-Content (Join-Path $PSScriptRoot -ChildPath $docker_test_file)).
                 Replace("{image}", $sdk_tag) `
         | docker build `
-            --build-arg IMAGE=$sdk_tag `
             --build-arg FRAMEWORK=$framework `
             -t $app_build_tag `
             -
@@ -107,7 +107,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 WaitForSuccess "http://${ip}:${host_port}"
             }
             finally {
-                exec docker logs $app_container_name | Write-Host
+                exec docker logs $app_container_name
                 exec docker rm -f $app_container_name
             }
         }
@@ -147,7 +147,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 WaitForSuccess "http://${ip}:${host_port}"
             }
             finally {
-                exec docker logs $app_container_name | Write-Host
+                exec docker logs $app_container_name
                 exec docker rm -f $app_container_name
             }
         }
@@ -199,9 +199,7 @@ try
                     $sdk_tag = "${repoName}:$($_.$platform.tags | select -first 1)"
                     $runtime_tag = $sdk_tag -replace '-build',''
 
-                    if (!(test_image $version $sdk_tag $runtime_tag)) {
-                        throw 'Test failed'
-                    }
+                    test_image $version $sdk_tag $runtime_tag
                 }
         }
     }
