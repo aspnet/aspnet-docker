@@ -5,10 +5,10 @@
   "testCommands": {
     "linux": [
       "docker build --rm -t testrunner -f ./test/Dockerfile.testrunner.linux .",
-      "/bin/bash -c \"docker run --add-host dockerhost:$DOCKER_HOST_IP -v /var/run/docker.sock:/var/run/docker.sock testrunner powershell -File ./test/test.ps1 microsoft dockerhost\""
+      "/bin/bash -c \"docker run --add-host dockerhost:$DOCKER_HOST_IP -v /var/run/docker.sock:/var/run/docker.sock testrunner powershell -File ./test/test.ps1 -RootImageName microsoft -HostIP dockerhost -Folder $(Folder)\""
     ],
     "windows": [
-      "powershell -NoProfile -Command .\\test\\test.ps1 microsoft"
+      "powershell -NoProfile -Command .\\test\\test.ps1 -RootImageName microsoft -Folder $(Folder)"
     ]
   },
   "repos": [
