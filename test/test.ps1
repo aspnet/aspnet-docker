@@ -2,10 +2,10 @@
 #requires -version 5
 param(
     # Set to 'microsoft' on build servers
-    [string]$RootImageName='test',
+    [string]$RootImageName = 'test',
     # Set to Docker host IP if running within a container
-    [string]$HostIP='localhost',
-    $Folder='*'
+    [string]$HostIP = 'localhost',
+    [string]$Folder = '*'
 )
 
 Set-StrictMode -Version Latest
@@ -203,8 +203,9 @@ try
                     $version = $_.$platform.dockerfile.Substring(0, 3)
                     $sdk_tag = "${repoName}:$($_.$platform.tags | select -first 1)"
                     $runtime_tag = $sdk_tag -replace '-build',''
-
-                    test_image $version $sdk_tag $runtime_tag
+Write-Host $_.$platform.dockerfile
+Write-Host $_.$platform.dockerfile -like "$Folder*"
+                    #test_image $version $sdk_tag $runtime_tag
                 }
         }
     }
