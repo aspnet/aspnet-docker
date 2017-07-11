@@ -14,7 +14,22 @@
       },
       "Definitions": [
         {
-          "Name": "aspnet-docker-linux-images"
+          "Name": "aspnet-docker-linux-images",
+          "Parameters": {
+            "PB.image-builder.path": "1.0"
+          }
+        },
+        {
+          "Name": "aspnet-docker-linux-images",
+          "Parameters": {
+            "PB.image-builder.path": "1.1"
+          }
+        },
+        {
+          "Name": "aspnet-docker-linux-images",
+          "Parameters": {
+            "PB.image-builder.path": "2.0"
+          }
         }
       ]
     },
@@ -25,7 +40,22 @@
       },
       "Definitions": [
         {
-          "Name": "aspnet-docker-windows-images"
+          "Name": "aspnet-docker-windows-images",
+          "Parameters": {
+            "PB.image-builder.path": "1.0"
+          }
+        },
+        {
+          "Name": "aspnet-docker-windows-images",
+          "Parameters": {
+            "PB.image-builder.path": "1.1"
+          }
+        },
+        {
+          "Name": "aspnet-docker-windows-images",
+          "Parameters": {
+            "PB.image-builder.path": "2.0"
+          }
         }
       ]
     },

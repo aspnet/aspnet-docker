@@ -2,10 +2,10 @@
 #requires -version 5
 param(
     # Set to 'microsoft' on build servers
-    [string]$RootImageName='test',
+    [string]$RootImageName = 'test',
     # Set to Docker host IP if running within a container
-    [string]$HostIP='localhost',
-    $Folder='*'
+    [string]$HostIP = 'localhost',
+    [string]$Folder = '*'
 )
 
 Set-StrictMode -Version Latest
