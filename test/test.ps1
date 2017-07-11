@@ -203,9 +203,8 @@ try
                     $version = $_.$platform.dockerfile.Substring(0, 3)
                     $sdk_tag = "${repoName}:$($_.$platform.tags | select -first 1)"
                     $runtime_tag = $sdk_tag -replace '-build',''
-Write-Host $_.$platform.dockerfile
-Write-Host $_.$platform.dockerfile -like "$Folder*"
-                    #test_image $version $sdk_tag $runtime_tag
+
+                    test_image $version $sdk_tag $runtime_tag
                 }
         }
     }
