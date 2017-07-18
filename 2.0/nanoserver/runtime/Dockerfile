@@ -3,11 +3,12 @@ FROM microsoft/dotnet-nightly:2.0.0-preview3-runtime-nanoserver-10.0.14393.1480
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
+ENV ASPNETCORE_BUILD_VERSION 2.0.0-rtm-26343
+ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/2.0.0-26343/Build.RS.winx64-rtm-26343.zip
 
 # set up the runtime store
-RUN $downloadUrl = 'https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/2.0.0-26239/Build.RS.winx64-rtm-26239.zip'; `
-    Write-Host \"Downloading and extracting $downloadUrl\"; `
-    Invoke-WebRequest $downloadUrl -OutFile cache.zip; `
+RUN Write-Host \"Downloading and extracting ${env:ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL}\"; `
+    Invoke-WebRequest $env:ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL -OutFile cache.zip; `
     $env:DOTNET_HOME = $(Split-Path -Parent (Get-Command dotnet.exe).Source); `
     Expand-Archive cache.zip -DestinationPath $env:DOTNET_HOME; `
     Remove-Item -Force cache.zip
