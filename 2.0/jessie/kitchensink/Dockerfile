@@ -3,7 +3,7 @@ FROM microsoft/dotnet-nightly:2.0.0-preview3-sdk-jessie
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 ENV NODE_VERSION 6.11.0
-ENV ASPNETCORE_BUILD_VERSION 2.0.0-rtm-26343
+ENV ASPNETCORE_BUILD_VERSION 2.0.0-rtm-26380
 
 RUN set -ex \
   && for key in \
