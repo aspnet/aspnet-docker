@@ -2,7 +2,7 @@ FROM microsoft/dotnet-nightly:1.0.5-sdk
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.0
+ENV NODE_VERSION 6.11.1
 
 # Install keys required for node
 RUN set -ex \

@@ -3,7 +3,7 @@ FROM microsoft/dotnet-nightly:2.0.0-preview3-sdk-nanoserver-10.0.14393.1480
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.0
+ENV NODE_VERSION 6.11.1
 ENV ASPNETCORE_BUILD_VERSION 2.0.0-rtm-26380
 
 # Install node, bower, and git
