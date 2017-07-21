@@ -2,7 +2,7 @@ FROM microsoft/dotnet:2.0.0-preview2-sdk-jessie
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.0
+ENV NODE_VERSION 6.11.1
 
 # Install keys required for node
 RUN set -ex \
