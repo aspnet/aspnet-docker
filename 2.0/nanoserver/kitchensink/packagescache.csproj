@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp2.0'">
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="$(ASPNETCORE_BUILD_VERSION)" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="$(ASPNETCORE_PKG_VERSION)" />
   </ItemGroup>
 
    <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp1.0'">

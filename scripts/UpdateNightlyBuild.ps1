@@ -2,15 +2,31 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    $BuildNumber
+    $BuildNumber,
+    [switch]$NoTimestamp
 )
+
+$prefix = 'rtm'
+$packageNumber = if ($NoTimestamp) {
+    "2.0.0"
+} else {
+    "2.0.0-$prefix-$BuildNumber"
+}
+
+$rsVersion = if ($NoTimestamp) {
+    ''
+} else {
+    "-$prefix-$BuildNumber"
+}
+
 
 Get-ChildItem -Recurse "$PSScriptRoot/../2.0/*/Dockerfile" | % {
     Write-Host "Updating $_"
     Set-Content $_ (Get-Content $_ `
     | % {
-        if ($_ -like 'ENV ASPNETCORE_BUILD_VERSION*') {
-            "ENV ASPNETCORE_BUILD_VERSION 2.0.0-rtm-$BuildNumber"
+        if ($_ -like 'ENV ASPNETCORE_PKG_VERSION*') {
+
+            "ENV ASPNETCORE_PKG_VERSION $packageNumber"
         } elseif ($_ -like 'ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL*') {
             if ($_ -like '*.tar.gz'){
                 $rid = 'linux'
@@ -19,7 +35,7 @@ Get-ChildItem -Recurse "$PSScriptRoot/../2.0/*/Dockerfile" | % {
                 $rid = 'winx64'
                 $ext = 'zip'
             }
-            "ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/2.0.0-${BuildNumber}/Build.RS.$rid-rtm-${BuildNumber}.$ext"
+            "ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/2.0.0-${BuildNumber}/Build.RS.${rid}${rsVersion}.$ext"
         } else {
             $_
         }

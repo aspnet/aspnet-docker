@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="$(ASPNETCORE_BUILD_VERSION)" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="$(ASPNETCORE_PKG_VERSION)" />
   </ItemGroup>
 
 </Project>
