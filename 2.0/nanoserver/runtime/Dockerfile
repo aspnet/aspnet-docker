@@ -1,10 +1,10 @@
 # escape=`
-FROM microsoft/dotnet-nightly:2.0.0-runtime-nanoserver-10.0.14393.1480
+FROM microsoft/dotnet:2.0.0-runtime-nanoserver-10.0.14393.1480
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
 ENV ASPNETCORE_PKG_VERSION 2.0.0
-ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/2.0.0-26452/Build.RS.winx64.zip
+ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dist.asp.net/runtimestore/2.0.0/win-x64/aspnetcore.runtimestore.zip
 
 # set up the runtime store
 RUN Write-Host \"Downloading and extracting ${env:ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL}\"; `

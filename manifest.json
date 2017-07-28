@@ -13,7 +13,7 @@
   },
   "repos": [
     {
-      "name": "microsoft/aspnetcore-nightly",
+      "name": "microsoft/aspnetcore",
       "readmePath": "README.aspnetcore.md",
       "images": [
         {
@@ -42,7 +42,8 @@
           "sharedTags": [
             "1.1.2",
             "1.1",
-            "1"
+            "1",
+            "latest"
           ],
           "platforms": {
             "linux": {
@@ -64,8 +65,7 @@
           "sharedTags": [
             "2.0.0",
             "2.0",
-            "2",
-            "latest"
+            "2"
           ],
           "platforms": {
             "linux": {
@@ -98,7 +98,7 @@
       ]
     },
     {
-      "name": "microsoft/aspnetcore-build-nightly",
+      "name": "microsoft/aspnetcore-build",
       "readmePath": "README.aspnetcore-build.md",
       "images": [
         {
@@ -127,7 +127,8 @@
           "sharedTags": [
             "1.1.2",
             "1.1",
-            "1"
+            "1",
+            "latest"
           ],
           "platforms": {
             "linux": {
@@ -149,8 +150,7 @@
           "sharedTags": [
             "2.0.0",
             "2.0",
-            "2",
-            "latest"
+            "2"
           ],
           "platforms": {
             "linux": {

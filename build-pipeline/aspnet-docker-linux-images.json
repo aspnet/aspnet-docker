@@ -198,7 +198,7 @@
     "type": "GitHub",
     "name": "aspnet/aspnet-docker",
     "url": "https://github.com/aspnet/aspnet-docker.git",
-    "defaultBranch": "dev",
+    "defaultBranch": "master",
     "clean": "false",
     "checkoutSubmodules": false
   },

@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:2.0.0-sdk-jessie
+FROM microsoft/dotnet:2.0.0-sdk-jessie
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -61,8 +61,6 @@ COPY packagescache.csproj /tmp/warmup/
 
 # warm up package cache
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
-      --source https://dotnet.myget.org/F/aspnetcore-release/api/v3/index.json \
-      --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json \
       --source https://api.nuget.org/v3/index.json \
     && rm -rf /tmp/warmup/
 
