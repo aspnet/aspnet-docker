@@ -15,10 +15,14 @@ These images contain the runtime only. Use [`microsoft/aspnetcore-build-nightly`
 - `1.1.2`, `1.1`, `1`
     - [`1.1.2-jessie` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/runtime/Dockerfile)
     - [`1.1.2-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver/runtime/Dockerfile)
-- `2.0.0`, `2.0`, `2`, `latest`
+- `2.0.0`, `2.0`
     - [`2.0.0-stretch` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/stretch/runtime/Dockerfile)
     - [`2.0.0-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver/runtime/Dockerfile)
 - [`2.0.0-jessie`, '2.0-jessie', '2-jessie' (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/jessie/runtime/Dockerfile)
+- `2.1.0-preview1`, `2.1`, `2`, `latest`
+    - [`2.0.0-stretch` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/stretch/runtime/Dockerfile)
+    - [`2.0.0-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/nanoserver/runtime/Dockerfile)
+- [`2.1.0-preview1-jessie`, '2.1-jessie', '2-jessie' (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/jessie/runtime/Dockerfile)
 
 ## What is ASP.NET Core?
 
