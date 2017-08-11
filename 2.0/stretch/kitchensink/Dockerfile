@@ -1,8 +1,9 @@
-FROM microsoft/dotnet:2.0.0-preview2-sdk-stretch
+FROM microsoft/dotnet:2.0.0-sdk-stretch
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 ENV NODE_VERSION 6.11.1
+ENV ASPNETCORE_PKG_VERSION 2.0.0
 
 RUN set -x \
     && apt-get update && apt-get install -y gnupg dirmngr --no-install-recommends \

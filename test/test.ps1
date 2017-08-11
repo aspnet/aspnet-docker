@@ -70,11 +70,6 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
     $publish_path = "${container_root}publish"
 
     Write-Host "----- Building app with ${sdk_tag} -----"
-    if ($version -eq '1.0' -or $version -eq '1.1') {
-        $optional_new_params = ""
-    } else {
-        $optional_new_params = "--no-restore"
-    }
 
     $app_build_tag = "$app_name-build"
     try {
@@ -84,7 +79,6 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 Replace("{image}", $sdk_tag) `
         | docker build `
             --build-arg FRAMEWORK=$framework `
-            --build-arg OPTIONAL_NEW_PARAMS=$optional_new_params `
             -t $app_build_tag `
             -
 
@@ -153,6 +147,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 WaitForSuccess "http://${ip}:${host_port}"
             }
             finally {
+                exec docker logs $app_container_name
                 exec docker rm -f $app_container_name
             }
         }
