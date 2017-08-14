@@ -9,10 +9,10 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 - `1.0.5`, `1.0`, `lts`
     - [`1.0.5-jessie` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/sdk/Dockerfile)
     - [`1.0.5-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver/sdk/Dockerfile)
-- `1.1.2`, `1.1`, `1`, `latest`
+- `1.1.2`, `1.1`, `1`
     - [`1.1.2-jessie` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
     - [`1.1.2-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/sdk/Dockerfile)
-- `2.0.0`, `2.0`, `2`
+- `2.0.0`, `2.0`, `2`, `latest`
     - [`2.0.0-stretch` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/sdk/Dockerfile)
     - [`2.0.0-nanoserver` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/sdk/Dockerfile)
 - [`2.0.0-jessie`, `2.0-jessie`, `2-jessie` (*Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/sdk/Dockerfile)

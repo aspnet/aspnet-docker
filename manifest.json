@@ -42,8 +42,7 @@
           "sharedTags": [
             "1.1.2",
             "1.1",
-            "1",
-            "latest"
+            "1"
           ],
           "platforms": {
             "linux": {
@@ -65,7 +64,8 @@
           "sharedTags": [
             "2.0.0",
             "2.0",
-            "2"
+            "2",
+            "latest"
           ],
           "platforms": {
             "linux": {
@@ -127,8 +127,7 @@
           "sharedTags": [
             "1.1.2",
             "1.1",
-            "1",
-            "latest"
+            "1"
           ],
           "platforms": {
             "linux": {
@@ -150,7 +149,8 @@
           "sharedTags": [
             "2.0.0",
             "2.0",
-            "2"
+            "2",
+            "latest"
           ],
           "platforms": {
             "linux": {
