@@ -62,7 +62,11 @@ function WaitForSuccess($endpoint) {
 }
 
 function test_image ($version, $sdk_tag, $runtime_tag) {
-    $framework ="netcoreapp${version}"
+    $framework = switch ($version) {
+        # Temporary until netcoreapp2.1 is supported
+        '2.1' { 'netcoreapp2.0'  }
+        Default { "netcoreapp${version}" }
+    }
 
     write-host -foregroundcolor magenta "----- Testing: TFM: $framework, SDK: $sdk_tag, Runtime: $runtime_tag -----"
 
