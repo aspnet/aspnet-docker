@@ -63,7 +63,9 @@
         {
           "sharedTags": [
             "2.0.0",
-            "2.0"
+            "2.0",
+            "2",
+            "latest"
           ],
           "platforms": {
             "linux": {
@@ -87,7 +89,8 @@
               "dockerfile": "2.0/jessie/runtime",
               "tags": [
                 "2.0.0-jessie",
-                "2.0-jessie"
+                "2.0-jessie",
+                "2-jessie"
               ]
             }
           }
@@ -95,9 +98,7 @@
         {
           "sharedTags": [
             "2.1.0-preview1",
-            "2.1",
-            "2",
-            "latest"
+            "2.1"
           ],
           "platforms": {
             "linux": {
@@ -121,8 +122,7 @@
               "dockerfile": "2.1/jessie/runtime",
               "tags": [
                 "2.1.0-preview1-jessie",
-                "2.1-jessie",
-                "2-jessie"
+                "2.1-jessie"
               ]
             }
           }
@@ -180,7 +180,9 @@
         {
           "sharedTags": [
             "2.0.0",
-            "2.0"
+            "2.0",
+            "2",
+            "latest"
           ],
           "platforms": {
             "linux": {
@@ -204,7 +206,8 @@
               "dockerfile": "2.0/jessie/sdk",
               "tags": [
                 "2.0.0-jessie",
-                "2.0-jessie"
+                "2.0-jessie",
+                "2-jessie"
               ]
             }
           }
@@ -212,9 +215,7 @@
         {
           "sharedTags": [
             "2.1.0-preview1",
-            "2.1",
-            "2",
-            "latest"
+            "2.1"
           ],
           "platforms": {
             "linux": {
@@ -238,8 +239,7 @@
               "dockerfile": "2.1/jessie/sdk",
               "tags": [
                 "2.1.0-preview1-jessie",
-                "2.1-jessie",
-                "2-jessie"
+                "2.1-jessie"
               ]
             }
           }
