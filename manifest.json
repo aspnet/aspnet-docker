@@ -17,83 +17,90 @@
       "readmePath": "README.aspnetcore.md",
       "images": [
         {
-          "sharedTags": [
-            "1.0.5",
-            "1.0",
-            "lts"
-          ],
-          "platforms": {
-            "linux": {
+          "sharedTags": {
+            "1.0.5": {},
+            "1.0": {},
+            "lts": {}
+          },
+          "platforms": [
+            {
               "dockerfile": "1.0/jessie/runtime",
-              "tags": [
-                "1.0.5-jessie"
-              ]
+              "os": "linux",
+              "tags": {
+                "1.0.5-jessie": {}
+              }
             },
-            "windows": {
+            {
               "dockerfile": "1.0/nanoserver/runtime",
-              "tags": [
-                "1.0.5-nanoserver",
-                "1.0.5-nanoserver-$(nanoServerVersion)"
-              ]
+              "os": "windows",
+              "tags": {
+                "1.0.5-nanoserver": {},
+                "1.0.5-nanoserver-$(nanoServerVersion)": {}
+              }
             }
-          }
+          ]
         },
         {
-          "sharedTags": [
-            "1.1.2",
-            "1.1",
-            "1"
-          ],
-          "platforms": {
-            "linux": {
+          "sharedTags": {
+            "1.1.2": {},
+            "1.1": {},
+            "1": {}
+          },
+          "platforms": [
+            {
               "dockerfile": "1.1/jessie/runtime",
-              "tags": [
-                "1.1.2-jessie"
-              ]
+              "os": "linux",
+              "tags": {
+                "1.1.2-jessie": {}
+              }
             },
-            "windows": {
+            {
               "dockerfile": "1.1/nanoserver/runtime",
-              "tags": [
-                "1.1.2-nanoserver",
-                "1.1.2-nanoserver-$(nanoServerVersion)"
-              ]
+              "os": "windows",
+              "tags": {
+                "1.1.2-nanoserver": {},
+                "1.1.2-nanoserver-$(nanoServerVersion)": {}
+              }
             }
-          }
+          ]
         },
         {
-          "sharedTags": [
-            "2.0.0",
-            "2.0",
-            "2",
-            "latest"
-          ],
-          "platforms": {
-            "linux": {
+          "sharedTags": {
+            "2.0.0": {},
+            "2.0": {},
+            "2": {},
+            "latest": {}
+          },
+          "platforms": [
+            {
               "dockerfile": "2.0/stretch/runtime",
-              "tags": [
-                "2.0.0-stretch"
-              ]
+              "os": "linux",
+              "tags": {
+                "2.0.0-stretch": {}
+              }
             },
-            "windows": {
+            {
               "dockerfile": "2.0/nanoserver/runtime",
-              "tags": [
-                "2.0.0-nanoserver",
-                "2.0.0-nanoserver-$(nanoServerVersion)"
-              ]
+              "os": "windows",
+              "tags": {
+                "2.0.0-nanoserver": {},
+                "2.0.0-nanoserver-$(nanoServerVersion)": {}
+              }
             }
-          }
+          ]
         },
         {
-          "platforms": {
-            "linux": {
+          "platforms": [
+            {
               "dockerfile": "2.0/jessie/runtime",
-              "tags": [
-                "2.0.0-jessie",
-                "2.0-jessie",
-                "2-jessie"
-              ]
+              "os": "linux",
+              "tags": {
+                "2.0.0-jessie": {},
+                "2.0-jessie": {},
+                "2-jessie": {}
+              }
             }
-          }
+          ]
         }
       ]
     },
@@ -102,136 +109,148 @@
       "readmePath": "README.aspnetcore-build.md",
       "images": [
         {
-          "sharedTags": [
-            "1.0.5",
-            "1.0",
-            "lts"
-          ],
-          "platforms": {
-            "linux": {
+          "sharedTags": {
+            "1.0.5": {},
+            "1.0": {},
+            "lts": {}
+          },
+          "platforms": [
+            {
               "dockerfile": "1.0/jessie/sdk",
-              "tags": [
-                "1.0.5-jessie"
-              ]
+              "os": "linux",
+              "tags": {
+                "1.0.5-jessie": {}
+              }
             },
-            "windows": {
+            {
               "dockerfile": "1.0/nanoserver/sdk",
-              "tags": [
-                "1.0.5-nanoserver",
-                "1.0.5-nanoserver-$(nanoServerVersion)"
-              ]
+              "os": "windows",
+              "tags": {
+                "1.0.5-nanoserver": {},
+                "1.0.5-nanoserver-$(nanoServerVersion)": {}
+              }
             }
-          }
+          ]
         },
         {
-          "sharedTags": [
-            "1.1.2",
-            "1.1",
-            "1"
-          ],
-          "platforms": {
-            "linux": {
+          "sharedTags": {
+            "1.1.2": {},
+            "1.1": {},
+            "1": {}
+          },
+          "platforms": [
+            {
               "dockerfile": "1.1/jessie/sdk",
-              "tags": [
-                "1.1.2-jessie"
-              ]
+              "os": "linux",
+              "tags": {
+                "1.1.2-jessie": {}
+              }
             },
-            "windows": {
+            {
               "dockerfile": "1.1/nanoserver/sdk",
-              "tags": [
-                "1.1.2-nanoserver",
-                "1.1.2-nanoserver-$(nanoServerVersion)"
-              ]
+              "os": "windows",
+              "tags": {
+                "1.1.2-nanoserver": {},
+                "1.1.2-nanoserver-$(nanoServerVersion)": {}
+              }
             }
-          }
+          ]
         },
         {
-          "sharedTags": [
-            "2.0.0",
-            "2.0",
-            "2",
-            "latest"
-          ],
-          "platforms": {
-            "linux": {
+          "sharedTags": {
+            "2.0.0": {},
+            "2.0": {},
+            "2": {},
+            "latest": {}
+          },
+          "platforms": [
+            {
               "dockerfile": "2.0/stretch/sdk",
-              "tags": [
-                "2.0.0-stretch"
-              ]
+              "os": "linux",
+              "tags": {
+                "2.0.0-stretch": {}
+              }
             },
-            "windows": {
+            {
               "dockerfile": "2.0/nanoserver/sdk",
-              "tags": [
-                "2.0.0-nanoserver",
-                "2.0.0-nanoserver-$(nanoServerVersion)"
-              ]
+              "os": "windows",
+              "tags": {
+                "2.0.0-nanoserver": {},
+                "2.0.0-nanoserver-$(nanoServerVersion)": {}
+              }
             }
-          }
+          ]
         },
         {
-          "platforms": {
-            "linux": {
+          "platforms": [
+            {
               "dockerfile": "2.0/jessie/sdk",
-              "tags": [
-                "2.0.0-jessie",
-                "2.0-jessie",
-                "2-jessie"
-              ]
+              "os": "linux",
+              "tags": {
+                "2.0.0-jessie": {},
+                "2.0-jessie": {},
+                "2-jessie": {}
+              }
             }
-          }
+          ]
         },
         {
-          "sharedTags": [
-            "1.0-1.1-2017-05",
-            "1.0-1.1"
-          ],
-          "platforms": {
-            "linux": {
+          "sharedTags": {
+            "1.0-1.1-2017-05": {},
+            "1.0-1.1": {}
+          },
+          "platforms": [
+            {
               "dockerfile": "1.1/jessie/kitchensink",
-              "tags": [
-                "1.0-1.1-2017-05-jessie"
-              ]
+              "os": "linux",
+              "tags": {
+                "1.0-1.1-2017-05-jessie": {}
+              }
             },
-            "windows": {
+            {
               "dockerfile": "1.1/nanoserver/kitchensink",
-              "tags": [
-                "1.0-1.1-2017-05-nanoserver",
-                "1.0-1.1-2017-05-nanoserver-$(nanoServerVersion)"
-              ]
+              "os": "windows",
+              "tags": {
+                "1.0-1.1-2017-05-nanoserver": {},
+                "1.0-1.1-2017-05-nanoserver-$(nanoServerVersion)": {}
+              }
             }
-          }
+          ]
         },
         {
-          "sharedTags": [
-            "1.0-2.0-2017-08",
-            "1.0-2.0"
-          ],
-          "platforms": {
-            "linux": {
+          "sharedTags": {
+            "1.0-2.0-2017-08": {},
+            "1.0-2.0": {}
+          },
+          "platforms": [
+            {
               "dockerfile": "2.0/stretch/kitchensink",
-              "tags": [
-                "1.0-2.0-2017-08-stretch"
-              ]
+              "os": "linux",
+              "tags": {
+                "1.0-2.0-2017-08-stretch": {}
+              }
             },
-            "windows": {
+            {
               "dockerfile": "2.0/nanoserver/kitchensink",
-              "tags": [
-                "1.0-2.0-2017-08-nanoserver",
-                "1.0-2.0-2017-08-nanoserver-$(nanoServerVersion)"
-              ]
+              "os": "windows",
+              "tags": {
+                "1.0-2.0-2017-08-nanoserver": {},
+                "1.0-2.0-2017-08-nanoserver-$(nanoServerVersion)": {}
+              }
             }
-          }
+          ]
         },
         {
-          "platforms": {
-            "linux": {
+          "platforms": [
+            {
               "dockerfile": "2.0/jessie/kitchensink",
-              "tags": [
-                "1.0-2.0-2017-08-jessie",
-                "1.0-2.0-jessie"
-              ]
+              "os": "linux",
+              "tags": {
+                "1.0-2.0-2017-08-jessie": {},
+                "1.0-2.0-jessie": {}
+              }
             }
-          }
+          ]
         }
       ]
     }
