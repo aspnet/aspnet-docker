@@ -31,8 +31,8 @@ function fatal {
     exit 1
 }
 
-function Get-Ip($container, $platform) {
-    if ($platform -eq "windows") {
+function Get-Ip($container, $active_os) {
+    if ($active_os -eq "windows") {
         docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $container
     }
     else {
@@ -103,7 +103,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                     $runtime_tag `
                     test.dll
 
-                $ip = Get-Ip $app_container_name $platform
+                $ip = Get-Ip $app_container_name $active_os
                 WaitForSuccess "http://${ip}:${host_port}"
             }
             finally {
@@ -124,7 +124,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 $app_build_tag `
                 dotnet publish --configuration Release --runtime $rid --output $publish_path
 
-            if ($platform -eq "linux" -and $version -eq "2.0") {
+            if ($active_os -eq "linux" -and $version -eq "2.0") {
                 # Temporary workaround https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/dogfooding.md#option-2-self-contained
                 exec docker run --rm `
                     -v ${app_volume_name}:${publish_path} `
@@ -143,7 +143,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                     --workdir ${publish_path} `
                     $runtime_tag
 
-                $ip = Get-Ip $app_container_name $platform
+                $ip = Get-Ip $app_container_name $active_os
                 WaitForSuccess "http://${ip}:${host_port}"
             }
             finally {
@@ -162,9 +162,9 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
 
 # Main
 
-$platform = docker version -f "{{ .Server.Os }}"
+$active_os = docker version -f "{{ .Server.Os }}"
 
-if ($platform -eq "windows") {
+if ($active_os -eq "windows") {
     $container_root = "C:\"
     $host_port = "80"
     $rid="win7-x64"
@@ -191,12 +191,13 @@ try
 
         $repo.images | % {
             $_.platforms |
-                ? { [bool]($_.PSObject.Properties.name -match $platform) } |
-                ? { $Folder -eq '*' -or $_.$platform.dockerfile -like "$Folder*" } |
-                ? { $_.$platform.dockerfile -like '*/sdk' } |
+                ? { $_.os -eq "$active_os" } |
+                ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder*" } |
+                ? { $_.dockerfile -like '*/sdk' } |
                 % {
-                    $version = $_.$platform.dockerfile.Substring(0, 3)
-                    $sdk_tag = "${repoName}:$($_.$platform.tags | select -first 1)"
+                    $version = $_.dockerfile.Substring(0, 3)
+                    $sdk_tag_info = $_.tags | % { $_.PSobject.Properties } | select -first 1
+                    $sdk_tag = "${repoName}:$($sdk_tag_info.name)"
                     $runtime_tag = $sdk_tag -replace '-build',''
 
                     test_image $version $sdk_tag $runtime_tag
