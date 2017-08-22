@@ -21,7 +21,7 @@ function exec($cmd) {
     }
 }
 
-$platform = docker version -f "{{ .Server.Os }}"
+$active_os = docker version -f "{{ .Server.Os }}"
 $manifest = (Get-Content (Join-Path $PSScriptRoot manifest.json) | ConvertFrom-Json)
 # Main
 $manifest.repos | % {
@@ -31,12 +31,13 @@ $manifest.repos | % {
 
     $repo.images | % {
         $_.platforms |
-            ? { [bool]($_.PSObject.Properties.name -match $platform) } |
-            ? { $Folder -eq '*' -or $_.$platform.dockerfile -like "$Folder*" } |
+            ? { $_.os -eq "$active_os" } |
+            ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder*" } |
             % {
-                $dockerfile = Join-Path $PSScriptRoot $_.$platform.dockerfile
-                $tag = "${repoName}:$($_.$platform.tags | select -first 1)"
-                exec docker build --pull $dockerfile --tag $tag
+                $dockerfile = Join-Path $PSScriptRoot $_.dockerfile
+                $tag_details = $_.tags | % { $_.PSobject.Properties } | select -first 1
+                $full_tag_name = "${repoName}:$($tag_details.name)"
+                exec docker build --pull $dockerfile --tag $full_tag_name
             }
     }
 }
