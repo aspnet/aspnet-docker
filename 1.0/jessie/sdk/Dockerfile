@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:1.0.5-sdk
+FROM microsoft/dotnet-nightly:1.0.6-sdk
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -40,6 +40,7 @@ RUN buildDeps='xz-utils' \
 # warmup up NuGet package cache
 COPY packagescache.csproj /tmp/warmup/packagescache.csproj
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
+      --source https://dotnet.myget.org/F/dotnet-2017-09-servicing/api/v3/index.json \
       --source https://api.nuget.org/v3/index.json \
     && rm -r /tmp/warmup/
 
