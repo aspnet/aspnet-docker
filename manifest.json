@@ -282,16 +282,17 @@
         },
         {
           "sharedTags": {
+            "1.0-1.1": {},
             "1.0-1.1-2017-05": {
               "isUndocumented": true
-            },
-            "1.0-1.1": {}
+            }
           },
           "platforms": [
             {
               "dockerfile": "1.1/jessie/kitchensink",
               "os": "linux",
               "tags": {
+                "1.0-1.1-jessie": {},
                 "1.0-1.1-2017-05-jessie": {
                   "isUndocumented": true
                 }
@@ -301,6 +302,7 @@
               "dockerfile": "1.1/nanoserver/kitchensink",
               "os": "windows",
               "tags": {
+                "1.0-1.1-nanoserver": {},
                 "1.0-1.1-2017-05-nanoserver": {
                   "isUndocumented": true
                 },
@@ -313,16 +315,17 @@
         },
         {
           "sharedTags": {
+            "1.0-2.0": {},
             "1.0-2.0-2017-08": {
               "isUndocumented": true
-            },
-            "1.0-2.0": {}
+            }
           },
           "platforms": [
             {
               "dockerfile": "2.0/stretch/kitchensink",
               "os": "linux",
               "tags": {
+                "1.0-2.0-stretch": {},
                 "1.0-2.0-2017-08-stretch": {
                   "isUndocumented": true
                 }
@@ -332,6 +335,7 @@
               "dockerfile": "2.0/nanoserver/kitchensink",
               "os": "windows",
               "tags": {
+                "1.0-2.0-nanoserver": {},
                 "1.0-2.0-2017-08-nanoserver": {
                   "isUndocumented": true
                 },
@@ -348,10 +352,10 @@
               "dockerfile": "2.0/jessie/kitchensink",
               "os": "linux",
               "tags": {
+                "1.0-2.0-jessie": {},
                 "1.0-2.0-2017-08-jessie": {
                   "isUndocumented": true
-                },
-                "1.0-2.0-jessie": {}
+                }
               }
             }
           ]
