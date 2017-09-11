@@ -208,22 +208,30 @@
         },
         {
           "sharedTags": {
-            "1.0-1.1-2017-05": {},
-            "1.0-1.1": {}
+            "1.0-1.1": {},
+            "1.0-1.1-2017-05": {
+              "isUndocumented": true
+            }
           },
           "platforms": [
             {
               "dockerfile": "1.1/jessie/kitchensink",
               "os": "linux",
               "tags": {
-                "1.0-1.1-2017-05-jessie": {}
+                "1.0-1.1-jessie": {},
+                "1.0-1.1-2017-05-jessie": {
+                  "isUndocumented": true
+                }
               }
             },
             {
               "dockerfile": "1.1/nanoserver/kitchensink",
               "os": "windows",
               "tags": {
-                "1.0-1.1-2017-05-nanoserver": {},
+                "1.0-1.1-nanoserver": {},
+                "1.0-1.1-2017-05-nanoserver": {
+                  "isUndocumented": true
+                },
                 "1.0-1.1-2017-05-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
@@ -233,22 +241,30 @@
         },
         {
           "sharedTags": {
-            "1.0-2.0-2017-08": {},
-            "1.0-2.0": {}
+            "1.0-2.0": {},
+            "1.0-2.0-2017-08": {
+              "isUndocumented": true
+            }
           },
           "platforms": [
             {
               "dockerfile": "2.0/stretch/kitchensink",
               "os": "linux",
               "tags": {
-                "1.0-2.0-2017-08-stretch": {}
+                "1.0-2.0-stretch": {},
+                "1.0-2.0-2017-08-stretch": {
+                  "isUndocumented": true
+                }
               }
             },
             {
               "dockerfile": "2.0/nanoserver/kitchensink",
               "os": "windows",
               "tags": {
-                "1.0-2.0-2017-08-nanoserver": {},
+                "1.0-2.0-nanoserver": {},
+                "1.0-2.0-2017-08-nanoserver": {
+                  "isUndocumented": true
+                },
                 "1.0-2.0-2017-08-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
@@ -262,8 +278,10 @@
               "dockerfile": "2.0/jessie/kitchensink",
               "os": "linux",
               "tags": {
-                "1.0-2.0-2017-08-jessie": {},
-                "1.0-2.0-jessie": {}
+                "1.0-2.0-jessie": {},
+                "1.0-2.0-2017-08-jessie": {
+                  "isUndocumented": true
+                }
               }
             }
           ]
