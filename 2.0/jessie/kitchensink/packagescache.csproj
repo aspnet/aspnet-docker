@@ -122,7 +122,7 @@
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.0.1" />
     <PackageReference Include="Microsoft.Extensions.WebEncoders" Version="1.0.3" />
     <PackageReference Include="Microsoft.Net.Http.Headers" Version="1.0.3" />
-    <PackageReference Include="Microsoft.Net.Http.Server" Version="1.0.3" />
+    <PackageReference Include="Microsoft.Net.Http.Server" Version="1.0.4" />
     <PackageReference Include="Microsoft.Net.WebSockets.Server" Version="0.1.0" />
     <PackageReference Include="Microsoft.NETCore.App" Version="1.0.6" />
     <PackageReference Include="NETStandard.Library" Version="1.6.0" />

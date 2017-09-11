@@ -39,5 +39,6 @@ RUN dotnet restore C:/warmup/packagescache.csproj `
         --source https://dotnet.myget.org/F/dotnet-2017-09-servicing/api/v3/index.json `
         --source https://dotnet.myget.org/F/aspnetcore-release/api/v3/index.json `
         --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
-        --source https://api.nuget.org/v3/index.json; `
+        --source https://api.nuget.org/v3/index.json `
+        --verbosity quiet; `
     Remove-Item -Recurse -Force C:/warmup

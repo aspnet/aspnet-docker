@@ -43,6 +43,7 @@ COPY packagescache.csproj /tmp/warmup/packagescache.csproj
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
       --source https://dotnet.myget.org/F/dotnet-2017-09-servicing/api/v3/index.json \
       --source https://api.nuget.org/v3/index.json \
+      --verbosity quiet \
     && rm -rf /tmp/warmup/
 
 WORKDIR /
