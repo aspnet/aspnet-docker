@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:1.1.2-sdk
+FROM microsoft/dotnet-nightly:1.1.3-sdk
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -48,7 +48,9 @@ COPY packagescache.csproj /tmp/warmup/packagescache.csproj
 
 # warm up package cache
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
+      --source https://dotnet.myget.org/F/dotnet-2017-09-servicing/api/v3/index.json \
       --source https://api.nuget.org/v3/index.json \
+      --verbosity quiet \
     && rm -rf /tmp/warmup/
 
 WORKDIR /

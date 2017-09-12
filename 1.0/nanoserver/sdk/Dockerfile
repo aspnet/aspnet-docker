@@ -1,5 +1,5 @@
 # escape=`
-FROM microsoft/dotnet-nightly:1.0.5-sdk-nanoserver-10.0.14393.1593
+FROM microsoft/dotnet-nightly:1.0.6-sdk-nanoserver-10.0.14393.1593
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -21,5 +21,7 @@ RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '/nodejs' + ';' + $Env:
 # warmup up NuGet package cache
 COPY packagescache.csproj C:/warmup/packagescache.csproj
 RUN dotnet restore C:/warmup/packagescache.csproj `
-        --source https://api.nuget.org/v3/index.json; `
+        --source https://dotnet.myget.org/F/dotnet-2017-09-servicing/api/v3/index.json `
+        --source https://api.nuget.org/v3/index.json `
+        --verbosity quiet; `
     Remove-Item -Recurse -Force C:/warmup
