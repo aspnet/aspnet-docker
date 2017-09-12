@@ -1,28 +1,24 @@
 
-ASP.NET Core Runtime Docker Image (Nightly)
-===========================================
+ASP.NET Core Runtime Docker Image
+=================================
 
 This repository contains images for running published ASP.NET Core applications. These images use the
-[microsoft/dotnet-nightly](https://hub.docker.com/r/microsoft/dotnet-nightly/) image as its base.
+[microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) image as its base.
 
-These images contain the runtime only. Use [`microsoft/aspnetcore-build-nightly`](https://hub.docker.com/r/microsoft/aspnetcore-build-nightly/) to build ASP.NET Core apps inside the container.
+These images contain the runtime only. Use [`microsoft/aspnetcore-build`](https://hub.docker.com/r/microsoft/aspnetcore-build/) to build ASP.NET Core apps inside the container.
 
 ## Supported Linux amd64 tags
 
-- [`1.0.6-jessie`, `1.0.6`, `1.0`, `lts` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/jessie/runtime/Dockerfile)
-- [`1.1.3-jessie`, `1.1.3`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/runtime/Dockerfile)
-- [`2.0.0-stretch`, `2.0.0`, `2.0`, `2`, `latest` (*2.0/stretch/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/stretch/runtime/Dockerfile)
-- [`2.0.0-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/jessie/runtime/Dockerfile)
-- [`2.1.0-preview1-stretch`, `2.1.0-preview1`, `2.1` (*2.1/stretch/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/stretch/runtime/Dockerfile)
-- [`2.1.0-preview1-jessie`, `2.1-jessie` (*2.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/jessie/runtime/Dockerfile)
+- [`1.0.6-jessie`, `1.0.6`, `1.0`, `lts` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/runtime/Dockerfile)
+- [`1.1.3-jessie`, `1.1.3`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
+- [`2.0.0-stretch`, `2.0.0`, `2.0`, `2`, `latest` (*2.0/stretch/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/runtime/Dockerfile)
+- [`2.0.0-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/runtime/Dockerfile)
 
 ## Supported Windows amd64 tags
 
-- [`1.0.6-nanoserver`, `1.0.6`, `1.0`, `lts` (*1.0/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/nanoserver/runtime/Dockerfile)
-- [`1.1.3-nanoserver`, `1.1.3`, `1.1`, `1` (*1.1/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver/runtime/Dockerfile)
-- [`2.0.0-nanoserver`, `2.0.0`, `2.0`, `2`, `latest` (*2.0/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver/runtime/Dockerfile)
-- [`2.1.0-preview1-nanoserver`, `2.1.0-preview1`, `2.1` (*2.1/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/nanoserver/runtime/Dockerfile)
-
+- [`1.0.6-nanoserver`, `1.0.6`, `1.0`, `lts` (*1.0/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver/runtime/Dockerfile)
+- [`1.1.3-nanoserver`, `1.1.3`, `1.1`, `1` (*1.1/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/runtime/Dockerfile)
+- [`2.0.0-nanoserver`, `2.0.0`, `2.0`, `2`, `latest` (*2.0/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/runtime/Dockerfile)
 ## What is ASP.NET Core?
 
 ASP.NET Core is a new open-source and cross-platform framework for building modern cloud based internet connected applications, such as web apps, IoT apps and mobile backends. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET Core apps cross-platform on Windows, Mac and Linux. ASP.NET Core is open source at [GitHub](https://github.com/aspnet).
@@ -38,15 +34,15 @@ This image contains:
 
 ## Related images
 
-1. [microsoft/dotnet-nightly](https://hub.docker.com/r/microsoft/dotnet-nightly/) - the .NET Core image if you don't need the ASP.NET Core specific optimizations.
-2. [microsoft/aspnetcore-build-nightly](https://hub.docker.com/r/microsoft/aspnetcore-build-nightly/) - The ASP.NET Core build image for publishing an ASP.NET Core app inside a container.
+1. [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) - the .NET Core image if you don't need the ASP.NET Core specific optimizations.
+2. [microsoft/aspnetcore-build](https://hub.docker.com/r/microsoft/aspnetcore-build/) - The ASP.NET Core build image for publishing an ASP.NET Core app inside a container.
 
 ## How to use this image
 
 1. Create a Dockerfile for your application, the following example assumes you have already compiled your application (which is the expected use case for this image)
 
   ```
-  FROM microsoft/aspnetcore-nightly
+  FROM microsoft/aspnetcore
   WORKDIR /app
   COPY . .
   ENTRYPOINT ["dotnet", "myapp.dll"]

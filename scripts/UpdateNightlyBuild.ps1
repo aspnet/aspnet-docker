@@ -6,11 +6,11 @@ param(
     [switch]$NoTimestamp
 )
 
-$prefix = 'preview1'
+$prefix = 'rtm'
 $packageNumber = if ($NoTimestamp) {
-    "2.1.0"
+    "2.0.0"
 } else {
-    "2.1.0-$prefix-$BuildNumber"
+    "2.0.0-$prefix-$BuildNumber"
 }
 
 $rsVersion = if ($NoTimestamp) {
@@ -20,7 +20,7 @@ $rsVersion = if ($NoTimestamp) {
 }
 
 
-Get-ChildItem -Recurse "$PSScriptRoot/../2.1/*/Dockerfile" | % {
+Get-ChildItem -Recurse "$PSScriptRoot/../2.0/*/Dockerfile" | % {
     Write-Host "Updating $_"
     Set-Content $_ (Get-Content $_ `
     | % {
@@ -35,7 +35,7 @@ Get-ChildItem -Recurse "$PSScriptRoot/../2.1/*/Dockerfile" | % {
                 $rid = 'winx64'
                 $ext = 'zip'
             }
-            "ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/2.1.0-${BuildNumber}/Build.RS.${rid}${rsVersion}.$ext"
+            "ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/2.0.0-${BuildNumber}/Build.RS.${rid}${rsVersion}.$ext"
         } else {
             $_
         }

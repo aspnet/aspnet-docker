@@ -13,7 +13,7 @@
   },
   "repos": [
     {
-      "name": "microsoft/aspnetcore-nightly",
+      "name": "microsoft/aspnetcore",
       "readmePath": "README.aspnetcore.md",
       "images": [
         {
@@ -107,48 +107,11 @@
               }
             }
           ]
-        },
-        {
-          "sharedTags": {
-            "2.1.0-preview1": {},
-            "2.1": {}
-          },
-          "platforms": [
-            {
-              "dockerfile": "2.1/stretch/runtime",
-              "os": "linux",
-              "tags": {
-                "2.1.0-preview1-stretch": {}
-              }
-            },
-            {
-              "dockerfile": "2.1/nanoserver/runtime",
-              "os": "windows",
-              "tags": {
-                "2.1.0-preview1-nanoserver": {},
-                "2.1.0-preview1-nanoserver-$(nanoServerVersion)": {
-                  "isUndocumented": true
-                }
-              }
-            }
-          ]
-        },
-        {
-          "platforms": [
-            {
-              "dockerfile": "2.1/jessie/runtime",
-              "os": "linux",
-              "tags": {
-                "2.1.0-preview1-jessie": {},
-                "2.1-jessie": {}
-              }
-            }
-          ]
         }
       ]
     },
     {
-      "name": "microsoft/aspnetcore-build-nightly",
+      "name": "microsoft/aspnetcore-build",
       "readmePath": "README.aspnetcore-build.md",
       "images": [
         {
@@ -245,45 +208,8 @@
         },
         {
           "sharedTags": {
-            "2.1.0-preview1": {},
-            "2.1": {}
-          },
-          "platforms": [
-            {
-              "dockerfile": "2.1/stretch/sdk",
-              "os": "linux",
-              "tags": {
-                "2.1.0-preview1-stretch": {}
-              }
-            },
-            {
-              "dockerfile": "2.1/nanoserver/sdk",
-              "os": "windows",
-              "tags": {
-                "2.1.0-preview1-nanoserver": {},
-                "2.1.0-preview1-nanoserver-$(nanoServerVersion)": {
-                  "isUndocumented": true
-                }
-              }
-            }
-          ]
-        },
-        {
-          "platforms": [
-            {
-              "dockerfile": "2.1/jessie/sdk",
-              "os": "linux",
-              "tags": {
-                "2.1.0-preview1-jessie": {},
-                "2.1-jessie": {}
-              }
-            }
-          ]
-        },
-        {
-          "sharedTags": {
             "1.0-1.1": {},
-            "1.0-1.1-2017-05": {
+            "1.0-1.1-2017-09": {
               "isUndocumented": true
             }
           },
@@ -293,7 +219,7 @@
               "os": "linux",
               "tags": {
                 "1.0-1.1-jessie": {},
-                "1.0-1.1-2017-05-jessie": {
+                "1.0-1.1-2017-09-jessie": {
                   "isUndocumented": true
                 }
               }
@@ -303,10 +229,10 @@
               "os": "windows",
               "tags": {
                 "1.0-1.1-nanoserver": {},
-                "1.0-1.1-2017-05-nanoserver": {
+                "1.0-1.1-2017-09-nanoserver": {
                   "isUndocumented": true
                 },
-                "1.0-1.1-2017-05-nanoserver-$(nanoServerVersion)": {
+                "1.0-1.1-2017-09-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
               }
@@ -316,7 +242,7 @@
         {
           "sharedTags": {
             "1.0-2.0": {},
-            "1.0-2.0-2017-08": {
+            "1.0-2.0-2017-09": {
               "isUndocumented": true
             }
           },
@@ -326,7 +252,7 @@
               "os": "linux",
               "tags": {
                 "1.0-2.0-stretch": {},
-                "1.0-2.0-2017-08-stretch": {
+                "1.0-2.0-2017-09-stretch": {
                   "isUndocumented": true
                 }
               }
@@ -336,10 +262,10 @@
               "os": "windows",
               "tags": {
                 "1.0-2.0-nanoserver": {},
-                "1.0-2.0-2017-08-nanoserver": {
+                "1.0-2.0-2017-09-nanoserver": {
                   "isUndocumented": true
                 },
-                "1.0-2.0-2017-08-nanoserver-$(nanoServerVersion)": {
+                "1.0-2.0-2017-09-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
               }
@@ -353,7 +279,7 @@
               "os": "linux",
               "tags": {
                 "1.0-2.0-jessie": {},
-                "1.0-2.0-2017-08-jessie": {
+                "1.0-2.0-2017-09-jessie": {
                   "isUndocumented": true
                 }
               }
