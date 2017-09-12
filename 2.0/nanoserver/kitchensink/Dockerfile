@@ -3,7 +3,7 @@ FROM microsoft/dotnet-nightly:2.0.0-sdk-nanoserver-10.0.14393.1593
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.1
+ENV NODE_VERSION 6.11.3
 ENV ASPNETCORE_PKG_VERSION 2.0.0
 
 # Install node, bower, and git
@@ -13,14 +13,14 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
     Remove-Item -Force node.zip; `
     $env:PATH += \";${env:ProgramFiles}/nodejs\"; `
     & npm install -g gulp bower; `
-    Invoke-WebRequest -UseBasicParsing https://github.com/git-for-windows/git/releases/download/v2.13.1.windows.1/MinGit-2.13.1-64-bit.zip -outfile git.zip; `
+    Invoke-WebRequest -UseBasicParsing https://github.com/git-for-windows/git/releases/download/v2.14.1.windows.1/MinGit-2.14.1-64-bit.zip -outfile git.zip; `
     Expand-Archive git.zip -DestinationPath $Env:ProgramFiles/git; `
     Remove-Item -Force git.zip
 
 RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '/nodejs' + ';' + $Env:ProgramFiles + '/git/cmd')
 
-RUN ('https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.5/dotnet-win-x64.1.0.5.zip', `
-     'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/1.1.2/dotnet-win-x64.1.1.2.zip' ) `
+RUN ('https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.6/dotnet-win-x64.1.0.6.zip', `
+     'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/1.1.3/dotnet-win-x64.1.1.3.zip' ) `
      | % { `
         Invoke-WebRequest $_ -UseBasicParsing -OutFile dotnet.zip; `
         # Ignore errors and don't use -Force. We want to keep the existing dotnet.exe instead of overwriting `

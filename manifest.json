@@ -283,7 +283,7 @@
         {
           "sharedTags": {
             "1.0-1.1": {},
-            "1.0-1.1-2017-05": {
+            "1.0-1.1-2017-09": {
               "isUndocumented": true
             }
           },
@@ -293,7 +293,7 @@
               "os": "linux",
               "tags": {
                 "1.0-1.1-jessie": {},
-                "1.0-1.1-2017-05-jessie": {
+                "1.0-1.1-2017-09-jessie": {
                   "isUndocumented": true
                 }
               }
@@ -303,10 +303,10 @@
               "os": "windows",
               "tags": {
                 "1.0-1.1-nanoserver": {},
-                "1.0-1.1-2017-05-nanoserver": {
+                "1.0-1.1-2017-09-nanoserver": {
                   "isUndocumented": true
                 },
-                "1.0-1.1-2017-05-nanoserver-$(nanoServerVersion)": {
+                "1.0-1.1-2017-09-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
               }
@@ -316,7 +316,7 @@
         {
           "sharedTags": {
             "1.0-2.0": {},
-            "1.0-2.0-2017-08": {
+            "1.0-2.0-2017-09": {
               "isUndocumented": true
             }
           },
@@ -326,7 +326,7 @@
               "os": "linux",
               "tags": {
                 "1.0-2.0-stretch": {},
-                "1.0-2.0-2017-08-stretch": {
+                "1.0-2.0-2017-09-stretch": {
                   "isUndocumented": true
                 }
               }
@@ -336,10 +336,10 @@
               "os": "windows",
               "tags": {
                 "1.0-2.0-nanoserver": {},
-                "1.0-2.0-2017-08-nanoserver": {
+                "1.0-2.0-2017-09-nanoserver": {
                   "isUndocumented": true
                 },
-                "1.0-2.0-2017-08-nanoserver-$(nanoServerVersion)": {
+                "1.0-2.0-2017-09-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
               }
@@ -353,7 +353,7 @@
               "os": "linux",
               "tags": {
                 "1.0-2.0-jessie": {},
-                "1.0-2.0-2017-08-jessie": {
+                "1.0-2.0-2017-09-jessie": {
                   "isUndocumented": true
                 }
               }

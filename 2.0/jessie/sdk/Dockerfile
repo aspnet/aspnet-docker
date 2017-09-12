@@ -2,7 +2,7 @@ FROM microsoft/dotnet-nightly:2.0.0-sdk-jessie
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.1
+ENV NODE_VERSION 6.11.3
 ENV ASPNETCORE_PKG_VERSION 2.0.0
 
 # Install keys required for node
