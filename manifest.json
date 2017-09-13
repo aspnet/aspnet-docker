@@ -70,7 +70,7 @@
         },
         {
           "sharedTags": {
-            "2.0.0": {},
+            "2.0.1": {},
             "2.0": {},
             "2": {},
             "latest": {}
@@ -80,15 +80,15 @@
               "dockerfile": "2.0/stretch/runtime",
               "os": "linux",
               "tags": {
-                "2.0.0-stretch": {}
+                "2.0.1-stretch": {}
               }
             },
             {
               "dockerfile": "2.0/nanoserver/runtime",
               "os": "windows",
               "tags": {
-                "2.0.0-nanoserver": {},
-                "2.0.0-nanoserver-$(nanoServerVersion)": {
+                "2.0.1-nanoserver": {},
+                "2.0.1-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
               }
@@ -101,7 +101,7 @@
               "dockerfile": "2.0/jessie/runtime",
               "os": "linux",
               "tags": {
-                "2.0.0-jessie": {},
+                "2.0.1-jessie": {},
                 "2.0-jessie": {},
                 "2-jessie": {}
               }
@@ -205,7 +205,7 @@
         },
         {
           "sharedTags": {
-            "2.0.0": {},
+            "2.0.1": {},
             "2.0": {},
             "2": {},
             "latest": {}
@@ -215,15 +215,15 @@
               "dockerfile": "2.0/stretch/sdk",
               "os": "linux",
               "tags": {
-                "2.0.0-stretch": {}
+                "2.0.1-stretch": {}
               }
             },
             {
               "dockerfile": "2.0/nanoserver/sdk",
               "os": "windows",
               "tags": {
-                "2.0.0-nanoserver": {},
-                "2.0.0-nanoserver-$(nanoServerVersion)": {
+                "2.0.1-nanoserver": {},
+                "2.0.1-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
               }
@@ -236,7 +236,7 @@
               "dockerfile": "2.0/jessie/sdk",
               "os": "linux",
               "tags": {
-                "2.0.0-jessie": {},
+                "2.0.1-jessie": {},
                 "2.0-jessie": {},
                 "2-jessie": {}
               }
