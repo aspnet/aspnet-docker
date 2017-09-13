@@ -1,8 +1,9 @@
 FROM {image}
 
 ARG FRAMEWORK
+ARG BUILD_ARGS
 
 WORKDIR test
 RUN dotnet new web --framework $env:FRAMEWORK
 RUN dotnet restore --source ${env:USERPROFILE}/.nuget/packages "/p:RuntimeIdentifiers=win7-x64"
-RUN dotnet build
+RUN dotnet build $env:BUILD_ARGS

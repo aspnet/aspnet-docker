@@ -68,6 +68,13 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
         Default { "netcoreapp${version}" }
     }
 
+    $no_restore_flag = switch ($version) {
+        # not supported in 1.x SDKs
+        '1.0' { '' }
+        '1.1' { '' }
+        default { '--no-restore' }
+    }
+
     write-host -foregroundcolor magenta "----- Testing: TFM: $framework, SDK: $sdk_tag, Runtime: $runtime_tag -----"
 
     $app_name = "app$(get-random)"
@@ -83,6 +90,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 Replace("{image}", $sdk_tag) `
         | docker build `
             --build-arg FRAMEWORK=$framework `
+            --build-arg BUILD_ARGS=$no_restore_flag `
             -t $app_build_tag `
             -
 
@@ -93,7 +101,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 --name "publish-framework-dependent-$app_name" `
                 -v ${app_volume_name}:${publish_path} `
                 $app_build_tag `
-                dotnet publish --configuration Release --output $publish_path
+                dotnet publish --configuration Release --output $publish_path $no_restore_flag
 
             Write-Host "----- Running framework-dependent app with ${runtime_tag} -----"
             $app_container_name = "runtime-framework-dependent-${app_name}"
@@ -126,7 +134,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 --name "publish-self-contained-$app_name" `
                 -v ${app_volume_name}:${publish_path} `
                 $app_build_tag `
-                dotnet publish --configuration Release --runtime $rid --output $publish_path
+                dotnet publish --configuration Release --runtime $rid --output $publish_path $no_restore_flag
 
             if ($active_os -eq "linux" -and $version -eq "2.0") {
                 # Temporary workaround https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/dogfooding.md#option-2-self-contained
