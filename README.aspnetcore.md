@@ -9,8 +9,8 @@ These images contain the runtime only. Use [`microsoft/aspnetcore-build-nightly`
 
 ## Supported Linux amd64 tags
 
-- [`1.0.6-jessie`, `1.0.6`, `1.0`, `lts` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/jessie/runtime/Dockerfile)
-- [`1.1.3-jessie`, `1.1.3`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/runtime/Dockerfile)
+- [`1.0.7-jessie`, `1.0.7`, `1.0`, `lts` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/jessie/runtime/Dockerfile)
+- [`1.1.4-jessie`, `1.1.4`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/runtime/Dockerfile)
 - [`2.0.1-stretch`, `2.0.1`, `2.0`, `2`, `latest` (*2.0/stretch/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/stretch/runtime/Dockerfile)
 - [`2.0.1-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/jessie/runtime/Dockerfile)
 - [`2.1.0-preview1-stretch`, `2.1.0-preview1`, `2.1` (*2.1/stretch/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/stretch/runtime/Dockerfile)
@@ -18,8 +18,8 @@ These images contain the runtime only. Use [`microsoft/aspnetcore-build-nightly`
 
 ## Supported Windows amd64 tags
 
-- [`1.0.6-nanoserver`, `1.0.6`, `1.0`, `lts` (*1.0/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/nanoserver/runtime/Dockerfile)
-- [`1.1.3-nanoserver`, `1.1.3`, `1.1`, `1` (*1.1/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver/runtime/Dockerfile)
+- [`1.0.7-nanoserver`, `1.0.7`, `1.0`, `lts` (*1.0/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/nanoserver/runtime/Dockerfile)
+- [`1.1.4-nanoserver`, `1.1.4`, `1.1`, `1` (*1.1/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver/runtime/Dockerfile)
 - [`2.0.1-nanoserver`, `2.0.1`, `2.0`, `2`, `latest` (*2.0/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver/runtime/Dockerfile)
 - [`2.1.0-preview1-nanoserver`, `2.1.0-preview1`, `2.1` (*2.1/nanoserver/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/nanoserver/runtime/Dockerfile)
 

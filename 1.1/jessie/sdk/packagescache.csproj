@@ -128,7 +128,7 @@
     <PackageReference Include="Microsoft.Extensions.WebEncoders" Version="1.1.2" />
     <PackageReference Include="Microsoft.Net.Http.Headers" Version="1.1.2" />
     <PackageReference Include="Microsoft.Net.Http.Server" Version="1.1.3" />
-    <PackageReference Include="Microsoft.NETCore.App" Version="1.1.3" />
+    <PackageReference Include="Microsoft.NETCore.App" Version="1.1.4" />
     <PackageReference Include="NETStandard.Library" Version="1.6.1" />
   </ItemGroup>
 

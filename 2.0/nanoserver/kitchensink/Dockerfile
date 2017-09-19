@@ -19,8 +19,8 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
 
 RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '/nodejs' + ';' + $Env:ProgramFiles + '/git/cmd')
 
-RUN ('https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.6/dotnet-win-x64.1.0.6.zip', `
-     'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/1.1.3/dotnet-win-x64.1.1.3.zip' ) `
+RUN ('https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.7/dotnet-win-x64.1.0.7.zip', `
+     'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/1.1.4/dotnet-win-x64.1.1.4.zip' ) `
      | % { `
         Invoke-WebRequest $_ -UseBasicParsing -OutFile dotnet.zip; `
         # Ignore errors and don't use -Force. We want to keep the existing dotnet.exe instead of overwriting `

@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:1.0.6-sdk
+FROM microsoft/dotnet-nightly:1.1.4-sdk
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
