@@ -9,7 +9,7 @@ ENV DOTNET_HOSTING_OPTIMIZATION_CACHE C:/packagecache
 
 # set up package caches
 RUN @('1.0.0', '1.0.1', '1.0.3', '1.0.4', '1.0.5', '1.0.6') | % { `
-        $downloadUrl = \"https://distaspnet.blob.core.windows.net/packagecache/${_}/win7-x64/aspnetcore.cache.zip\"; `
+        $downloadUrl = \"https://dist.asp.net/packagecache/${_}/win7-x64/aspnetcore.cache.zip\"; `
         $fileName = \"cache.${_}.zip\"; `
         Write-Host \"Downloading and extracting $downloadUrl\"; `
         Invoke-WebRequest $downloadUrl -OutFile $fileName; `
