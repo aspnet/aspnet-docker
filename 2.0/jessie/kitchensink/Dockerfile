@@ -40,8 +40,8 @@ RUN buildDeps='xz-utils' \
 
 # Install the 1.x runtimes
 RUN for url in \
-      'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/1.1.3/dotnet-debian-x64.1.1.3.tar.gz' \
-      'https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.6/dotnet-debian-x64.1.0.6.tar.gz'; \
+      'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/1.1.4/dotnet-debian-x64.1.1.4.tar.gz' \
+      'https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.7/dotnet-debian-x64.1.0.7.tar.gz'; \
     do \
       echo "Downloading and installing from $url" \
       && curl -SL $url --output /tmp/dotnet.tar.gz \
