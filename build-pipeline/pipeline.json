@@ -16,7 +16,7 @@
         {
           "Name": "aspnet-docker-linux-images",
           "Parameters": {
-            "PB.image-builder.path": "1.*"
+            "PB.image-builder.path": "1"
           }
         },
         {
@@ -42,7 +42,7 @@
         {
           "Name": "aspnet-docker-windows-images",
           "Parameters": {
-            "PB.image-builder.path": "1.*"
+            "PB.image-builder.path": "1"
           }
         },
         {
