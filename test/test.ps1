@@ -213,6 +213,18 @@ try
                     $runtime_tag = $sdk_tag -replace '-build',''
 
                     test_image $version $sdk_tag $runtime_tag
+
+                    if ($version -eq '1.1') {
+                        # Users should be able to compile with microsoft/aspnetcore-build:1.1 and run with microsoft/aspnetcore:1.0
+                        $one_oh_runtime = $manifest.repos |
+                            ? { $_.name -notlike '*-build*' } |
+                            % { $_.images } |
+                            % { $_.platforms | ? { $_.os -eq "$active_os" } | ? { $_.dockerfile -like "1.0/*/runtime" } } | select -first 1
+                        $one_oh_runtime | out-host
+                        $one_oh_version = $one_oh_runtime.tags | % { $_.PSobject.Properties } | select -first 1
+                        $one_oh_runtime_tag = "${repoName}:$($one_oh_version.name)" -replace '-build',''
+                        test_image '1.0' $sdk_tag $one_oh_runtime_tag
+                    }
                 }
         }
     }

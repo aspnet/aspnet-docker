@@ -153,35 +153,15 @@
       "images": [
         {
           "sharedTags": {
-            "1.0.7": {},
-            "1.0": {},
-            "lts": {}
-          },
-          "platforms": [
-            {
-              "dockerfile": "1.0/jessie/sdk",
-              "os": "linux",
-              "tags": {
-                "1.0.7-jessie": {}
-              }
-            },
-            {
-              "dockerfile": "1.0/nanoserver/sdk",
-              "os": "windows",
-              "tags": {
-                "1.0.7-nanoserver": {},
-                "1.0.7-nanoserver-$(nanoServerVersion)": {
-                  "isUndocumented": true
-                }
-              }
-            }
-          ]
-        },
-        {
-          "sharedTags": {
             "1.1.4": {},
             "1.1": {},
-            "1": {}
+            "1.0": {
+              "isUndocumented": true
+            },
+            "1": {},
+            "lts": {
+              "isUndocumented": true
+            }
           },
           "platforms": [
             {

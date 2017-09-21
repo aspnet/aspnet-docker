@@ -6,7 +6,6 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 
 ## Supported Linux amd64 tags
 
-- [`1.0.7-jessie`, `1.0.7`, `1.0`, `lts` (*1.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/jessie/sdk/Dockerfile)
 - [`1.1.4-jessie`, `1.1.4`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/sdk/Dockerfile)
 - [`2.0.1-stretch`, `2.0.1`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/stretch/sdk/Dockerfile)
 - [`2.0.1-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/jessie/sdk/Dockerfile)
@@ -18,7 +17,6 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 
 ## Supported Windows amd64 tags
 
-- [`1.0.7-nanoserver`, `1.0.7`, `1.0`, `lts` (*1.0/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/nanoserver/sdk/Dockerfile)
 - [`1.1.4-nanoserver`, `1.1.4`, `1.1`, `1` (*1.1/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver/sdk/Dockerfile)
 - [`2.0.1-nanoserver`, `2.0.1`, `2.0`, `2`, `latest` (*2.0/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver/sdk/Dockerfile)
 - [`2.1.0-preview1-nanoserver`, `2.1.0-preview1`, `2.1` (*2.1/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/nanoserver/sdk/Dockerfile)
