@@ -2,7 +2,7 @@ FROM microsoft/dotnet:2.0.0-sdk-stretch
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.1
+ENV NODE_VERSION 6.11.3
 ENV ASPNETCORE_PKG_VERSION 2.0.0
 
 RUN set -x \
@@ -44,8 +44,8 @@ RUN buildDeps='xz-utils' \
 
 # Install the 1.x runtimes
 RUN for url in \
-      'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/1.1.2/dotnet-debian-x64.1.1.2.tar.gz' \
-      'https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.5/dotnet-debian-x64.1.0.5.tar.gz'; \
+      'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/1.1.4/dotnet-debian-x64.1.1.4.tar.gz' \
+      'https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.7/dotnet-debian-x64.1.0.7.tar.gz'; \
     do \
       echo "Downloading and installing from $url" \
       && curl -SL $url --output /tmp/dotnet.tar.gz \
@@ -66,6 +66,7 @@ COPY packagescache.csproj /tmp/warmup/
 # warm up package cache
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
       --source https://api.nuget.org/v3/index.json \
+      --verbosity quiet \
     && rm -rf /tmp/warmup/
 
 WORKDIR /

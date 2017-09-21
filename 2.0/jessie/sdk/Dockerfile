@@ -2,7 +2,7 @@ FROM microsoft/dotnet:2.0.0-sdk-jessie
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.1
+ENV NODE_VERSION 6.11.3
 ENV ASPNETCORE_PKG_VERSION 2.0.0
 
 # Install keys required for node
@@ -43,6 +43,7 @@ RUN buildDeps='xz-utils' \
 COPY packagescache.csproj /tmp/warmup/
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
       --source https://api.nuget.org/v3/index.json \
+      --verbosity quiet \
     && rm -rf /tmp/warmup/
 
 WORKDIR /

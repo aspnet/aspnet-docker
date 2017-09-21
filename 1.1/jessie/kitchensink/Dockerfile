@@ -1,8 +1,8 @@
-FROM microsoft/dotnet:1.1.2-sdk
+FROM microsoft/dotnet:1.1.4-sdk
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.1
+ENV NODE_VERSION 6.11.3
 
 RUN set -ex \
   && for key in \
@@ -49,6 +49,7 @@ COPY packagescache.csproj /tmp/warmup/packagescache.csproj
 # warm up package cache
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
       --source https://api.nuget.org/v3/index.json \
+      --verbosity quiet \
     && rm -rf /tmp/warmup/
 
 WORKDIR /
