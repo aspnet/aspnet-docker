@@ -158,7 +158,10 @@
             "1.0": {
               "isUndocumented": true
             },
-            "1": {}
+            "1": {},
+            "lts": {
+              "isUndocumented": true
+            }
           },
           "platforms": [
             {
