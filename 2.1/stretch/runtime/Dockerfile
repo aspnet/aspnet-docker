@@ -2,8 +2,8 @@ FROM microsoft/dotnet-nightly:2.1.0-preview1-runtime-stretch
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
-ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/2.0.0-26452/Build.RS.linux.tar.gz
-ENV ASPNETCORE_PKG_VERSION 2.0.0
+ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/dev-26623/aspnetcore-store-2.1.0-preview1-26623-linux-x64.tar.gz
+ENV ASPNETCORE_PKG_VERSION 2.1.0-preview1-26623
 
 # set up the runtime store
 RUN curl -o /tmp/runtimestore.tar.gz $ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL \

@@ -29,13 +29,15 @@ Get-ChildItem -Recurse "$PSScriptRoot/../2.1/*/Dockerfile" | % {
             "ENV ASPNETCORE_PKG_VERSION $packageNumber"
         } elseif ($_ -like 'ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL*') {
             if ($_ -like '*.tar.gz'){
-                $rid = 'linux'
+                $rid = 'linux-x64'
                 $ext = 'tar.gz'
             } else {
-                $rid = 'winx64'
+                $rid = 'win7-x64'
                 $ext = 'zip'
             }
-            "ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/2.1.0-${BuildNumber}/Build.RS.${rid}${rsVersion}.$ext"
+            $folder = "dev-${BuildNumber}"
+            $filename = "aspnetcore-store-2.1.0-preview1-${BuildNumber}-${rid}.${ext}"
+            "ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/store/${folder}/${filename}"
         } else {
             $_
         }

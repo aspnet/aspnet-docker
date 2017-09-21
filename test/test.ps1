@@ -62,12 +62,7 @@ function WaitForSuccess($endpoint) {
 }
 
 function test_image ($version, $sdk_tag, $runtime_tag) {
-    $framework = switch ($version) {
-        # Temporary until netcoreapp2.1 is supported
-        '2.1' { 'netcoreapp2.0'  }
-        Default { "netcoreapp${version}" }
-    }
-
+    $framework = "netcoreapp${version}"
     $no_restore_flag = switch ($version) {
         # not supported in 1.x SDKs
         '1.0' { '' }
