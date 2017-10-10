@@ -8,12 +8,12 @@
       "/bin/bash -c \"docker run --add-host dockerhost:$DOCKER_HOST_IP -v /var/run/docker.sock:/var/run/docker.sock testrunner powershell -File ./test/test.ps1 -RootImageName microsoft -HostIP dockerhost -Folder $(Folder)\""
     ],
     "windows": [
-      "powershell -NoProfile -Command .\\test\\test.ps1 -RootImageName microsoft -Folder $(Folder)"
+      "powershell -NoProfile -Command .\\test\\test.ps1 -RootImageName msimons -Folder $(Folder)"
     ]
   },
   "repos": [
     {
-      "name": "microsoft/aspnetcore",
+      "name": "msimons/aspnetcore",
       "readmePath": "README.aspnetcore.md",
       "images": [
         {
@@ -92,6 +92,13 @@
                   "isUndocumented": true
                 }
               }
+            },
+            {
+              "dockerfile": "2.0/nanoserver-1709/runtime",
+              "os": "windows",
+              "tags": {
+                "2.0.0-nanoserver-1709": {}
+              }
             }
           ]
         },
@@ -111,7 +118,7 @@
       ]
     },
     {
-      "name": "microsoft/aspnetcore-build",
+      "name": "msimons/aspnetcore-build",
       "readmePath": "README.aspnetcore-build.md",
       "images": [
         {
@@ -190,6 +197,13 @@
                   "isUndocumented": true
                 }
               }
+            },
+            {
+              "dockerfile": "2.0/nanoserver-1709/sdk",
+              "os": "windows",
+              "tags": {
+                "2.0.2-nanoserver-1709": {}
+              }
             }
           ]
         },
@@ -266,6 +280,16 @@
                   "isUndocumented": true
                 },
                 "1.0-2.0-2017-10-nanoserver-$(nanoServerVersion)": {
+                  "isUndocumented": true
+                }
+              }
+            },
+            {
+              "dockerfile": "2.0/nanoserver-1709/kitchensink",
+              "os": "windows",
+              "tags": {
+                "1.0-2.0-nanoserver-1709": {},
+                "1.0-2.0-2017-10-nanoserver-1709": {
                   "isUndocumented": true
                 }
               }

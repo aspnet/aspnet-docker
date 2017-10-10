@@ -26,13 +26,13 @@ $manifest = (Get-Content (Join-Path $PSScriptRoot manifest.json) | ConvertFrom-J
 # Main
 $manifest.repos | % {
     $repo = $_
-    $repoName = $repo.name -replace 'microsoft/',"$RootImageName/"
+    $repoName = $repo.name -replace 'msimons/',"$RootImageName/"
     Write-Host -foregroundcolor magenta "Building ${repoName}"
 
     $repo.images | % {
         $_.platforms |
             ? { $_.os -eq "$active_os" } |
-            ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder*" } |
+            ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder" } |
             % {
                 $dockerfile = Join-Path $PSScriptRoot $_.dockerfile
                 $tag_details = $_.tags | % { $_.PSobject.Properties } | select -first 1

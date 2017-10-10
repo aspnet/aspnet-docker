@@ -136,7 +136,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
             $app_container_name = "runtime-self-contained-${app_name}"
             try {
                 exec docker run -d -t `
-                    --entrypoint ./test `
+                    --entrypoint $self_contained_entrypoint `
                     --name $app_container_name `
                     -p ${host_port}:80 `
                     -v ${app_volume_name}:${publish_path} `
@@ -169,12 +169,14 @@ if ($active_os -eq "windows") {
     $host_port = "80"
     $rid="win7-x64"
     $docker_test_file = "Dockerfile.test.nanoserver"
+    $self_contained_entrypoint = "test.exe"
 }
 else {
     $container_root = "/"
     $host_port = "5000"
-    $rid="debian.8-x64"
+    $rid = "debian.8-x64"
     $docker_test_file = "Dockerfile.test.linux"
+    $self_contained_entrypoint = "./test"
 }
 
 $manifest = Get-Content (Join-Paths $PSScriptRoot ('..', 'manifest.json')) | ConvertFrom-Json
@@ -187,12 +189,12 @@ try
 {
     $manifest.repos | % {
         $repo = $_
-        $repoName = $repo.name -replace 'microsoft/',"$RootImageName/"
+        $repoName = $repo.name -replace 'msimons/',"$RootImageName/"
 
         $repo.images | % {
             $_.platforms |
                 ? { $_.os -eq "$active_os" } |
-                ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder*" } |
+                ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder" } |
                 ? { $_.dockerfile -like '*/sdk' } |
                 % {
                     $version = $_.dockerfile.Substring(0, 3)
