@@ -198,7 +198,12 @@ try
                     $version = $_.dockerfile.Substring(0, 3)
                     $sdk_tag_info = $_.tags | % { $_.PSobject.Properties } | select -first 1
                     $sdk_tag = "${repoName}:$($sdk_tag_info.name)"
-                    $runtime_tag = $sdk_tag -replace '-build',''
+                    $runtime_tag = switch ($version) {
+                        # map the 2.0.2 sdk to the 2.0.0 runtime
+                        "2.0" { $sdk_tag -replace '2.0.2','2.0.0' }
+                        Default { $sdk_tag }
+                    }
+                    $runtime_tag = $runtime_tag -replace '-build',''
 
                     test_image $version $sdk_tag $runtime_tag
                 }

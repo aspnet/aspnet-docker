@@ -168,7 +168,7 @@
         },
         {
           "sharedTags": {
-            "2.0.0": {},
+            "2.0.2": {},
             "2.0": {},
             "2": {},
             "latest": {}
@@ -178,15 +178,15 @@
               "dockerfile": "2.0/stretch/sdk",
               "os": "linux",
               "tags": {
-                "2.0.0-stretch": {}
+                "2.0.2-stretch": {}
               }
             },
             {
               "dockerfile": "2.0/nanoserver/sdk",
               "os": "windows",
               "tags": {
-                "2.0.0-nanoserver": {},
-                "2.0.0-nanoserver-$(nanoServerVersion)": {
+                "2.0.2-nanoserver": {},
+                "2.0.2-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
               }
@@ -199,7 +199,7 @@
               "dockerfile": "2.0/jessie/sdk",
               "os": "linux",
               "tags": {
-                "2.0.0-jessie": {},
+                "2.0.2-jessie": {},
                 "2.0-jessie": {},
                 "2-jessie": {}
               }
@@ -242,7 +242,7 @@
         {
           "sharedTags": {
             "1.0-2.0": {},
-            "1.0-2.0-2017-09": {
+            "1.0-2.0-2017-10": {
               "isUndocumented": true
             }
           },
@@ -252,7 +252,7 @@
               "os": "linux",
               "tags": {
                 "1.0-2.0-stretch": {},
-                "1.0-2.0-2017-09-stretch": {
+                "1.0-2.0-2017-10-stretch": {
                   "isUndocumented": true
                 }
               }
@@ -262,10 +262,10 @@
               "os": "windows",
               "tags": {
                 "1.0-2.0-nanoserver": {},
-                "1.0-2.0-2017-09-nanoserver": {
+                "1.0-2.0-2017-10-nanoserver": {
                   "isUndocumented": true
                 },
-                "1.0-2.0-2017-09-nanoserver-$(nanoServerVersion)": {
+                "1.0-2.0-2017-10-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
               }
@@ -279,7 +279,7 @@
               "os": "linux",
               "tags": {
                 "1.0-2.0-jessie": {},
-                "1.0-2.0-2017-09-jessie": {
+                "1.0-2.0-2017-10-jessie": {
                   "isUndocumented": true
                 }
               }
