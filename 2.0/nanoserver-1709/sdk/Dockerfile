@@ -19,7 +19,7 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
 
 
 # Build image
-FROM msimons/dotnet:2.0.0-sdk-2.0.2-nanoserver-1709
+FROM microsoft/dotnet:2.0.0-sdk-2.0.2-nanoserver-1709
 
 # Set up environment
 ENV ASPNETCORE_URLS http://+:80

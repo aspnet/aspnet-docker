@@ -15,7 +15,7 @@ RUN Write-Host \"Downloading and extracting ${env:ASPNETCORE_RUNTIMESTORE_DOWNLO
 
 
 # Runtime image
-FROM msimons/dotnet:2.0.0-runtime-nanoserver-1709
+FROM microsoft/dotnet:2.0.0-runtime-nanoserver-1709
 
 # Set up network
 ENV ASPNETCORE_URLS http://+:80

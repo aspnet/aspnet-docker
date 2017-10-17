@@ -34,7 +34,7 @@ RUN Invoke-WebRequest -UseBasicParsing https://distaspnet.blob.core.windows.net/
 
 
 # Build image
-FROM msimons/dotnet:2.0.0-sdk-2.0.2-nanoserver-1709
+FROM microsoft/dotnet:2.0.0-sdk-2.0.2-nanoserver-1709
 
 # Set up environment
 ENV ASPNETCORE_URLS http://+:80

@@ -68,8 +68,7 @@
         {
           "Name": "aspnet-docker-windows-1709-images",
           "Parameters": {
-            "PB.image-builder.path": "2.0/nanoserver-1709/*",
-            "PB.image-builder.customCommonArgs": "--skip-pulling"
+            "PB.image-builder.path": "2.0/nanoserver-1709/*"
           }
         }
       ]
