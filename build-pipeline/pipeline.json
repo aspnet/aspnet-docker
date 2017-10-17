@@ -84,6 +84,7 @@
         }
       ],
       "DependsOn": [
+        "Build Windows 1709 Images",
         "Build Windows Images",
         "Build Linux Images"
       ]

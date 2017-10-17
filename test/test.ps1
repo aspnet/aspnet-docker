@@ -189,7 +189,7 @@ try
 {
     $manifest.repos | % {
         $repo = $_
-        $repoName = $repo.name -replace 'msimons/',"$RootImageName/"
+        $repoName = $repo.name -replace 'microsoft/',"$RootImageName/"
 
         $repo.images | % {
             $_.platforms |

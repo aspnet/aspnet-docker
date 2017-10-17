@@ -26,7 +26,7 @@ $manifest = (Get-Content (Join-Path $PSScriptRoot manifest.json) | ConvertFrom-J
 # Main
 $manifest.repos | % {
     $repo = $_
-    $repoName = $repo.name -replace 'msimons/',"$RootImageName/"
+    $repoName = $repo.name -replace 'microsoft/',"$RootImageName/"
     Write-Host -foregroundcolor magenta "Building ${repoName}"
 
     $repo.images | % {
