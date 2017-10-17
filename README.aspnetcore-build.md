@@ -15,8 +15,8 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 - [`1.0-2.0-jessie` (*2.0/jessie/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/kitchensink/Dockerfile)
 
 ## Supported Windows Server 2016 Version 1709 (Fall Creators Update) amd64 tags
-- [`2.0.2-nanoserver-1709`, `2.0.2`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/sdk/Dockerfile)
-- [`1.0-2.0-nanoserver-1709`, `1.0-2.0` (*2.0/nanoserver-1709/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/kitchensink/Dockerfile)
+- [`2.0.2-nanoserver-1709` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/sdk/Dockerfile)
+- [`1.0-2.0-nanoserver-1709` (*2.0/nanoserver-1709/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/kitchensink/Dockerfile)
 
 ## Supported Windows Server 2016 amd64 tags
 
