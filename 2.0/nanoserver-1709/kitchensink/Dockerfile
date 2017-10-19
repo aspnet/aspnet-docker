@@ -33,8 +33,10 @@ RUN Invoke-WebRequest -UseBasicParsing https://distaspnet.blob.core.windows.net/
     Remove-Item -Force sdk.zip
 
 
-# Build image
+# Kitchen Sink image
 FROM microsoft/dotnet:2.0.0-sdk-2.0.2-nanoserver-1709
+
+# Note: Kitchen Sink image's SHELL is the CMD shell (different than the installer image).
 
 # Set up environment
 ENV ASPNETCORE_URLS http://+:80

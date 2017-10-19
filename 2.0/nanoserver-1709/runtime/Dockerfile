@@ -17,6 +17,8 @@ RUN Write-Host \"Downloading and extracting ${env:ASPNETCORE_RUNTIMESTORE_DOWNLO
 # Runtime image
 FROM microsoft/dotnet:2.0.0-runtime-nanoserver-1709
 
+# Note: Runtime image's SHELL is the CMD shell (different than the installer image).
+
 # Set up network
 ENV ASPNETCORE_URLS http://+:80
 ENV ASPNETCORE_PKG_VERSION 2.0.0
