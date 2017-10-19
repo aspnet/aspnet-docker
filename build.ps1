@@ -32,7 +32,7 @@ $manifest.repos | % {
     $repo.images | % {
         $_.platforms |
             ? { $_.os -eq "$active_os" } |
-            ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder*" } |
+            ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder" } |
             % {
                 $dockerfile = Join-Path $PSScriptRoot $_.dockerfile
                 $tag_details = $_.tags | % { $_.PSobject.Properties } | select -first 1
