@@ -27,9 +27,7 @@ ENV ASPNETCORE_PKG_VERSION 2.0.0
 
 # Install node, bower, and git
 COPY --from=installer-env ["nodejs", "C:\\Program Files\\nodejs"]
-WORKDIR "C:\\Program Files\\nodejs"
-RUN npm install -g gulp bower
-WORKDIR c:\
+RUN ""C:\Program Files\nodejs\npm"" install -g gulp bower
 COPY --from=installer-env ["git", "C:\\Program Files\\git"]
 RUN setx PATH "%PATH%;C:\Program Files\nodejs;C:\Program Files\git\cmd"
 
