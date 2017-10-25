@@ -8,21 +8,22 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 
 - [`1.0.7-jessie`, `1.0.7`, `1.0`, `lts` (*1.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/sdk/Dockerfile)
 - [`1.1.4-jessie`, `1.1.4`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
-- [`2.0.2-stretch`, `2.0.2`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/sdk/Dockerfile)
+- [`2.0.2-stretch`, `2.0-stretch`, `2.0.2`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/sdk/Dockerfile)
 - [`2.0.2-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/sdk/Dockerfile)
 - [`1.0-1.1-jessie`, `1.0-1.1` (*1.1/jessie/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/kitchensink/Dockerfile)
 - [`1.0-2.0-stretch`, `1.0-2.0` (*2.0/stretch/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/kitchensink/Dockerfile)
 - [`1.0-2.0-jessie` (*2.0/jessie/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/kitchensink/Dockerfile)
 
 ## Supported Windows Server 2016 Version 1709 (Fall Creators Update) amd64 tags
-- [`2.0.2-nanoserver-1709` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/sdk/Dockerfile)
+
+- [`2.0.2-nanoserver-1709`, `2.0-nanoserver-1709` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/sdk/Dockerfile)
 - [`1.0-2.0-nanoserver-1709` (*2.0/nanoserver-1709/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/kitchensink/Dockerfile)
 
 ## Supported Windows Server 2016 amd64 tags
 
 - [`1.0.7-nanoserver`, `1.0.7`, `1.0`, `lts` (*1.0/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver/sdk/Dockerfile)
 - [`1.1.4-nanoserver`, `1.1.4`, `1.1`, `1` (*1.1/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/sdk/Dockerfile)
-- [`2.0.2-nanoserver`, `2.0.2`, `2.0`, `2`, `latest` (*2.0/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/sdk/Dockerfile)
+- [`2.0.2-nanoserver`, `2.0-nanoserver`, `2.0.2`, `2.0`, `2`, `latest` (*2.0/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/sdk/Dockerfile)
 - [`1.0-1.1-nanoserver`, `1.0-1.1` (*1.1/nanoserver/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/kitchensink/Dockerfile)
 - [`1.0-2.0-nanoserver`, `1.0-2.0` (*2.0/nanoserver/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/kitchensink/Dockerfile)
 

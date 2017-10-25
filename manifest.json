@@ -80,7 +80,8 @@
               "dockerfile": "2.0/stretch/runtime",
               "os": "linux",
               "tags": {
-                "2.0.0-stretch": {}
+                "2.0.0-stretch": {},
+                "2.0-stretch": {}
               }
             },
             {
@@ -88,6 +89,7 @@
               "os": "windows",
               "tags": {
                 "2.0.0-nanoserver": {},
+                "2.0-nanoserver": {},
                 "2.0.0-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
@@ -97,7 +99,8 @@
               "dockerfile": "2.0/nanoserver-1709/runtime",
               "os": "windows",
               "tags": {
-                "2.0.0-nanoserver-1709": {}
+                "2.0.0-nanoserver-1709": {},
+                "2.0-nanoserver-1709": {}
               }
             }
           ]
@@ -185,7 +188,8 @@
               "dockerfile": "2.0/stretch/sdk",
               "os": "linux",
               "tags": {
-                "2.0.2-stretch": {}
+                "2.0.2-stretch": {},
+                "2.0-stretch": {}
               }
             },
             {
@@ -193,6 +197,7 @@
               "os": "windows",
               "tags": {
                 "2.0.2-nanoserver": {},
+                "2.0-nanoserver": {},
                 "2.0.2-nanoserver-$(nanoServerVersion)": {
                   "isUndocumented": true
                 }
@@ -202,7 +207,8 @@
               "dockerfile": "2.0/nanoserver-1709/sdk",
               "os": "windows",
               "tags": {
-                "2.0.2-nanoserver-1709": {}
+                "2.0.2-nanoserver-1709": {},
+                "2.0-nanoserver-1709": {}
               }
             }
           ]
