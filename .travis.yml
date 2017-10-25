@@ -15,7 +15,7 @@ env:
 matrix:
   fast_finish: true
 before_install:
-  - bash <(curl -fsSL https://raw.githubusercontent.com/PowerShell/PowerShell/master/tools/download.sh)
+  - bash <(curl -fsSL https://raw.githubusercontent.com/PowerShell/PowerShell/v6.0.0-beta.6/tools/download.sh)
 install:
   - ./build.ps1 -Folder $folder_filter
 before_script:
