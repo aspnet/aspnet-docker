@@ -24,6 +24,6 @@ if (!$Branch) {
     -v /var/run/docker.sock:/var/run/docker.sock `
     -v "${repoRoot}:/repo" `
     -w /repo `
-    microsoft/dotnet-buildtools-prereqs:image-builder-jessie-20170817154316 `
+    microsoft/dotnet-buildtools-prereqs:image-builder-jessie-20171031123612 `
     generateTagsReadme `
     "https://github.com/aspnet/aspnet-docker/blob/${Branch}"

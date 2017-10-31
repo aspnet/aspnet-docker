@@ -98,6 +98,7 @@
             {
               "dockerfile": "2.0/nanoserver-1709/runtime",
               "os": "windows",
+              "osVersion": "1709",
               "tags": {
                 "2.0.0-nanoserver-1709": {},
                 "2.0-nanoserver-1709": {}
@@ -206,6 +207,7 @@
             {
               "dockerfile": "2.0/nanoserver-1709/sdk",
               "os": "windows",
+              "osVersion": "1709",
               "tags": {
                 "2.0.2-nanoserver-1709": {},
                 "2.0-nanoserver-1709": {}
@@ -293,6 +295,7 @@
             {
               "dockerfile": "2.0/nanoserver-1709/kitchensink",
               "os": "windows",
+              "osVersion": "1709",
               "tags": {
                 "1.0-2.0-nanoserver-1709": {},
                 "1.0-2.0-2017-10-nanoserver-1709": {
