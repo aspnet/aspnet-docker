@@ -184,7 +184,7 @@
               "dockerfile": "1.1/nanoserver-ltsc2016/sdk",
               "os": "windows",
               "tags": {
-                "1.1.4-nanoserver-lts2016": {},
+                "1.1.4-nanoserver-ltsc2016": {},
                 "1.1.4-nanoserver": {
                   "isUndocumented": true
                 },
