@@ -54,7 +54,7 @@
         {
           "Name": "aspnet-docker-windows-images",
           "Parameters": {
-            "PB.image-builder.path": "2.0/nanoserver/*"
+            "PB.image-builder.path": "2.0/nanoserver-sac2016/*"
           }
         }
       ]
