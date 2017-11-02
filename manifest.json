@@ -31,7 +31,7 @@
               }
             },
             {
-              "dockerfile": "1.0/nanoserver/runtime",
+              "dockerfile": "1.0/nanoserver-ltsc2016/runtime",
               "os": "windows",
               "tags": {
                 "1.0.7-nanoserver-ltsc2016": {},
@@ -60,7 +60,7 @@
               }
             },
             {
-              "dockerfile": "1.1/nanoserver/runtime",
+              "dockerfile": "1.1/nanoserver-ltsc2016/runtime",
               "os": "windows",
               "tags": {
                 "1.1.4-nanoserver-ltsc2016": {},
@@ -91,7 +91,7 @@
               }
             },
             {
-              "dockerfile": "2.0/nanoserver/runtime",
+              "dockerfile": "2.0/nanoserver-ltsc2016/runtime",
               "os": "windows",
               "tags": {
                 "2.0.0-nanoserver-ltsc2016": {},
@@ -152,7 +152,7 @@
               }
             },
             {
-              "dockerfile": "1.0/nanoserver/sdk",
+              "dockerfile": "1.0/nanoserver-ltsc2016/sdk",
               "os": "windows",
               "tags": {
                 "1.0.7-nanoserver-ltsc2016": {},
@@ -181,7 +181,7 @@
               }
             },
             {
-              "dockerfile": "1.1/nanoserver/sdk",
+              "dockerfile": "1.1/nanoserver-ltsc2016/sdk",
               "os": "windows",
               "tags": {
                 "1.1.4-nanoserver-lts2016": {},
@@ -212,7 +212,7 @@
               }
             },
             {
-              "dockerfile": "2.0/nanoserver/sdk",
+              "dockerfile": "2.0/nanoserver-ltsc2016/sdk",
               "os": "windows",
               "tags": {
                 "2.0.2-nanoserver-ltsc2016": {},
@@ -271,7 +271,7 @@
               }
             },
             {
-              "dockerfile": "1.1/nanoserver/kitchensink",
+              "dockerfile": "1.1/nanoserver-ltsc2016/kitchensink",
               "os": "windows",
               "tags": {
                 "1.0-1.1-nanoserver-ltsc2016": {},
@@ -307,7 +307,7 @@
               }
             },
             {
-              "dockerfile": "2.0/nanoserver/kitchensink",
+              "dockerfile": "2.0/nanoserver-ltsc2016/kitchensink",
               "os": "windows",
               "tags": {
                 "1.0-2.0-nanoserver-ltsc2016": {},
