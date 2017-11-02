@@ -21,11 +21,12 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 
 ## Supported Windows Server 2016 amd64 tags
 
-- [`1.0.7-nanoserver`, `1.0.7`, `1.0`, `lts` (*1.0/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver/sdk/Dockerfile)
-- [`1.1.4-nanoserver`, `1.1.4`, `1.1`, `1` (*1.1/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/sdk/Dockerfile)
-- [`2.0.2-nanoserver`, `2.0-nanoserver`, `2.0.2`, `2.0`, `2`, `latest` (*2.0/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/sdk/Dockerfile)
-- [`1.0-1.1-nanoserver`, `1.0-1.1` (*1.1/nanoserver/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/kitchensink/Dockerfile)
-- [`1.0-2.0-nanoserver`, `1.0-2.0` (*2.0/nanoserver/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/kitchensink/Dockerfile)
+- [`1.0.7-nanoserver-ltsc2016`, `1.0.7`, `1.0`, `lts` (*1.0/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver/sdk/Dockerfile)
+- [`1.1.4-nanoserver-lts2016`, `1.1.4`, `1.1`, `1` (*1.1/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/sdk/Dockerfile)
+- [`2.0.2-nanoserver-ltsc2016`, `2.0-nanoserver-ltsc2016`, `2.0.2`, `2.0`, `2`, `latest` (*2.0/nanoserver/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/sdk/Dockerfile)
+- [`1.0-1.1-nanoserver-ltsc2016`, `1.0-1.1` (*1.1/nanoserver/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver/kitchensink/Dockerfile)
+- [`1.0-2.0-nanoserver-ltsc2016`, `1.0-2.0` (*2.0/nanoserver/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver/kitchensink/Dockerfile)
+
 
 ## What is ASP.NET Core?
 
