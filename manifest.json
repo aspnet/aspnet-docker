@@ -137,7 +137,13 @@
           "sharedTags": {
             "1.1.4": {},
             "1.1": {},
-            "1": {}
+            "1": {},
+            "1.0": {
+              "isUndocumented": true
+            },
+            "lts": {
+              "isUndocumented": true
+            }
           },
           "platforms": [
             {
