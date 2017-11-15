@@ -1,14 +1,16 @@
 # escape=`
-FROM microsoft/dotnet:2.0.0-runtime-nanoserver-10.0.14393.1770
+FROM microsoft/dotnet:2.0.3-runtime-nanoserver-10.0.14393.1770
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
-ENV ASPNETCORE_PKG_VERSION 2.0.0
-ENV ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL https://dist.asp.net/runtimestore/2.0.0/win-x64/aspnetcore.runtimestore.zip
+ENV ASPNETCORE_PKG_VERSION 2.0.3
 
 # set up the runtime store
-RUN Write-Host \"Downloading and extracting ${env:ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL}\"; `
-    Invoke-WebRequest $env:ASPNETCORE_RUNTIMESTORE_DOWNLOAD_URL -OutFile cache.zip; `
-    $env:DOTNET_HOME = $(Split-Path -Parent (Get-Command dotnet.exe).Source); `
-    Expand-Archive cache.zip -DestinationPath $env:DOTNET_HOME; `
-    Remove-Item -Force cache.zip
+RUN $env:DOTNET_HOME = $(Split-Path -Parent (Get-Command dotnet.exe).Source); `
+    @('2.0.0', '2.0.3') | % { `
+        $downloadUrl = \"https://dist.asp.net/runtimestore/${_}/win-x64/aspnetcore.runtimestore.zip\"; `
+        Write-Host \"Downloading and extracting $downloadUrl\"; `
+        Invoke-WebRequest $downloadUrl -OutFile cache.zip; `
+        Expand-Archive cache.zip -DestinationPath $env:DOTNET_HOME; `
+        Remove-Item -Force cache.zip; `
+    }
