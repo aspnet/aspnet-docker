@@ -216,7 +216,8 @@ try
         }
     }
 
-    if ($testCount -eq 0) {
+    # TODO find a way to test the 1.1 sdk with the 1.0 runtime image
+    if (($testCount -eq 0) -and ($Folder -ne '1.0/*')) {
         throw 'No tests were run'
     }
 }

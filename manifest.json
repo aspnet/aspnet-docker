@@ -18,27 +18,26 @@
       "images": [
         {
           "sharedTags": {
-            "1.0.7": {},
+            "1.0.8": {},
             "1.0": {},
-            "lts": {}
+            "lts": {
+              "isUndocumented": true
+            }
           },
           "platforms": [
             {
               "dockerfile": "1.0/jessie/runtime",
               "os": "linux",
               "tags": {
-                "1.0.7-jessie": {}
+                "1.0.8-jessie": {}
               }
             },
             {
               "dockerfile": "1.0/nanoserver-sac2016/runtime",
               "os": "windows",
               "tags": {
-                "1.0.7-nanoserver-sac2016": {},
-                "1.0.7-nanoserver": {
-                  "isUndocumented": true
-                },
-                "1.0.7-nanoserver-$(nanoServerVersion)": {
+                "1.0.8-nanoserver-sac2016": {},
+                "1.0.8-nanoserver": {
                   "isUndocumented": true
                 }
               }
@@ -134,35 +133,6 @@
       "name": "microsoft/aspnetcore-build",
       "readmePath": "README.aspnetcore-build.md",
       "images": [
-        {
-          "sharedTags": {
-            "1.0.7": {},
-            "1.0": {},
-            "lts": {}
-          },
-          "platforms": [
-            {
-              "dockerfile": "1.0/jessie/sdk",
-              "os": "linux",
-              "tags": {
-                "1.0.7-jessie": {}
-              }
-            },
-            {
-              "dockerfile": "1.0/nanoserver-sac2016/sdk",
-              "os": "windows",
-              "tags": {
-                "1.0.7-nanoserver-sac2016": {},
-                "1.0.7-nanoserver": {
-                  "isUndocumented": true
-                },
-                "1.0.7-nanoserver-$(nanoServerVersion)": {
-                  "isUndocumented": true
-                }
-              }
-            }
-          ]
-        },
         {
           "sharedTags": {
             "1.1.4": {},
