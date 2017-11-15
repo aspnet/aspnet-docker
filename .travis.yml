@@ -9,16 +9,12 @@ services:
   - docker
 env:
   matrix:
-    - folder_filter=2.0
-    - folder_filter=1.1
-    - folder_filter=1.0
+    - folder_filter=2.0/*
+    - folder_filter=1.1/*
+    - folder_filter=1.0/*
 matrix:
   fast_finish: true
 before_install:
   - bash <(curl -fsSL https://raw.githubusercontent.com/PowerShell/PowerShell/v6.0.0-beta.6/tools/download.sh)
-install:
-  - ./build.ps1 -Folder $folder_filter
-before_script:
-  - docker build --rm -t testrunner -f ./test/Dockerfile.testrunner.linux .
 script:
-  - /bin/bash -c "docker run --add-host dockerhost:$(ifconfig eth0 | grep -oP 'inet addr:\K\S+') -v /var/run/docker.sock:/var/run/docker.sock testrunner powershell -File ./test/test.ps1 -Folder $folder_filter -HostIP dockerhost"
+  - ./ci-build.sh

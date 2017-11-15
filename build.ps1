@@ -10,6 +10,8 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+Write-Host "`$Folder = $Folder"
+
 # Functions
 
 function exec($cmd) {
@@ -37,7 +39,7 @@ $manifest.repos | % {
     $repo.images | % {
         $_.platforms |
             ? { $_.os -eq "$active_os" } |
-            ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder*" } |
+            ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder" } |
             % {
                 $buildCount += 1
                 $dockerfile = Join-Path $PSScriptRoot $_.dockerfile

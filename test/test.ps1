@@ -11,6 +11,8 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+Write-Host "`$Folder = $Folder"
+
 # Functions
 
 function exec($cmd) {
@@ -195,7 +197,7 @@ try
         $repo.images | % {
             $_.platforms |
                 ? { $_.os -eq "$active_os" } |
-                ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder*" } |
+                ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder" } |
                 ? { $_.dockerfile -like '*/sdk' } |
                 % {
                     $testCount += 1
