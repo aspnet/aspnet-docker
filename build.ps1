@@ -26,6 +26,9 @@ if ($LastExitCode -ne 0) {
 }
 $manifest = (Get-Content (Join-Path $PSScriptRoot manifest.json) | ConvertFrom-Json)
 # Main
+
+$buildCount = 0
+
 $manifest.repos | % {
     $repo = $_
     $repoName = $repo.name -replace 'microsoft/',"$RootImageName/"
@@ -36,10 +39,15 @@ $manifest.repos | % {
             ? { $_.os -eq "$active_os" } |
             ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder*" } |
             % {
+                $buildCount += 1
                 $dockerfile = Join-Path $PSScriptRoot $_.dockerfile
                 $tag_details = $_.tags | % { $_.PSobject.Properties } | select -first 1
                 $full_tag_name = "${repoName}:$($tag_details.name)"
                 exec docker build --pull $dockerfile --tag $full_tag_name
             }
     }
+}
+
+if ($buildCount -eq 0) {
+    throw 'No images were created'
 }
