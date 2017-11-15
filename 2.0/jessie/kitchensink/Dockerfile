@@ -1,9 +1,9 @@
-FROM microsoft/dotnet:2.0.0-sdk-2.0.2-jessie
+FROM microsoft/dotnet:2.0.3-sdk-jessie
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 ENV NODE_VERSION 6.11.3
-ENV ASPNETCORE_PKG_VERSION 2.0.0
+ENV ASPNETCORE_PKG_VERSION 2.0.3
 
 RUN set -ex \
   && for key in \

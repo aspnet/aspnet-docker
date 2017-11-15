@@ -19,13 +19,13 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
 
 
 # Build image
-FROM microsoft/dotnet:2.0.0-sdk-2.0.2-nanoserver-1709
+FROM microsoft/dotnet:2.0.3-sdk-nanoserver-1709
 
 # Note: Build image's SHELL is the CMD shell (different than the installer image).
 
 # Set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV ASPNETCORE_PKG_VERSION 2.0.0
+ENV ASPNETCORE_PKG_VERSION 2.0.3
 
 # Install node, bower, and git
 COPY --from=installer-env ["nodejs", "C:\\Program Files\\nodejs"]

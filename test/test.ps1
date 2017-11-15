@@ -11,6 +11,8 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+Write-Host "`$Folder = $Folder"
+
 # Functions
 
 function exec($cmd) {
@@ -187,6 +189,7 @@ push-location $PSScriptRoot
 
 try
 {
+    $testCount = 0
     $manifest.repos | % {
         $repo = $_
         $repoName = $repo.name -replace 'microsoft/',"$RootImageName/"
@@ -197,6 +200,7 @@ try
                 ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder" } |
                 ? { $_.dockerfile -like '*/sdk' } |
                 % {
+                    $testCount += 1
                     $version = $_.dockerfile.Substring(0, 3)
                     $sdk_tag_info = $_.tags | % { $_.PSobject.Properties } | select -first 1
                     $sdk_tag = "${repoName}:$($sdk_tag_info.name)"
@@ -210,6 +214,10 @@ try
                     test_image $version $sdk_tag $runtime_tag
                 }
         }
+    }
+
+    if ($testCount -eq 0) {
+        throw 'No tests were run'
     }
 }
 finally {

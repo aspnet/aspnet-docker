@@ -144,7 +144,7 @@
       "value": "microsoft/dotnet-buildtools-prereqs:image-builder-jessie-20171006102106"
     },
     "image-builder.args": {
-      "value": "build --manifest manifest.json --path $(PB.image-builder.path) --test-var Folder=$(PB.image-builder.path) --push --username $(PB.docker.username) --password $(PB.docker.password) $(PB.image-builder.customCommonArgs)",
+      "value": "build --manifest manifest.json --path \"$(PB.image-builder.path)\" --test-var \"Folder=$(PB.image-builder.path)\" --push --username $(PB.docker.username) --password $(PB.docker.password) $(PB.image-builder.customCommonArgs)",
       "allowOverride": true
     },
     "image-builder.containerName": {
