@@ -16,19 +16,19 @@
         {
           "Name": "aspnet-docker-linux-images",
           "Parameters": {
-            "PB.image-builder.path": "1.0*"
+            "PB.image-builder.path": "1.0"
           }
         },
         {
           "Name": "aspnet-docker-linux-images",
           "Parameters": {
-            "PB.image-builder.path": "1.1*"
+            "PB.image-builder.path": "1.1"
           }
         },
         {
           "Name": "aspnet-docker-linux-images",
           "Parameters": {
-            "PB.image-builder.path": "2.0*"
+            "PB.image-builder.path": "2.0"
           }
         }
       ]
@@ -42,19 +42,19 @@
         {
           "Name": "aspnet-docker-windows-images",
           "Parameters": {
-            "PB.image-builder.path": "1.0*"
+            "PB.image-builder.path": "1.0"
           }
         },
         {
           "Name": "aspnet-docker-windows-images",
           "Parameters": {
-            "PB.image-builder.path": "1.1*"
+            "PB.image-builder.path": "1.1"
           }
         },
         {
           "Name": "aspnet-docker-windows-images",
           "Parameters": {
-            "PB.image-builder.path": "2.0/nanoserver-sac2016/*"
+            "PB.image-builder.path": "2.0/nanoserver-sac2016/"
           }
         }
       ]
@@ -68,7 +68,7 @@
         {
           "Name": "aspnet-docker-windows-1709-images",
           "Parameters": {
-            "PB.image-builder.path": "2.0/nanoserver-1709/*"
+            "PB.image-builder.path": "2.0/nanoserver-1709/"
           }
         }
       ]

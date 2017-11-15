@@ -194,7 +194,7 @@ try
         $repo.images | % {
             $_.platforms |
                 ? { $_.os -eq "$active_os" } |
-                ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder" } |
+                ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder*" } |
                 ? { $_.dockerfile -like '*/sdk' } |
                 % {
                     $version = $_.dockerfile.Substring(0, 3)

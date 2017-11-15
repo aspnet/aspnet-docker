@@ -16,12 +16,14 @@ function exec($cmd) {
     Write-Host -foregroundcolor Cyan ">>> $cmd $args"
     & $cmd @args
     if ($LastExitCode -ne 0) {
-        write-error 'Command exited with non-zero code'
-        exit 1
+        throw 'Command exited with non-zero code'
     }
 }
 
 $active_os = docker version -f "{{ .Server.Os }}"
+if ($LastExitCode -ne 0) {
+    throw 'Could not determine docker host type'
+}
 $manifest = (Get-Content (Join-Path $PSScriptRoot manifest.json) | ConvertFrom-Json)
 # Main
 $manifest.repos | % {
@@ -32,7 +34,7 @@ $manifest.repos | % {
     $repo.images | % {
         $_.platforms |
             ? { $_.os -eq "$active_os" } |
-            ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder" } |
+            ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder*" } |
             % {
                 $dockerfile = Join-Path $PSScriptRoot $_.dockerfile
                 $tag_details = $_.tags | % { $_.PSobject.Properties } | select -first 1

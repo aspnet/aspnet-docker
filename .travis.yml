@@ -9,9 +9,9 @@ services:
   - docker
 env:
   matrix:
-    - folder_filter=2.0*
-    - folder_filter=1.1*
-    - folder_filter=1.0*
+    - folder_filter=2.0
+    - folder_filter=1.1
+    - folder_filter=1.0
 matrix:
   fast_finish: true
 before_install:
