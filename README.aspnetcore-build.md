@@ -6,8 +6,7 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 
 # Supported Linux amd64 tags
 
-- [`1.0.7-jessie`, `1.0.7`, `1.0`, `lts` (*1.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/sdk/Dockerfile)
-- [`1.1.4-jessie`, `1.1.4`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
+- [`1.1.5-jessie`, `1.1.5`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
 - [`2.0.3-stretch`, `2.0-stretch`, `2.0.3`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/sdk/Dockerfile)
 - [`2.0.3-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/sdk/Dockerfile)
 - [`1.0-1.1-jessie`, `1.0-1.1` (*1.1/jessie/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/kitchensink/Dockerfile)
@@ -21,8 +20,7 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 
 # Supported Windows Server 2016 amd64 tags
 
-- [`1.0.7-nanoserver-sac2016`, `1.0.7`, `1.0`, `lts` (*1.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver-sac2016/sdk/Dockerfile)
-- [`1.1.4-nanoserver-sac2016`, `1.1.4`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/sdk/Dockerfile)
+- [`1.1.5-nanoserver-sac2016`, `1.1.5`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/sdk/Dockerfile)
 - [`2.0.3-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.3`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/sdk/Dockerfile)
 - [`1.0-1.1-nanoserver-sac2016`, `1.0-1.1` (*1.1/nanoserver-sac2016/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/kitchensink/Dockerfile)
 - [`1.0-2.0-nanoserver-sac2016`, `1.0-2.0` (*2.0/nanoserver-sac2016/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/kitchensink/Dockerfile)

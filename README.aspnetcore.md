@@ -9,8 +9,8 @@ These images contain the runtime only. Use [`microsoft/aspnetcore-build`](https:
 
 # Supported Linux amd64 tags
 
-- [`1.0.7-jessie`, `1.0.7`, `1.0`, `lts` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/runtime/Dockerfile)
-- [`1.1.4-jessie`, `1.1.4`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
+- [`1.0.8-jessie`, `1.0.8`, `1.0` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/runtime/Dockerfile)
+- [`1.1.5-jessie`, `1.1.5`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
 - [`2.0.3-stretch`, `2.0-stretch`, `2.0.3`, `2.0`, `2`, `latest` (*2.0/stretch/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/runtime/Dockerfile)
 - [`2.0.3-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/runtime/Dockerfile)
 
@@ -20,8 +20,8 @@ These images contain the runtime only. Use [`microsoft/aspnetcore-build`](https:
 
 # Supported Windows Server 2016 amd64 tags
 
-- [`1.0.7-nanoserver-sac2016`, `1.0.7`, `1.0`, `lts` (*1.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver-sac2016/runtime/Dockerfile)
-- [`1.1.4-nanoserver-sac2016`, `1.1.4`, `1.1`, `1` (*1.1/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/runtime/Dockerfile)
+- [`1.0.8-nanoserver-sac2016`, `1.0.8`, `1.0` (*1.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver-sac2016/runtime/Dockerfile)
+- [`1.1.5-nanoserver-sac2016`, `1.1.5`, `1.1`, `1` (*1.1/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/runtime/Dockerfile)
 - [`2.0.3-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.3`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/runtime/Dockerfile)
 
 # What is ASP.NET Core?

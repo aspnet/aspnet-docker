@@ -1,5 +1,5 @@
 # escape=`
-FROM microsoft/dotnet:1.1.4-runtime-nanoserver-10.0.14393.1770
+FROM microsoft/dotnet:1.1.5-runtime-nanoserver-sac2016
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
@@ -8,7 +8,7 @@ ENV ASPNETCORE_URLS http://+:80
 ENV DOTNET_HOSTING_OPTIMIZATION_CACHE C:/packagecache
 
 # set up package caches
-RUN @('1.1.0', '1.1.1', '1.1.2', '1.1.3', '1.1.4') | % { `
+RUN @('1.1.0', '1.1.1', '1.1.2', '1.1.3', '1.1.4', '1.1.5') | % { `
         $downloadUrl = \"https://dist.asp.net/packagecache/${_}/win7-x64/aspnetcore.cache.zip\"; `
         $fileName = \"cache${_}.zip\"; `
         Write-Host \"Downloading and extracting $downloadUrl\"; `
