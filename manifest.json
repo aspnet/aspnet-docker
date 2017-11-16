@@ -1,7 +1,4 @@
 {
-  "tagVariables": {
-    "nanoServerVersion": "10.0.14393.1770"
-  },
   "testCommands": {
     "linux": [
       "docker build --rm -t testrunner -f ./test/Dockerfile.testrunner.linux .",
@@ -46,7 +43,7 @@
         },
         {
           "sharedTags": {
-            "1.1.4": {},
+            "1.1.5": {},
             "1.1": {},
             "1": {}
           },
@@ -55,18 +52,15 @@
               "dockerfile": "1.1/jessie/runtime",
               "os": "linux",
               "tags": {
-                "1.1.4-jessie": {}
+                "1.1.5-jessie": {}
               }
             },
             {
               "dockerfile": "1.1/nanoserver-sac2016/runtime",
               "os": "windows",
               "tags": {
-                "1.1.4-nanoserver-sac2016": {},
-                "1.1.4-nanoserver": {
-                  "isUndocumented": true
-                },
-                "1.1.4-nanoserver-$(nanoServerVersion)": {
+                "1.1.5-nanoserver-sac2016": {},
+                "1.1.5-nanoserver": {
                   "isUndocumented": true
                 }
               }
@@ -135,7 +129,7 @@
       "images": [
         {
           "sharedTags": {
-            "1.1.4": {},
+            "1.1.5": {},
             "1.1": {},
             "1": {},
             "1.0": {
@@ -150,18 +144,15 @@
               "dockerfile": "1.1/jessie/sdk",
               "os": "linux",
               "tags": {
-                "1.1.4-jessie": {}
+                "1.1.5-jessie": {}
               }
             },
             {
               "dockerfile": "1.1/nanoserver-sac2016/sdk",
               "os": "windows",
               "tags": {
-                "1.1.4-nanoserver-sac2016": {},
-                "1.1.4-nanoserver": {
-                  "isUndocumented": true
-                },
-                "1.1.4-nanoserver-$(nanoServerVersion)": {
+                "1.1.5-nanoserver-sac2016": {},
+                "1.1.5-nanoserver": {
                   "isUndocumented": true
                 }
               }
@@ -225,7 +216,7 @@
         {
           "sharedTags": {
             "1.0-1.1": {},
-            "1.0-1.1-2017-09": {
+            "1.0-1.1-2017-11": {
               "isUndocumented": true
             }
           },
@@ -235,7 +226,7 @@
               "os": "linux",
               "tags": {
                 "1.0-1.1-jessie": {},
-                "1.0-1.1-2017-09-jessie": {
+                "1.0-1.1-2017-11-jessie": {
                   "isUndocumented": true
                 }
               }
@@ -248,10 +239,7 @@
                 "1.0-1.1-nanoserver": {
                   "isUndocumented": true
                 },
-                "1.0-1.1-2017-09-nanoserver": {
-                  "isUndocumented": true
-                },
-                "1.0-1.1-2017-09-nanoserver-$(nanoServerVersion)": {
+                "1.0-1.1-2017-11-nanoserver": {
                   "isUndocumented": true
                 }
               }

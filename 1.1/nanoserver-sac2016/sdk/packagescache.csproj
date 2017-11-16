@@ -4,15 +4,6 @@
     <TargetFrameworks>netcoreapp1.0;netcoreapp1.1</TargetFrameworks>
     <RuntimeIdentifiers>win7-x64</RuntimeIdentifiers>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net451+win8</PackageTargetFallback>
-    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp1.0'">
-    <RuntimeFrameworkVersion>$(NETCORE_1_0_VERSION)</RuntimeFrameworkVersion>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp1.1'">
-    <RuntimeFrameworkVersion>$(NETCORE_1_1_VERSION)</RuntimeFrameworkVersion>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp1.0'">
