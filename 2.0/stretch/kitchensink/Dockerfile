@@ -3,6 +3,8 @@ FROM microsoft/dotnet:2.0.3-sdk-stretch
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 ENV NODE_VERSION 6.11.3
+ENV NETCORE_1_0_VERSION 1.0.8
+ENV NETCORE_1_1_VERSION 1.1.5
 ENV ASPNETCORE_PKG_VERSION 2.0.3
 
 RUN set -x \

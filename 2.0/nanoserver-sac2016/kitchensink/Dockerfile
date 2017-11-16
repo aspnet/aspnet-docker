@@ -4,6 +4,8 @@ FROM microsoft/dotnet:2.0.3-sdk-nanoserver-sac2016
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 ENV NODE_VERSION 6.11.3
+ENV NETCORE_1_0_VERSION 1.0.8
+ENV NETCORE_1_1_VERSION 1.1.5
 ENV ASPNETCORE_PKG_VERSION 2.0.3
 
 # Install node, bower, and git
@@ -19,8 +21,8 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
 
 RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '/nodejs' + ';' + $Env:ProgramFiles + '/git/cmd')
 
-RUN ('https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.7/dotnet-win-x64.1.0.7.zip', `
-     'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/1.1.4/dotnet-win-x64.1.1.4.zip' ) `
+RUN ('https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/${NETCORE_1_0_VERSION}/dotnet-win-x64.${NETCORE_1_0_VERSION}.zip', `
+     'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/${NETCORE_1_1_VERSION}/dotnet-win-x64.${NETCORE_1_1_VERSION}.zip' ) `
      | % { `
         Invoke-WebRequest $_ -UseBasicParsing -OutFile dotnet.zip; `
         # Ignore errors and don't use -Force. We want to keep the existing dotnet.exe instead of overwriting `

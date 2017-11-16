@@ -2,6 +2,8 @@ FROM microsoft/dotnet:1.1.4-sdk
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
+ENV NETCORE_1_0_VERSION 1.0.8
+ENV NETCORE_1_1_VERSION 1.1.5
 ENV NODE_VERSION 6.11.3
 
 # Install keys required for node

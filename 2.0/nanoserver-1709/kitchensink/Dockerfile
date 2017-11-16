@@ -5,6 +5,10 @@ FROM microsoft/windowsservercore:1709 AS installer-env
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
+# versions of stuff
+ENV NETCORE_1_0_VERSION 1.0.8
+ENV NETCORE_1_1_VERSION 1.1.5
+
 # Retrieve node and git
 ENV NODE_VERSION 6.11.3
 
@@ -18,8 +22,8 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
     Remove-Item -Force git.zip
 
 # Retrieve additional runtimes
-RUN ('https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.7/dotnet-win-x64.1.0.7.zip', `
-     'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/1.1.4/dotnet-win-x64.1.1.4.zip' ) `
+RUN ('https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/${NETCORE_1_0_VERSION}/dotnet-win-x64.${NETCORE_1_0_VERSION}.zip', `
+     'https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/${NETCORE_1_1_VERSION}/dotnet-win-x64.${NETCORE_1_1_VERSION}.zip' ) `
      | % { `
         Invoke-WebRequest $_ -UseBasicParsing -OutFile dotnet.zip; `
         # Ignore errors and don't use -Force. We want to keep the existing dotnet.exe instead of overwriting `
@@ -53,7 +57,7 @@ COPY --from=installer-env ["dotnet\\host", "C:\\Program Files\\dotnet\\host"]
 COPY --from=installer-env ["dotnet\\shared", "C:\\Program Files\\dotnet\\shared"]
 
 # Add Docker SDK
-COPY --from=installer-env ["sdks", "C:\\Program Files\\dotnet\\sdk\\2.0.2\\Sdks"]
+COPY --from=installer-env ["sdks", "C:\\Program Files\\dotnet\\sdk\\2.0.3\\Sdks"]
 
 # Warmup up NuGet package cache
 RUN mkdir C:\warmup

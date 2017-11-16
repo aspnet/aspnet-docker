@@ -75,7 +75,7 @@ function Update-PackageRefs([string]$tfm, [xml]$file, $versions) {
     }
 }
 
-$files = Get-ChildItem "1.0/*/*/packagescache.csproj", "1.1/*/*/packagescache.csproj" -Recurse
+$files = Get-ChildItem "*/*/*/packagescache.csproj" -Recurse
 
 if ($NetCoreApp10Versions) {
     $versions = Get-Versions $NetCoreApp10Versions

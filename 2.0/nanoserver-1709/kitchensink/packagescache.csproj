@@ -6,6 +6,14 @@
     <AssetTargetFallback>$(AssetTargetFallback);portable-net451+win8</AssetTargetFallback>
     <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
   </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp1.0'">
+    <RuntimeFrameworkVersion>$(NETCORE_1_0_VERSION)</RuntimeFrameworkVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp1.1'">
+    <RuntimeFrameworkVersion>$(NETCORE_1_1_VERSION)</RuntimeFrameworkVersion>
+  </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp2.0'">
     <PackageReference Include="Microsoft.AspNetCore.All" Version="$(ASPNETCORE_PKG_VERSION)" />

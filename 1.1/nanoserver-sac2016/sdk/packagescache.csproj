@@ -7,7 +7,15 @@
     <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
   </PropertyGroup>
 
-   <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp1.0'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp1.0'">
+    <RuntimeFrameworkVersion>$(NETCORE_1_0_VERSION)</RuntimeFrameworkVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp1.1'">
+    <RuntimeFrameworkVersion>$(NETCORE_1_1_VERSION)</RuntimeFrameworkVersion>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp1.0'">
     <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="1.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="1.0.5" />
