@@ -22,8 +22,8 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
     Remove-Item -Force git.zip
 
 # Retrieve additional runtimes
-RUN @(\"https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/${env:NETCORE_1_0_VERSION}/dotnet-win-x64.${env:NETCORE_1_0_VERSION}.zip\", `
-     \"https://dotnetcli.blob.core.windows.net/dotnet/release/1.1.0/Binaries/${env:NETCORE_1_1_VERSION}/dotnet-win-x64.${env:NETCORE_1_1_VERSION}.zip\" ) `
+RUN @(\"https://dotnetcli.blob.core.windows.net/dotnet/Runtime/${env:NETCORE_1_0_VERSION}/dotnet-win-x64.${env:NETCORE_1_0_VERSION}.zip\", `
+     \"https://dotnetcli.blob.core.windows.net/dotnet/Runtime/${env:NETCORE_1_1_VERSION}/dotnet-win-x64.${env:NETCORE_1_1_VERSION}.zip\" ) `
      | % { `
         Invoke-WebRequest $_ -UseBasicParsing -OutFile dotnet.zip; `
         # Ignore errors and don't use -Force. We want to keep the existing dotnet.exe instead of overwriting `
