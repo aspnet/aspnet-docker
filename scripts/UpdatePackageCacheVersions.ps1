@@ -1,4 +1,4 @@
-#!/usr/bin/env powershell
+#!/usr/bin/env pwsh
 #requires -version 5
 #
 
@@ -69,8 +69,11 @@ function Update-PackageRefs([string]$tfm, [xml]$file, $versions) {
             }
 
             $newVersion = $versions.$pkgId
-            Write-Host -f DarkGray "   ${pkgId}: $version => $newVersion"
-            $pkg.Attributes['Version'].Value = $newVersion
+
+            if ($newVersion -ne $version)  {
+                Write-Host -f DarkGray "   ${pkgId}: $version => $newVersion"
+                $pkg.Attributes['Version'].Value = $newVersion
+            }
         }
     }
 }
