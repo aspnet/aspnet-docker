@@ -38,7 +38,7 @@ RUN Invoke-WebRequest -UseBasicParsing https://distaspnet.blob.core.windows.net/
 
 
 # Kitchen Sink image
-FROM microsoft/dotnet:2.0.3-sdk-nanoserver-1709
+FROM microsoft/dotnet:2.0.3-sdk-2.1.2-nanoserver-1709
 
 # Note: Kitchen Sink image's SHELL is the CMD shell (different than the installer image).
 
