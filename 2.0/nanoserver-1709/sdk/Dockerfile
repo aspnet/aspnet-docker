@@ -19,7 +19,7 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
 
 
 # Build image
-FROM microsoft/dotnet:2.0.3-sdk-2.1.2-nanoserver-1709
+FROM microsoft/dotnet:2.0.4-sdk-2.1.3-nanoserver-1709
 
 # Note: Build image's SHELL is the CMD shell (different than the installer image).
 

@@ -6,26 +6,28 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 
 # Supported Linux amd64 tags
 
-- [`1.1.5-jessie`, `1.1.5`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
-- [`2.0.3-2.1.2-stretch`, `2.0-stretch`, `2.0.3-2.1.2`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/sdk/Dockerfile)
-- [`2.0.3-2.1.2-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/sdk/Dockerfile)
+- [`1.1.5-1.1.6-jessie`, `1.1.5-1.1.6`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
+- [`2.0.4-2.1.3-stretch`, `2.0-stretch`, `2.0.4-2.1.3`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/sdk/Dockerfile)
+- [`2.0.4-2.1.3-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/sdk/Dockerfile)
 - [`1.0-1.1-jessie`, `1.0-1.1` (*1.1/jessie/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/kitchensink/Dockerfile)
 - [`1.0-2.0-stretch`, `1.0-2.0` (*2.0/stretch/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/kitchensink/Dockerfile)
 - [`1.0-2.0-jessie` (*2.0/jessie/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/kitchensink/Dockerfile)
 
 # Supported Windows Server 2016 Version 1709 (Fall Creators Update) amd64 tags
 
-- [`2.0.3-2.1.2-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.3-2.1.2`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/sdk/Dockerfile)
+- [`2.0.4-2.1.3-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.4-2.1.3`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/sdk/Dockerfile)
 - [`1.0-2.0-nanoserver-1709`, `1.0-2.0` (*2.0/nanoserver-1709/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/kitchensink/Dockerfile)
 
 # Supported Windows Server 2016 amd64 tags
 
-- [`1.1.5-nanoserver-sac2016`, `1.1.5`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/sdk/Dockerfile)
-- [`2.0.3-2.1.2-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.3-2.1.2`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/sdk/Dockerfile)
+- [`1.1.5-1.1.6-nanoserver-sac2016`, `1.1.5-1.1.6`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/sdk/Dockerfile)
+- [`2.0.4-2.1.3-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.4-2.1.3`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/sdk/Dockerfile)
 - [`1.0-1.1-nanoserver-sac2016`, `1.0-1.1` (*1.1/nanoserver-sac2016/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/kitchensink/Dockerfile)
 - [`1.0-2.0-nanoserver-sac2016`, `1.0-2.0` (*2.0/nanoserver-sac2016/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/kitchensink/Dockerfile)
 
 >**Note:** ASP.NET Core multi-arch tags, such as 2.0, have been updated to use nanoserver-1709 images if your host is Windows Server 2016 Version 1709 or higher or Windows 10 Fall Creators Update (Version 1709) or higher. You need Docker 17.10 or later to take advantage of these updated tags.
+
+>**Note:** In images tagged with two versions in this pattern `A.B.C-X.Y.Z`, the first version `A.B.C` represents the .NET Core runtime version, and the second `X.Y.Z` represents the .NET Core SDK version.
 
 # What is ASP.NET Core?
 
@@ -122,4 +124,3 @@ docker run -it -v $(PWD):/app --workdir /app microsoft/aspnetcore-build bash -c 
 ```
 
 After this is completed, the application in the current directory will be published to the `bin/Release/PublishOutput` directory.
-

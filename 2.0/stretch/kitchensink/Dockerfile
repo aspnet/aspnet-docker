@@ -1,10 +1,10 @@
-FROM microsoft/dotnet:2.0.3-sdk-2.1.2-stretch
+FROM microsoft/dotnet:2.0.4-sdk-2.1.3-stretch
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 ENV NODE_VERSION 6.11.3
-ENV NETCORE_1_0_VERSION 1.0.8
-ENV NETCORE_1_1_VERSION 1.1.5
+ENV NETCORE_1_0_RUNTIME_VERSION 1.0.8
+ENV NETCORE_1_1_RUNTIME_VERSION 1.1.5
 ENV ASPNETCORE_PKG_VERSION 2.0.3
 
 RUN set -x \
@@ -46,8 +46,8 @@ RUN buildDeps='xz-utils' \
 
 # Install the 1.x runtimes
 RUN for url in \
-      "https://dotnetcli.blob.core.windows.net/dotnet/Runtime/${NETCORE_1_0_VERSION}/dotnet-debian-x64.${NETCORE_1_0_VERSION}.tar.gz" \
-      "https://dotnetcli.blob.core.windows.net/dotnet/Runtime/${NETCORE_1_1_VERSION}/dotnet-debian-x64.${NETCORE_1_1_VERSION}.tar.gz"; \
+      "https://dotnetcli.blob.core.windows.net/dotnet/Runtime/${NETCORE_1_0_RUNTIME_VERSION}/dotnet-debian-x64.${NETCORE_1_0_RUNTIME_VERSION}.tar.gz" \
+      "https://dotnetcli.blob.core.windows.net/dotnet/Runtime/${NETCORE_1_1_RUNTIME_VERSION}/dotnet-debian-x64.${NETCORE_1_1_RUNTIME_VERSION}.tar.gz"; \
     do \
       echo "Downloading and installing from $url" \
       && curl -SL $url --output /tmp/dotnet.tar.gz \
