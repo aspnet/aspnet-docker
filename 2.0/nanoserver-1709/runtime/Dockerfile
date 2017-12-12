@@ -15,7 +15,7 @@ RUN  @('2.0.0', '2.0.3') | % { `
     }
 
 # Runtime image
-FROM microsoft/dotnet:2.0.3-runtime-nanoserver-1709
+FROM microsoft/dotnet:2.0.4-runtime-nanoserver-1709
 
 # Note: Runtime image's SHELL is the CMD shell (different than the installer image).
 

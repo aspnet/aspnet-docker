@@ -205,8 +205,10 @@ try
                     $sdk_tag_info = $_.tags | % { $_.PSobject.Properties } | select -first 1
                     $sdk_tag = "${repoName}:$($sdk_tag_info.name)"
                     $runtime_tag = switch ($version) {
-                        # map the 2.0.3-2.1.2 sdk tags to the runtime tag name
-                        "2.0" { $sdk_tag -replace '-2.1.2','' }
+                        # map the 1.1.5-1.1.6 sdk tags to the runtime tag name
+                        "1.1" { $sdk_tag -replace '-1.1.6','' }
+                        # map the 2.0.4-2.1.3 sdk tags to the runtime tag name
+                        "2.0" { $sdk_tag -replace '-2.1.3','' }
                         Default { $sdk_tag }
                     }
                     $runtime_tag = $runtime_tag -replace '-build',''
