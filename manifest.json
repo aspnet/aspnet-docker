@@ -152,7 +152,7 @@
         },
         {
           "sharedTags": {
-            "2.0.3": {},
+            "2.0.3-2.1.2": {},
             "2.0": {},
             "2": {},
             "latest": {}
@@ -194,7 +194,7 @@
               "dockerfile": "2.0/jessie/sdk",
               "os": "linux",
               "tags": {
-                "2.0.3-jessie": {},
+                "2.0.3-2.1.2-jessie": {},
                 "2.0-jessie": {},
                 "2-jessie": {}
               }
