@@ -206,9 +206,9 @@ try
                     $sdk_tag = "${repoName}:$($sdk_tag_info.name)"
                     $runtime_tag = switch ($version) {
                         # map the 1.1.5-1.1.6 sdk tags to the runtime tag name
-                        "1.1" { $sdk_tag -replace '-1.1.6','' }
+                        "1.1" { $sdk_tag -replace '-1.1.7','' }
                         # map the 2.0.4-2.1.3 sdk tags to the runtime tag name
-                        "2.0" { $sdk_tag -replace '-2.1.3','' }
+                        "2.0" { $sdk_tag -replace '-2.1.4','' }
                         Default { $sdk_tag }
                     }
                     $runtime_tag = $runtime_tag -replace '-build',''

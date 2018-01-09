@@ -6,8 +6,8 @@ FROM microsoft/windowsservercore:1709 AS installer-env
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # versions of stuff
-ENV NETCORE_1_0_RUNTIME_VERSION 1.0.8
-ENV NETCORE_1_1_RUNTIME_VERSION 1.1.5
+ENV NETCORE_1_0_RUNTIME_VERSION 1.0.9
+ENV NETCORE_1_1_RUNTIME_VERSION 1.1.6
 
 # Retrieve node and git
 ENV NODE_VERSION 6.12.3

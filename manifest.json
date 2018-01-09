@@ -15,7 +15,7 @@
       "images": [
         {
           "sharedTags": {
-            "1.0.8": {},
+            "1.0.9": {},
             "1.0": {},
             "lts": {
               "isUndocumented": true
@@ -26,21 +26,21 @@
               "dockerfile": "1.0/jessie/runtime",
               "os": "linux",
               "tags": {
-                "1.0.8-jessie": {}
+                "1.0.9-jessie": {}
               }
             },
             {
               "dockerfile": "1.0/nanoserver-sac2016/runtime",
               "os": "windows",
               "tags": {
-                "1.0.8-nanoserver-sac2016": {}
+                "1.0.9-nanoserver-sac2016": {}
               }
             }
           ]
         },
         {
           "sharedTags": {
-            "1.1.5": {},
+            "1.1.6": {},
             "1.1": {},
             "1": {}
           },
@@ -49,14 +49,14 @@
               "dockerfile": "1.1/jessie/runtime",
               "os": "linux",
               "tags": {
-                "1.1.5-jessie": {}
+                "1.1.6-jessie": {}
               }
             },
             {
               "dockerfile": "1.1/nanoserver-sac2016/runtime",
               "os": "windows",
               "tags": {
-                "1.1.5-nanoserver-sac2016": {}
+                "1.1.6-nanoserver-sac2016": {}
               }
             }
           ]
@@ -120,7 +120,7 @@
       "images": [
         {
           "sharedTags": {
-            "1.1.5-1.1.6": {},
+            "1.1.6-1.1.7": {},
             "1.1": {},
             "1": {},
             "1.0": {
@@ -135,14 +135,14 @@
               "dockerfile": "1.1/jessie/sdk",
               "os": "linux",
               "tags": {
-                "1.1.5-1.1.6-jessie": {}
+                "1.1.6-1.1.7-jessie": {}
               }
             },
             {
               "dockerfile": "1.1/nanoserver-sac2016/sdk",
               "os": "windows",
               "tags": {
-                "1.1.5-1.1.6-nanoserver-sac2016": {}
+                "1.1.6-1.1.7-nanoserver-sac2016": {}
               }
             }
           ]
