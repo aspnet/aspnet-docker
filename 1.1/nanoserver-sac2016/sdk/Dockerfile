@@ -3,7 +3,7 @@ FROM microsoft/dotnet:1.1.5-sdk-1.1.6-nanoserver-sac2016
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.3
+ENV NODE_VERSION 6.12.3
 
 # Install node, bower, and git
 RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSION}/node-v${env:NODE_VERSION}-win-x64.zip -outfile node.zip; `

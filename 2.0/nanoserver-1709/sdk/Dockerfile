@@ -6,7 +6,7 @@ FROM microsoft/windowsservercore:1709 AS installer-env
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Retrieve node and git
-ENV NODE_VERSION 6.11.3
+ENV NODE_VERSION 6.12.3
 
 RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSION}/node-v${env:NODE_VERSION}-win-x64.zip -outfile node.zip; `
     Expand-Archive node.zip -DestinationPath nodejs-tmp; `

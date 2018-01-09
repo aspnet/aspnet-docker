@@ -10,7 +10,7 @@ ENV NETCORE_1_0_RUNTIME_VERSION 1.0.8
 ENV NETCORE_1_1_RUNTIME_VERSION 1.1.5
 
 # Retrieve node and git
-ENV NODE_VERSION 6.11.3
+ENV NODE_VERSION 6.12.3
 
 RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSION}/node-v${env:NODE_VERSION}-win-x64.zip -outfile node.zip; `
     Expand-Archive node.zip -DestinationPath nodejs-tmp; `

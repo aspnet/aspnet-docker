@@ -3,7 +3,7 @@ FROM microsoft/dotnet:2.0.4-sdk-2.1.3-nanoserver-sac2016
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.3
+ENV NODE_VERSION 6.12.3
 ENV ASPNETCORE_PKG_VERSION 2.0.3
 
 # Install node, bower, and git
