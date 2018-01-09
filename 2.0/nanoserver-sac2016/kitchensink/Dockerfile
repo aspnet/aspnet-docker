@@ -1,12 +1,12 @@
 # escape=`
-FROM microsoft/dotnet:2.0.4-sdk-2.1.3-nanoserver-sac2016
+FROM microsoft/dotnet:2.0.5-sdk-2.1.4-nanoserver-sac2016
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 ENV NODE_VERSION 6.12.3
 ENV NETCORE_1_0_RUNTIME_VERSION 1.0.8
 ENV NETCORE_1_1_RUNTIME_VERSION 1.1.5
-ENV ASPNETCORE_PKG_VERSION 2.0.3
+ENV ASPNETCORE_PKG_VERSION 2.0.5
 
 # Install node, bower, and git
 RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSION}/node-v${env:NODE_VERSION}-win-x64.zip -outfile node.zip; `

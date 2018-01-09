@@ -1,10 +1,10 @@
-FROM microsoft/dotnet:2.0.4-sdk-2.1.3-jessie
+FROM microsoft/dotnet:2.0.5-sdk-2.1.4-jessie
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 ENV NETCORE_1_0_RUNTIME_VERSION 1.0.8
 ENV NETCORE_1_1_RUNTIME_VERSION 1.1.5
-ENV ASPNETCORE_PKG_VERSION 2.0.3
+ENV ASPNETCORE_PKG_VERSION 2.0.5
 
 # set up node
 ENV NODE_VERSION 6.12.3
