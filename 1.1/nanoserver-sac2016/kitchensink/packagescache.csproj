@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp1.0;netcoreapp1.1</TargetFrameworks>
-    <RuntimeIdentifiers>debian.8-x64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>win7-x64</RuntimeIdentifiers>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net451+win8</PackageTargetFallback>
   </PropertyGroup>
 

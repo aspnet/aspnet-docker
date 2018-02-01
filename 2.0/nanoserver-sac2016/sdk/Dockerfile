@@ -1,9 +1,10 @@
 # escape=`
-FROM microsoft/dotnet-nightly:1.1.4-sdk-nanoserver-10.0.14393.1715
+FROM microsoft/dotnet:2.0.5-sdk-2.1.4-nanoserver-sac2016
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.3
+ENV NODE_VERSION 6.12.3
+ENV ASPNETCORE_PKG_VERSION 2.0.5
 
 # Install node, bower, and git
 RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSION}/node-v${env:NODE_VERSION}-win-x64.zip -outfile node.zip; `
@@ -22,7 +23,6 @@ RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '/nodejs' + ';' + $Env:
 COPY packagescache.csproj C:/warmup/packagescache.csproj
 
 RUN dotnet restore C:/warmup/packagescache.csproj `
-      --source https://dotnet.myget.org/F/dotnet-2017-09-servicing/api/v3/index.json `
-      --source https://api.nuget.org/v3/index.json `
-      --verbosity quiet; `
+        --source https://api.nuget.org/v3/index.json `
+        --verbosity quiet; `
     Remove-Item -Recurse -Force C:/warmup

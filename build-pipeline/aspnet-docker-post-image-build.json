@@ -141,10 +141,10 @@
       "allowOverride": true
     },
     "image-builder.imageName": {
-      "value": "microsoft/dotnet-buildtools-prereqs:image-builder-jessie-20170817154316"
+      "value": "microsoft/dotnet-buildtools-prereqs:image-builder-jessie-20171006102106"
     },
     "image-builder.common.args": {
-      "value": "--manifest manifest.json --username $(PB.docker.username) --password $(PB.docker.password)",
+      "value": "--manifest manifest.json --username $(PB.docker.username) --password $(PB.docker.password) $(PB.image-builder.customCommonArgs)",
       "allowOverride": true
     },
     "image-builder.publishManifest.args": {
@@ -157,6 +157,9 @@
     },
     "image-builder.containerName": {
       "value": "aspnet-docker-post-image-build-$(Build.BuildId)"
+    },
+    "PB.image-builder.customCommonArgs": {
+      "value": ""
     },
     "PB.docker.password": {
       "value": null,
@@ -187,7 +190,7 @@
   "jobCancelTimeoutInMinutes": 5,
   "repository": {
     "properties": {
-      "cleanOptions": "0",
+      "cleanOptions": "3",
       "gitLfsSupport": "false",
       "skipSyncSource": "false",
       "reportBuildStatus": "true",
@@ -204,7 +207,7 @@
     "name": "aspnet/aspnet-docker",
     "url": "https://github.com/aspnet/aspnet-docker.git",
     "defaultBranch": "dev",
-    "clean": "false",
+    "clean": "true",
     "checkoutSubmodules": false
   },
   "processParameters": {},

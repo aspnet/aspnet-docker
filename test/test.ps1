@@ -11,6 +11,8 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+Write-Host "`$Folder = $Folder"
+
 # Functions
 
 function exec($cmd) {
@@ -143,7 +145,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
             $app_container_name = "runtime-self-contained-${app_name}"
             try {
                 exec docker run -d -t `
-                    --entrypoint ./test `
+                    --entrypoint $self_contained_entrypoint `
                     --name $app_container_name `
                     -p ${host_port}:80 `
                     -v ${app_volume_name}:${publish_path} `
@@ -176,12 +178,14 @@ if ($active_os -eq "windows") {
     $host_port = "80"
     $rid="win7-x64"
     $docker_test_file = "Dockerfile.test.nanoserver"
+    $self_contained_entrypoint = "test.exe"
 }
 else {
     $container_root = "/"
     $host_port = "5000"
-    $rid="debian.8-x64"
+    $rid = "debian.8-x64"
     $docker_test_file = "Dockerfile.test.linux"
+    $self_contained_entrypoint = "./test"
 }
 
 $manifest = Get-Content (Join-Paths $PSScriptRoot ('..', 'manifest.json')) | ConvertFrom-Json
@@ -192,6 +196,7 @@ push-location $PSScriptRoot
 
 try
 {
+    $testCount = 0
     $manifest.repos | % {
         $repo = $_
         $repoName = $repo.name -replace 'microsoft/',"$RootImageName/"
@@ -199,13 +204,21 @@ try
         $repo.images | % {
             $_.platforms |
                 ? { $_.os -eq "$active_os" } |
-                ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder*" } |
+                ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder" } |
                 ? { $_.dockerfile -like '*/sdk' } |
                 % {
+                    $testCount += 1
                     $version = $_.dockerfile.Substring(0, 3)
                     $sdk_tag_info = $_.tags | % { $_.PSobject.Properties } | select -first 1
                     $sdk_tag = "${repoName}:$($sdk_tag_info.name)"
-                    $runtime_tag = $sdk_tag -replace '-build',''
+                    $runtime_tag = switch ($version) {
+                        # map the 1.1.5-1.1.6 sdk tags to the runtime tag name
+                        "1.1" { $sdk_tag -replace '-1.1.7','' }
+                        # map the 2.0.4-2.1.3 sdk tags to the runtime tag name
+                        "2.0" { $sdk_tag -replace '-2.1.4','' }
+                        Default { $sdk_tag }
+                    }
+                    $runtime_tag = $runtime_tag -replace '-build',''
 
                     test_image $version $sdk_tag $runtime_tag
 
@@ -222,6 +235,11 @@ try
                     }
                 }
         }
+    }
+
+    # TODO find a way to test the 1.1 sdk with the 1.0 runtime image
+    if (($testCount -eq 0) -and ($Folder -ne '1.0/*')) {
+        throw 'No tests were run'
     }
 }
 finally {

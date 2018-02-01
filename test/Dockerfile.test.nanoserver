@@ -1,9 +1,12 @@
 FROM {image}
 
+# Switch to cmd shell to have consistency since this Dockerfile is used across multiple
+# base images which have different shells (due to nanoserver base image).
+SHELL ["cmd", "/S", "/C"]
+
 ARG FRAMEWORK
-ARG BUILD_ARGS
 
 WORKDIR test
-RUN dotnet new web --framework $env:FRAMEWORK
-RUN dotnet restore --source ${env:USERPROFILE}/.nuget/packages "/p:RuntimeIdentifiers=win7-x64"
-RUN dotnet build $env:BUILD_ARGS
+RUN dotnet new web --framework %FRAMEWORK%
+RUN dotnet restore --source %USERPROFILE%/.nuget/packages "/p:RuntimeIdentifiers=win7-x64"
+RUN dotnet build

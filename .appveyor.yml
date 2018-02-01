@@ -4,9 +4,10 @@ test_script:
   - ps: .\test\test.ps1 -Folder $env:folder_filter
 environment:
   matrix:
-    - folder_filter: 2.1
-    - folder_filter: 2.0
-    - folder_filter: 1
+    - folder_filter: 2.1/nanoserver-sac2016/*
+    - folder_filter: 2.0/nanoserver-sac2016/*
+    - folder_filter: 1.1/*
+    - folder_filter: 1.0/*
 matrix:
   fast_finish: true
 branches:

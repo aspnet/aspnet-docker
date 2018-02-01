@@ -1,10 +1,9 @@
 # escape=`
-FROM microsoft/dotnet-nightly:2.0.1-sdk-nanoserver-10.0.14393.1715
+FROM microsoft/dotnet:1.1.6-sdk-1.1.7-nanoserver-sac2016
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.11.3
-ENV ASPNETCORE_PKG_VERSION 2.0.0
+ENV NODE_VERSION 6.12.3
 
 # Install node, bower, and git
 RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSION}/node-v${env:NODE_VERSION}-win-x64.zip -outfile node.zip; `
@@ -19,12 +18,14 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
 
 RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '/nodejs' + ';' + $Env:ProgramFiles + '/git/cmd')
 
+# Add Docker SDK for when building a solution that has the Docker tools project.
+RUN Invoke-WebRequest -UseBasicParsing https://distaspnet.blob.core.windows.net/sdk/Microsoft.Docker.Sdk.zip -OutFile sdk.zip; `
+    Expand-Archive sdk.zip -DestinationPath \"${Env:ProgramFiles}/dotnet/sdk/${env:DOTNET_SDK_VERSION}/Sdks\"; `
+    Remove-Item -Force sdk.zip
+
 # warmup up NuGet package cache
 COPY packagescache.csproj C:/warmup/packagescache.csproj
-
 RUN dotnet restore C:/warmup/packagescache.csproj `
-        --source https://dotnet.myget.org/F/aspnetcore-release/api/v3/index.json `
-        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
         --source https://api.nuget.org/v3/index.json `
         --verbosity quiet; `
     Remove-Item -Recurse -Force C:/warmup
