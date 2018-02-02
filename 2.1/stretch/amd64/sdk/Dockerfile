@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:2.1.300-preview1-stretch
+FROM microsoft/dotnet-nightly:2.1.300-preview1-sdk-stretch
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80

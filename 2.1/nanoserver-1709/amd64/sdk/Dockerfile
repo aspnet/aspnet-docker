@@ -21,20 +21,6 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
     Remove-Item -Force node.zip; `
     Remove-Item -Force nodejs-tmp
 
-## https://github.com/git-for-windows/git/releases
-ENV GIT_VERSION 2.16.1
-ENV GIT_DOWNLOAD_SHA 14fde7abfa14f505605517b00c8b1bf09eec78e3653516f30dc43084d8df7ede
-
-RUN Invoke-WebRequest -UseBasicParsing https://github.com/git-for-windows/git/releases/download/v${env:GIT_VERSION}.windows.1/MinGit-${env:GIT_VERSION}-64-bit.zip -outfile git.zip; `
-    if ((Get-FileHash git.zip -Algorithm sha256).Hash -ne $env:GIT_DOWNLOAD_SHA) { `
-        Write-Host 'GIT CHECKSUM VERIFICATION FAILED!'; `
-        exit 1; `
-    }; `
-    `
-    Expand-Archive git.zip -DestinationPath git; `
-    Remove-Item -Force git.zip;
-
-
 # Build image
 FROM microsoft/dotnet-nightly:2.1.300-preview1-sdk-nanoserver-1709
 
@@ -43,9 +29,7 @@ FROM microsoft/dotnet-nightly:2.1.300-preview1-sdk-nanoserver-1709
 # Set up environment
 ENV ASPNETCORE_URLS http://+:80
 
-# Install node, bower, and git
 COPY --from=installer-env ["nodejs", "C:\\Program Files\\nodejs"]
-COPY --from=installer-env ["git", "C:\\Program Files\\git"]
 USER ContainerAdministrator
-RUN setx PATH "%PATH%;C:\Program Files\nodejs;C:\Program Files\git\cmd"
+RUN setx PATH "%PATH%;C:\Program Files\nodejs"
 USER ContainerUser
