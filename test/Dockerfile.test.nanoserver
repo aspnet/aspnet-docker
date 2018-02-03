@@ -8,5 +8,7 @@ ARG FRAMEWORK
 
 WORKDIR test
 RUN dotnet new web --framework %FRAMEWORK%
-RUN dotnet restore --source %USERPROFILE%/.nuget/packages "/p:RuntimeIdentifiers=win7-x64"
+RUN mkdir %USERPROFILE%/.nuget/
+RUN mkdir %USERPROFILE%/.nuget/packages
+RUN dotnet restore --source %USERPROFILE%/.nuget/packages -p:RuntimeIdentifiers=win7-x64
 RUN dotnet build

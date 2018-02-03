@@ -21,3 +21,12 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
     Remove-Item -Force nodejs-tmp
 
 RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '/nodejs')
+
+# Ensure packages required for standalone apps are pre-fetched
+RUN mkdir $env:TEMP\warmup; `
+    cd $env:TEMP\warmup; `
+    dotnet new web --no-restore; `
+    dotnet restore -p:RuntimeIdentifier=debian.8-x64 `
+        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
+        --source https://api.nuget.org/v3/index.json; `
+    cd ..; rm -Recurse -Force $env:TEMP\warmup

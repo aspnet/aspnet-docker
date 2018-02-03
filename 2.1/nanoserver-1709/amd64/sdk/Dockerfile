@@ -24,8 +24,6 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
 # Build image
 FROM microsoft/dotnet-nightly:2.1.300-preview1-sdk-nanoserver-1709
 
-# Note: Build image's SHELL is the CMD shell (different than the installer image).
-
 # Set up environment
 ENV ASPNETCORE_URLS http://+:80
 
@@ -33,3 +31,13 @@ COPY --from=installer-env ["nodejs", "C:\\Program Files\\nodejs"]
 USER ContainerAdministrator
 RUN setx PATH "%PATH%;C:\Program Files\nodejs"
 USER ContainerUser
+
+# Note: Build image's SHELL is the CMD shell (different than the installer image).
+# Ensure packages required for standalone apps are pre-fetched
+RUN mkdir %TEMP%\warmup; `
+    cd %TEMP%\warmup; `
+    dotnet new web --no-restore; `
+    dotnet restore -p:RuntimeIdentifier=debian.8-x64 `
+        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
+        --source https://api.nuget.org/v3/index.json; `
+    cd ..; del /F /S /Q %TEMP%\warmup

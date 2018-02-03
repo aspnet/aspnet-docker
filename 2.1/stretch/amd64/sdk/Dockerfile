@@ -3,6 +3,14 @@ FROM microsoft/dotnet-nightly:2.1.300-preview1-sdk-stretch
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
 
+# Ensure packages required for standalone apps are pre-fetched
+RUN mkdir /tmp/warmup && cd /tmp/warmup \
+    && dotnet new web --no-restore \
+    && dotnet restore -p:RuntimeIdentifier=debian.8-x64 \
+        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json \
+        --source https://api.nuget.org/v3/index.json \
+    && cd / && rm -rf /tmp/warmup
+
 # set up node
 ENV NODE_VERSION 8.9.4
 ENV NODE_DOWNLOAD_URL https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz
