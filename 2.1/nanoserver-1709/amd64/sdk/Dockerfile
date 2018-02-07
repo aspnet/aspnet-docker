@@ -28,6 +28,8 @@ FROM microsoft/dotnet-nightly:2.1.300-preview1-sdk-nanoserver-1709
 ENV ASPNETCORE_URLS http://+:80
 
 COPY --from=installer-env ["nodejs", "C:\\Program Files\\nodejs"]
+
+# In order to set system PATH, ContainerAdministrator must be used
 USER ContainerAdministrator
 RUN setx PATH "%PATH%;C:\Program Files\nodejs"
 USER ContainerUser
