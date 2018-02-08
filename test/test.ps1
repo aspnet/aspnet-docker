@@ -87,7 +87,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 Replace("{image}", $sdk_tag) `
         | docker build `
             --build-arg FRAMEWORK=$framework `
-            --build-arg BUILD_ARGS=$no_restore_flag `
+            --build-arg BUILD_ARGS="--configuration Release $no_restore_flag" `
             -t $app_build_tag `
             -
 

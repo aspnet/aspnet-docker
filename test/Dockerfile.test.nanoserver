@@ -12,4 +12,4 @@ RUN dotnet new web --framework %FRAMEWORK%
 RUN if not exist "%USERPROFILE%/.nuget/" mkdir "%USERPROFILE%/.nuget/"
 RUN if not exist "%USERPROFILE%/.nuget/packages" mkdir "%USERPROFILE%/.nuget/packages"
 RUN dotnet restore --source "%USERPROFILE%/.nuget/packages" -p:RuntimeIdentifiers=win7-x64
-RUN dotnet build "%BUILD_ARGS%"
+RUN dotnet build %BUILD_ARGS%
