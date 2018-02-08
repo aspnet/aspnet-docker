@@ -1,4 +1,4 @@
-#!/usr/bin/env powershell
+#!/usr/bin/env pwsh
 #requires -version 5
 param(
     # Set to 'microsoft' on build servers
@@ -237,11 +237,6 @@ try
                     }
                 }
         }
-    }
-
-    # TODO find a way to test the 1.1 sdk with the 1.0 runtime image
-    if (($testCount -eq 0) -and ($Folder -ne '1.0/*')) {
-        throw 'No tests were run'
     }
 }
 finally {
