@@ -2,18 +2,6 @@
 #     docker build -t testrunner -f ./test/Dockerfile.testrunner.linux .
 #     docker run --rm -v /var/run/docker.sock:/var/run/docker.sock testrunner test/test.ps1 <test.ps1 args>
 
-FROM microsoft/powershell:ubuntu16.04
-
-# Install Docker
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        software-properties-common \
-    && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
-    && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends \
-        docker-ce \
-    && rm -rf /var/lib/apt/lists/*
-
+FROM microsoft/dotnet-buildtools-prereqs:debian-stretch-docker-testrunner-63f2145-20184325094343
 WORKDIR test
 COPY . .
