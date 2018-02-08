@@ -26,7 +26,8 @@ RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '/nodejs')
 RUN mkdir $env:TEMP\warmup; `
     cd $env:TEMP\warmup; `
     dotnet new web --no-restore; `
-    dotnet restore -p:RuntimeIdentifier=debian.8-x64 `
+    dotnet restore -p:RuntimeIdentifier=win7-x64 `
         --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
         --source https://api.nuget.org/v3/index.json; `
-    cd ..; rm -Recurse -Force $env:TEMP\warmup
+    cd ..; `
+    rm -Recurse -Force $env:TEMP\warmup

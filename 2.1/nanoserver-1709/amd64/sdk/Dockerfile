@@ -36,10 +36,11 @@ USER ContainerUser
 
 # Note: Build image's SHELL is the CMD shell (different than the installer image).
 # Ensure packages required for standalone apps are pre-fetched
-RUN mkdir %TEMP%\warmup; `
-    cd %TEMP%\warmup; `
-    dotnet new web --no-restore; `
-    dotnet restore -p:RuntimeIdentifier=debian.8-x64 `
+RUN mkdir "%TEMP%/warmup" `
+    && cd "%TEMP%/warmup" `
+    && dotnet new web --no-restore `
+    && dotnet restore -p:RuntimeIdentifier=win7-x64 `
         --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
-        --source https://api.nuget.org/v3/index.json; `
-    cd ..; del /F /S /Q %TEMP%\warmup
+        --source https://api.nuget.org/v3/index.json `
+    && cd .. `
+    && rmdir /s /q "%TEMP%/warmup"
