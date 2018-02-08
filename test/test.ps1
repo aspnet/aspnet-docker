@@ -1,4 +1,4 @@
-#!/usr/bin/env powershell
+#!/usr/bin/env pwsh
 #requires -version 5
 param(
     # Set to 'microsoft' on build servers
@@ -87,7 +87,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 Replace("{image}", $sdk_tag) `
         | docker build `
             --build-arg FRAMEWORK=$framework `
-            --build-arg BUILD_ARGS=$no_restore_flag `
+            --build-arg BUILD_ARGS="--configuration Release $no_restore_flag" `
             -t $app_build_tag `
             -
 
@@ -216,6 +216,8 @@ try
                         "1.1" { $sdk_tag -replace '-1.1.7','' }
                         # map the 2.0.4-2.1.3 sdk tags to the runtime tag name
                         "2.0" { $sdk_tag -replace '-2.1.4','' }
+                        # map the 2.1.300 sdk tags to the runtime tag name
+                        "2.1" { $sdk_tag -replace '2.1.300','2.1.0' }
                         Default { $sdk_tag }
                     }
                     $runtime_tag = $runtime_tag -replace '-build',''
@@ -235,11 +237,6 @@ try
                     }
                 }
         }
-    }
-
-    # TODO find a way to test the 1.1 sdk with the 1.0 runtime image
-    if (($testCount -eq 0) -and ($Folder -ne '1.0/*')) {
-        throw 'No tests were run'
     }
 }
 finally {

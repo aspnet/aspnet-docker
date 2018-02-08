@@ -10,7 +10,8 @@ ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
 RUN for version in '1.0.4' '1.0.5' '1.0.6' '1.0.7'; do \
         curl -o /tmp/aspnetcore.cache.$version.tar.gz \
             https://dist.asp.net/packagecache/$version/debian.8-x64/aspnetcore.cache.tar.gz \
-        && mkdir -p /packagescache && cd /packagescache \
+        && mkdir -p /packagescache \
+        && cd /packagescache \
         && tar xf /tmp/aspnetcore.cache.$version.tar.gz \
         && rm /tmp/aspnetcore.cache.$version.tar.gz; \
     done
