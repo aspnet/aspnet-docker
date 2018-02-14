@@ -7,7 +7,7 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 ENV ASPNETCORE_URLS http://+:80
 
 # Retrieve ASP.NET Core Runtime
-ENV ASPNETCORE_VERSION 2.1.0-preview1-28262
+ENV ASPNETCORE_VERSION 2.1.0-preview1-28275
 
 RUN Invoke-WebRequest -OutFile aspnetcore.zip https://dotnetcli.blob.core.windows.net/dotnet/Runtime/$Env:ASPNETCORE_VERSION/aspnetcore-runtime-$Env:ASPNETCORE_VERSION-win-x64.zip; `
     Expand-Archive aspnetcore.zip -DestinationPath  $Env:ProgramFiles\dotnet; `
