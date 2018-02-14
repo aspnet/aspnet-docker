@@ -14,5 +14,5 @@ fi
 docker build --rm -t testrunner -f ./test/Dockerfile.testrunner.linux .
 docker run --add-host "dockerhost:$host_ip" \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    testrunner ./test/test.ps1 -Folder "$folder_filter" -HostIP dockerhost
+    testrunner ./test.ps1 -Folder "$folder_filter" -HostIP dockerhost
 

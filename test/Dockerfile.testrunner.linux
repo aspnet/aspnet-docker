@@ -1,6 +1,6 @@
 # Use this Dockerfile to create a Linux testrunner image
 #     docker build -t testrunner -f ./test/Dockerfile.testrunner.linux .
-#     docker run --rm -v /var/run/docker.sock:/var/run/docker.sock testrunner test/test.ps1 <test.ps1 args>
+#     docker run --rm -v /var/run/docker.sock:/var/run/docker.sock testrunner test.ps1 <test.ps1 args>
 
 FROM microsoft/dotnet-buildtools-prereqs:debian-stretch-docker-testrunner-63f2145-20184325094343
 WORKDIR test

@@ -83,7 +83,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
     try {
         Write-Host "----- Building $docker_test_file as $app_build_tag from ${sdk_tag} -----"
 
-        (Get-Content (Join-Path $PSScriptRoot -ChildPath $docker_test_file)).
+        (Get-Content (Join-Paths $PSScriptRoot @('test', $docker_test_file))).
                 Replace("{image}", $sdk_tag) `
         | docker build `
             --build-arg FRAMEWORK=$framework `
@@ -188,11 +188,11 @@ else {
     $self_contained_entrypoint = "./test"
 }
 
-$manifest = Get-Content (Join-Paths $PSScriptRoot ('..', 'manifest.json')) | ConvertFrom-Json
+$manifest = Get-Content (Join-Path $PSScriptRoot manifest.json) | ConvertFrom-Json
 
 # Main
 
-push-location $PSScriptRoot
+push-location "$PSScriptRoot/test"
 
 try
 {

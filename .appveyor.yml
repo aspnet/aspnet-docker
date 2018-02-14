@@ -1,7 +1,7 @@
 build_script:
   - ps: .\build.ps1 -Folder $env:folder_filter
 test_script:
-  - ps: .\test\test.ps1 -Folder $env:folder_filter
+  - ps: .\test.ps1 -Folder $env:folder_filter
 environment:
   matrix:
     - folder_filter: 2.1/nanoserver-sac2016/*
