@@ -175,7 +175,7 @@ $active_os = docker version -f "{{ .Server.Os }}"
 
 if ($active_os -eq "windows") {
     $container_root = "C:\"
-    $host_port = "80"
+    $host_port = "5000"
     $rid="win7-x64"
     $docker_test_file = "Dockerfile.test.nanoserver"
     $self_contained_entrypoint = "test.exe"
