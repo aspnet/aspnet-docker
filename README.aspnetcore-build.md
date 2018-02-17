@@ -4,30 +4,24 @@ ASP.NET Core Build Docker Image (Nightly)
 
 This repository contains images that are used to compile/publish ASP.NET Core applications inside the container. This is different to compiling an ASP.NET Core application and then adding the compiled output to an image, which is what you would do when using the [microsoft/aspnetcore-nightly](https://hub.docker.com/r/microsoft/aspnetcore-nightly/) image. These Dockerfiles use the [microsoft/dotnet-nightly](https://hub.docker.com/r/microsoft/dotnet-nightly/) image as its base.
 
-# Supported Linux amd64 tags
+# Linux amd64 tags
 
 - [`1.1.6-1.1.7-jessie`, `1.1.6-1.1.7`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/sdk/Dockerfile)
 - [`2.0.5-2.1.4-stretch`, `2.0-stretch`, `2.0.5-2.1.4`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/stretch/sdk/Dockerfile)
 - [`2.0.5-2.1.4-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/jessie/sdk/Dockerfile)
 - [`2.1.300-preview1-bionic` (*2.1/bionic/amd64/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/bionic/amd64/sdk/Dockerfile)
 - [`2.1.300-preview1-stretch`, `2.1.300-preview1` (*2.1/stretch/amd64/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/stretch/amd64/sdk/Dockerfile)
-- [`1.0-1.1-jessie`, `1.0-1.1` (*1.1/jessie/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/kitchensink/Dockerfile)
-- [`1.0-2.0-stretch`, `1.0-2.0` (*2.0/stretch/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/stretch/kitchensink/Dockerfile)
-- [`1.0-2.0-jessie` (*2.0/jessie/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/jessie/kitchensink/Dockerfile)
 
-# Supported Windows Server 2016 Version 1709 (Fall Creators Update) amd64 tags
+# Windows Server, version 1709 amd64 tags
 
 - [`2.0.5-2.1.4-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.5-2.1.4`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-1709/sdk/Dockerfile)
 - [`2.1.300-preview1-nanoserver-1709`, `2.1.300-preview1` (*2.1/nanoserver-1709/amd64/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/nanoserver-1709/amd64/sdk/Dockerfile)
-- [`1.0-2.0-nanoserver-1709`, `1.0-2.0` (*2.0/nanoserver-1709/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-1709/kitchensink/Dockerfile)
 
-# Supported Windows Server 2016 amd64 tags
+# Windows Server 2016 amd64 tags
 
 - [`1.1.6-1.1.7-nanoserver-sac2016`, `1.1.6-1.1.7`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver-sac2016/sdk/Dockerfile)
 - [`2.0.5-2.1.4-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.5-2.1.4`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-sac2016/sdk/Dockerfile)
 - [`2.1.300-preview1-nanoserver-sac2016`, `2.1.300-preview1` (*2.1/nanoserver-sac2016/amd64/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/nanoserver-sac2016/amd64/sdk/Dockerfile)
-- [`1.0-1.1-nanoserver-sac2016`, `1.0-1.1` (*1.1/nanoserver-sac2016/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver-sac2016/kitchensink/Dockerfile)
-- [`1.0-2.0-nanoserver-sac2016`, `1.0-2.0` (*2.0/nanoserver-sac2016/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-sac2016/kitchensink/Dockerfile)
 
 >**Note:** ASP.NET Core multi-arch tags, such as 2.0, have been updated to use nanoserver-1709 images if your host is Windows Server 2016 Version 1709 or higher or Windows 10 Fall Creators Update (Version 1709) or higher. You need Docker 17.10 or later to take advantage of these updated tags.
 
@@ -44,8 +38,6 @@ This image contains:
 - [Node.js](https://nodejs.org)
 - [Bower](https://bower.io/)
 - [Gulp](http://gulpjs.com/)
-
-The CI Image (`1.0-2.0`) contains the 1.0, 1.1, and 2.0 pre-restored packages. It is intended for when you have a solution containing both 2.x and 1.x projects and want to build them all in the same container, gaining advantage of the pre-restored packages. Because it has an extra set of packages it is bigger than the other, more focused, images.
 
 # Related images
 

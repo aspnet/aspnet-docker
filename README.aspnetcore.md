@@ -8,7 +8,7 @@ This repository contains images for running published ASP.NET Core applications.
 These images contain the runtime only. Use [`microsoft/aspnetcore-build-nightly`](https://hub.docker.com/r/microsoft/aspnetcore-build-nightly/) to build ASP.NET Core apps inside the container.
 
 
-# Supported Linux amd64 tags
+# Linux amd64 tags
 
 - [`1.0.9-jessie`, `1.0.9`, `1.0` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/jessie/runtime/Dockerfile)
 - [`1.1.6-jessie`, `1.1.6`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/runtime/Dockerfile)
@@ -17,12 +17,12 @@ These images contain the runtime only. Use [`microsoft/aspnetcore-build-nightly`
 - [`2.1.0-preview1-bionic` (*2.1/bionic/amd64/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/bionic/amd64/runtime/Dockerfile)
 - [`2.1.0-preview1-stretch-slim`, `2.1.0-preview1` (*2.1/stretch-slim/amd64/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/stretch-slim/amd64/runtime/Dockerfile)
 
-# Supported Windows Server 2016 Version 1709 (Fall Creators Update) amd64 tags
+# Windows Server, version 1709 amd64 tags
 
 - [`2.0.5-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.5`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-1709/runtime/Dockerfile)
 - [`2.1.0-preview1-nanoserver-1709`, `2.1.0-preview1` (*2.1/nanoserver-1709/amd64/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.1/nanoserver-1709/amd64/runtime/Dockerfile)
 
-# Supported Windows Server 2016 amd64 tags
+# Windows Server 2016 amd64 tags
 
 - [`1.0.9-nanoserver-sac2016`, `1.0.9`, `1.0` (*1.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/nanoserver-sac2016/runtime/Dockerfile)
 - [`1.1.6-nanoserver-sac2016`, `1.1.6`, `1.1`, `1` (*1.1/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver-sac2016/runtime/Dockerfile)
