@@ -204,7 +204,8 @@
     }
   },
   "demands": [
-    "Agent.OS -equals Windows_NT"
+    "Agent.OS -equals Windows_NT",
+    "Agent.Name -equals DDVSOWINAGE102"
   ],
   "retentionRules": [
     {
