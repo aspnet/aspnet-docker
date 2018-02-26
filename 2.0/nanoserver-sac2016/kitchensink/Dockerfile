@@ -3,13 +3,19 @@ FROM microsoft/dotnet:2.0.5-sdk-2.1.4-nanoserver-sac2016
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV NODE_VERSION 6.12.3
 ENV NETCORE_1_0_RUNTIME_VERSION 1.0.9
 ENV NETCORE_1_1_RUNTIME_VERSION 1.1.6
 ENV ASPNETCORE_PKG_VERSION 2.0.5
+ENV NODE_VERSION 6.13.0
+ENV NODE_DOWNLOAD_SHA 3d3d72c5c93a50d5a19f65f0de196b5237792a99b89fac2b61e62da4f566c842
 
 # Install node, bower, and git
 RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSION}/node-v${env:NODE_VERSION}-win-x64.zip -outfile node.zip; `
+    if ((Get-FileHash node.zip -Algorithm sha256).Hash -ne $env:NODE_DOWNLOAD_SHA) { `
+        Write-Host 'NODEJS CHECKSUM VERIFICATION FAILED!'; `
+        exit 1; `
+    }; `
+    `
     Expand-Archive node.zip -DestinationPath ${env:TEMP}/nodejs-tmp; `
     Move-Item ${env:TEMP}/nodejs-tmp/node-v${env:NODE_VERSION}-win-x64 ${env:ProgramFiles}/nodejs; `
     Remove-Item -Force node.zip; `
