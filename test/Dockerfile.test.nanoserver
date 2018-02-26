@@ -1,8 +1,5 @@
 FROM {image}
 
-# Container admin user may be required to write to mounted volumes
-USER ContainerAdministrator
-
 # Switch to cmd shell to have consistency since this Dockerfile is used across multiple
 # base images which have different shells (due to nanoserver base image).
 SHELL ["cmd", "/S", "/C"]
