@@ -7,11 +7,10 @@ ENV NETCORE_1_1_RUNTIME_VERSION 1.1.6
 ENV ASPNETCORE_PKG_VERSION 2.0.5
 
 # set up node
-ENV NODE_VERSION 6.12.3
-ENV NODE_DOWNLOAD_URL https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz
-ENV NODE_DOWNLOAD_SHA 0F8144C84C4379CB35AE409779C062A65680CF163B52C4660932EB58CFA1D065
+ENV NODE_VERSION 6.13.0
+ENV NODE_DOWNLOAD_SHA 467472d9adafd067588f2a20f9edcd7493d973fe107502c55d6fabfa0d3f91af
 
-RUN curl -SL "$NODE_DOWNLOAD_URL" --output nodejs.tar.gz \
+RUN curl -SL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz" --output nodejs.tar.gz \
     && echo "$NODE_DOWNLOAD_SHA nodejs.tar.gz" | sha256sum -c - \
     && tar -xzf "nodejs.tar.gz" -C /usr/local --strip-components=1 \
     && rm nodejs.tar.gz \
