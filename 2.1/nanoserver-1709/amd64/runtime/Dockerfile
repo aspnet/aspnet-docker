@@ -6,7 +6,7 @@ FROM microsoft/windowsservercore:1709 AS installer-env
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Retrieve ASP.NET Core Runtime
-ENV ASPNETCORE_VERSION 2.1.0-preview1-28291
+ENV ASPNETCORE_VERSION 2.1.0-preview1-final
 
 RUN Invoke-WebRequest -OutFile aspnetcore.zip https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/Runtime/$Env:ASPNETCORE_VERSION/aspnetcore-runtime-$Env:ASPNETCORE_VERSION-win-x64.zip; `
     Expand-Archive aspnetcore.zip -DestinationPath dotnet; `
