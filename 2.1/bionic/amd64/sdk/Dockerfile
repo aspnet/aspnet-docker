@@ -14,10 +14,12 @@ RUN curl -SL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-lin
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
 # Ensure packages required for standalone apps are pre-fetched
+
+# Set to ubuntu.16.04-x64 because preview1 doesn't yet support the ubuntu.18 RID
 RUN mkdir /tmp/warmup \
     && cd /tmp/warmup \
     && dotnet new web --no-restore \
-    && dotnet restore -p:RuntimeIdentifier=debian.8-x64 \
+    && dotnet restore -p:RuntimeIdentifier=ubuntu.16.04-x64 \
         --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json \
         --source https://api.nuget.org/v3/index.json \
     && cd / \

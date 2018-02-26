@@ -42,6 +42,20 @@ function Get-Ip($container, $active_os) {
     }
 }
 
+function Get-TestRid($tagName) {
+    if ($active_os -eq "windows") {
+        return "win7-x64"
+    }
+    else {
+        if ($tagName -like '*bionic*') {
+            # Return ubuntu 16 because ubuntu 18 is not supported in the RID graph as of 2.1.0-preview1
+            return "ubuntu.16.04-x64"
+        } else {
+            return "debian.8-x64"
+        }
+    }
+}
+
 function Join-Paths($path, $childPaths) {
     $childPaths | %{ $path = Join-Path $path $_ }
     return $path
@@ -65,6 +79,7 @@ function WaitForSuccess($endpoint) {
 
 function test_image ($version, $sdk_tag, $runtime_tag) {
     $framework = "netcoreapp${version}"
+    $rid = Get-TestRid $sdk_tag
     $no_restore_flag = switch ($version) {
         # not supported in 1.x SDKs
         '1.0' { '' }
@@ -72,7 +87,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
         default { '--no-restore' }
     }
 
-    write-host -foregroundcolor magenta "----- Testing: TFM: $framework, SDK: $sdk_tag, Runtime: $runtime_tag -----"
+    write-host -foregroundcolor magenta "----- Testing: TFM: $framework, RID: $rid, SDK: $sdk_tag, Runtime: $runtime_tag -----"
 
     $app_name = "app$(get-random)"
     $publish_path = "${container_root}publish"
@@ -87,6 +102,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 Replace("{image}", $sdk_tag) `
         | docker build `
             --build-arg FRAMEWORK=$framework `
+            --build-arg RUNTIME_IDENTIFIER=$rid `
             --build-arg BUILD_ARGS="--configuration Release $no_restore_flag" `
             -t $app_build_tag `
             -
@@ -176,14 +192,12 @@ $active_os = docker version -f "{{ .Server.Os }}"
 if ($active_os -eq "windows") {
     $container_root = "C:\"
     $host_port = "80"
-    $rid="win7-x64"
     $docker_test_file = "Dockerfile.test.nanoserver"
     $self_contained_entrypoint = "test.exe"
 }
 else {
     $container_root = "/"
     $host_port = "5000"
-    $rid = "debian.8-x64"
     $docker_test_file = "Dockerfile.test.linux"
     $self_contained_entrypoint = "./test"
 }
@@ -221,6 +235,9 @@ try
                         Default { $sdk_tag }
                     }
                     $runtime_tag = $runtime_tag -replace '-build',''
+                    if ($version -eq "2.1") {
+                        $runtime_tag = $runtime_tag -replace '-stretch','-stretch-slim'
+                    }
 
                     test_image $version $sdk_tag $runtime_tag
 
