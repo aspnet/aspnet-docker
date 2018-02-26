@@ -2,15 +2,15 @@
   "testCommands": {
     "linux": [
       "docker build --rm -t testrunner -f ./test/Dockerfile.testrunner.linux .",
-      "/bin/bash -c \"docker run --add-host dockerhost:$DOCKER_HOST_IP -v /var/run/docker.sock:/var/run/docker.sock testrunner powershell -File ./test/test.ps1 -RootImageName microsoft -Folder \\\"$(Folder)\\\"  -HostIP dockerhost\""
+      "/bin/bash -c \"docker run --add-host dockerhost:$DOCKER_HOST_IP -v /var/run/docker.sock:/var/run/docker.sock testrunner ./test.ps1 -RootImageName microsoft -Folder \\\"$(Folder)\\\"  -HostIP dockerhost\""
     ],
     "windows": [
-      "powershell -NoProfile -Command .\\test\\test.ps1 -RootImageName microsoft -Folder $(Folder)"
+      "powershell -NoProfile -Command .\\test.ps1 -RootImageName microsoft -Folder $(Folder)"
     ]
   },
   "repos": [
     {
-      "name": "microsoft/aspnetcore",
+      "name": "microsoft/aspnetcore-nightly",
       "readmePath": "README.aspnetcore.md",
       "images": [
         {
@@ -111,11 +111,51 @@
               }
             }
           ]
+        },
+        {
+          "platforms": [
+            {
+              "dockerfile": "2.1/bionic/amd64/runtime",
+              "os": "linux",
+              "tags": {
+                "2.1.0-preview1-bionic": {}
+              }
+            }
+          ]
+        },
+        {
+          "sharedTags": {
+            "2.1.0-preview1": {}
+          },
+          "platforms": [
+            {
+              "dockerfile": "2.1/stretch-slim/amd64/runtime",
+              "os": "linux",
+              "tags": {
+                "2.1.0-preview1-stretch-slim": {}
+              }
+            },
+            {
+              "dockerfile": "2.1/nanoserver-sac2016/amd64/runtime",
+              "os": "windows",
+              "tags": {
+                "2.1.0-preview1-nanoserver-sac2016": {}
+              }
+            },
+            {
+              "dockerfile": "2.1/nanoserver-1709/amd64/runtime",
+              "os": "windows",
+              "osVersion": "1709",
+              "tags": {
+                "2.1.0-preview1-nanoserver-1709": {}
+              }
+            }
+          ]
         }
       ]
     },
     {
-      "name": "microsoft/aspnetcore-build",
+      "name": "microsoft/aspnetcore-build-nightly",
       "readmePath": "README.aspnetcore-build.md",
       "images": [
         {
@@ -194,6 +234,46 @@
                 "2.0.5-2.1.4-jessie": {},
                 "2.0-jessie": {},
                 "2-jessie": {}
+              }
+            }
+          ]
+        },
+        {
+          "platforms": [
+            {
+              "dockerfile": "2.1/bionic/amd64/sdk",
+              "os": "linux",
+              "tags": {
+                "2.1.300-preview1-bionic": {}
+              }
+            }
+          ]
+        },
+        {
+          "sharedTags": {
+            "2.1.300-preview1": {}
+          },
+          "platforms": [
+            {
+              "dockerfile": "2.1/stretch/amd64/sdk",
+              "os": "linux",
+              "tags": {
+                "2.1.300-preview1-stretch": {}
+              }
+            },
+            {
+              "dockerfile": "2.1/nanoserver-sac2016/amd64/sdk",
+              "os": "windows",
+              "tags": {
+                "2.1.300-preview1-nanoserver-sac2016": {}
+              }
+            },
+            {
+              "dockerfile": "2.1/nanoserver-1709/amd64/sdk",
+              "os": "windows",
+              "osVersion": "1709",
+              "tags": {
+                "2.1.300-preview1-nanoserver-1709": {}
               }
             }
           ]
