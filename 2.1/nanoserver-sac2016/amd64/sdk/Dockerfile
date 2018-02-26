@@ -1,5 +1,5 @@
 # escape=`
-FROM microsoft/dotnet-nightly:2.1.300-preview1-sdk-nanoserver-sac2016
+FROM microsoft/dotnet:2.1.300-preview1-sdk-nanoserver-sac2016
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -27,7 +27,6 @@ RUN mkdir $env:TEMP\warmup; `
     cd $env:TEMP\warmup; `
     dotnet new web --no-restore; `
     dotnet restore -p:RuntimeIdentifier=win7-x64 `
-        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
         --source https://api.nuget.org/v3/index.json; `
     cd ..; `
     rm -Recurse -Force $env:TEMP\warmup
