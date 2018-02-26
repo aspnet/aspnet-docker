@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:2.0-runtime-deps-jessie
+FROM microsoft/dotnet-nightly:2.1-runtime-deps-bionic
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80

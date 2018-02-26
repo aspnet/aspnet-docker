@@ -6,10 +6,11 @@ SHELL ["cmd", "/S", "/C"]
 
 ARG FRAMEWORK
 ARG BUILD_ARGS
+ARG RUNTIME_IDENTIFIER
 
 WORKDIR test
 RUN dotnet new web --framework %FRAMEWORK%
 RUN if not exist "%USERPROFILE%/.nuget/" mkdir "%USERPROFILE%/.nuget/"
 RUN if not exist "%USERPROFILE%/.nuget/packages" mkdir "%USERPROFILE%/.nuget/packages"
-RUN dotnet restore --source "%USERPROFILE%/.nuget/packages" -p:RuntimeIdentifiers=win7-x64
+RUN dotnet restore --source "%USERPROFILE%/.nuget/packages" -p:RuntimeIdentifiers=%RUNTIME_IDENTIFIER%
 RUN dotnet build %BUILD_ARGS%

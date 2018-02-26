@@ -113,15 +113,26 @@
           ]
         },
         {
+          "platforms": [
+            {
+              "dockerfile": "2.1/bionic/amd64/runtime",
+              "os": "linux",
+              "tags": {
+                "2.1.0-preview1-bionic": {}
+              }
+            }
+          ]
+        },
+        {
           "sharedTags": {
             "2.1.0-preview1": {}
           },
           "platforms": [
             {
-              "dockerfile": "2.1/stretch/amd64/runtime",
+              "dockerfile": "2.1/stretch-slim/amd64/runtime",
               "os": "linux",
               "tags": {
-                "2.1.0-preview1-stretch": {}
+                "2.1.0-preview1-stretch-slim": {}
               }
             },
             {
@@ -137,17 +148,6 @@
               "osVersion": "1709",
               "tags": {
                 "2.1.0-preview1-nanoserver-1709": {}
-              }
-            }
-          ]
-        },
-        {
-          "platforms": [
-            {
-              "dockerfile": "2.1/jessie/amd64/runtime",
-              "os": "linux",
-              "tags": {
-                "2.1.0-preview1-jessie": {}
               }
             }
           ]
@@ -239,6 +239,17 @@
           ]
         },
         {
+          "platforms": [
+            {
+              "dockerfile": "2.1/bionic/amd64/sdk",
+              "os": "linux",
+              "tags": {
+                "2.1.300-preview1-bionic": {}
+              }
+            }
+          ]
+        },
+        {
           "sharedTags": {
             "2.1.300-preview1": {}
           },
@@ -263,17 +274,6 @@
               "osVersion": "1709",
               "tags": {
                 "2.1.300-preview1-nanoserver-1709": {}
-              }
-            }
-          ]
-        },
-        {
-          "platforms": [
-            {
-              "dockerfile": "2.1/jessie/amd64/sdk",
-              "os": "linux",
-              "tags": {
-                "2.1.300-preview1-jessie": {}
               }
             }
           ]

@@ -5,7 +5,8 @@ FROM microsoft/powershell:nanoserver AS installer-env
 SHELL ["pwsh.exe", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # retrieve git
-RUN Invoke-WebRequest -UseBasicParsing -outfile git.zip https://github.com/git-for-windows/git/releases/download/v2.16.1.windows.1/MinGit-2.16.1-64-bit.zip; `
+RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; `
+    Invoke-WebRequest -UseBasicParsing -outfile git.zip https://github.com/git-for-windows/git/releases/download/v2.16.1.windows.1/MinGit-2.16.1-64-bit.zip; `
     Expand-Archive git.zip -DestinationPath git; `
     Remove-Item -Force git.zip
 
