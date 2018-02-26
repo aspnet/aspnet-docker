@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:2.0-runtime-deps-stretch
+FROM microsoft/dotnet-nightly:2.1-runtime-deps-stretch-slim
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
