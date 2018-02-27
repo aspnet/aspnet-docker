@@ -1,4 +1,4 @@
-project.lock.json
+.DS_Store
 .test-assets
 obj/
 bin/
