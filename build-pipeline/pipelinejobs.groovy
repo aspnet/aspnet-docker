@@ -3,7 +3,7 @@ import org.dotnet.ci.pipelines.Pipeline
 def windowsPipeline = Pipeline.createPipeline(this, 'build-pipeline/windows-pipeline.groovy')
 
 // Images that can only build on RS1, not RS3
-['1.*', '2.1/nanoserver-sac2016/*', '2.1/nanoserver-sac2016/*'].each { folderFilter ->
+['1.*', '2.0/nanoserver-sac2016/*', '2.1/nanoserver-sac2016/*'].each { folderFilter ->
     def triggerName = "Windows SAC2016 ${folderFilter[0..-3]} Build"
 
     windowsPipeline.triggerPipelineOnEveryGithubPR(triggerName, ['folderFilter':folderFilter])
@@ -11,7 +11,7 @@ def windowsPipeline = Pipeline.createPipeline(this, 'build-pipeline/windows-pipe
 }
 
 // Images that can only build on RS3, not RS1
-['2.1/nanoserver-1709/*', '2.1/nanoserver-1709/*'].each { folderFilter ->
+['2.0/nanoserver-1709/*', '2.1/nanoserver-1709/*'].each { folderFilter ->
     def triggerName = "Windows 1709 ${folderFilter[0..-3]} Build"
 
     windowsPipeline.triggerPipelineOnEveryGithubPR(triggerName, ['RS3':true, 'folderFilter':folderFilter])
