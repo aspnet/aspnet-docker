@@ -1,0 +1,20 @@
+ARG BUILD_IMG
+ARG RUNTIME_IMG
+
+FROM ${BUILD_IMG} AS build_env
+
+ARG FRAMEWORK
+ARG NO_RESTORE_FLAG
+
+WORKDIR test_app
+RUN dotnet new web --framework ${FRAMEWORK}
+RUN mkdir -p $HOME/.nuget/packages
+RUN dotnet restore --source $HOME/.nuget/packages
+RUN dotnet publish --configuration Release ${NO_RESTORE_FLAG} --output /app
+
+FROM ${RUNTIME_IMG}
+EXPOSE 80 443
+WORKDIR /app
+COPY --from=build_env /app .
+ENTRYPOINT ["dotnet", "test_app.dll"]
+
