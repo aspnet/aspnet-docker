@@ -1,3 +1,4 @@
+#escape=`
 ARG BUILD_IMG
 ARG RUNTIME_IMG
 

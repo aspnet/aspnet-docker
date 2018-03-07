@@ -5,6 +5,7 @@ FROM ${BUILD_IMG} AS build_env
 
 ARG FRAMEWORK
 ARG NO_RESTORE_FLAG
+ARG RUNTIME_IDENTIFIER
 
 WORKDIR test_app
 RUN dotnet new web --framework ${FRAMEWORK}
