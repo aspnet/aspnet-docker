@@ -1,3 +1,4 @@
+#escape=`
 ARG BUILD_IMG
 ARG RUNTIME_IMG
 
@@ -15,7 +16,11 @@ RUN dotnet new web --framework %FRAMEWORK%
 RUN if not exist "%USERPROFILE%/.nuget/" mkdir "%USERPROFILE%/.nuget/"
 RUN if not exist "%USERPROFILE%/.nuget/packages" mkdir "%USERPROFILE%/.nuget/packages"
 RUN dotnet restore --source "%USERPROFILE%/.nuget/packages"
-RUN dotnet publish --configuration Release %NO_RESTORE_FLAG% --output /app
+
+# Use this instead of %NO_RESTORE_ARGS% because Windows containers do not set an empty env var for empty build args,
+# and batch doesn't expand undefined args
+RUN if not defined NO_RESTORE_FLAG (dotnet publish --configuration Release --output /app) `
+    else (dotnet publish --configuration Release --no-restore --output /app)
 
 FROM ${RUNTIME_IMG}
 EXPOSE 80 443

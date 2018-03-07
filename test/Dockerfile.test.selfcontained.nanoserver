@@ -2,8 +2,8 @@ ARG BUILD_IMG
 ARG RUNTIME_IMG
 
 FROM ${BUILD_IMG} AS build_env
-# Switch to cmd shell to have consistency since this Dockerfile is used across multiple
 
+# Switch to cmd shell to have consistency since this Dockerfile is used across multiple
 # base images which have different shells (due to nanoserver base image).
 SHELL ["cmd", "/S", "/C"]
 
@@ -16,7 +16,11 @@ RUN dotnet new web --framework %FRAMEWORK%
 RUN if not exist "%USERPROFILE%/.nuget/" mkdir "%USERPROFILE%/.nuget/"
 RUN if not exist "%USERPROFILE%/.nuget/packages" mkdir "%USERPROFILE%/.nuget/packages"
 RUN dotnet restore --source "%USERPROFILE%/.nuget/packages" -p:RuntimeIdentifiers=%RUNTIME_IDENTIFIER%
-RUN dotnet publish --configuration Release %NO_RESTORE_FLAG% --output /app -r %RUNTIME_IDENTIFIER%
+
+# Use this instead of %NO_RESTORE_ARGS% because Windows containers do not set an empty env var for empty build args,
+# and batch doesn't expand undefined args
+RUN if not defined NO_RESTORE_FLAG (dotnet publish --configuration Release --output /app) `
+    else (dotnet publish --configuration Release --no-restore --output /app)
 
 FROM ${RUNTIME_IMG}
 EXPOSE 80 443
