@@ -20,8 +20,8 @@ RUN dotnet restore --source "%USERPROFILE%/.nuget/packages" -p:RuntimeIdentifier
 
 # Use this instead of %NO_RESTORE_ARGS% because Windows containers do not set an empty env var for empty build args,
 # and batch doesn't expand undefined args
-RUN if not defined NO_RESTORE_FLAG (dotnet publish --configuration Release --output /app) `
-    else (dotnet publish --configuration Release --no-restore --output /app)
+RUN if not defined NO_RESTORE_FLAG (dotnet publish --configuration Release --output /app -r %RUNTIME_IDENTIFIER%) `
+    else (dotnet publish --configuration Release --no-restore --output /app -r %RUNTIME_IDENTIFIER%)
 
 FROM ${RUNTIME_IMG}
 EXPOSE 80 443

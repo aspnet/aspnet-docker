@@ -92,13 +92,13 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
     write-host -foregroundcolor magenta "----- Testing: TFM: $framework, RID: $rid, SDK: $sdk_tag, Runtime: $runtime_tag -----"
 
     $scenario = @(@{
-        name      = 'portable'
-        test_file = $portable_test_file
-    },
-    @{
-        name      = 'selfcontained'
-        test_file = $self_contained_test_file
-    })
+            name      = 'portable'
+            test_file = $portable_test_file
+        },
+        @{
+            name      = 'selfcontained'
+            test_file = $self_contained_test_file
+        })
 
     $scenario | % {
         Write-Host "----- Running test $($_.name) ${sdk_tag} and ${runtime_tag} -----"
@@ -111,7 +111,7 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
                 --build-arg RUNTIME_IMG=$runtime_tag `
                 --build-arg FRAMEWORK=$framework `
                 --build-arg RUNTIME_IDENTIFIER=$rid `
-                --build-arg NO_RESTORE_FLAG="$no_restore_flag" `
+                --build-arg NO_RESTORE_FLAG=$no_restore_flag `
                 -t $app_tagname `
                 -f $_.test_file `
                 $build_context
