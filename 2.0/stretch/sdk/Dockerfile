@@ -1,8 +1,8 @@
-FROM microsoft/dotnet:2.0.5-sdk-2.1.4-stretch
+FROM microsoft/dotnet:2.0.6-sdk-2.1.101-stretch
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV ASPNETCORE_PKG_VERSION 2.0.5
+ENV ASPNETCORE_PKG_VERSION 2.0.6
 
 # set up node
 ENV NODE_VERSION 6.13.0
