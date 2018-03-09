@@ -10,7 +10,6 @@ matrix:
 branches:
   only:
     - master
-    - staging
     - dev
     - /^(.*\/)?ci-.*$/
 deploy: off

@@ -10,8 +10,8 @@
   },
   "repos": [
     {
-      "name": "microsoft/aspnetcore-nightly",
-      "readmePath": "README.aspnetcore-nightly.md",
+      "name": "microsoft/aspnetcore",
+      "readmePath": "README.aspnetcore.md",
       "images": [
         {
           "sharedTags": {
@@ -155,8 +155,8 @@
       ]
     },
     {
-      "name": "microsoft/aspnetcore-build-nightly",
-      "readmePath": "README.aspnetcore-build-nightly.md",
+      "name": "microsoft/aspnetcore-build",
+      "readmePath": "README.aspnetcore-build.md",
       "images": [
         {
           "sharedTags": {

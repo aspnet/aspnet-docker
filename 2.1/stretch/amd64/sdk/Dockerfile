@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:2.1.300-preview1-sdk-stretch
+FROM microsoft/dotnet:2.1.300-preview1-sdk-stretch
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -18,7 +18,6 @@ RUN mkdir /tmp/warmup \
     && cd /tmp/warmup \
     && dotnet new web --no-restore \
     && dotnet restore -p:RuntimeIdentifier=debian.8-x64 \
-        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json \
         --source https://api.nuget.org/v3/index.json \
     && cd / \
     && rm -rf /tmp/warmup
