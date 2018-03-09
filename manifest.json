@@ -280,21 +280,27 @@
         },
         {
           "sharedTags": {
-            "1.0-1.1": {}
+            "1.0-1.1": {
+              "isUndocumented": true
+            }
           },
           "platforms": [
             {
               "dockerfile": "1.1/jessie/kitchensink",
               "os": "linux",
               "tags": {
-                "1.0-1.1-jessie": {}
+                "1.0-1.1-jessie": {
+                  "isUndocumented": true
+                }
               }
             },
             {
               "dockerfile": "1.1/nanoserver-sac2016/kitchensink",
               "os": "windows",
               "tags": {
-                "1.0-1.1-nanoserver-sac2016": {},
+                "1.0-1.1-nanoserver-sac2016": {
+                  "isUndocumented": true
+                },
                 "1.0-1.1-nanoserver": {
                   "isUndocumented": true
                 }
@@ -304,21 +310,27 @@
         },
         {
           "sharedTags": {
-            "1.0-2.0": {}
+            "1.0-2.0": {
+              "isUndocumented": true
+            }
           },
           "platforms": [
             {
               "dockerfile": "2.0/stretch/kitchensink",
               "os": "linux",
               "tags": {
-                "1.0-2.0-stretch": {}
+                "1.0-2.0-stretch": {
+                  "isUndocumented": true
+                }
               }
             },
             {
               "dockerfile": "2.0/nanoserver-sac2016/kitchensink",
               "os": "windows",
               "tags": {
-                "1.0-2.0-nanoserver-sac2016": {},
+                "1.0-2.0-nanoserver-sac2016": {
+                  "isUndocumented": true
+                },
                 "1.0-2.0-nanoserver": {
                   "isUndocumented": true
                 }
@@ -329,7 +341,9 @@
               "os": "windows",
               "osVersion": "1709",
               "tags": {
-                "1.0-2.0-nanoserver-1709": {}
+                "1.0-2.0-nanoserver-1709": {
+                  "isUndocumented": true
+                }
               }
             }
           ]
@@ -340,7 +354,9 @@
               "dockerfile": "2.0/jessie/kitchensink",
               "os": "linux",
               "tags": {
-                "1.0-2.0-jessie": {}
+                "1.0-2.0-jessie": {
+                  "isUndocumented": true
+                }
               }
             }
           ]

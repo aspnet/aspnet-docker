@@ -50,14 +50,15 @@ function Get-TestRid($tagName) {
         if ($tagName -like '*bionic*') {
             # Return ubuntu 16 because ubuntu 18 is not supported in the RID graph as of 2.1.0-preview1
             return "ubuntu.16.04-x64"
-        } else {
+        }
+        else {
             return "debian.8-x64"
         }
     }
 }
 
 function Join-Paths($path, $childPaths) {
-    $childPaths | %{ $path = Join-Path $path $_ }
+    $childPaths | % { $path = Join-Path $path $_ }
     return $path
 }
 
@@ -79,6 +80,7 @@ function WaitForSuccess($endpoint) {
 
 function test_image ($version, $sdk_tag, $runtime_tag) {
     $framework = "netcoreapp${version}"
+    $build_context = "$PSScriptRoot/test"
     $rid = Get-TestRid $sdk_tag
     $no_restore_flag = switch ($version) {
         # not supported in 1.x SDKs
@@ -89,99 +91,45 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
 
     write-host -foregroundcolor magenta "----- Testing: TFM: $framework, RID: $rid, SDK: $sdk_tag, Runtime: $runtime_tag -----"
 
-    $app_name = "app$(get-random)"
-    $publish_path = "${container_root}publish"
+    $scenario = @(@{
+            name      = 'portable'
+            test_file = $portable_test_file
+        },
+        @{
+            name      = 'selfcontained'
+            test_file = $self_contained_test_file
+        })
 
-    Write-Host "----- Building app with ${sdk_tag} -----"
+    $scenario | % {
+        Write-Host "----- Running test $($_.name) ${sdk_tag} and ${runtime_tag} -----"
+        $app_name = "app$(get-random)"
+        $app_tagname = "$app_name-$($_.name)"
 
-    $app_build_tag = "$app_name-build"
-    try {
-        Write-Host "----- Building $docker_test_file as $app_build_tag from ${sdk_tag} -----"
-
-        (Get-Content (Join-Paths $PSScriptRoot @('test', $docker_test_file))).
-                Replace("{image}", $sdk_tag) `
-        | docker build `
-            --build-arg FRAMEWORK=$framework `
-            --build-arg RUNTIME_IDENTIFIER=$rid `
-            --build-arg BUILD_ARGS="--configuration Release $no_restore_flag" `
-            -t $app_build_tag `
-            -
-
-        Write-Host "----- Publishing framework-dependent app with ${sdk_tag} -----"
-        $app_volume_name = "$app_name-framework-dependent"
         try {
-            exec docker run --rm `
-                --name "publish-framework-dependent-$app_name" `
-                -v ${app_volume_name}:${publish_path} `
-                $app_build_tag `
-                dotnet publish --configuration Release --output $publish_path $no_restore_flag
+            exec docker build `
+                --build-arg BUILD_IMG=$sdk_tag `
+                --build-arg RUNTIME_IMG=$runtime_tag `
+                --build-arg FRAMEWORK=$framework `
+                --build-arg RUNTIME_IDENTIFIER=$rid `
+                --build-arg NO_RESTORE_FLAG=$no_restore_flag `
+                -t $app_tagname `
+                -f $_.test_file `
+                $build_context
 
-            Write-Host "----- Running framework-dependent app with ${runtime_tag} -----"
-            $app_container_name = "runtime-framework-dependent-${app_name}"
-            try {
-                exec docker run -d -t `
-                    --entrypoint dotnet `
-                    --name $app_container_name `
-                    -p ${host_port}:80 `
-                    -v ${app_volume_name}:${publish_path} `
-                    --workdir ${publish_path} `
-                    $runtime_tag `
-                    test.dll
+            exec docker run --rm -d -t `
+                --name $app_name `
+                -p 5000:80 `
+                $app_tagname
 
-                $ip = Get-Ip $app_container_name $active_os
-                WaitForSuccess "http://${ip}:${host_port}"
-            }
-            finally {
-                exec docker logs $app_container_name
-                exec docker rm -f $app_container_name
-            }
+            $ip = Get-Ip $app_name $active_os
+            WaitForSuccess "http://${ip}:${test_port}"
         }
         finally {
-            exec docker volume rm $app_volume_name
+            # Test cleanup
+            & docker logs $app_name
+            & docker kill $app_name
+            & docker rmi $app_tagname
         }
-
-        Write-Host "----- Publishing self-contained app with ${sdk_tag} -----"
-        $app_volume_name = "$app_name-self-contained"
-        try {
-            exec docker run --rm `
-                --name "publish-self-contained-$app_name" `
-                -v ${app_volume_name}:${publish_path} `
-                $app_build_tag `
-                dotnet publish --configuration Release --runtime $rid --output $publish_path $no_restore_flag
-
-            if ($active_os -eq "linux" -and $version -eq "2.0") {
-                # Temporary workaround https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/dogfooding.md#option-2-self-contained
-                exec docker run --rm `
-                    -v ${app_volume_name}:${publish_path} `
-                    $runtime_tag `
-                    chmod u+x ${publish_path}/test
-            }
-
-            Write-Host "----- Running self-contained app with ${runtime_tag} -----"
-            $app_container_name = "runtime-self-contained-${app_name}"
-            try {
-                exec docker run -d -t `
-                    --entrypoint $self_contained_entrypoint `
-                    --name $app_container_name `
-                    -p ${host_port}:80 `
-                    -v ${app_volume_name}:${publish_path} `
-                    --workdir ${publish_path} `
-                    $runtime_tag
-
-                $ip = Get-Ip $app_container_name $active_os
-                WaitForSuccess "http://${ip}:${host_port}"
-            }
-            finally {
-                exec docker logs $app_container_name
-                exec docker rm -f $app_container_name
-            }
-        }
-        finally {
-            exec docker volume rm $app_volume_name
-        }
-    }
-    finally {
-        exec docker rmi -f $app_build_tag
     }
 }
 
@@ -190,16 +138,15 @@ function test_image ($version, $sdk_tag, $runtime_tag) {
 $active_os = docker version -f "{{ .Server.Os }}"
 
 if ($active_os -eq "windows") {
-    $container_root = "C:\"
-    $host_port = "80"
-    $docker_test_file = "Dockerfile.test.nanoserver"
-    $self_contained_entrypoint = "test.exe"
+    # We call directly into the container IP address on Windows. Loopback port mapping isn't yet supported
+    $test_port = 80
+    $portable_test_file = "Dockerfile.test.portable.nanoserver"
+    $self_contained_test_file = "Dockerfile.test.selfcontained.nanoserver"
 }
 else {
-    $container_root = "/"
-    $host_port = "5000"
-    $docker_test_file = "Dockerfile.test.linux"
-    $self_contained_entrypoint = "./test"
+    $test_port = 5000
+    $portable_test_file = "Dockerfile.test.portable.linux"
+    $self_contained_test_file = "Dockerfile.test.selfcontained.linux"
 }
 
 $manifest = Get-Content (Join-Path $PSScriptRoot manifest.json) | ConvertFrom-Json
@@ -208,12 +155,11 @@ $manifest = Get-Content (Join-Path $PSScriptRoot manifest.json) | ConvertFrom-Js
 
 push-location "$PSScriptRoot/test"
 
-try
-{
+try {
     $testCount = 0
     $manifest.repos | % {
         $repo = $_
-        $repoName = $repo.name -replace 'microsoft/',"$RootImageName/"
+        $repoName = $repo.name -replace 'microsoft/', "$RootImageName/"
 
         $repo.images | % {
             $_.platforms |
@@ -221,40 +167,45 @@ try
                 ? { $Folder -eq '*' -or $_.dockerfile -like "$Folder" } |
                 ? { $_.dockerfile -like '*/sdk' } |
                 % {
-                    $testCount += 1
-                    $version = $_.dockerfile.Substring(0, 3)
-                    $sdk_tag_info = $_.tags | % { $_.PSobject.Properties } | select -first 1
-                    $sdk_tag = "${repoName}:$($sdk_tag_info.name)"
-                    $runtime_tag = switch ($version) {
-                        # map the 1.1.5-1.1.6 sdk tags to the runtime tag name
-                        "1.1" { $sdk_tag -replace '-1.1.7','' }
-                        # map the 2.0.4-2.1.3 sdk tags to the runtime tag name
-                        "2.0" { $sdk_tag -replace '-2.1.4','' }
-                        # map the 2.1.300 sdk tags to the runtime tag name
-                        "2.1" { $sdk_tag -replace '2.1.300','2.1.0' }
-                        Default { $sdk_tag }
-                    }
-                    $runtime_tag = $runtime_tag -replace '-build',''
-                    if ($version -eq "2.1") {
-                        $runtime_tag = $runtime_tag -replace '-stretch','-stretch-slim'
-                    }
-
-                    test_image $version $sdk_tag $runtime_tag
-
-                    if ($version -eq '1.1') {
-                        # Users should be able to compile with microsoft/aspnetcore-build:1.1 and run with microsoft/aspnetcore:1.0
-                        $one_oh_runtime = $manifest.repos |
-                            ? { $_.name -notlike '*-build*' } |
-                            % { $_.images } |
-                            % { $_.platforms | ? { $_.os -eq "$active_os" } | ? { $_.dockerfile -like "1.0/*/runtime" } } | select -first 1
-                        $one_oh_runtime | out-host
-                        $one_oh_version = $one_oh_runtime.tags | % { $_.PSobject.Properties } | select -first 1
-                        $one_oh_runtime_tag = "${repoName}:$($one_oh_version.name)" -replace '-build',''
-                        test_image '1.0' $sdk_tag $one_oh_runtime_tag
-                    }
+                $testCount += 1
+                $version = $_.dockerfile.Substring(0, 3)
+                $sdk_tag_info = $_.tags | % { $_.PSobject.Properties } | select -first 1
+                $sdk_tag = "${repoName}:$($sdk_tag_info.name)"
+                $runtime_tag = switch ($version) {
+                    # map the 1.1.5-1.1.6 sdk tags to the runtime tag name
+                    "1.1" { $sdk_tag -replace '-1.1.7', '' }
+                    # map the 2.0.4-2.1.3 sdk tags to the runtime tag name
+                    "2.0" { $sdk_tag -replace '-2.1.4', '' }
+                    # map the 2.1.300 sdk tags to the runtime tag name
+                    "2.1" { $sdk_tag -replace '2.1.300', '2.1.0' }
+                    Default { $sdk_tag }
                 }
+                $runtime_tag = $runtime_tag -replace '-build', ''
+                if ($version -eq "2.1") {
+                    $runtime_tag = $runtime_tag -replace '-stretch', '-stretch-slim'
+                }
+
+                test_image $version $sdk_tag $runtime_tag
+
+                if ($version -eq '1.1') {
+                    # Users should be able to compile with microsoft/aspnetcore-build:1.1 and run with microsoft/aspnetcore:1.0
+                    $one_oh_runtime = $manifest.repos |
+                        ? { $_.name -notlike '*-build*' } |
+                        % { $_.images } |
+                        % { $_.platforms | ? { $_.os -eq "$active_os" } | ? { $_.dockerfile -like "1.0/*/runtime" } } | select -first 1
+                    $one_oh_runtime | out-host
+                    $one_oh_version = $one_oh_runtime.tags | % { $_.PSobject.Properties } | select -first 1
+                    $one_oh_runtime_tag = "${repoName}:$($one_oh_version.name)" -replace '-build', ''
+                    test_image '1.0' $sdk_tag $one_oh_runtime_tag
+                }
+            }
         }
     }
+
+    if ($testCount -eq 0) {
+        throw 'No tests were run'
+    }
+
 }
 finally {
     Pop-Location
