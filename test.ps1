@@ -173,9 +173,9 @@ try {
                 $sdk_tag = "${repoName}:$($sdk_tag_info.name)"
                 $runtime_tag = switch ($version) {
                     # map the 1.1.5-1.1.6 sdk tags to the runtime tag name
-                    "1.1" { $sdk_tag -replace '-1.1.7', '' }
+                    "1.1" { $sdk_tag -replace '-1.1.8', '' }
                     # map the 2.0.4-2.1.3 sdk tags to the runtime tag name
-                    "2.0" { $sdk_tag -replace '-2.1.4', '' }
+                    "2.0" { $sdk_tag -replace '-2.1.101', '' }
                     # map the 2.1.300 sdk tags to the runtime tag name
                     "2.1" { $sdk_tag -replace '2.1.300', '2.1.0' }
                     Default { $sdk_tag }
