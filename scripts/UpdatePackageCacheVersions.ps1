@@ -5,14 +5,12 @@
 <#
 .SYNOPSIS
     Updates packagescache.csproj files
-.PARAMETER NetCoreApp10Versions
-    Path to a file that contains a list of package references to update for netcoreapp1.0.
-.PARAMETER NetCoreApp11Versions
-    Path to a file that contains a list of package references to update for netcoreapp1.1.
+.PARAMETER PkgProjPath
+    Path to a .csproj file from aspnet/Coherence-Final that has PackageReference items
+    for the latest package cache settings
 #>
 param(
-    [string]$NetCoreApp10Versions,
-    [string]$NetCoreApp11Versions
+    [string]$PkgProjPath
 )
 
 $ErrorActionPreference = 'Stop'
@@ -53,6 +51,13 @@ function Get-Versions([string]$file) {
     return $versions
 }
 
+function Get-ProjectProperty([string]$file, [string] $propertyName) {
+    Write-Host "New versions:"
+    [xml]$xml = Get-Content $file
+    $prop = $xml.SelectSingleNode("/Project/PropertyGroup/$propertyName") | select -last 1
+    return $prop.InnerText
+}
+
 function Update-PackageRefs([string]$tfm, [xml]$file, $versions) {
     foreach ($group in $file.SelectNodes('/Project/ItemGroup')) {
         $condition = $group.Attributes['Condition'].Value
@@ -78,26 +83,30 @@ function Update-PackageRefs([string]$tfm, [xml]$file, $versions) {
     }
 }
 
-$files = Get-ChildItem "*/*/*/packagescache.csproj" -Recurse
+$files = Get-ChildItem "**/packagescache.csproj" -Recurse
+$tempFile = New-TemporaryFile
 
-if ($NetCoreApp10Versions) {
-    $versions = Get-Versions $NetCoreApp10Versions
+try {
+    if ($PkgProjPath.StartsWith("http")) {
+        $tempFile = New-TemporaryFile
+        Invoke-WebRequest -Uri $PkgProjPath -OutFile $tempFile
+        $PkgProjPath = $tempFile
+    }
+
+    $versions = Get-Versions $PkgProjPath
+    $targetFramework = Get-ProjectProperty $PkgProjPath 'TargetFramework'
+
+    Write-Host -ForegroundColor Yellow "Target framework = $targetFramework"
 
     $files | % {
         $source = LoadXml $_
         Write-Host "Upgrading $_"
-        Update-PackageRefs 'netcoreapp1.0' $source $versions
+        Update-PackageRefs $targetFramework $source $versions
         SaveXml $source $_
     }
 }
-
-if ($NetCoreApp11Versions) {
-    $versions = Get-Versions $NetCoreApp11Versions
-
-    $files | % {
-        $source = LoadXml $_
-        Write-Host "Upgrading $_"
-        Update-PackageRefs 'netcoreapp1.1' $source $versions
-        SaveXml $source $_
+finally {
+    if (Test-Path $tempFile) {
+        Remove-Item $tempFile
     }
 }

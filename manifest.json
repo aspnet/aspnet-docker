@@ -15,7 +15,7 @@
       "images": [
         {
           "sharedTags": {
-            "1.0.9": {},
+            "1.0.10": {},
             "1.0": {},
             "lts": {
               "isUndocumented": true
@@ -26,21 +26,21 @@
               "dockerfile": "1.0/jessie/runtime",
               "os": "linux",
               "tags": {
-                "1.0.9-jessie": {}
+                "1.0.10-jessie": {}
               }
             },
             {
               "dockerfile": "1.0/nanoserver-sac2016/runtime",
               "os": "windows",
               "tags": {
-                "1.0.9-nanoserver-sac2016": {}
+                "1.0.10-nanoserver-sac2016": {}
               }
             }
           ]
         },
         {
           "sharedTags": {
-            "1.1.6": {},
+            "1.1.7": {},
             "1.1": {},
             "1": {}
           },
@@ -49,21 +49,21 @@
               "dockerfile": "1.1/jessie/runtime",
               "os": "linux",
               "tags": {
-                "1.1.6-jessie": {}
+                "1.1.7-jessie": {}
               }
             },
             {
               "dockerfile": "1.1/nanoserver-sac2016/runtime",
               "os": "windows",
               "tags": {
-                "1.1.6-nanoserver-sac2016": {}
+                "1.1.7-nanoserver-sac2016": {}
               }
             }
           ]
         },
         {
           "sharedTags": {
-            "2.0.5": {},
+            "2.0.6": {},
             "2.0": {},
             "2": {},
             "latest": {}
@@ -73,7 +73,7 @@
               "dockerfile": "2.0/stretch/runtime",
               "os": "linux",
               "tags": {
-                "2.0.5-stretch": {},
+                "2.0.6-stretch": {},
                 "2.0-stretch": {}
               }
             },
@@ -81,7 +81,7 @@
               "dockerfile": "2.0/nanoserver-sac2016/runtime",
               "os": "windows",
               "tags": {
-                "2.0.5-nanoserver-sac2016": {},
+                "2.0.6-nanoserver-sac2016": {},
                 "2.0-nanoserver-sac2016": {},
                 "2.0-nanoserver": {
                   "isUndocumented": true
@@ -93,7 +93,7 @@
               "os": "windows",
               "osVersion": "1709",
               "tags": {
-                "2.0.5-nanoserver-1709": {},
+                "2.0.6-nanoserver-1709": {},
                 "2.0-nanoserver-1709": {}
               }
             }
@@ -105,7 +105,7 @@
               "dockerfile": "2.0/jessie/runtime",
               "os": "linux",
               "tags": {
-                "2.0.5-jessie": {},
+                "2.0.6-jessie": {},
                 "2.0-jessie": {},
                 "2-jessie": {}
               }
@@ -160,7 +160,7 @@
       "images": [
         {
           "sharedTags": {
-            "1.1.6-1.1.7": {},
+            "1.1.7-1.1.8": {},
             "1.1": {},
             "1": {},
             "1.0": {
@@ -175,21 +175,21 @@
               "dockerfile": "1.1/jessie/sdk",
               "os": "linux",
               "tags": {
-                "1.1.6-1.1.7-jessie": {}
+                "1.1.7-1.1.8-jessie": {}
               }
             },
             {
               "dockerfile": "1.1/nanoserver-sac2016/sdk",
               "os": "windows",
               "tags": {
-                "1.1.6-1.1.7-nanoserver-sac2016": {}
+                "1.1.7-1.1.8-nanoserver-sac2016": {}
               }
             }
           ]
         },
         {
           "sharedTags": {
-            "2.0.5-2.1.4": {},
+            "2.0.6-2.1.101": {},
             "2.0": {},
             "2": {},
             "latest": {}
@@ -199,7 +199,7 @@
               "dockerfile": "2.0/stretch/sdk",
               "os": "linux",
               "tags": {
-                "2.0.5-2.1.4-stretch": {},
+                "2.0.6-2.1.101-stretch": {},
                 "2.0-stretch": {}
               }
             },
@@ -207,7 +207,7 @@
               "dockerfile": "2.0/nanoserver-sac2016/sdk",
               "os": "windows",
               "tags": {
-                "2.0.5-2.1.4-nanoserver-sac2016": {},
+                "2.0.6-2.1.101-nanoserver-sac2016": {},
                 "2.0-nanoserver-sac2016": {},
                 "2.0-nanoserver": {
                   "isUndocumented": true
@@ -219,7 +219,7 @@
               "os": "windows",
               "osVersion": "1709",
               "tags": {
-                "2.0.5-2.1.4-nanoserver-1709": {},
+                "2.0.6-2.1.101-nanoserver-1709": {},
                 "2.0-nanoserver-1709": {}
               }
             }
@@ -231,7 +231,7 @@
               "dockerfile": "2.0/jessie/sdk",
               "os": "linux",
               "tags": {
-                "2.0.5-2.1.4-jessie": {},
+                "2.0.6-2.1.101-jessie": {},
                 "2.0-jessie": {},
                 "2-jessie": {}
               }
