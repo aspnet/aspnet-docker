@@ -48,8 +48,7 @@ function Get-TestRid($tagName) {
     }
     else {
         if ($tagName -like '*bionic*') {
-            # Return ubuntu 16 because ubuntu 18 is not supported in the RID graph as of 2.1.0-preview1
-            return "ubuntu.16.04-x64"
+            return "ubuntu.18.04-x64"
         }
         else {
             return "debian.8-x64"

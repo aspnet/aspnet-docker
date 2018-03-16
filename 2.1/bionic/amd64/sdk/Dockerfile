@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:2.1.300-preview1-sdk-bionic
+FROM microsoft/dotnet-nightly:2.1.300-preview2-sdk-bionic
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -15,11 +15,11 @@ RUN curl -SL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-lin
 
 # Ensure packages required for standalone apps are pre-fetched
 
-# Set to ubuntu.16.04-x64 because preview1 doesn't yet support the ubuntu.18 RID
 RUN mkdir /tmp/warmup \
     && cd /tmp/warmup \
     && dotnet new web --no-restore \
-    && dotnet restore -p:RuntimeIdentifier=ubuntu.16.04-x64 \
+    && dotnet restore -p:RuntimeIdentifier=ubuntu.18.04-x64 \
+        --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json \
         --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json \
         --source https://api.nuget.org/v3/index.json \
     && cd / \

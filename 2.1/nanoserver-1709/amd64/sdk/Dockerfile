@@ -22,7 +22,7 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
     Remove-Item -Force nodejs-tmp
 
 # Build image
-FROM microsoft/dotnet-nightly:2.1.300-preview1-sdk-nanoserver-1709
+FROM microsoft/dotnet-nightly:2.1.300-preview2-sdk-nanoserver-1709
 
 # Set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -40,6 +40,7 @@ RUN mkdir "%TEMP%/warmup" `
     && cd "%TEMP%/warmup" `
     && dotnet new web --no-restore `
     && dotnet restore -p:RuntimeIdentifier=win7-x64 `
+        --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json `
         --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
         --source https://api.nuget.org/v3/index.json `
     && cd .. `
