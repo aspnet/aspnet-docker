@@ -48,3 +48,8 @@ RUN dotnet restore C:/warmup/packagescache.csproj `
         --source https://api.nuget.org/v3/index.json `
         --verbosity quiet; `
     Remove-Item -Recurse -Force C:/warmup
+
+# Workaround for https://github.com/Microsoft/DockerTools/issues/87. This instructs NuGet to use 4.5 behavior in which
+# all errors when attempting to restore a project are ignored and treated as warnings instead. This allows the VS
+# tooling to use -nowarn:MSB3202 to ignore issues with the .dcproj project
+ENV RestoreUseSkipNonexistentTargets false
