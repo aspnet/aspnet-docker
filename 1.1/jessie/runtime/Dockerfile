@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:1.1.6-runtime
+FROM microsoft/dotnet:1.1.7-runtime
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
