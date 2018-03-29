@@ -175,14 +175,9 @@ try {
                     "1.1" { $sdk_tag -replace '-1.1.8', '' }
                     # map the 2.0.4-2.1.3 sdk tags to the runtime tag name
                     "2.0" { $sdk_tag -replace '-2.1.101', '' }
-                    # map the 2.1.300 sdk tags to the runtime tag name
-                    "2.1" { $sdk_tag -replace '2.1.300', '2.1.0' }
                     Default { $sdk_tag }
                 }
                 $runtime_tag = $runtime_tag -replace '-build', ''
-                if ($version -eq "2.1") {
-                    $runtime_tag = $runtime_tag -replace '-stretch', '-stretch-slim'
-                }
 
                 test_image $version $sdk_tag $runtime_tag
 
