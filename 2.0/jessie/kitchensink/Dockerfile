@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.0.6-sdk-2.1.101-jessie
+FROM microsoft/dotnet:2.0.6-sdk-2.1.104-jessie
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
