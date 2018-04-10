@@ -48,8 +48,7 @@ function Get-TestRid($tagName) {
     }
     else {
         if ($tagName -like '*bionic*') {
-            # Return ubuntu 16 because ubuntu 18 is not supported in the RID graph as of 2.1.0-preview1
-            return "ubuntu.16.04-x64"
+            return "ubuntu.18.04-x64"
         }
         else {
             return "debian.8-x64"
@@ -176,14 +175,9 @@ try {
                     "1.1" { $sdk_tag -replace '-1.1.8', '' }
                     # map the 2.0.4-2.1.3 sdk tags to the runtime tag name
                     "2.0" { $sdk_tag -replace '-2.1.104', '' }
-                    # map the 2.1.300 sdk tags to the runtime tag name
-                    "2.1" { $sdk_tag -replace '2.1.300', '2.1.0' }
                     Default { $sdk_tag }
                 }
                 $runtime_tag = $runtime_tag -replace '-build', ''
-                if ($version -eq "2.1") {
-                    $runtime_tag = $runtime_tag -replace '-stretch', '-stretch-slim'
-                }
 
                 test_image $version $sdk_tag $runtime_tag
 

@@ -111,46 +111,6 @@
               }
             }
           ]
-        },
-        {
-          "platforms": [
-            {
-              "dockerfile": "2.1/bionic/amd64/runtime",
-              "os": "linux",
-              "tags": {
-                "2.1.0-preview1-bionic": {}
-              }
-            }
-          ]
-        },
-        {
-          "sharedTags": {
-            "2.1.0-preview1": {}
-          },
-          "platforms": [
-            {
-              "dockerfile": "2.1/stretch-slim/amd64/runtime",
-              "os": "linux",
-              "tags": {
-                "2.1.0-preview1-stretch-slim": {}
-              }
-            },
-            {
-              "dockerfile": "2.1/nanoserver-sac2016/amd64/runtime",
-              "os": "windows",
-              "tags": {
-                "2.1.0-preview1-nanoserver-sac2016": {}
-              }
-            },
-            {
-              "dockerfile": "2.1/nanoserver-1709/amd64/runtime",
-              "os": "windows",
-              "osVersion": "1709",
-              "tags": {
-                "2.1.0-preview1-nanoserver-1709": {}
-              }
-            }
-          ]
         }
       ]
     },
@@ -234,46 +194,6 @@
                 "2.0.6-2.1.104-jessie": {},
                 "2.0-jessie": {},
                 "2-jessie": {}
-              }
-            }
-          ]
-        },
-        {
-          "platforms": [
-            {
-              "dockerfile": "2.1/bionic/amd64/sdk",
-              "os": "linux",
-              "tags": {
-                "2.1.300-preview1-bionic": {}
-              }
-            }
-          ]
-        },
-        {
-          "sharedTags": {
-            "2.1.300-preview1": {}
-          },
-          "platforms": [
-            {
-              "dockerfile": "2.1/stretch/amd64/sdk",
-              "os": "linux",
-              "tags": {
-                "2.1.300-preview1-stretch": {}
-              }
-            },
-            {
-              "dockerfile": "2.1/nanoserver-sac2016/amd64/sdk",
-              "os": "windows",
-              "tags": {
-                "2.1.300-preview1-nanoserver-sac2016": {}
-              }
-            },
-            {
-              "dockerfile": "2.1/nanoserver-1709/amd64/sdk",
-              "os": "windows",
-              "osVersion": "1709",
-              "tags": {
-                "2.1.300-preview1-nanoserver-1709": {}
               }
             }
           ]
