@@ -7,17 +7,17 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 # Linux amd64 tags
 
 - [`1.1.7-1.1.8-jessie`, `1.1.7-1.1.8`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/sdk/Dockerfile)
-- [`2.0.6-2.1.101-stretch`, `2.0-stretch`, `2.0.6-2.1.101`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/stretch/sdk/Dockerfile)
-- [`2.0.6-2.1.101-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/jessie/sdk/Dockerfile)
+- [`2.0.6-2.1.104-stretch`, `2.0-stretch`, `2.0.6-2.1.104`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/stretch/sdk/Dockerfile)
+- [`2.0.6-2.1.104-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/jessie/sdk/Dockerfile)
 
 # Windows Server, version 1709 amd64 tags
 
-- [`2.0.6-2.1.101-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.6-2.1.101`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-1709/sdk/Dockerfile)
+- [`2.0.6-2.1.104-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.6-2.1.104`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-1709/sdk/Dockerfile)
 
 # Windows Server 2016 amd64 tags
 
 - [`1.1.7-1.1.8-nanoserver-sac2016`, `1.1.7-1.1.8`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver-sac2016/sdk/Dockerfile)
-- [`2.0.6-2.1.101-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.6-2.1.101`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-sac2016/sdk/Dockerfile)
+- [`2.0.6-2.1.104-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.6-2.1.104`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-sac2016/sdk/Dockerfile)
 
 >**Note:** ASP.NET Core multi-arch tags, such as 2.0, have been updated to use nanoserver-1709 images if your host is Windows Server 2016 Version 1709 or higher or Windows 10 Fall Creators Update (Version 1709) or higher. You need Docker 17.10 or later to take advantage of these updated tags.
 
