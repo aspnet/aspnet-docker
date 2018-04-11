@@ -3,7 +3,9 @@ HTTP 301 Moved Permanently
 
 **Where are the 2.1 aspnet-docker images?**
 
-In 2.1, the ASP.NET Core Docker images have migrated to https://github.com/dotnet/dotnet-docker.
+In 2.1\*, the ASP.NET Core Docker images have migrated to https://github.com/dotnet/dotnet-docker.
+
+_\*Note: ASP.NET Core 2.1 is still in preview._
 
 **How can I upgrade from 1.x/2.0 to 2.1?**
 
