@@ -6,8 +6,8 @@ FROM microsoft/windowsservercore:1709 AS installer-env
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # versions of stuff
-ENV NETCORE_1_0_RUNTIME_VERSION 1.0.10
-ENV NETCORE_1_1_RUNTIME_VERSION 1.1.7
+ENV NETCORE_1_0_RUNTIME_VERSION 1.0.11
+ENV NETCORE_1_1_RUNTIME_VERSION 1.1.8
 
 # Retrieve node and git
 ENV NODE_VERSION 6.13.0
@@ -45,13 +45,13 @@ RUN Invoke-WebRequest -UseBasicParsing https://distaspnet.blob.core.windows.net/
 
 
 # Kitchen Sink image
-FROM microsoft/dotnet:2.0.6-sdk-2.1.104-nanoserver-1709
+FROM microsoft/dotnet-nightly:2.0.7-sdk-2.1.105-nanoserver-1709
 
 # Note: Kitchen Sink image's SHELL is the CMD shell (different than the installer image).
 
 # Set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV ASPNETCORE_PKG_VERSION 2.0.6
+ENV ASPNETCORE_PKG_VERSION 2.0.7
 
 # Install node, bower, and git
 COPY --from=installer-env ["nodejs", "C:\\Program Files\\nodejs"]
@@ -70,6 +70,8 @@ COPY --from=installer-env ["sdks", "C:\\Program Files\\dotnet\\sdk\\2.0.3\\Sdks"
 RUN mkdir C:\warmup
 COPY packagescache.csproj C:\warmup\packagescache.csproj
 RUN dotnet restore C:\warmup\packagescache.csproj `
+        --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json `
+        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
         --source https://api.nuget.org/v3/index.json `
         --verbosity quiet `
     && del /F /S /Q C:\warmup

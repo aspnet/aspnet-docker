@@ -1,9 +1,9 @@
 # escape=`
-FROM microsoft/dotnet:2.0.6-sdk-2.1.104-nanoserver-sac2016
+FROM microsoft/dotnet-nightly:2.0.7-sdk-2.1.105-nanoserver-sac2016
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV ASPNETCORE_PKG_VERSION 2.0.6
+ENV ASPNETCORE_PKG_VERSION 2.0.7
 ENV NODE_VERSION 6.13.0
 ENV NODE_DOWNLOAD_SHA 3d3d72c5c93a50d5a19f65f0de196b5237792a99b89fac2b61e62da4f566c842
 
@@ -29,6 +29,8 @@ RUN setx /M PATH $($Env:PATH + ';' + $Env:ProgramFiles + '/nodejs' + ';' + $Env:
 COPY packagescache.csproj C:/warmup/packagescache.csproj
 
 RUN dotnet restore C:/warmup/packagescache.csproj `
+        --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json `
+        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
         --source https://api.nuget.org/v3/index.json `
         --verbosity quiet; `
     Remove-Item -Recurse -Force C:/warmup

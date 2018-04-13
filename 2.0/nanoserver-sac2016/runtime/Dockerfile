@@ -1,9 +1,9 @@
 # escape=`
-FROM microsoft/dotnet:2.0.6-runtime-nanoserver-sac2016
+FROM microsoft/dotnet-nightly:2.0.7-runtime-nanoserver-sac2016
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80
-ENV ASPNETCORE_PKG_VERSION 2.0.6
+ENV ASPNETCORE_PKG_VERSION 2.0.7
 
 # set up the runtime store
 RUN $env:DOTNET_HOME = $(Split-Path -Parent (Get-Command dotnet.exe).Source); `

@@ -15,13 +15,13 @@ RUN  @('2.0.0', '2.0.3', '2.0.5', '2.0.6') | % { `
     }
 
 # Runtime image
-FROM microsoft/dotnet:2.0.6-runtime-nanoserver-1709
+FROM microsoft/dotnet-nightly:2.0.7-runtime-nanoserver-1709
 
 # Note: Runtime image's SHELL is the CMD shell (different than the installer image).
 
 # Set up network
 ENV ASPNETCORE_URLS http://+:80
-ENV ASPNETCORE_PKG_VERSION 2.0.6
+ENV ASPNETCORE_PKG_VERSION 2.0.7
 
 # Set up the runtime store
 COPY --from=installer-env ["RuntimeStore", "C:\\Program Files\\dotnet"]
