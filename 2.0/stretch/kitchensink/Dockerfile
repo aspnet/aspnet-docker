@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:2.0.7-sdk-2.1.105-stretch
+FROM microsoft/dotnet:2.0.7-sdk-2.1.105-stretch
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -43,8 +43,6 @@ COPY packagescache.csproj /tmp/warmup/
 
 # warm up package cache
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
-        --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json \
-        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json \
         --source https://api.nuget.org/v3/index.json \
         --verbosity quiet \
     && rm -rf /tmp/warmup/

@@ -45,7 +45,7 @@ RUN Invoke-WebRequest -UseBasicParsing https://distaspnet.blob.core.windows.net/
 
 
 # Kitchen Sink image
-FROM microsoft/dotnet-nightly:2.0.7-sdk-2.1.105-nanoserver-1709
+FROM microsoft/dotnet:2.0.7-sdk-2.1.105-nanoserver-1709
 
 # Note: Kitchen Sink image's SHELL is the CMD shell (different than the installer image).
 
@@ -70,8 +70,6 @@ COPY --from=installer-env ["sdks", "C:\\Program Files\\dotnet\\sdk\\2.0.3\\Sdks"
 RUN mkdir C:\warmup
 COPY packagescache.csproj C:\warmup\packagescache.csproj
 RUN dotnet restore C:\warmup\packagescache.csproj `
-        --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json `
-        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
         --source https://api.nuget.org/v3/index.json `
         --verbosity quiet `
     && del /F /S /Q C:\warmup

@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-nightly:2.0.7-runtime-jessie
+FROM microsoft/dotnet:2.0.7-runtime-jessie
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80

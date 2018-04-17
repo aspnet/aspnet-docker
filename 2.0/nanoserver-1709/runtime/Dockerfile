@@ -15,7 +15,7 @@ RUN  @('2.0.0', '2.0.3', '2.0.5', '2.0.6', '2.0.7') | % { `
     }
 
 # Runtime image
-FROM microsoft/dotnet-nightly:2.0.7-runtime-nanoserver-1709
+FROM microsoft/dotnet:2.0.7-runtime-nanoserver-1709
 
 # Note: Runtime image's SHELL is the CMD shell (different than the installer image).
 

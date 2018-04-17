@@ -4,25 +4,20 @@ ASP.NET Core Build Docker Image
 
 This repository contains images that are used to compile/publish ASP.NET Core applications inside the container. This is different to compiling an ASP.NET Core application and then adding the compiled output to an image, which is what you would do when using the [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/) image. These Dockerfiles use the [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) image as its base.
 
-# Supported Linux amd64 tags
+# Linux amd64 tags
 
-- [`1.1.7-1.1.8-jessie`, `1.1.7-1.1.8`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
-- [`2.0.6-2.1.104-stretch`, `2.0-stretch`, `2.0.6-2.1.104`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/sdk/Dockerfile)
-- [`2.0.6-2.1.104-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/sdk/Dockerfile)
-- [`1.0-1.1-jessie`, `1.0-1.1` (*1.1/jessie/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/kitchensink/Dockerfile)
-- [`1.0-2.0-stretch`, `1.0-2.0` (*2.0/stretch/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/kitchensink/Dockerfile)
-- [`1.0-2.0-jessie` (*2.0/jessie/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/kitchensink/Dockerfile)
+- [`1.1.8-1.1.9-jessie`, `1.1.8-1.1.9`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
+- [`2.0.7-2.1.105-stretch`, `2.0-stretch`, `2.0.7-2.1.105`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/sdk/Dockerfile)
+- [`2.0.7-2.1.105-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/sdk/Dockerfile)
 
-# Supported Windows Server 2016 Version 1709 (Fall Creators Update) amd64 tags
+# Windows Server, version 1709 amd64 tags
 
-- [`2.0.6-2.1.104-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.6-2.1.104`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/sdk/Dockerfile)
+- [`2.0.7-2.1.105-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.7-2.1.105`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/sdk/Dockerfile)
 
-# Supported Windows Server 2016 amd64 tags
+# Windows Server 2016 amd64 tags
 
-- [`1.1.7-1.1.8-nanoserver-sac2016`, `1.1.7-1.1.8`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/sdk/Dockerfile)
-- [`2.0.6-2.1.104-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.6-2.1.104`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/sdk/Dockerfile)
-- [`1.0-1.1-nanoserver-sac2016`, `1.0-1.1` (*1.1/nanoserver-sac2016/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/kitchensink/Dockerfile)
-- [`1.0-2.0-nanoserver-sac2016`, `1.0-2.0` (*2.0/nanoserver-sac2016/kitchensink/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/kitchensink/Dockerfile)
+- [`1.1.8-1.1.9-nanoserver-sac2016`, `1.1.8-1.1.9`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/sdk/Dockerfile)
+- [`2.0.7-2.1.105-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.7-2.1.105`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/sdk/Dockerfile)
 
 >**Note:** ASP.NET Core multi-arch tags, such as 2.0, have been updated to use nanoserver-1709 images if your host is Windows Server 2016 Version 1709 or higher or Windows 10 Fall Creators Update (Version 1709) or higher. You need Docker 17.10 or later to take advantage of these updated tags.
 
@@ -39,8 +34,6 @@ This image contains:
 - [Node.js](https://nodejs.org)
 - [Bower](https://bower.io/)
 - [Gulp](http://gulpjs.com/)
-
-The CI Image (`1.0-2.0`) contains the 1.0, 1.1, and 2.0 pre-restored packages. It is intended for when you have a solution containing both 2.x and 1.x projects and want to build them all in the same container, gaining advantage of the pre-restored packages. Because it has an extra set of packages it is bigger than the other, more focused, images.
 
 # Related images
 

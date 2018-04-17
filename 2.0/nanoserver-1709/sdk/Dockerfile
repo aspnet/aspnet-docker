@@ -26,7 +26,7 @@ RUN Invoke-WebRequest -UseBasicParsing https://nodejs.org/dist/v${env:NODE_VERSI
 
 
 # Build image
-FROM microsoft/dotnet-nightly:2.0.7-sdk-2.1.105-nanoserver-1709
+FROM microsoft/dotnet:2.0.7-sdk-2.1.105-nanoserver-1709
 
 # Note: Build image's SHELL is the CMD shell (different than the installer image).
 
@@ -44,8 +44,6 @@ RUN setx PATH "%PATH%;C:\Program Files\nodejs;C:\Program Files\git\cmd"
 RUN mkdir C:\warmup
 COPY packagescache.csproj C:\warmup\packagescache.csproj
 RUN dotnet restore C:\warmup\packagescache.csproj `
-        --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json `
-        --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json `
         --source https://api.nuget.org/v3/index.json `
         --verbosity quiet `
     && del /F /S /Q C:\warmup
