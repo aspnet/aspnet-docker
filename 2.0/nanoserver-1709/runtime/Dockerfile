@@ -6,7 +6,7 @@ FROM microsoft/windowsservercore:1709 AS installer-env
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Retrieve the runtime store
-RUN  @('2.0.0', '2.0.3', '2.0.5', '2.0.6') | % { `
+RUN  @('2.0.0', '2.0.3', '2.0.5', '2.0.6', '2.0.7') | % { `
         $downloadUrl = \"https://dist.asp.net/runtimestore/${_}/win-x64/aspnetcore.runtimestore.zip\"; `
         Write-Host \"Downloading and extracting $downloadUrl\"; `
         Invoke-WebRequest $downloadUrl -OutFile cache.zip; `
