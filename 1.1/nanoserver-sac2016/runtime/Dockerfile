@@ -1,5 +1,5 @@
 # escape=`
-FROM microsoft/dotnet:1.1.7-runtime-nanoserver-sac2016
+FROM microsoft/dotnet:1.1.8-runtime-nanoserver-sac2016
 
 # set up network
 ENV ASPNETCORE_URLS http://+:80

@@ -22,6 +22,7 @@ if (!$Branch) {
 
 
 & docker run --rm `
+    --platform=linux `
     -v /var/run/docker.sock:/var/run/docker.sock `
     -v "${repoRoot}:/repo" `
     -w /repo `

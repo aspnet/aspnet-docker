@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:1.1.7-sdk-1.1.8
+FROM microsoft/dotnet:1.1.8-sdk-1.1.9
 
 # set up environment
 ENV ASPNETCORE_URLS http://+:80
@@ -21,8 +21,8 @@ RUN curl -SL "$NODE_DOWNLOAD_URL" --output nodejs.tar.gz \
 # warmup NuGet package cache
 COPY packagescache.csproj /tmp/warmup/packagescache.csproj
 RUN dotnet restore /tmp/warmup/packagescache.csproj \
-      --source https://api.nuget.org/v3/index.json \
-      --verbosity quiet \
+        --source https://api.nuget.org/v3/index.json \
+        --verbosity quiet \
     && rm -rf /tmp/warmup/
 
 WORKDIR /
