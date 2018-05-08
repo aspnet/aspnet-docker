@@ -6,7 +6,7 @@ FROM microsoft/windowsservercore:1709 AS installer-env
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Retrieve the runtime store
-RUN  @('2.0.0', '2.0.3', '2.0.5', '2.0.6', '2.0.7') | % { `
+RUN  @('2.0.0', '2.0.3', '2.0.5', '2.0.6', '2.0.7', '2.0.8') | % { `
         $downloadUrl = \"https://dist.asp.net/runtimestore/${_}/win-x64/aspnetcore.runtimestore.zip\"; `
         Write-Host \"Downloading and extracting $downloadUrl\"; `
         Invoke-WebRequest $downloadUrl -OutFile cache.zip; `
@@ -21,7 +21,7 @@ FROM microsoft/dotnet:2.0.7-runtime-nanoserver-1709
 
 # Set up network
 ENV ASPNETCORE_URLS http://+:80
-ENV ASPNETCORE_PKG_VERSION 2.0.7
+ENV ASPNETCORE_PKG_VERSION 2.0.8
 
 # Set up the runtime store
 COPY --from=installer-env ["RuntimeStore", "C:\\Program Files\\dotnet"]
