@@ -19,8 +19,6 @@ This repository contains images that are used to compile/publish ASP.NET Core ap
 - [`1.1.8-1.1.9-nanoserver-sac2016`, `1.1.8-1.1.9`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver-sac2016/sdk/Dockerfile)
 - [`2.0.7-2.1.105-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.7-2.1.105`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-sac2016/sdk/Dockerfile)
 
->**Note:** ASP.NET Core multi-arch tags, such as 2.0, have been updated to use nanoserver-1709 images if your host is Windows Server 2016 Version 1709 or higher or Windows 10 Fall Creators Update (Version 1709) or higher. You need Docker 17.10 or later to take advantage of these updated tags.
-
 >**Note:** In images tagged with two versions in this pattern `A.B.C-X.Y.Z`, the first version `A.B.C` represents the .NET Core runtime version, and the second `X.Y.Z` represents the .NET Core SDK version.
 
 # What is ASP.NET Core?
