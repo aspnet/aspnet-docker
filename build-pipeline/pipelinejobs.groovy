@@ -5,7 +5,8 @@ def windowsPipeline = Pipeline.createPipeline(this, 'build-pipeline/windows-pipe
 [
     '1.*:sac2016',
     '2.0/nanoserver-sac2016/*:sac2016',
-    '2.0/nanoserver-1709/*:1709'
+    '2.0/nanoserver-1709/*:1709',
+    '2.0/nanoserver-1803/*:1803'
 ].each { platform ->
     def(folderFilter, containerOS) = platform.tokenize(':')
     def triggerName = "Windows ${containerOS} ${folderFilter[0..-3]} Build"

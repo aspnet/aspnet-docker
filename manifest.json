@@ -96,6 +96,15 @@
                 "2.0.8-nanoserver-1709": {},
                 "2.0-nanoserver-1709": {}
               }
+            },
+            {
+              "dockerfile": "2.0/nanoserver-1803/runtime",
+              "os": "windows",
+              "osVersion": "1803",
+              "tags": {
+                "2.0.8-nanoserver-1803": {},
+                "2.0-nanoserver-1803": {}
+              }
             }
           ]
         },
@@ -181,6 +190,15 @@
               "tags": {
                 "2.0.8-2.1.200-nanoserver-1709": {},
                 "2.0-nanoserver-1709": {}
+              }
+            },
+            {
+              "dockerfile": "2.0/nanoserver-1803/sdk",
+              "os": "windows",
+              "osVersion": "1803",
+              "tags": {
+                "2.0.8-2.1.200-nanoserver-1803": {},
+                "2.0-nanoserver-1803": {}
               }
             }
           ]

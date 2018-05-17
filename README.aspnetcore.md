@@ -15,6 +15,10 @@ These images contain the runtime only. Use [`microsoft/aspnetcore-build`](https:
 - [`2.0.8-stretch`, `2.0-stretch`, `2.0.8`, `2.0`, `2`, `latest` (*2.0/stretch/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/runtime/Dockerfile)
 - [`2.0.8-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/runtime/Dockerfile)
 
+# Windows Server, version 1803 amd64 tags
+
+- [`2.0.8-nanoserver-1803`, `2.0-nanoserver-1803`, `2.0.8`, `2.0`, `2`, `latest` (*2.0/nanoserver-1803/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1803/runtime/Dockerfile)
+
 # Windows Server, version 1709 amd64 tags
 
 - [`2.0.8-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.8`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/runtime/Dockerfile)
@@ -24,8 +28,6 @@ These images contain the runtime only. Use [`microsoft/aspnetcore-build`](https:
 - [`1.0.11-nanoserver-sac2016`, `1.0.11`, `1.0` (*1.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver-sac2016/runtime/Dockerfile)
 - [`1.1.8-nanoserver-sac2016`, `1.1.8`, `1.1`, `1` (*1.1/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/runtime/Dockerfile)
 - [`2.0.8-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.8`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/runtime/Dockerfile)
-
->**Note:** ASP.NET Core multi-arch tags, such as 2.0, have been updated to use nanoserver-1709 images if your host is Windows Server 2016 Version 1709 or higher or Windows 10 Fall Creators Update (Version 1709) or higher. You need Docker 17.10 or later to take advantage of these updated tags.
 
 # What is ASP.NET Core?
 
