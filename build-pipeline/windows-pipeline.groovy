@@ -15,8 +15,12 @@ def buildImages = {
     }
 }
 
-if (params.RS3 == true) {
+if (params.os == '1709') {
     simpleNode('windows.10.amd64.serverrs3.open', buildImages)
-} else {
+}
+else if (params.os == 'sac2016') {
     simpleNode('Windows_2016', 'latest-docker', buildImages)
+}
+else {
+    error 'Unrecognized variant of Windows'
 }

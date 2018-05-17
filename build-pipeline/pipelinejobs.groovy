@@ -2,18 +2,17 @@ import org.dotnet.ci.pipelines.Pipeline
 
 def windowsPipeline = Pipeline.createPipeline(this, 'build-pipeline/windows-pipeline.groovy')
 
-// Images that can only build on RS1, not RS3
-['1.*', '2.0/nanoserver-sac2016/*'].each { folderFilter ->
-    def triggerName = "Windows SAC2016 ${folderFilter[0..-3]} Build"
+[
+    '1.*:sac2016',
+    '2.0/nanoserver-sac2016/*:sac2016',
+    '2.0/nanoserver-1709/*:1709'
+].each { platform ->
+    def(folderFilter, containerOS) = platform.tokenize(':')
+    def triggerName = "Windows ${containerOS} ${folderFilter[0..-3]} Build"
 
-    windowsPipeline.triggerPipelineOnEveryGithubPR(triggerName, ['folderFilter':folderFilter])
-    windowsPipeline.triggerPipelineOnPush(triggerName, ['folderFilter':folderFilter])
+    windowsPipeline.triggerPipelineOnEveryGithubPR(triggerName, [folderFilter:folderFilter, os:containerOS])
+    windowsPipeline.triggerPipelineOnPush(triggerName, [folderFilter:folderFilter, os:containerOS])
 }
-
-// Images that can only build on RS3, not RS1
-def rs3TriggerName = "Windows 1709 2.0/nanoserver-1709 Build"
-windowsPipeline.triggerPipelineOnEveryGithubPR(rs3TriggerName, ['RS3':true, 'folderFilter':'2.0/nanoserver-1709/*'])
-windowsPipeline.triggerPipelineOnPush(rs3TriggerName, ['RS3':true, 'folderFilter':'2.0/nanoserver-1709/*'])
 
 def linuxPipeline = Pipeline.createPipeline(this, 'build-pipeline/linux-pipeline.groovy')
 
