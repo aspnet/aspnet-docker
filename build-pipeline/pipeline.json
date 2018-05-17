@@ -62,6 +62,20 @@
       ]
     },
     {
+      "Name": "Build Windows 1803 Images",
+      "Parameters": {
+        "TreatWarningsAsErrors": "false"
+      },
+      "Definitions": [
+        {
+          "Name": "aspnet-docker-windows-1803-images",
+          "Parameters": {
+            "PB.image-builder.path": "2.0/nanoserver-1803/*"
+          }
+        }
+      ]
+    },
+    {
       "Name": "Post Image Build",
       "Parameters": {
         "TreatWarningsAsErrors": "false"
@@ -72,6 +86,7 @@
         }
       ],
       "DependsOn": [
+        "Build Windows 1803 Images",
         "Build Windows 1709 Images",
         "Build Windows Images",
         "Build Linux Images"

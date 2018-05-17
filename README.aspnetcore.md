@@ -15,6 +15,10 @@ These images contain the runtime only. Use [`microsoft/aspnetcore-build`](https:
 - [`2.0.8-stretch`, `2.0-stretch`, `2.0.8`, `2.0`, `2`, `latest` (*2.0/stretch/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/runtime/Dockerfile)
 - [`2.0.8-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/runtime/Dockerfile)
 
+# Windows Server, version 1803 amd64 tags
+
+- [`2.0.8-nanoserver-1803`, `2.0-nanoserver-1803`, `2.0.8`, `2.0`, `2`, `latest` (*2.0/nanoserver-1803/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1803/runtime/Dockerfile)
+
 # Windows Server, version 1709 amd64 tags
 
 - [`2.0.8-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.8`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/runtime/Dockerfile)
