@@ -3,9 +3,7 @@ HTTP 301 Moved Permanently
 
 **Where are the 2.1 aspnet-docker images?**
 
-In 2.1\*, the ASP.NET Core Docker images have migrated to https://github.com/dotnet/dotnet-docker.
-
-_\*Note: ASP.NET Core 2.1 is still in preview._
+In 2.1, the ASP.NET Core Docker images have migrated to https://github.com/dotnet/dotnet-docker.
 
 **How can I upgrade from 1.x/2.0 to 2.1?**
 
@@ -18,7 +16,7 @@ Current | Upgrade
 
 **I was using NodeJS in `microsoft/aspnetcore-build`, but this is missing from `microsoft/dotnet:2.1-sdk`. What should I do?**
 
-You can either install NodeJS by adding a few lines of code to your Dockerfile that download and extract NodeJS, 
+You can either install NodeJS by adding a few lines of code to your Dockerfile that download and extract NodeJS,
 or you can use the multi-stage feature of Docker and the official NodeJS images.
 
 Sample code to install NodeJS on your own:

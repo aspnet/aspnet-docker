@@ -4,24 +4,34 @@ ASP.NET Core Build Docker Image
 
 This repository contains images that are used to compile/publish ASP.NET Core applications inside the container. This is different to compiling an ASP.NET Core application and then adding the compiled output to an image, which is what you would do when using the [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/) image. These Dockerfiles use the [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) image as its base.
 
+Latest images for **2.1** and newer are now available on [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/). See [this link][migrate] for more details about migrating to 2.1.
+
+[migrate]: https://github.com/aspnet/aspnet-docker/blob/master/2.1
+
+The [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker/blob/master/samples/README.md) show various ways to use .NET Core and Docker together. See [Building Docker Images for .NET Core Applications](https://docs.microsoft.com/dotnet/core/docker/building-net-docker-images) to learn more.
+
 # Linux amd64 tags
 
 - [`1.1.8-1.1.9-jessie`, `1.1.8-1.1.9`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
-- [`2.0.8-2.1.200-stretch`, `2.0-stretch`, `2.0.8-2.1.200`, `2.0`, `2`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/sdk/Dockerfile)
+- [`2.0.8-2.1.200-stretch`, `2.0-stretch`, `2.0.8-2.1.200`, `2.0`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/sdk/Dockerfile)
 - [`2.0.8-2.1.200-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/sdk/Dockerfile)
+- For 2.1 and up, use [microsoft/dotnet][migrate].
 
 # Windows Server, version 1803 amd64 tags
 
-- [`2.0.8-2.1.200-nanoserver-1803`, `2.0-nanoserver-1803`, `2.0.8-2.1.200`, `2.0`, `2`, `latest` (*2.0/nanoserver-1803/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1803/sdk/Dockerfile)
+- [`2.0.8-2.1.200-nanoserver-1803`, `2.0-nanoserver-1803`, `2.0.8-2.1.200`, `2.0`, `latest` (*2.0/nanoserver-1803/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1803/sdk/Dockerfile)
+- For 2.1 and up, use [microsoft/dotnet][migrate].
 
 # Windows Server, version 1709 amd64 tags
 
-- [`2.0.8-2.1.200-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.8-2.1.200`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/sdk/Dockerfile)
+- [`2.0.8-2.1.200-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.8-2.1.200`, `2.0`, `latest` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/sdk/Dockerfile)
+- For 2.1 and up, use [microsoft/dotnet][migrate].
 
 # Windows Server 2016 amd64 tags
 
 - [`1.1.8-1.1.9-nanoserver-sac2016`, `1.1.8-1.1.9`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/sdk/Dockerfile)
-- [`2.0.8-2.1.200-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.8-2.1.200`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/sdk/Dockerfile)
+- [`2.0.8-2.1.200-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.8-2.1.200`, `2.0`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/sdk/Dockerfile)
+- For 2.1 and up, use [microsoft/dotnet][migrate].
 
 >**Note:** In images tagged with two versions in this pattern `A.B.C-X.Y.Z`, the first version `A.B.C` represents the .NET Core runtime version, and the second `X.Y.Z` represents the .NET Core SDK version.
 
@@ -39,8 +49,7 @@ This image contains:
 
 # Related images
 
-1. [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) - the .NET Core image if you don't need the ASP.NET Core specific optimizations.
-2. [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/) - the ASP.NET Core runtime image, for when you don't need to build inside a container.
+* [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/) - the ASP.NET Core runtime image, for when you don't need to build inside a container.
 
 # Example Usage
 
