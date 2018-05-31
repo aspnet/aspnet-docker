@@ -65,7 +65,9 @@
           "sharedTags": {
             "2.0.8": {},
             "2.0": {},
-            "2": {},
+            "2": {
+              "isUndocumented": true
+            },
             "latest": {}
           },
           "platforms": [
@@ -160,7 +162,9 @@
           "sharedTags": {
             "2.0.8-2.1.200": {},
             "2.0": {},
-            "2": {},
+            "2": {
+              "isUndocumented": true
+            },
             "latest": {}
           },
           "platforms": [

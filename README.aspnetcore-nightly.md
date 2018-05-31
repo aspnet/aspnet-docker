@@ -2,28 +2,31 @@
 ASP.NET Core Runtime Docker Image (Nightly)
 ===========================================
 
-This repository contains images for running published ASP.NET Core applications. These images use the
-[microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) image as its base.
+This repository contains images for running published ASP.NET Core applications. These images contain the runtime only. Use [`microsoft/aspnetcore-build-nightly`](https://hub.docker.com/r/microsoft/aspnetcore-build-nightly/) to build ASP.NET Core apps inside the container.
 
-These images contain the runtime only. Use [`microsoft/aspnetcore-build-nightly`](https://hub.docker.com/r/microsoft/aspnetcore-build-nightly/) to build ASP.NET Core apps inside the container.
+Latest images for **2.1** and newer are now available on [microsoft/dotnet-nightly](https://hub.docker.com/r/microsoft/dotnet-nightly/). See [this link][migrate] for more details about migrating to 2.1.
 
+[migrate]: https://github.com/aspnet/aspnet-docker/blob/master/2.1
 
 # Linux amd64 tags
 
 - [`1.0.11-jessie`, `1.0.11`, `1.0` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/jessie/runtime/Dockerfile)
 - [`1.1.8-jessie`, `1.1.8`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/runtime/Dockerfile)
-- [`2.0.7-stretch`, `2.0-stretch`, `2.0.7`, `2.0`, `2`, `latest` (*2.0/stretch/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/stretch/runtime/Dockerfile)
+- [`2.0.7-stretch`, `2.0-stretch`, `2.0.7`, `2.0`, `latest` (*2.0/stretch/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/stretch/runtime/Dockerfile)
 - [`2.0.7-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/jessie/runtime/Dockerfile)
+- For 2.1 and up, use [microsoft/dotnet-nightly][migrate].
 
 # Windows Server, version 1709 amd64 tags
 
-- [`2.0.7-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.7`, `2.0`, `2`, `latest` (*2.0/nanoserver-1709/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-1709/runtime/Dockerfile)
+- [`2.0.7-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.7`, `2.0`, `latest` (*2.0/nanoserver-1709/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-1709/runtime/Dockerfile)
+- For 2.1 and up, use [microsoft/dotnet-nightly][migrate].
 
 # Windows Server 2016 amd64 tags
 
 - [`1.0.11-nanoserver-sac2016`, `1.0.11`, `1.0` (*1.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/nanoserver-sac2016/runtime/Dockerfile)
 - [`1.1.8-nanoserver-sac2016`, `1.1.8`, `1.1`, `1` (*1.1/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver-sac2016/runtime/Dockerfile)
-- [`2.0.7-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.7`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-sac2016/runtime/Dockerfile)
+- [`2.0.7-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.7`, `2.0`, `latest` (*2.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-sac2016/runtime/Dockerfile)
+- For 2.1 and up, use [microsoft/dotnet-nightly][migrate].
 
 # What is ASP.NET Core?
 
@@ -40,8 +43,7 @@ This image contains:
 
 # Related images
 
-1. [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) - the .NET Core image if you don't need the ASP.NET Core specific optimizations.
-2. [microsoft/aspnetcore-build-nightly](https://hub.docker.com/r/microsoft/aspnetcore-build-nightly/) - The ASP.NET Core build image for publishing an ASP.NET Core app inside a container.
+* [microsoft/aspnetcore-build-nightly](https://hub.docker.com/r/microsoft/aspnetcore-build-nightly/) - The ASP.NET Core build image for publishing an ASP.NET Core app inside a container.
 
 # How to use this image
 
