@@ -8,6 +8,8 @@ Latest images for **2.1** and newer are now available on [microsoft/dotnet-night
 
 [migrate]: https://github.com/aspnet/aspnet-docker/blob/master/2.1
 
+The [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker/blob/master/samples/README.md) show various ways to use .NET Core and Docker together. See [Building Docker Images for .NET Core Applications](https://docs.microsoft.com/dotnet/core/docker/building-net-docker-images) to learn more.
+
 # Linux amd64 tags
 
 - [`1.0.11-jessie`, `1.0.11`, `1.0` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.0/jessie/runtime/Dockerfile)
