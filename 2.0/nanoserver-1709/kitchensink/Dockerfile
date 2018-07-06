@@ -6,8 +6,8 @@ FROM microsoft/windowsservercore:1709 AS installer-env
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # versions of stuff
-ENV NETCORE_1_0_RUNTIME_VERSION 1.0.11
-ENV NETCORE_1_1_RUNTIME_VERSION 1.1.8
+ENV NETCORE_1_0_RUNTIME_VERSION 1.0.12
+ENV NETCORE_1_1_RUNTIME_VERSION 1.1.9
 
 # Retrieve node and git
 ENV NODE_VERSION 6.13.0
@@ -45,13 +45,13 @@ RUN Invoke-WebRequest -UseBasicParsing https://distaspnet.blob.core.windows.net/
 
 
 # Kitchen Sink image
-FROM microsoft/dotnet:2.0.7-sdk-2.1.200-nanoserver-1709
+FROM microsoft/dotnet:2.0.9-sdk-2.1.202-nanoserver-1709
 
 # Note: Kitchen Sink image's SHELL is the CMD shell (different than the installer image).
 
 # Set up environment
 ENV ASPNETCORE_URLS http://+:80
-ENV ASPNETCORE_PKG_VERSION 2.0.8
+ENV ASPNETCORE_PKG_VERSION 2.0.9
 
 # Install node, bower, and git
 COPY --from=installer-env ["nodejs", "C:\\Program Files\\nodejs"]
