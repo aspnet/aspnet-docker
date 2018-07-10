@@ -174,7 +174,7 @@ try {
                     # map the 1.1.X-1.1.Y sdk tags to the runtime tag name
                     "1.1" { $sdk_tag -replace '-1.1.\d+', '' }
                     # map the 2.0.X-2.1.Y sdk tags to the runtime tag name
-                    "2.0" { $sdk_tag -replace '-2.1.\d+', '' }
+                    "2.0" { $sdk_tag -replace '-sdk-2.1.\d+', '' }
                     Default { $sdk_tag }
                 }
                 $runtime_tag = $runtime_tag -replace '-build', ''
