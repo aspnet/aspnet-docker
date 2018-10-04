@@ -15,25 +15,12 @@ The [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker/blob/mast
 
 - [`1.0.12-jessie`, `1.0.12`, `1.0` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/runtime/Dockerfile)
 - [`1.1.9-jessie`, `1.1.9`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
-- [`2.0.9-stretch`, `2.0-stretch`, `2.0.9`, `2.0`, `latest` (*2.0/stretch/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/stretch/runtime/Dockerfile)
-- [`2.0.9-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/jessie/runtime/Dockerfile)
-- For 2.1 and up, use [microsoft/dotnet][migrate].
-
-# Windows Server, version 1803 amd64 tags
-
-- [`2.0.9-nanoserver-1803`, `2.0-nanoserver-1803`, `2.0.9`, `2.0`, `latest` (*2.0/nanoserver-1803/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1803/runtime/Dockerfile)
-- For 2.1 and up, use [microsoft/dotnet][migrate].
-
-# Windows Server, version 1709 amd64 tags
-
-- [`2.0.9-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.9`, `2.0`, `latest` (*2.0/nanoserver-1709/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-1709/runtime/Dockerfile)
 - For 2.1 and up, use [microsoft/dotnet][migrate].
 
 # Windows Server 2016 amd64 tags
 
 - [`1.0.12-nanoserver-sac2016`, `1.0.12`, `1.0` (*1.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver-sac2016/runtime/Dockerfile)
 - [`1.1.9-nanoserver-sac2016`, `1.1.9`, `1.1`, `1` (*1.1/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/runtime/Dockerfile)
-- [`2.0.9-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.9`, `2.0`, `2`, `latest` (*2.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/2.0/nanoserver-sac2016/runtime/Dockerfile)
 - For 2.1 and up, use [microsoft/dotnet][migrate].
 
 # What is ASP.NET Core?

@@ -18,12 +18,6 @@
           "Parameters": {
             "PB.image-builder.path": "1.*"
           }
-        },
-        {
-          "Name": "aspnet-docker-linux-images",
-          "Parameters": {
-            "PB.image-builder.path": "2.0/*"
-          }
         }
       ]
     },
@@ -37,40 +31,6 @@
           "Name": "aspnet-docker-windows-images",
           "Parameters": {
             "PB.image-builder.path": "1.*"
-          }
-        },
-        {
-          "Name": "aspnet-docker-windows-images",
-          "Parameters": {
-            "PB.image-builder.path": "2.0/nanoserver-sac2016/*"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "Build Windows 1709 Images",
-      "Parameters": {
-        "TreatWarningsAsErrors": "false"
-      },
-      "Definitions": [
-        {
-          "Name": "aspnet-docker-windows-1709-images",
-          "Parameters": {
-            "PB.image-builder.path": "2.0/nanoserver-1709/*"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "Build Windows 1803 Images",
-      "Parameters": {
-        "TreatWarningsAsErrors": "false"
-      },
-      "Definitions": [
-        {
-          "Name": "aspnet-docker-windows-1803-images",
-          "Parameters": {
-            "PB.image-builder.path": "2.0/nanoserver-1803/*"
           }
         }
       ]
@@ -86,8 +46,6 @@
         }
       ],
       "DependsOn": [
-        "Build Windows 1803 Images",
-        "Build Windows 1709 Images",
         "Build Windows Images",
         "Build Linux Images"
       ]

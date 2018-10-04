@@ -60,68 +60,6 @@
               }
             }
           ]
-        },
-        {
-          "sharedTags": {
-            "2.0.9": {},
-            "2.0": {},
-            "2": {
-              "isUndocumented": true
-            },
-            "latest": {}
-          },
-          "platforms": [
-            {
-              "dockerfile": "2.0/stretch/runtime",
-              "os": "linux",
-              "tags": {
-                "2.0.9-stretch": {},
-                "2.0-stretch": {}
-              }
-            },
-            {
-              "dockerfile": "2.0/nanoserver-sac2016/runtime",
-              "os": "windows",
-              "tags": {
-                "2.0.9-nanoserver-sac2016": {},
-                "2.0-nanoserver-sac2016": {},
-                "2.0-nanoserver": {
-                  "isUndocumented": true
-                }
-              }
-            },
-            {
-              "dockerfile": "2.0/nanoserver-1709/runtime",
-              "os": "windows",
-              "osVersion": "1709",
-              "tags": {
-                "2.0.9-nanoserver-1709": {},
-                "2.0-nanoserver-1709": {}
-              }
-            },
-            {
-              "dockerfile": "2.0/nanoserver-1803/runtime",
-              "os": "windows",
-              "osVersion": "1803",
-              "tags": {
-                "2.0.9-nanoserver-1803": {},
-                "2.0-nanoserver-1803": {}
-              }
-            }
-          ]
-        },
-        {
-          "platforms": [
-            {
-              "dockerfile": "2.0/jessie/runtime",
-              "os": "linux",
-              "tags": {
-                "2.0.9-jessie": {},
-                "2.0-jessie": {},
-                "2-jessie": {}
-              }
-            }
-          ]
         }
       ]
     },
@@ -160,68 +98,6 @@
         },
         {
           "sharedTags": {
-            "2.0.9-sdk-2.1.202": {},
-            "2.0": {},
-            "2": {
-              "isUndocumented": true
-            },
-            "latest": {}
-          },
-          "platforms": [
-            {
-              "dockerfile": "2.0/stretch/sdk",
-              "os": "linux",
-              "tags": {
-                "2.0.9-sdk-2.1.202-stretch": {},
-                "2.0-stretch": {}
-              }
-            },
-            {
-              "dockerfile": "2.0/nanoserver-sac2016/sdk",
-              "os": "windows",
-              "tags": {
-                "2.0.9-sdk-2.1.202-nanoserver-sac2016": {},
-                "2.0-nanoserver-sac2016": {},
-                "2.0-nanoserver": {
-                  "isUndocumented": true
-                }
-              }
-            },
-            {
-              "dockerfile": "2.0/nanoserver-1709/sdk",
-              "os": "windows",
-              "osVersion": "1709",
-              "tags": {
-                "2.0.9-sdk-2.1.202-nanoserver-1709": {},
-                "2.0-nanoserver-1709": {}
-              }
-            },
-            {
-              "dockerfile": "2.0/nanoserver-1803/sdk",
-              "os": "windows",
-              "osVersion": "1803",
-              "tags": {
-                "2.0.9-sdk-2.1.202-nanoserver-1803": {},
-                "2.0-nanoserver-1803": {}
-              }
-            }
-          ]
-        },
-        {
-          "platforms": [
-            {
-              "dockerfile": "2.0/jessie/sdk",
-              "os": "linux",
-              "tags": {
-                "2.0.9-sdk-2.1.202-jessie": {},
-                "2.0-jessie": {},
-                "2-jessie": {}
-              }
-            }
-          ]
-        },
-        {
-          "sharedTags": {
             "1.0-1.1": {
               "isUndocumented": true
             }
@@ -244,59 +120,6 @@
                   "isUndocumented": true
                 },
                 "1.0-1.1-nanoserver": {
-                  "isUndocumented": true
-                }
-              }
-            }
-          ]
-        },
-        {
-          "sharedTags": {
-            "1.0-2.0": {
-              "isUndocumented": true
-            }
-          },
-          "platforms": [
-            {
-              "dockerfile": "2.0/stretch/kitchensink",
-              "os": "linux",
-              "tags": {
-                "1.0-2.0-stretch": {
-                  "isUndocumented": true
-                }
-              }
-            },
-            {
-              "dockerfile": "2.0/nanoserver-sac2016/kitchensink",
-              "os": "windows",
-              "tags": {
-                "1.0-2.0-nanoserver-sac2016": {
-                  "isUndocumented": true
-                },
-                "1.0-2.0-nanoserver": {
-                  "isUndocumented": true
-                }
-              }
-            },
-            {
-              "dockerfile": "2.0/nanoserver-1709/kitchensink",
-              "os": "windows",
-              "osVersion": "1709",
-              "tags": {
-                "1.0-2.0-nanoserver-1709": {
-                  "isUndocumented": true
-                }
-              }
-            }
-          ]
-        },
-        {
-          "platforms": [
-            {
-              "dockerfile": "2.0/jessie/kitchensink",
-              "os": "linux",
-              "tags": {
-                "1.0-2.0-jessie": {
                   "isUndocumented": true
                 }
               }

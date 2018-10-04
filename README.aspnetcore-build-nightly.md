@@ -13,19 +13,11 @@ The [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker/blob/mast
 # Linux amd64 tags
 
 - [`1.1.9-1.1.10-jessie`, `1.1.9-1.1.10`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/sdk/Dockerfile)
-- [`2.0.9-sdk-2.1.202-stretch`, `2.0-stretch`, `2.0.9-sdk-2.1.202`, `2.0`, `latest` (*2.0/stretch/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/stretch/sdk/Dockerfile)
-- [`2.0.9-sdk-2.1.202-jessie`, `2.0-jessie`, `2-jessie` (*2.0/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/jessie/sdk/Dockerfile)
-- For 2.1 and up, use [microsoft/dotnet-nightly][migrate].
-
-# Windows Server, version 1709 amd64 tags
-
-- [`2.0.9-sdk-2.1.202-nanoserver-1709`, `2.0-nanoserver-1709`, `2.0.9-sdk-2.1.202`, `2.0`, `latest` (*2.0/nanoserver-1709/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-1709/sdk/Dockerfile)
 - For 2.1 and up, use [microsoft/dotnet-nightly][migrate].
 
 # Windows Server 2016 amd64 tags
 
 - [`1.1.9-1.1.10-nanoserver-sac2016`, `1.1.9-1.1.10`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver-sac2016/sdk/Dockerfile)
-- [`2.0.9-sdk-2.1.202-nanoserver-sac2016`, `2.0-nanoserver-sac2016`, `2.0.9-sdk-2.1.202`, `2.0`, `latest` (*2.0/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/2.0/nanoserver-sac2016/sdk/Dockerfile)
 - For 2.1 and up, use [microsoft/dotnet-nightly][migrate].
 
 >**Note:** In images tagged with two versions in this pattern `A.B.C-X.Y.Z`, the first version `A.B.C` represents the .NET Core runtime version, and the second `X.Y.Z` represents the .NET Core SDK version.

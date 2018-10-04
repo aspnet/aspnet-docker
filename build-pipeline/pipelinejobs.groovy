@@ -2,12 +2,7 @@ import org.dotnet.ci.pipelines.Pipeline
 
 def windowsPipeline = Pipeline.createPipeline(this, 'build-pipeline/windows-pipeline.groovy')
 
-[
-    '1.*:sac2016',
-    '2.0/nanoserver-sac2016/*:sac2016',
-    '2.0/nanoserver-1709/*:1709',
-    '2.0/nanoserver-1803/*:1803'
-].each { platform ->
+['1.*:sac2016'].each { platform ->
     def(folderFilter, containerOS) = platform.tokenize(':')
     def triggerName = "Windows ${containerOS} ${folderFilter[0..-3]} Build"
 
@@ -17,7 +12,7 @@ def windowsPipeline = Pipeline.createPipeline(this, 'build-pipeline/windows-pipe
 
 def linuxPipeline = Pipeline.createPipeline(this, 'build-pipeline/linux-pipeline.groovy')
 
-['1.*', '2.0/*'].each { folderFilter ->
+['1.*'].each { folderFilter ->
     def triggerName = "Linux ${folderFilter[0..-3]} Build"
 
     linuxPipeline.triggerPipelineOnEveryGithubPR(triggerName, ['folderFilter':folderFilter])
