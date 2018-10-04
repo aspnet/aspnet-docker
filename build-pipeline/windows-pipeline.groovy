@@ -15,13 +15,7 @@ def buildImages = {
     }
 }
 
-if (params.os == '1709') {
-    simpleNode('windows.10.amd64.serverrs3.open', buildImages)
-}
-else if (params.os == '1803') {
-    simpleNode('windows.10.amd64.serverrs4.open', buildImages)
-}
-else if (params.os == 'sac2016') {
+if (params.os == 'sac2016') {
     simpleNode('Windows_2016', 'latest-docker', buildImages)
 }
 else {
