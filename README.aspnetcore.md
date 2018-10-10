@@ -13,14 +13,14 @@ The [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker/blob/mast
 
 # Linux amd64 tags
 
-- [`1.0.12-jessie`, `1.0.12`, `1.0` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/runtime/Dockerfile)
-- [`1.1.9-jessie`, `1.1.9`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
+- [`1.0.13-jessie`, `1.0.13`, `1.0` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/runtime/Dockerfile)
+- [`1.1.10-jessie`, `1.1.10`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
 - For 2.1 and up, use [microsoft/dotnet][migrate].
 
 # Windows Server 2016 amd64 tags
 
-- [`1.0.12-nanoserver-sac2016`, `1.0.12`, `1.0` (*1.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver-sac2016/runtime/Dockerfile)
-- [`1.1.9-nanoserver-sac2016`, `1.1.9`, `1.1`, `1` (*1.1/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/runtime/Dockerfile)
+- [`1.0.13-nanoserver-sac2016`, `1.0.13`, `1.0` (*1.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver-sac2016/runtime/Dockerfile)
+- [`1.1.10-nanoserver-sac2016`, `1.1.10`, `1.1`, `1` (*1.1/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/runtime/Dockerfile)
 - For 2.1 and up, use [microsoft/dotnet][migrate].
 
 # What is ASP.NET Core?
