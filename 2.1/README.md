@@ -11,10 +11,10 @@ You can upgrade to 2.1 and by changing the repository name in the `FROM` line in
 
 Current | Upgrade
 --------|--------------
-`microsoft/aspnetcore:1.0`<br>`microsoft/aspnetcore:1.1`<br>`microsoft/aspnetcore:2.0` | `microsoft/dotnet:2.1-aspnetcore-runtime`
-`microsoft/aspnetcore-build:1.0`<br>`microsoft/aspnetcore-build:1.1`<br>`microsoft/aspnetcore-build:2.0` | `microsoft/dotnet:2.1-sdk`
+`microsoft/aspnetcore:1.0`<br>`microsoft/aspnetcore:1.1`<br>`microsoft/aspnetcore:2.0` | `mcr.microsoft.com/dotnet/core/aspnet:2.1`
+`microsoft/aspnetcore-build:1.0`<br>`microsoft/aspnetcore-build:1.1`<br>`microsoft/aspnetcore-build:2.0` | `mcr.microsoft.com/dotnet/core/sdk:2.1`
 
-**I was using NodeJS in `microsoft/aspnetcore-build`, but this is missing from `microsoft/dotnet:2.1-sdk`. What should I do?**
+**I was using NodeJS in `microsoft/aspnetcore-build`, but this is missing from `dotnet/core/sdk:2.1`. What should I do?**
 
 You can either install NodeJS by adding a few lines of code to your Dockerfile that download and extract NodeJS,
 or you can use the multi-stage feature of Docker and the official NodeJS images.
@@ -39,7 +39,7 @@ WORKDIR /src
 COPY . .
 RUN npm run webpack
 
-FROM microsoft/dotnet:2.1-sdk AS dotnet-builder
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS dotnet-builder
 WORKDIR /app
 COPY --from=node-builder /src/dist/*.js  ./dist
 ```

@@ -4,7 +4,7 @@ ASP.NET Core Runtime Docker Image (Nightly)
 
 This repository contains images for running published ASP.NET Core applications. These images contain the runtime only. Use [`microsoft/aspnetcore-build-nightly`](https://hub.docker.com/r/microsoft/aspnetcore-build-nightly/) to build ASP.NET Core apps inside the container.
 
-Latest images for **2.1** and newer are now available on [microsoft/dotnet-nightly](https://hub.docker.com/r/microsoft/dotnet-nightly/). See [this link][migrate] for more details about migrating to 2.1.
+Latest images for **2.1** and newer are now available on [dotnet/core-nightly](https://hub.docker.com/_/microsoft-dotnet-core-nightly/). See [this link][migrate] for more details about migrating to 2.1.
 
 [migrate]: https://github.com/aspnet/aspnet-docker/blob/master/2.1
 
