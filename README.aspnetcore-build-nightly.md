@@ -12,12 +12,7 @@ The [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker/blob/mast
 
 # Linux amd64 tags
 
-- [`1.1.11-1.1.12-jessie`, `1.1.11-1.1.12`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/sdk/Dockerfile)
-- For 2.1 and up, use [microsoft/dotnet-nightly][migrate].
-
-# Windows Server 2016 amd64 tags
-
-- [`1.1.11-1.1.12-nanoserver-sac2016`, `1.1.11-1.1.12`, `1.1`, `1` (*1.1/nanoserver-sac2016/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/nanoserver-sac2016/sdk/Dockerfile)
+- [`1.1.12-1.1.13-jessie`, `1.1.12-1.1.13`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/dev/1.1/jessie/sdk/Dockerfile)
 - For 2.1 and up, use [microsoft/dotnet-nightly][migrate].
 
 >**Note:** In images tagged with two versions in this pattern `A.B.C-X.Y.Z`, the first version `A.B.C` represents the .NET Core runtime version, and the second `X.Y.Z` represents the .NET Core SDK version.
@@ -92,15 +87,6 @@ from Stage 1 into the final image leaving behind all of the source code and tool
 
     ```
     $ docker run -it -p 5000:80 myapp
-    ```
-
-1. (Windows containers) Start a container from your image, get its assigned IP address, and then open your browser to the IP address
-    of the container on port 80. To see console output, attach to the running container or use `docker logs`.
-
-    ```
-    PS> docker run --detach --name myapp_container myapp
-    PS> docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' myapp_container
-    PS> docker attach myapp_container
     ```
 
 ## Build an app with `docker run`
