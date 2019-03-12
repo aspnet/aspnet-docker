@@ -28,13 +28,6 @@
               "tags": {
                 "1.0.15-jessie": {}
               }
-            },
-            {
-              "dockerfile": "1.0/nanoserver-sac2016/runtime",
-              "os": "windows",
-              "tags": {
-                "1.0.15-nanoserver-sac2016": {}
-              }
             }
           ]
         },
@@ -50,13 +43,6 @@
               "os": "linux",
               "tags": {
                 "1.1.12-jessie": {}
-              }
-            },
-            {
-              "dockerfile": "1.1/nanoserver-sac2016/runtime",
-              "os": "windows",
-              "tags": {
-                "1.1.12-nanoserver-sac2016": {}
               }
             }
           ]
@@ -86,13 +72,6 @@
               "tags": {
                 "1.1.12-1.1.13-jessie": {}
               }
-            },
-            {
-              "dockerfile": "1.1/nanoserver-sac2016/sdk",
-              "os": "windows",
-              "tags": {
-                "1.1.12-1.1.13-nanoserver-sac2016": {}
-              }
             }
           ]
         },
@@ -108,18 +87,6 @@
               "os": "linux",
               "tags": {
                 "1.0-1.1-jessie": {
-                  "isUndocumented": true
-                }
-              }
-            },
-            {
-              "dockerfile": "1.1/nanoserver-sac2016/kitchensink",
-              "os": "windows",
-              "tags": {
-                "1.0-1.1-nanoserver-sac2016": {
-                  "isUndocumented": true
-                },
-                "1.0-1.1-nanoserver": {
                   "isUndocumented": true
                 }
               }

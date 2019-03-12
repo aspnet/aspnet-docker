@@ -17,12 +17,6 @@ The [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker/blob/mast
 - [`1.1.12-jessie`, `1.1.12`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
 - For 2.1 and up, use [microsoft/dotnet][migrate].
 
-# Windows Server 2016 amd64 tags
-
-- [`1.0.15-nanoserver-sac2016`, `1.0.15`, `1.0` (*1.0/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/nanoserver-sac2016/runtime/Dockerfile)
-- [`1.1.12-nanoserver-sac2016`, `1.1.12`, `1.1`, `1` (*1.1/nanoserver-sac2016/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/nanoserver-sac2016/runtime/Dockerfile)
-- For 2.1 and up, use [microsoft/dotnet][migrate].
-
 # What is ASP.NET Core?
 
 ASP.NET Core is a new open-source and cross-platform framework for building modern cloud based internet connected applications, such as web apps, IoT apps and mobile backends. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET Core apps cross-platform on Windows, Mac and Linux. ASP.NET Core is open source at [GitHub](https://github.com/aspnet).
