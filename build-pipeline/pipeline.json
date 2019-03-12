@@ -22,20 +22,6 @@
       ]
     },
     {
-      "Name": "Build Windows Images",
-      "Parameters": {
-        "TreatWarningsAsErrors": "false"
-      },
-      "Definitions": [
-        {
-          "Name": "aspnet-docker-windows-images",
-          "Parameters": {
-            "PB.image-builder.path": "1.*"
-          }
-        }
-      ]
-    },
-    {
       "Name": "Post Image Build",
       "Parameters": {
         "TreatWarningsAsErrors": "false"
@@ -46,7 +32,6 @@
         }
       ],
       "DependsOn": [
-        "Build Windows Images",
         "Build Linux Images"
       ]
     }
