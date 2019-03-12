@@ -89,15 +89,6 @@ from Stage 1 into the final image leaving behind all of the source code and tool
     $ docker run -it -p 5000:80 myapp
     ```
 
-1. (Windows containers) Start a container from your image, get its assigned IP address, and then open your browser to the IP address
-    of the container on port 80. To see console output, attach to the running container or use `docker logs`.
-
-    ```
-    PS> docker run --detach --name myapp_container myapp
-    PS> docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' myapp_container
-    PS> docker attach myapp_container
-    ```
-
 ## Build an app with `docker run`
 
 You can use this container to compile your application when it runs. If you use the [Visual Studio tooling](https://blogs.msdn.microsoft.com/webdev/2016/11/16/new-docker-tools-for-visual-studio/) to setup CI/CD to Azure Container Service then this method of using the build container is used.
