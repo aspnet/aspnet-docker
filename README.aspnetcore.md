@@ -13,8 +13,8 @@ The [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker/blob/mast
 
 # Linux amd64 tags
 
-- [`1.0.15-jessie`, `1.0.15`, `1.0` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/runtime/Dockerfile)
-- [`1.1.12-jessie`, `1.1.12`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
+- [`1.0.16-jessie`, `1.0.16`, `1.0` (*1.0/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.0/jessie/runtime/Dockerfile)
+- [`1.1.13-jessie`, `1.1.13`, `1.1`, `1` (*1.1/jessie/runtime/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/runtime/Dockerfile)
 - For 2.1 and up, use [microsoft/dotnet][migrate].
 
 # What is ASP.NET Core?

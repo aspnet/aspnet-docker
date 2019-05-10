@@ -12,7 +12,7 @@ The [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker/blob/mast
 
 # Linux amd64 tags
 
-- [`1.1.12-1.1.13-jessie`, `1.1.12-1.1.13`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
+- [`1.1.13-1.1.14-jessie`, `1.1.13-1.1.14`, `1.1`, `1` (*1.1/jessie/sdk/Dockerfile*)](https://github.com/aspnet/aspnet-docker/blob/master/1.1/jessie/sdk/Dockerfile)
 - For 2.1 and up, use [microsoft/dotnet][migrate].
 
 >**Note:** In images tagged with two versions in this pattern `A.B.C-X.Y.Z`, the first version `A.B.C` represents the .NET Core runtime version, and the second `X.Y.Z` represents the .NET Core SDK version.
